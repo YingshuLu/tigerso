@@ -1,0 +1,465 @@
+const VsapiScanType VsapiScanTypeTable[] =
+{
+  { "audiovideo",	0,			"audio/",							"",			"audio*"},
+  { "audiovideo",	0,			"video/",							"",			"video*"},
+  { "picture",		0,			"image/",							"",			"image*"},
+
+  { "exe",		1002,			"application/octet-stream",			"",			g_exec},
+
+  { "exec",		1002,			"application/octet-stream",			"",			g_exec},
+  { "exec",		1002,			"application/x-msdownload",			"",			g_exec},
+
+  { "com",		1003,			"application/octet-stream",			"",			g_exec},
+
+  { "java",		1004,			"text/x-java-source",				"",			g_java},
+  { "java",		1004,			"application/java-class",			"",			g_java},
+  { "java",		1004,			"application/x-java-applet",		"",			g_java},
+  { "java",		1004,			"application/x-java-vm",			"",			g_java},
+
+  { "tnef",		1005,			"application/ms-tnef",				"",			"tnef"},
+  { "tnef",		1005,			"application/vnd.ms-tnef",			"",			"tnef"},
+
+  { "7zip",		VSDT_7ZIP,		"application/octet-stream",			"",			g_archiv},
+
+  { "ace",		VSDT_ACE,		"application/x-ace",				"",			g_archiv},
+  { "ace",		VSDT_ACE,		"application/x-compressed",			"",			g_archiv},
+
+  {	"afc",		VSDT_AFC,		"audio/aiff",						"",			g_audiovideo},
+  {	"afc",		VSDT_AFC,		"audio/x-aiff",						"",			g_audiovideo},
+
+  { "eps",		VSDT_AI,		"application/postscript",			"",			g_picture},
+  { "eps",		VSDT_AI,		"image/x-eps",						"",			g_picture},
+  { "eps",		VSDT_AI,		"image/eps",						"",			g_picture},
+  { "eps",		VSDT_AI,		"application/x-eps",				"",			g_picture},
+  { "eps",		VSDT_AI,		"application/eps",					"",			g_picture},
+
+  {	"aif",		VSDT_AIF,		"audio/aiff",						"",			g_audiovideo},
+  {	"aif",		VSDT_AIF,		"audio/x-aiff",						"",			g_audiovideo},
+  {	"aif",		VSDT_AIF,		"sound/aiff",						"",			g_audiovideo},
+  {	"aif",		VSDT_AIF,		"audio/rmf",						"",			g_audiovideo},
+  {	"aif",		VSDT_AIF,		"audio/x-rmf",						"",			g_audiovideo},
+  {	"aif",		VSDT_AIF,		"audio/x-pn-aiff",					"",			g_audiovideo},
+  {	"aif",		VSDT_AIF,		"audio/x-gsm",						"",			g_audiovideo},
+  {	"aif",		VSDT_AIF,		"audio/x-midi",						"",			g_audiovideo},
+  {	"aif",		VSDT_AIF,		"audio/vnd.qcelp",					"",			g_audiovideo},
+
+  {	"ani",		VSDT_ANI,		"application/octet-stream", 		"",			g_picture},
+  { "arc",		VSDT_ARC,		"application/octet-stream",			"",			g_archiv},
+
+  { "arj",		VSDT_ARJ,		"application/arj",					"",			g_archiv},
+  { "arj",		VSDT_ARJ,		"application/x-arj",				"",			g_archiv},
+  { "arj",		VSDT_ARJ,		"application/x-compress",			"",			g_archiv},
+  { "arj",		VSDT_ARJ,		"application/x-compressed",			"",			g_archiv},
+  { "arj",		VSDT_ARJ,		"zz-application/zz-winassoc-arj",	"",			g_archiv},
+
+  {	"asf",		VSDT_ASF,		"video/x-ms-asf",					"",			g_audiovideo},
+  {	"asf",		VSDT_ASF,		"video/x-ms-asf-plugin",			"",			g_audiovideo},
+  {	"asf",		VSDT_ASF,		"video/x-ms-wm",					"",			g_audiovideo},
+  {	"asf",		VSDT_ASF,		"video/x-ms-wmx",					"",			g_audiovideo},
+  {	"asf",		VSDT_ASF,		"audio/asf",						"",			g_audiovideo},
+  {	"asf",		VSDT_ASF,		"application/asx",					"",			g_audiovideo},
+  {	"asf",		VSDT_ASF,		"application/x-mplayer2",			"",			g_audiovideo},
+  {	"asf",		VSDT_ASF,		"application/vnd.ms-asf",			"",			g_audiovideo},
+
+  { "txt",		VSDT_ASCII,		"text/plain",						"c;cpp;h;hpp;txt;java",		"text"},
+  { "txt",		VSDT_ASCII,		"application/txt",					"",			"text"},
+  { "txt",		VSDT_ASCII,		"text/html",						"",			"text"},
+  { "txt",		VSDT_ASCII,		"text/css",							"css",		"text"},
+  { "txt",		VSDT_ASCII,		"text/javascript",					"",			"text"},
+  { "txt",		VSDT_ASCII,		"application/javascript",			"",			"text"},
+  { "txt",		VSDT_ASCII,		"application/x-javascript",			"",			"text"},
+
+  {	"avs",		VSDT_AVS,		"video/avs-video",					"",			g_audiovideo},
+
+  { "binhex",	VSDT_BINHEX,	"application/binhex",				"",			g_exec},
+  { "binhex",	VSDT_BINHEX,	"application/binhex4",				"",			g_exec},
+  { "binhex",	VSDT_BINHEX,	"application/mac-binhex",			"",			g_exec},
+  { "binhex",	VSDT_BINHEX,	"application/mac-binhex40",			"",			g_exec},
+  { "binhex",	VSDT_BINHEX,	"application/x-binhex40",			"",			g_exec},
+
+  { "bmp",		VSDT_BMP,		"image/bmp",						"",			g_picture},
+  { "bmp",		VSDT_BMP,		"image/x-bmp",						"",			g_picture},
+  { "bmp",		VSDT_BMP,		"image/x-bitmap",					"",			g_picture},
+  { "bmp",		VSDT_BMP,		"image/x-xbitmap",					"",			g_picture},
+  { "bmp",		VSDT_BMP,		"image/x-win-bitmap",				"",			g_picture},
+  { "bmp",		VSDT_BMP,		"image/x-windows-bmp",				"",			g_picture},
+  { "bmp",		VSDT_BMP,		"image/ms-bmp",						"",			g_picture},
+  { "bmp",		VSDT_BMP,		"image/x-ms-bmp",					"",			g_picture},
+
+  {	"bw",		VSDT_BW,		"image/x-sgi-bw",					"",			g_picture},
+
+  {	"bzip2",	VSDT_BZIP2,		"application/x-bzip2",				"",			g_archiv},
+  {	"bzip2",	VSDT_BZIP2,		"application/bzip2",				"",			g_archiv},
+  {	"bzip2",	VSDT_BZIP2,		"application/x-bz2",				"",			g_archiv},
+  {	"bzip2",	VSDT_BZIP2,		"application/x-compressed",			"",			g_archiv},
+
+  {	"cgm",		VSDT_CGM,		"image/cgm",						"",			g_picture},
+
+  { "com",		VSDT_COM,		"application/octet-stream",			"",			g_exec},
+  { "com",		VSDT_COM,		"application/x-msdos-program",		"",			g_exec},
+  { "com",		VSDT_COM,		"application/x-msdownload",			"",			g_exec},
+
+  { "core",		VSDT_CORE,		"application/octet-stream",			"",			g_exec},
+  { "cpio",		VSDT_CPIO,		"application/x-cpio",				"",			g_archiv},
+
+  {	"dcr",		VSDT_DCR,		"application/x-director",			"",			g_audiovideo},
+  { "lisp",		VSDT_C_LISP,	"application/x-lisp",				"",			g_exec},
+
+  {	"dwg",		VSDT_DWG,		"application/acad",					"",			g_office},
+  {	"dwg",		VSDT_DWG,		"application/x-acad",				"",			g_office},
+  {	"dwg",		VSDT_DWG,		"drawing/x-dwg",					"",			g_office},
+  {	"dwg",		VSDT_DWG,		"image/vnd.dwg",					"",			g_office},
+  {	"dwg",		VSDT_DWG,		"image/x-dwg",						"",			g_office},
+
+  { "msdoc",	VSDT_DWORD,		"application/msword",				"",			g_office},
+  { "msdoc",	VSDT_DWORD,		"application/doc",					"",			g_office},
+  { "msdoc",	VSDT_DWORD,		"application/vnd.msword",			"",			g_office},
+  { "msdoc",	VSDT_DWORD,		"application/vnd.ms-word",			"",			g_office},
+  { "msdoc",	VSDT_DWORD,		"application/x-msw6",				"",			g_office},
+  { "msdoc",	VSDT_DWORD,		"application/x-msword",				"",			g_office},
+
+  { "exe",		VSDT_EXE,		"application/octet-stream",			"",			g_exec},
+  { "exe",		VSDT_EXE,		"application/exe",					"",			g_exec},
+  { "exe",		VSDT_EXE,		"application/x-msdownload",			"",			g_exec},
+  { "exe",		VSDT_EXE,		"application/x-exe",				"",			g_exec},
+  { "exe",		VSDT_EXE,		"application/dos-exe",				"",			g_exec},
+  { "exe",		VSDT_EXE,		"vms/exe",							"",			g_exec},
+  { "exe",		VSDT_EXE,		"application/x-winexe",				"",			g_exec},
+  { "exe",		VSDT_EXE,		"application/msdos-windows",		"",			g_exec},
+
+  { "msexl",	VSDT_EXCELL,	"application/excel",				"xls",		g_office},
+  { "msexl",	VSDT_EXCELL,	"application/x-msexcel",			"",			g_office},
+  { "msexl",	VSDT_EXCELL,	"application/x-ms-excel",			"",			g_office},
+  { "msexl",	VSDT_EXCELL,	"application/x-excel",				"",			g_office},
+  { "msexl",	VSDT_EXCELL,	"application/vnd.ms-excel",			"",			g_office},
+  { "msexl",	VSDT_EXCELL,	"application/xls",					"",			g_office},
+  { "msexl",	VSDT_EXCELL,	"application/x-xls",				"",			g_office},
+
+  {	"fh9",		VSDT_FH9,		"image/x-freehand",					"",			g_picture},
+
+  { "fli",		VSDT_FLI,		"video/x-fli",						"",			g_picture},
+  { "fli",		VSDT_FLI,		"video/flc",						"",			g_picture},
+  { "fli",		VSDT_FLI,		"video/fli",						"",			g_picture},
+  { "fli",		VSDT_FLI,		"video/x-acad-anim",				"",			g_picture},
+
+  {	"flv",		VSDT_FLV,		"video/flv",						"",			g_audiovideo},
+  {	"flv",		VSDT_FLV,		"video/x-flv",						"",			g_audiovideo},
+  {	"flv",		VSDT_FLV,		"flv-application/octet-stream",		"",			g_audiovideo},
+
+  { "fm",		VSDT_FM,		"application/vnd.framemaker",		"",			g_office },
+
+  { "gif",		VSDT_GIF,		"image/gif",						"",			g_picture},
+
+  { "gzip",		VSDT_GZIP,		"application/gzip",					"",			g_archiv},
+  { "gzip",		VSDT_GZIP,		"application/x-gzip",				"",			g_archiv},
+  { "gzip",		VSDT_GZIP,		"application/x-gunzip",				"",			g_archiv},
+  { "gzip",		VSDT_GZIP,		"application/gzipped",				"",			g_archiv},
+  { "gzip",		VSDT_GZIP,		"application/gzip-compressed",		"",			g_archiv},
+  { "gzip",		VSDT_GZIP,		"application/x-compressed",			"",			g_archiv},
+  { "gzip",		VSDT_GZIP,		"application/x-compress",			"",			g_archiv},
+  { "gzip",		VSDT_GZIP,		"gzip/document",					"",			g_archiv},
+  { "gzip",		VSDT_GZIP,		"encoding/x-gzip",					"",			g_archiv},
+
+  { "icon",		VSDT_ICO,		"image/ico",						"",			g_picture},
+  { "icon",		VSDT_ICO,		"image/x-icon",						"",			g_picture},
+  { "icon",		VSDT_ICO,		"application/ico",					"",			g_picture},
+  { "icon",		VSDT_ICO,		"application/x-ico",				"",			g_picture},
+  { "icon",		VSDT_ICO,		"application/x-win-bitmap",			"",			g_picture},
+  { "icon",		VSDT_ICO,		"image/x-win-bitmap",				"",			g_picture},
+
+  {	"iff",		VSDT_IFF,		"audio/x-aiff",						"",			g_audiovideo},
+  {	"iff",		VSDT_IFF,		"image/iff",						"",			g_audiovideo},
+  {	"iff",		VSDT_IFF,		"image/x-iff",						"",			g_audiovideo},
+  {	"iff",		VSDT_IFF,		"application/iff",					"",			g_audiovideo},
+
+  { "java",		VSDT_JAVA,		"text/x-java-source",				"",			g_java},
+  { "java",		VSDT_JAVA,		"application/java-class",			"",			g_java},
+  { "java",		VSDT_JAVA,		"application/x-java-applet",		"",			g_java},
+  { "java",		VSDT_JAVA,		"application/x-java-vm",			"",			g_java},
+
+  { "jpeg",		VSDT_JPG,		"image/jpeg",						"",			g_picture},
+  { "jpeg",		VSDT_JPG,		"image/jpg",						"",			g_picture},
+  { "jpeg",		VSDT_JPG,		"image/jp_",						"",			g_picture},
+  { "jpeg",		VSDT_JPG,		"image/pipeg",						"",			g_picture},
+  { "jpeg",		VSDT_JPG,		"image/pjpeg",						"",			g_picture},
+
+  { "lha",		VSDT_LHA,		"application/x-lha",				"",			g_archiv},
+  { "lha",		VSDT_LHA,		"application/lha",					"",			g_archiv},
+  { "lha",		VSDT_LHA,		"application/x-compress",			"",			g_archiv},
+  { "lha",		VSDT_LHA,		"application/x-compressed",			"",			g_archiv},
+  { "lha",		VSDT_LHA,		"application/maclha",				"",			g_archiv},
+
+  { "lwo",		VSDT_LWO,		"image/x-lwo",						"",			g_picture},
+
+  {	"maud",		VSDT_MAUD,		"audio/x-maud",						"",			g_audiovideo},
+  { "mdi",		VSDT_MDI,		"image/vnd.ms-modi",				"",			g_picture},
+  { "midi",		VSDT_MIDI,		"audio/midi",						"",			g_audiovideo},
+
+  {	"mif",		VSDT_MIF,		"application/x-mif",				"",			g_picture},
+
+  { "base64",	VSDT_MIME,		"application/base64",				"",			g_encoded},
+
+  {	"bin",		VSDT_MACBIN,	"application/mac-binary",			"",			g_archiv},
+  {	"bin",		VSDT_MACBIN,	"application/macbinary",			"",			g_archiv},
+  {	"bin",		VSDT_MACBIN,	"application/octet-stream",			"",			g_archiv},
+  {	"bin",		VSDT_MACBIN,	"application/x-binary",				"",			g_archiv},
+  {	"bin",		VSDT_MACBIN,	"application/x-macbinary",			"",			g_archiv},
+
+  { "msmdb",	VSDT_MDB,		"application/x-msaccess",			"",			g_office},
+  { "msmdb",	VSDT_MDB,		"application/msaccess",				"",			g_office},
+  { "msmdb",	VSDT_MDB,		"application/vnd.msaccess",			"",			g_office},
+  { "msmdb",	VSDT_MDB,		"application/vnd.ms-access",		"",			g_office},
+  { "msmdb",	VSDT_MDB,		"application/mdb",					"",			g_office},
+  { "msmdb",	VSDT_MDB,		"application/x-mdb",				"",			g_office},
+  { "msmdb",	VSDT_MDB,		"zz-application/zz-winassoc-mdb",	"",			g_office},
+
+  {	"mng",		VSDT_MNG,		"video/x-mng",						"",			g_audiovideo},
+  {	"mng",		VSDT_MNG,		"video/mng",						"",			g_audiovideo},
+
+  { "mp3",		VSDT_MP3,		"audio/mpeg",						"",			g_audiovideo},
+  { "mp3",		VSDT_MP3,		"audio/mpeg3",						"",			g_audiovideo},
+  { "mp3",		VSDT_MP3,		"audio/x-mpeg-3",					"",			g_audiovideo},
+  { "mp3",		VSDT_MP3,		"video/mpeg",						"",			g_audiovideo},
+  { "mp3",		VSDT_MP3,		"video/x-mpeg",						"",			g_audiovideo},
+
+  { "mpeg",		VSDT_MPG,		"video/mpeg",						"",			g_audiovideo},
+  { "mpeg",		VSDT_MPG,		"video/mpg",						"",			g_audiovideo},
+  { "mpeg",		VSDT_MPG,		"video/x-mpg",						"",			g_audiovideo},
+  { "mpeg",		VSDT_MPG,		"video/mpeg2",						"",			g_audiovideo},
+  { "mpeg",		VSDT_MPG,		"video/x-mpeg",						"",			g_audiovideo},
+  { "mpeg",		VSDT_MPG,		"video/x-mpeg2a",					"",			g_audiovideo},
+  { "mpeg",		VSDT_MPG,		"audio/mpeg",						"",			g_audiovideo},
+  { "mpeg",		VSDT_MPG,		"audio/x-mpeg",						"",			g_audiovideo},
+  { "mpeg",		VSDT_MPG,		"image/mpg",						"",			g_audiovideo},
+
+  { "mscab",	VSDT_MSCF,		"application/x-cainet-win32-x86",	"",			g_archiv},
+
+  { "msi",		VSDT_MSI,		"application/x-ole-storage",		"",			g_exec},
+
+  { "pcx", 		VSDT_MSP1,		"image/x-pcx",						"",			g_picture},
+  { "pcx", 		VSDT_MSP1,		"image/pcx",						"",			g_picture},
+  { "pcx", 		VSDT_MSP1,		"image/x-pc-paintbrush",			"",			g_picture},
+  { "pcx", 		VSDT_MSP1,		"application/x-pcx",				"",			g_picture},
+  { "pcx", 		VSDT_MSP1,		"application/pcx",					"",			g_picture},
+  { "pcx", 		VSDT_MSP1,		"zz-application/zz-winassoc-pcx",	"",			g_picture},
+
+  { "pcx", 		VSDT_MSP2,		"image/x-pcx",						"",			g_picture},
+  { "pcx", 		VSDT_MSP2,		"image/pcx",						"",			g_picture},
+  { "pcx", 		VSDT_MSP2,		"image/x-pc-paintbrush",			"",			g_picture},
+  { "pcx", 		VSDT_MSP2,		"application/x-pcx",				"",			g_picture},
+  { "pcx", 		VSDT_MSP2,		"application/pcx",					"",			g_picture},
+  { "pcx", 		VSDT_MSP2,		"zz-application/zz-winassoc-pcx",	"",			g_picture},
+
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.ms-word.document.macroEnabled.12",				"docx;docm;",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.ms-word.template.macroEnabled.12",				"dotx;dotm",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.ms-powerpoint.template.macroEnabled.12",		"potx",				g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.ms-powerpoint.addin.macroEnabled.12",			"ppam",				g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.ms-powerpoint.slideshow.macroEnabled.12",		"ppsm;ppsx",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.ms-powerpoint.presentation.macroEnabled.12",	"pptx;pptm",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.ms-excel.addin.macroEnabled.12",				"xlam",				g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.ms-excel.sheet.binary.macroEnabled.12",		"xlsb",				g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.ms-excel.sheet.macroEnabled.12",				"xlsx;xlsm",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.ms-excel.template.macroEnabled.12",			"xltm;xltx",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.openxmlformats-officedocument.wordprocessingml.document",			"",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.openxmlformats-officedocument.wordprocessingml.template",			"",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.openxmlformats-officedocument.presentationml.template",			"",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.openxmlformats-officedocument.presentationml.slideshow",			"",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.openxmlformats-officedocument.presentationml.presentation",		"",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",				"",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.openxmlformats-officedocument.spreadsheetml.template",				"",		g_office},
+  { "msofc12",	VSDT_OFFICE12,	"application/vnd.openxmlformats",	"",			g_office},
+
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.text", 					"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.text-template", 		"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.graphics", 				"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.graphics-template", 	"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.presentation", 			"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.presentation-template", "",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.spreadsheet", 			"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.spreadsheet-template", 	"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.chart", 				"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.chart-template", 		"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.image", 				"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.image-template", 		"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.formula", 				"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.formula-template", 		"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.text-master", 			"",		g_office},
+  { "opendoc",	VSDT_OPENDOC, 	"application/vnd.oasis.opendocument.text-web", 				"",		g_office},
+
+  { "risc",		VSDT_PA_EXE,	"application/octet-stream",			"",			g_exec},
+  { "risc",		VSDT_PA_DEXE,	"application/octet-stream",			"",			g_exec},
+  { "risc",		VSDT_PA_SEXE,	"application/octet-stream",			"",			g_exec},
+  { "risc",		VSDT_PA_DLIB,	"application/octet-stream",			"",			g_exec},
+  { "risc",		VSDT_PA_SLIB,	"application/octet-stream",			"",			g_exec},
+  { "risc",		VSDT_PA_ROBJ,	"application/octet-stream",			"",			g_exec},
+
+  { "msppt",	VSDT_PPT,		"application/mspowerpoint",			"ppt",		g_office},
+  { "msppt",	VSDT_PPT,		"application/powerpoint",			"",			g_office},
+  { "msppt",	VSDT_PPT,		"application/vnd.ms-powerpoint",	"",			g_office},
+  { "msppt",	VSDT_PPT,		"application/ms-powerpoint",		"",			g_office},
+  { "msppt",	VSDT_PPT,		"application/mspowerpnt",			"",			g_office},
+  { "msppt",	VSDT_PPT,		"application/vnd-mspowerpoint",		"",			g_office},
+  { "msppt",	VSDT_PPT,		"application/x-powerpoint",			"",			g_office},
+  { "msppt",	VSDT_PPT,		"application/x-mspowerpoint",		"",			g_office},
+
+  { "msproj",	VSDT_PROJECT,	"application/vnd.ms-project",		"",			g_office},
+  { "msproj",	VSDT_PROJECT,	"application/x-msproject",			"",			g_office},
+  { "msproj",	VSDT_PROJECT,	"application/x-project",			"",			g_office},
+  { "msproj",	VSDT_PROJECT,	"application/msproj",				"",			g_office},
+  { "msproj",	VSDT_PROJECT,	"application/msproject",			"",			g_office},
+  { "msproj",	VSDT_PROJECT,	"application/x-ms-project",			"",			g_office},
+  { "msproj",	VSDT_PROJECT,	"application/x-dos_ms_project",		"",			g_office},
+  { "msproj",	VSDT_PROJECT,	"application/mpp",					"",			g_office},
+  { "msproj",	VSDT_PROJECT,	"zz-application/zz-winassoc-mpp",	"",			g_office},
+
+  { "pat",		VSDT_PAT,		"audio/pat",						"",			g_audiovideo},
+  { "pat",		VSDT_PAT,		"audio/x-pat",						"",			g_audiovideo},
+
+  { "pcx", 		VSDT_PCX,		"image/x-pcx",						"",			g_picture},
+  { "pcx", 		VSDT_PCX,		"image/pcx",						"",			g_picture},
+  { "pcx", 		VSDT_PCX,		"image/x-pc-paintbrush",			"",			g_picture},
+  { "pcx", 		VSDT_PCX,		"application/x-pcx",				"",			g_picture},
+  { "pcx", 		VSDT_PCX,		"application/pcx",					"",			g_picture},
+  { "pcx", 		VSDT_PCX,		"zz-application/zz-winassoc-pcx",	"",			g_picture},
+
+  {	"pdb",		VSDT_PDB,		"application/x-pilot-pdb",			"",			g_picture},
+
+  { "pdf",		VSDT_PDF,		"application/pdf",					"",			g_office},
+  { "pdf",		VSDT_PDF,		"application/x-pdf",				"",			g_office},
+
+  {	"pfb",		VSDT_PFB,		"application/x-font",				"",			g_office},
+
+  {	"pict",		VSDT_PICT,		"image/pict",						"",			g_picture},
+  {	"pict",		VSDT_PICT,		"image/x-pict",						"",			g_picture},
+
+  { "pif",		VSDT_PIF,		"application/octet-stream",			"",			g_exec},
+
+  {	"png",		VSDT_PNG,		"image/png",						"",			g_picture},
+
+  { "ppm",		VSDT_PPM,		"image/x-portable-pixmap",			"",			g_picture},
+  { "ppm",		VSDT_PPM,		"image/x-p",						"",			g_picture},
+  { "ppm",		VSDT_PPM,		"image/x-ppm",						"",			g_picture},
+  { "ppm",		VSDT_PPM,		"application/ppm",					"",			g_picture},
+  { "ppm",		VSDT_PPM,		"application/x-ppm",				"",			g_picture},
+
+  { "ps",		VSDT_PS,		"application/postscript",			"",			g_office},
+  { "psd",		VSDT_PSD,		"application/octet-stream",			"",			g_picture},
+  { "psp",		VSDT_PSP,		"image/bmp",						"",			g_picture},
+
+  { "zip",		VSDT_PKZIP,		"application/zip",					"",			g_archiv},
+  { "zip",		VSDT_PKZIP,		"application/x-zip",				"",			g_archiv},
+  { "zip",		VSDT_PKZIP,		"application/x-zip-compressed",		"",			g_archiv},
+  { "zip",		VSDT_PKZIP,		"multipart/x-zip",					"",			g_archiv},
+  { "zip",		VSDT_PKZIP,		"application/x-compress",			"",			g_archiv},
+  { "zip",		VSDT_PKZIP,		"application/x-compressed",			"",			g_archiv},
+
+  {	"qtm",		VSDT_QTM,		"video/quicktime",					"",			g_audiovideo},
+  {	"qtm",		VSDT_QTM,		"video/x-quicktime",				"",			g_audiovideo},
+  {	"qtm",		VSDT_QTM,		"image/mov",						"",			g_audiovideo},
+  {	"qtm",		VSDT_QTM,		"audio/aiff",						"",			g_audiovideo},
+  {	"qtm",		VSDT_QTM,		"audio/x-midi",						"",			g_audiovideo},
+
+  { "qxd",		VSDT_QXD,		"application/quarkxpress",			"",			g_other},
+  { "qxd",		VSDT_QXD,		"application/x-quark-express",		"",			g_other},
+
+  {	"ra",		VSDT_RA,		"audio/vnd.rn-realaudio",			"",			g_audiovideo},
+  {	"ra",		VSDT_RA,		"audio/x-pn-realaudio",				"",			g_audiovideo},
+  {	"ra",		VSDT_RA,		"audio/x-realaudio",				"",			g_audiovideo},
+  {	"ra",		VSDT_RA,		"audio/x-pm-realaudio-plugin",		"",			g_audiovideo},
+  {	"ra",		VSDT_RA,		"video/x-pn-realvideo",				"",			g_audiovideo},
+
+  { "rar",		VSDT_RAR,		"application/rar",					"",			g_archiv},
+
+  { "ras",		VSDT_RAS,		"image/x-cmu-raster",				"",			g_picture},
+  { "ras",		VSDT_RAS,		"image/cmu-raster",					"",			g_picture},
+
+  { "wav",		VSDT_RIFF,		"audio/wav",						"",			g_audiovideo},
+  { "wav",		VSDT_RIFF,		"application/x-cdf",				"",			g_audiovideo},
+  { "wav",		VSDT_RIFF,		"application/x-cmx",				"",			g_audiovideo},
+  { "wav",		VSDT_RIFF,		"image/x-cmx",						"",			g_audiovideo},
+  { "wav",		VSDT_RIFF,		"drawing/cmx",						"",			g_audiovideo},
+  { "wav",		VSDT_RIFF,		"application/cmx",					"",			g_audiovideo},
+
+  {	"rmf",		VSDT_RMF,		"application/vnd.rn-realmedia", 	"",			g_audiovideo},
+
+  { "rtf",		VSDT_RTF,		"application/rtf",					"",			g_office},
+  { "rtf",		VSDT_RTF,		"application/x-rtf",				"",			g_office},
+  { "rtf",		VSDT_RTF,		"text/richtext",					"",			g_office},
+
+  { "hpexe",	VSDT_S800_EXE,	"application/octet-stream",			"",			g_exec},
+  { "hpexe",	VSDT_S800_SEXE,	"application/octet-stream",			"",			g_exec},
+  { "hpexe",	VSDT_S800_DEXE,	"application/octet-stream",			"",			g_exec},
+  { "hpexe",	VSDT_S800_SLIB,	"application/octet-stream",			"",			g_exec},
+  { "hpexe",	VSDT_S800_DLIB,	"application/octet-stream",			"",			g_exec},
+
+  {	"scm",		VSDT_SCM,		"application/vnd.lotus-screencam",	"",			g_audiovideo},
+  {	"scm",		VSDT_SCM,		"application/x-lotusscreencam",		"",			g_audiovideo},
+  {	"scm",		VSDT_SCM,		"application/x-screencam",			"",			g_audiovideo},
+  {	"scm",		VSDT_SCM,		"video/x-scm",						"",			g_audiovideo},
+  {	"scm",		VSDT_SCM,		"video/x-screencam",				"",			g_audiovideo},
+
+  {	"sf",		VSDT_SF,		"audio/x-sf",						"",			g_audiovideo},
+  { "sfr",		VSDT_SFR,		"audio/sfr",						"",			g_audiovideo},
+  {	"swf",		VSDT_SWF,		"application/x-shockwave-flash",	"",			g_audiovideo},
+
+  { "tar",		VSDT_TAR,		"application/x-tar",				"",			g_archiv},
+  { "tar",		VSDT_TAR,		"application/tar",					"",			g_archiv},
+  { "tar",		VSDT_TAR,		"application/x-gtar",				"",			g_archiv},
+  { "tar",		VSDT_TAR,		"multipart/x-tar",					"",			g_archiv},
+  { "tar",		VSDT_TAR,		"application/x-compress",			"",			g_archiv},
+  { "tar",		VSDT_TAR,		"application/x-compressed",			"",			g_archiv},
+
+  { "tga",		VSDT_TGA,		"image/tga",						"",			g_picture},
+  { "tga",		VSDT_TGA,		"image/x-tga",						"",			g_picture},
+  { "tga",		VSDT_TGA,		"image/targa",						"",			g_picture},
+  { "tga",		VSDT_TGA,		"image/x-targa",					"",			g_picture},
+
+  { "tiff",		VSDT_TIFF,		"image/tiff",						"",			g_picture},
+
+  { "txt",		VSDT_TEXT,		"text/html",						"htm;html",		g_other},
+  { "txt",		VSDT_TEXT,		"text/xml",							"",			g_other},
+  { "txt",		VSDT_TEXT,		"text/javascript",					"js",		g_other},
+  { "txt",		VSDT_TEXT, 		"application/json",		 			"",			g_other},
+  { "txt",		VSDT_TEXT,	 	"application/rdf+xml",				"",			g_other},
+  { "txt",		VSDT_TEXT, 		"application/rss+xml",				"",			g_other},
+  { "txt",		VSDT_TEXT, 		"application/soap+xml",				"",			g_other},
+  { "txt",		VSDT_TEXT, 		"application/xhtml+xml",			"",			g_other},
+  { "txt",		VSDT_TEXT, 		"application/xml-dtd",				"",			g_other},
+  { "vbs",		VSDT_TEXT,		"text/vbscript",					"vbs",		g_other},
+  { "vbs",		VSDT_TEXT,		"text/vbs",							"",			g_other},
+  { "vbs",		VSDT_TEXT,		"application/x-vbs",				"",			g_other},
+
+  { "uuencode",	VSDT_UUCODE,	"text/x-uuencode",					"",			g_encoded},
+
+  { "voc",		VSDT_VOC,		"audio/voc",						"",			g_audiovideo},
+  { "voc",		VSDT_VOC,		"audio/x-voc",						"",			g_audiovideo},
+
+  {	"wbc",		VSDT_WBC,		"application/x-webshots",			"",			g_picture},
+  {	"wbc",		VSDT_WBC,		"application/wbc",					"",			g_picture},
+
+  { "doc",		VSDT_WP,		"application/wordperfect",			"",			g_office},
+
+  { "lnk",		VSDT_WIN_LNK, 	"application/x-ms-shortcut",		"",			g_exec},
+
+  { "msdoc",	VSDT_WINWORD,	"application/msword",				"doc",		g_office},
+  { "msdoc",	VSDT_WINWORD,	"application/doc",					"",			g_office},
+  { "msdoc",	VSDT_WINWORD,	"application/vnd.msword",			"",			g_office},
+  { "msdoc",	VSDT_WINWORD,	"application/vnd.ms-word",			"",			g_office},
+  { "msdoc",	VSDT_WINWORD,	"application/x-msw6",				"",			g_office},
+  { "msdoc",	VSDT_WINWORD,	"application/x-msword",				"",			g_office},
+
+  {	"wmf",		VSDT_WMF,		"application/x-msmetafile",			"",			g_picture},
+  {	"wmf",		VSDT_WMF,		"application/wmf",					"",			g_picture},
+  {	"wmf",		VSDT_WMF,		"application/x-wmf",				"",			g_picture},
+  {	"wmf",		VSDT_WMF,		"image/x-wmf",						"",			g_picture},
+  {	"wmf",		VSDT_WMF,		"zz-application/zz-winassoc-wmf",	"",			g_picture},
+
+  { "mswri",	VSDT_WRT,		"application/mswrite",				"",			g_office},
+  { "mswri",	VSDT_WRT,		"application/x-mswrite",			"",			g_office},
+  { "mswri",	VSDT_WRT,		"application/wri",					"",			g_office},
+  { "mswri",	VSDT_WRT,		"application/x-wri",				"",			g_office},
+  { "mswri",	VSDT_WRT,		"application/msword",				"",			g_office},
+  { "mswri",	VSDT_WRT,		"application/microsoft_word",		"",			g_office},
+  { "mswri",	VSDT_WRT,		"zz-application/zz-winassoc-wri",	"",			g_office},
+
+};
