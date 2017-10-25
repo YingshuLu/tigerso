@@ -10,8 +10,10 @@
 #include <memory>
 #include "core/BaseClass.h"
 #include "core/tigerso.h"
-#include "http/lib/http_parser.h"
 
+extern "C" {
+#include "http/lib/http_parser.h"
+}
 namespace tigerso::http {
 
 typedef int http_role_t;
@@ -87,6 +89,27 @@ public:
 
     virtual void setBody(const std::string& body) {
         body_.append(body);
+    }
+
+    virtual void removeHeader(const std::string& header) {
+        for ( auto iter = headers_.begin(); iter != headers_.end(); iter++ ) {
+            if( strcasecmp(header.c_str(), iter->first.c_str()) == 0) {
+                iter = headers_.erase(iter);
+            }
+        }
+        return;
+    }
+
+    virtual void removeRepeatHeader() {
+        return;
+    }
+
+    virtual void markTrade() {
+        std::string val = getValueByHeader("Via");
+        val.append(",");
+        val.append("tigerso/");
+        val.append(core::VERSION);
+        headers_.push_back(std::make_pair("Via", val));
     }
 
     virtual std::string toString() = 0;

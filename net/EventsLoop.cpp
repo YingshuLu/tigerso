@@ -17,7 +17,7 @@ ChannelPtr EventsLoop::getChannel(const SocketPtr& sockptr) {
         return cp;
     }
     else {
-        sockptr->getChannel();
+        return sockptr->getChannel();
     }
     //should never be here
     return nullptr;

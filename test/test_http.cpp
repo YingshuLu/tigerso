@@ -16,9 +16,109 @@ using namespace std;
 using namespace tigerso::net;
 using namespace tigerso::http;
 
+class ProxyConnections {
+
+public:
+
+    explicit ProxyConnections(SocketPtr& clientptr, SocketPtr& serverptr) {
+        clientptr_ = clientptr;
+        serverptr_ = serverptr;
+    }
+
+    explicit ProxyConnections(SocketPtr& sockptr) {
+        if(sockptr->exist() && sockptr->getRole() == SOCKET_ROLE_CLIENT) {
+            clientptr_ = sockptr;
+        }
+    }
+
+    bool operator==(const ProxyConnections& cnns) {
+        if(clientptr_ == nullptr || cnns.clientptr_ == nullptr) {
+            return false;
+        }
+        return clientptr_->getSocket() == cnns.clientptr_->getSocket();
+    }
+
+    bool linkServer(SocketPtr& sockptr) {
+        if(serverptr_ != nullptr) {
+            serverptr_->close();
+            serverptr_ = nullptr;
+        }
+
+        if(sockptr->exist() && sockptr->getRole() == SOCKET_ROLE_SERVER) {
+            serverptr_ = sockptr;
+            return true;
+        }
+        return false;
+    }
+
+    bool unlinkServer(SocketPtr& sockptr) {
+        if(serverptr_ != nullptr) {
+            serverptr_->close();
+            serverptr_ = nullptr;
+        }
+        return true;
+    }
+
+    void closeProxy() {
+        if(serverptr_ != nullptr) {serverptr_->close();}
+        if(clientptr_ != nullptr) {clientptr_->close();}
+    }
+    /*~ProxyConnections() {
+        closeProxy();
+    }*/
+
+    SocketPtr clientptr_ = nullptr;
+    SocketPtr serverptr_ = nullptr;
+
+};
+
 EventsLoop eloop;
 vector<SocketPtr> socklist;
 HttpParser parser;
+
+vector<ProxyConnections> httpproxypool;
+SocketPtr getClientSocketPtr(SocketPtr& serverptr) {
+    for (auto it = httpproxypool.begin(); it != httpproxypool.end(); it++) {
+        if(serverptr->getSocket() == it->serverptr_->getSocket()) {
+            return it->clientptr_;
+        }
+    }
+    return nullptr;
+}
+
+SocketPtr getServerSocketPtr(SocketPtr& clientptr) {
+    for (auto it = httpproxypool.begin(); it != httpproxypool.end(); it++) {
+        if(clientptr->getSocket() == it->clientptr_->getSocket()) {
+            return it->serverptr_;
+        }
+    }
+    return nullptr;
+}
+
+bool linkServerSocketPtr(SocketPtr& clientptr, SocketPtr& serverptr) {
+    for (auto it = httpproxypool.begin(); it != httpproxypool.end(); it++) {
+        if(clientptr->getSocket() == it->clientptr_->getSocket()) {
+            it->linkServer(serverptr);
+            return true;
+        }
+    }
+
+    ProxyConnections cnns = ProxyConnections(clientptr, serverptr);
+    httpproxypool.push_back(cnns);
+    return true;
+
+}
+
+bool deleteProxyConnections(SocketPtr& clientptr) {
+    for (auto it = httpproxypool.begin(); it != httpproxypool.end(); it++) {
+        if(clientptr->getSocket() == it->clientptr_->getSocket()) {
+            httpproxypool.erase(it);
+            return true;
+        }
+    }
+    return false;
+
+}
 
 int deleteFromSocketList(const SocketPtr& sockptr) {
     auto iter = std::find(socklist.begin(), socklist.end(), sockptr);
@@ -81,30 +181,35 @@ int readCallback(SocketPtr& sockptr) {
     
     cout << "- Read Callback, socket ["<< sockptr->getSocket() <<"]"<<endl;
     if(sockptr->recvNIO() >= 0) {
-
+        auto bufptr = sockptr->getInBufferPtr();
+        string instr = bufptr->toString();
+            
+        // parse Http Message
         if(sockptr->getRole() == SOCKET_ROLE_CLIENT) {
-            auto bufptr = sockptr->getInBufferPtr();
-            string instr = bufptr->toString();
             HttpRequest request;
             parser.parse(instr, request);
 
             cout<< " >> Request info:\n" << "    Method: " << request.getMethod() << "\n    Host:" << request.getValueByHeader("host") <<endl;
             string outstr = HttpResponse::NOT_FOUND;
             string domain = request.getValueByHeader("host");
-
             vector<string> hosts;
             SocketUtil::ResolveHost2IP(domain, hosts);
             cout << " >> + Domain: " << domain << endl;
+
             for(auto &item : hosts) {
                 cout << " >> - Host: " << item << endl;
             }
 
             auto outptr = sockptr->getOutBufferPtr();
             if(hosts.empty()) {
+                sockptr->close();
+                return EVENT_CALLBACK_BREAK;
+                /*
                 outptr->addData(outstr);
                 ChannelPtr cnptr = sockptr->getChannel();
                 cnptr->setWriteCallback(writeCallback);
                 cnptr->enableWriteEvent();
+                */
             }
             else {
                 SocketPtr server = std::make_shared<Socket>();
@@ -114,11 +219,39 @@ int readCallback(SocketPtr& sockptr) {
                 }
                 server->setOutBufferPtr(sockptr->getInBufferPtr());
                 sockptr->setOutBufferPtr(server->getInBufferPtr());
-                socklist.push_back(server);
+                linkServerSocketPtr(sockptr, server);
+                //socklist.push_back(server);
                 ChannelPtr cnptr = eloop.getChannel(server);
                 cnptr->setWriteCallback(writeCallback);
                 cnptr->enableWriteEvent();
             }
+        }
+        else if (sockptr->getRole() == SOCKET_ROLE_SERVER) {
+            HttpResponse response;
+            parser.parse(instr, response);
+
+            cout <<"\tResponse info:\n " << "Code: " << response.getStatuscode() << "\n\tDesc: " << response.getDesc() << endl;
+            string content_length = response.getValueByHeader("content-length");
+            cout<< "\tcontent-length: " << content_length <<endl;
+            int length = 0;
+            if(!content_length.empty())
+            {
+                length = atoi(content_length.c_str());
+            }
+
+            SocketPtr clientptr = getClientSocketPtr(sockptr);
+            if(clientptr != nullptr) {
+                clientptr->setOutBufferPtr(sockptr->getInBufferPtr());
+                sockptr->setOutBufferPtr(clientptr->getInBufferPtr());
+                cout << "Get client socket: [" << clientptr->getSocket() << "]" <<endl;
+                ChannelPtr cnptr = eloop.getChannel(clientptr);
+                cout << "Get client channel: "<< cnptr <<", socket: [" << clientptr->getSocket() << "]" <<endl;
+                
+                cnptr->setWriteCallback(writeCallback);
+                cnptr->enableWriteEvent();
+                cnptr->enableReadEvent();
+            }
+
         }
          return EVENT_CALLBACK_CONTINUE;
     }
@@ -175,7 +308,9 @@ int acceptMasterSocket(SocketPtr& master) {
         cnptr->setReadCallback(readCallback);
         cnptr->enableReadEvent();
         cout << "save socketptr into socketlist" << endl;
-        socklist.push_back(sockptr);
+        ProxyConnections cnns = ProxyConnections(sockptr);
+        httpproxypool.push_back(cnns);
+        //socklist.push_back(sockptr);
     }
     
     return EVENT_CALLBACK_CONTINUE;

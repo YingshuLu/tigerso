@@ -21,9 +21,10 @@ OBJS := $(foreach obj, $(OBJSLIST), $(BUILDDIR)/$(obj))
 DEPY := -lhttp_parser -lmagic
 
 SHM_FLAG := -lrt
+SSL_FLAG := -lssl -lcrypto
 PTHREAD_FLAG := -lpthread
 CPPFLAGS := -fPIC -shared
-LIBFLAGS := -L$(LIBPATH) $(DEPY) $(PTHREAD_FLAG) $(SHM_FLAG)
+LIBFLAGS := -L$(LIBPATH) $(DEPY) $(PTHREAD_FLAG) $(SHM_FLAG) $(SSL_FLAG)
 INCFLAGS := -I $(WORKPATH)
 
 TARGET := $(OUTPUT)/$(PROJECT)

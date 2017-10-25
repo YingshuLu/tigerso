@@ -20,6 +20,9 @@ OLDOBJS	Makefile	/^OLDOBJS := $(patsubst %.cpp, %.o, $(SRCS))$/;"	m
 OUTPUT	Makefile	/^OUTPUT := $(WORKPATH)\/output$/;"	m
 PROJECT	Makefile	/^PROJECT := httpd$/;"	m
 PTHREAD_FLAG	Makefile	/^PTHREAD_FLAG := -lpthread$/;"	m
+ProxyConnections	test_http.cpp	/^    explicit ProxyConnections(SocketPtr& clientptr, SocketPtr& serverptr) {$/;"	f	class:ProxyConnections
+ProxyConnections	test_http.cpp	/^    explicit ProxyConnections(SocketPtr& sockptr) {$/;"	f	class:ProxyConnections
+ProxyConnections	test_http.cpp	/^class ProxyConnections {$/;"	c	file:
 SHELL	Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHM_FLAG	Makefile	/^SHM_FLAG := -lrt$/;"	m
 SRCS	Makefile	/^SRCS := $(foreach dir, $(ALLDIRS), $(wildcard $(dir)\/*.cpp))$/;"	m
@@ -30,9 +33,18 @@ afterCallback	test_http.cpp	/^int afterCallback(SocketPtr& sockptr) {$/;"	f
 beforeCallback	test_http.cpp	/^int beforeCallback(SocketPtr& sockptr) {$/;"	f
 c_ptr	test_mutex.cpp	/^share_count* c_ptr = nullptr;$/;"	v
 child_start	test_mutex.cpp	/^int child_start() {$/;"	f
+clientptr_	test_http.cpp	/^    SocketPtr clientptr_ = nullptr;$/;"	m	class:ProxyConnections	file:
+closeProxy	test_http.cpp	/^    void closeProxy() {$/;"	f	class:ProxyConnections
 count	test_mutex.cpp	/^    int count;$/;"	m	struct:share_count	file:
 deleteFromSocketList	test_http.cpp	/^int deleteFromSocketList(const SocketPtr& sockptr) {$/;"	f
+deleteProxyConnections	test_http.cpp	/^bool deleteProxyConnections(SocketPtr& clientptr) {$/;"	f
+eloop	test_http.cpp	/^EventsLoop eloop;$/;"	v
 errorCallback	test_http.cpp	/^int errorCallback(SocketPtr& sockptr) {$/;"	f
+getClientSocketPtr	test_http.cpp	/^SocketPtr getClientSocketPtr(SocketPtr& serverptr) {$/;"	f
+getServerSocketPtr	test_http.cpp	/^SocketPtr getServerSocketPtr(SocketPtr& clientptr) {$/;"	f
+httpproxypool	test_http.cpp	/^vector<ProxyConnections> httpproxypool;$/;"	v
+linkServer	test_http.cpp	/^    bool linkServer(SocketPtr& sockptr) {$/;"	f	class:ProxyConnections
+linkServerSocketPtr	test_http.cpp	/^bool linkServerSocketPtr(SocketPtr& clientptr, SocketPtr& serverptr) {$/;"	f
 listen_sock	buffer_test.cc	/^McSocket listen_sock;$/;"	v
 listen_sock	test_buffer.cpp	/^McSocket listen_sock;$/;"	v
 log_ptr	test_mutex.cpp	/^Logging* log_ptr = nullptr;$/;"	v
@@ -42,6 +54,7 @@ main	test_buffer.cpp	/^int main(){$/;"	f
 main	test_http.cpp	/^int main() {$/;"	f
 main	test_mutex.cpp	/^int main(int argc, char* argv[]) {$/;"	f
 main	test_thread.cpp	/^int main() {$/;"	f
+operator ==	test_http.cpp	/^    bool operator==(const ProxyConnections& cnns) {$/;"	f	class:ProxyConnections
 parser	test_http.cpp	/^HttpParser parser;$/;"	v
 pid	test_mutex.cpp	/^    pid_t pid;$/;"	m	struct:share_count	file:
 plog	main.cpp	/^Logging* plog = Logging::getInstance();$/;"	v
@@ -50,8 +63,10 @@ printInfo	test_buffer.cpp	/^void printInfo() {$/;"	f
 print_share_count	test_mutex.cpp	/^void print_share_count() {$/;"	f
 readCallback	test_http.cpp	/^int readCallback(SocketPtr& sockptr) {$/;"	f
 sem	test_mutex.cpp	/^ShmMutex* sem = nullptr;$/;"	v
+serverptr_	test_http.cpp	/^    SocketPtr serverptr_ = nullptr;$/;"	m	class:ProxyConnections	file:
 share_count	test_mutex.cpp	/^    share_count():count(0), pid(-1) {}$/;"	f	struct:share_count
 share_count	test_mutex.cpp	/^struct share_count {$/;"	s	file:
 socklist	test_http.cpp	/^vector<SocketPtr> socklist;$/;"	v
 tcpServer	test_http.cpp	/^int tcpServer(SocketPtr& master) {$/;"	f
+unlinkServer	test_http.cpp	/^    bool unlinkServer(SocketPtr& sockptr) {$/;"	f	class:ProxyConnections
 writeCallback	test_http.cpp	/^int writeCallback(SocketPtr& sockptr) {$/;"	f

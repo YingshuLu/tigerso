@@ -21,6 +21,8 @@ CONTENT_LENGTH	lib/http_parser.c	166;"	d	file:
 COUNT_HEADER_SIZE	lib/http_parser.c	154;"	d	file:
 CR	lib/http_parser.c	410;"	d	file:
 CURRENT_STATE	lib/http_parser.c	59;"	d	file:
+DBG_LOG	sendfile.cc	17;"	d	file:
+DBG_LOG	sendfile.cc	19;"	d	file:
 DESC	HttpMessage.cpp	/^const std::string HttpMessage::DESC = "DESC";$/;"	m	class:tigerso::http::HttpMessage	file:
 DESC	HttpMessage.h	/^    static const std::string DESC;$/;"	m	class:tigerso::http::HttpMessage
 ELEM_AT	lib/http_parser.c	51;"	d	file:
@@ -66,7 +68,6 @@ HttpInSpection	HttpMessage.h	/^class HttpInSpection {$/;"	c	namespace:tigerso::h
 HttpMessage	HttpMessage.h	/^class HttpMessage {$/;"	c	namespace:tigerso::http
 HttpParser	HttpMessage.h	/^    HttpParser(): buffer_(nullptr), length_(0) {}$/;"	f	class:tigerso::http::HttpParser
 HttpParser	HttpMessage.h	/^class HttpParser: public core::nocopyable {$/;"	c	namespace:tigerso::http
-HttpProxy	HttpProxy.cpp	/^HttpProxy::HttpProxy(const SocketPtr& sockptr, EventsLoop& loop)$/;"	f	class:tigerso::http::HttpProxy
 HttpProxy	HttpProxy.h	/^class HttpProxy {$/;"	c	namespace:tigerso::http
 HttpRequest	HttpMessage.h	/^    HttpRequest() { role_ = HTTP_ROLE_REQUEST; }$/;"	f	class:tigerso::http::HttpRequest
 HttpRequest	HttpMessage.h	/^class HttpRequest: public HttpMessage {$/;"	c	namespace:tigerso::http
@@ -119,7 +120,6 @@ TOKEN	lib/http_parser.c	427;"	d	file:
 TOKEN	lib/http_parser.c	431;"	d	file:
 TRANSFER_ENCODING	lib/http_parser.c	167;"	d	file:
 TS_HTTP_HTTPMESSAGE_H_	HttpMessage.h	2;"	d
-TS_HTTP_HTTPPROXY_H_	HttpProxy.cpp	2;"	d	file:
 TS_HTTP_HTTPPROXY_H_	HttpProxy.h	2;"	d
 UF_FRAGMENT	lib/http_parser.h	/^  , UF_FRAGMENT         = 5$/;"	e	enum:http_parser_url_fields
 UF_HOST	lib/http_parser.h	/^  , UF_HOST             = 1$/;"	e	enum:http_parser_url_fields
@@ -157,8 +157,6 @@ content_length	lib/http_parser.h	/^  uint64_t content_length; \/* # bytes in bod
 data	lib/http_parser.h	/^  void *data; \/* A pointer to get hook to the "connection" or "socket" object *\/$/;"	m	struct:http_parser
 desc_	HttpMessage.h	/^    std::string desc_;$/;"	m	class:tigerso::http::HttpResponse
 description	lib/http_parser.c	/^  const char *description;$/;"	m	struct:__anon2	file:
-destroy	HttpProxy.cpp	/^void HttpProxy::destroy() {$/;"	f	class:tigerso::http::HttpProxy
-errorEvent	HttpProxy.cpp	/^int HttpProxy::errorEvent(SocketPtr& sockptr) {$/;"	f	class:tigerso::http::HttpProxy
 field_data	lib/http_parser.h	/^  } field_data[UF_MAX];$/;"	m	struct:http_parser_url	typeref:struct:http_parser_url::__anon1
 field_set	lib/http_parser.h	/^  uint16_t field_set;           \/* Bitmask of (1 << UF_*) values *\/$/;"	m	struct:http_parser_url
 flags	lib/http_parser.h	/^  unsigned int flags : 8;        \/* F_* values from 'flags' enum; semi-public *\/$/;"	m	struct:http_parser
@@ -166,6 +164,7 @@ flags	lib/http_parser.h	/^enum flags$/;"	g
 getBody	HttpMessage.h	/^    virtual std::string& getBody() { return body_; }$/;"	f	class:tigerso::http::HttpMessage
 getDesc	HttpMessage.h	/^    std::string getDesc() { return desc_; }$/;"	f	class:tigerso::http::HttpResponse
 getDesc	HttpMessage.h	/^    virtual std::string getDesc(){ return ""; };$/;"	f	class:tigerso::http::HttpMessage
+getFileLength	sendfile.cc	/^ssize_t getFileLength(int fd) {$/;"	f
 getMethod	HttpMessage.h	/^    std::string getMethod() { return method_; }$/;"	f	class:tigerso::http::HttpRequest
 getMethod	HttpMessage.h	/^    virtual std::string getMethod(){ return ""; };$/;"	f	class:tigerso::http::HttpMessage
 getResponseStatusDesc	HttpMessage.h	/^    static std::string getResponseStatusDesc(const int code) {$/;"	f	class:tigerso::http::HttpHelper
@@ -207,7 +206,6 @@ headers_t	HttpMessage.h	/^typedef std::vector<std::pair<std::string,std::string>
 hostsServerPtrs_	HttpProxy.h	/^    std::map<std::string, SocketPtr> hostsServerPtrs_;$/;"	m	class:tigerso::http::HttpProxy
 http	HttpMessage.cpp	/^namespace tigerso::http {$/;"	n	class:tigerso	file:
 http	HttpMessage.h	/^namespace tigerso::http {$/;"	n	class:tigerso
-http	HttpProxy.cpp	/^namespace tigerso::http {$/;"	n	class:tigerso	file:
 http	HttpProxy.h	/^namespace tigerso::http {$/;"	n	class:tigerso
 httpInspectCallback	HttpMessage.h	/^typedef int (*httpInspectCallback)(const std::weak_ptr<HttpMessage>&);$/;"	t	namespace:tigerso::http
 http_body_is_final	lib/http_parser.c	/^http_body_is_final(const struct http_parser *parser) {$/;"	f
@@ -254,12 +252,16 @@ isVaildResponseStatusCode	HttpMessage.h	/^    static bool isVaildResponseStatusC
 len	lib/http_parser.h	/^    uint16_t len;               \/* Length of run in buffer *\/$/;"	m	struct:http_parser_url::__anon1
 length_	HttpMessage.h	/^    size_t length_;$/;"	m	class:tigerso::http::HttpParser
 lenient_http_headers	lib/http_parser.h	/^  unsigned int lenient_http_headers : 1;$/;"	m	struct:http_parser
+listenfd	sendfile.cc	/^int listenfd = socket(AF_INET, SOCK_STREAM, 0);$/;"	v
+listeningOnLocal	sendfile.cc	/^int listeningOnLocal() {$/;"	f
 loop_	HttpProxy.h	/^    EventsLoop& loop_;$/;"	m	class:tigerso::http::HttpProxy
+main	sendfile.cc	/^int main(int argc, char* argv[]) {$/;"	f
 method	lib/http_parser.h	/^  unsigned int method : 8;       \/* requests only *\/$/;"	m	struct:http_parser
 method_	HttpMessage.h	/^    std::string method_;$/;"	m	class:tigerso::http::HttpRequest
 method_strings	lib/http_parser.c	/^static const char *method_strings[] =$/;"	v	file:
 name	lib/http_parser.c	/^  const char *name;$/;"	m	struct:__anon2	file:
 needCloseSocketPtrs_	HttpProxy.h	/^    std::vector<SocketPtr> needCloseSocketPtrs_;$/;"	m	class:tigerso::http::HttpProxy
+nonBlocking	sendfile.cc	14;"	d	file:
 normal_url_char	lib/http_parser.c	/^static const uint8_t normal_url_char[32] = {$/;"	v	file:
 nread	lib/http_parser.h	/^  uint32_t nread;          \/* # bytes read in various scenarios *\/$/;"	m	struct:http_parser
 off	lib/http_parser.h	/^    uint16_t off;               \/* Offset into buffer in which field starts *\/$/;"	m	struct:http_parser_url::__anon1
@@ -287,7 +289,8 @@ parse_url_char	lib/http_parser.c	/^parse_url_char(enum state s, const char ch)$/
 parser_	HttpMessage.h	/^    http_parser parser_;$/;"	m	class:tigerso::http::HttpParser
 parser_	HttpProxy.h	/^    HttpParser parser_;$/;"	m	class:tigerso::http::HttpProxy
 port	lib/http_parser.h	/^  uint16_t port;                \/* Converted UF_PORT string *\/$/;"	m	struct:http_parser_url
-recvEvent	HttpProxy.cpp	/^int HttpProxy::recvEvent(SocketPtr& sockptr) {$/;"	f	class:tigerso::http::HttpProxy
+removeHeader	HttpMessage.h	/^    virtual void removeHeader(const std::string& header) {$/;"	f	class:tigerso::http::HttpMessage
+removeRepeatHeader	HttpMessage.h	/^    virtual void removeRepeatHeader() {$/;"	f	class:tigerso::http::HttpMessage
 requestCallbacks_	HttpMessage.h	/^    std::map<std::string, httpInspectCallback> requestCallbacks_;$/;"	m	class:tigerso::http::HttpInSpection
 responseCallbacks_	HttpMessage.h	/^    std::map<std::string, httpInspectCallback> responseCallbacks_;$/;"	m	class:tigerso::http::HttpInSpection
 response_status_array	HttpMessage.cpp	/^static const status_pair_t response_status_array [] = {$/;"	m	namespace:tigerso::http	file:
@@ -366,6 +369,7 @@ s_res_status_start	lib/http_parser.c	/^  , s_res_status_start$/;"	e	enum:state	f
 s_start_req	lib/http_parser.c	/^  , s_start_req$/;"	e	enum:state	file:
 s_start_req_or_res	lib/http_parser.c	/^  , s_start_req_or_res$/;"	e	enum:state	file:
 s_start_res	lib/http_parser.c	/^  , s_start_res$/;"	e	enum:state	file:
+sendFile	sendfile.cc	/^ssize_t sendFile(int out_fd, int in_fd, ssize_t len) {$/;"	f
 setBody	HttpMessage.h	/^    virtual void setBody(const std::string& body) {$/;"	f	class:tigerso::http::HttpMessage
 setDesc	HttpMessage.h	/^    virtual void setDesc(const std::string&){};$/;"	f	class:tigerso::http::HttpMessage
 setDesc	HttpMessage.h	/^    void setDesc(const std::string& desc) { desc_ = desc; }$/;"	f	class:tigerso::http::HttpResponse
@@ -378,6 +382,8 @@ setUrl	HttpMessage.h	/^    void setUrl(const std::string& url) { url_ = url; }$/
 setValueByHeader	HttpMessage.h	/^    virtual void setValueByHeader(const std::string& header, const std::string& value) {$/;"	f	class:tigerso::http::HttpMessage
 setVersion	HttpMessage.h	/^    virtual void setVersion(const std::string& verison) { version_ = verison; }$/;"	f	class:tigerso::http::HttpMessage
 settings_	HttpMessage.h	/^    http_parser_settings settings_;$/;"	m	class:tigerso::http::HttpParser
+showComplete	sendfile.cc	22;"	d	file:
+showProcess	sendfile.cc	/^void showProcess(long now, long total) {$/;"	f
 start_state	lib/http_parser.c	445;"	d	file:
 state	lib/http_parser.c	/^enum state$/;"	g	file:
 state	lib/http_parser.h	/^  unsigned int state : 7;        \/* enum state from http_parser.c *\/$/;"	m	struct:http_parser
