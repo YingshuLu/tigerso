@@ -27,6 +27,7 @@ SHELL	Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHM_FLAG	Makefile	/^SHM_FLAG := -lrt$/;"	m
 SRCS	Makefile	/^SRCS := $(foreach dir, $(ALLDIRS), $(wildcard $(dir)\/*.cpp))$/;"	m
 TARGET	Makefile	/^TARGET := $(OUTPUT)\/$(PROJECT)$/;"	m
+TcpConnection	test_http.cpp	/^class TcpConnection {$/;"	c	file:
 WORKPATH	Makefile	/^WORKPATH := $(shell cd .. && pwd)$/;"	m
 acceptMasterSocket	test_http.cpp	/^int acceptMasterSocket(SocketPtr& master) {$/;"	f
 afterCallback	test_http.cpp	/^int afterCallback(SocketPtr& sockptr) {$/;"	f
@@ -56,8 +57,10 @@ main	test_mutex.cpp	/^int main(int argc, char* argv[]) {$/;"	f
 main	test_thread.cpp	/^int main() {$/;"	f
 operator ==	test_http.cpp	/^    bool operator==(const ProxyConnections& cnns) {$/;"	f	class:ProxyConnections
 parser	test_http.cpp	/^HttpParser parser;$/;"	v
+peerIPstr_	test_http.cpp	/^    string peerIPstr_;$/;"	m	class:TcpConnection	file:
 pid	test_mutex.cpp	/^    pid_t pid;$/;"	m	struct:share_count	file:
 plog	main.cpp	/^Logging* plog = Logging::getInstance();$/;"	v
+port_	test_http.cpp	/^    string port_;$/;"	m	class:TcpConnection	file:
 printInfo	buffer_test.cc	/^void printInfo() {$/;"	f
 printInfo	test_buffer.cpp	/^void printInfo() {$/;"	f
 print_share_count	test_mutex.cpp	/^void print_share_count() {$/;"	f
@@ -68,5 +71,9 @@ share_count	test_mutex.cpp	/^    share_count():count(0), pid(-1) {}$/;"	f	struct
 share_count	test_mutex.cpp	/^struct share_count {$/;"	s	file:
 socklist	test_http.cpp	/^vector<SocketPtr> socklist;$/;"	v
 tcpServer	test_http.cpp	/^int tcpServer(SocketPtr& master) {$/;"	f
+tunnelReadClientCallback	test_http.cpp	/^int tunnelReadClientCallback(SocketPtr& clientptr) {$/;"	f
+tunnelReadServerCallback	test_http.cpp	/^int tunnelReadServerCallback(SocketPtr& serverptr) {$/;"	f
+tunnelWriteClientCallback	test_http.cpp	/^int tunnelWriteClientCallback(SocketPtr& clientptr) {$/;"	f
+tunnelWriteServerCallback	test_http.cpp	/^int tunnelWriteServerCallback(SocketPtr& serverptr) {$/;"	f
 unlinkServer	test_http.cpp	/^    bool unlinkServer(SocketPtr& sockptr) {$/;"	f	class:ProxyConnections
 writeCallback	test_http.cpp	/^int writeCallback(SocketPtr& sockptr) {$/;"	f

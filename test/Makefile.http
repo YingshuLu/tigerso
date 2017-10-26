@@ -46,7 +46,7 @@ print:
 	@echo PATH=$(PATH)
 
 clean:
-	-rm -f $(OBJS) $(OLDOBJS)
+#	-rm -f $(OBJS) $(OLDOBJS)
 
 cleanall: clean
 	-rm -f $(TARGET)
