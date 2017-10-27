@@ -20,8 +20,8 @@ OLDOBJS	Makefile	/^OLDOBJS := $(patsubst %.cpp, %.o, $(SRCS))$/;"	m
 OUTPUT	Makefile	/^OUTPUT := $(WORKPATH)\/output$/;"	m
 PROJECT	Makefile	/^PROJECT := httpd$/;"	m
 PTHREAD_FLAG	Makefile	/^PTHREAD_FLAG := -lpthread$/;"	m
-ProxyConnection	test_http.cpp	/^    explicit ProxyConnection(SocketPtr& clientptr, SocketPtr& serverptr) {$/;"	f	class:ProxyConnection
-ProxyConnection	test_http.cpp	/^    explicit ProxyConnection(SocketPtr& sockptr) {$/;"	f	class:ProxyConnection
+ProxyConnection	test_http.cpp	/^    explicit ProxyConnection(SocketPtr& clientptr, SocketPtr& serverptr): sockfd_(clientptr->getSocket()) {$/;"	f	class:ProxyConnection
+ProxyConnection	test_http.cpp	/^    explicit ProxyConnection(SocketPtr& sockptr): sockfd_(sockptr->getSocket()) {$/;"	f	class:ProxyConnection
 ProxyConnection	test_http.cpp	/^class ProxyConnection {$/;"	c	file:
 SHELL	Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHM_FLAG	Makefile	/^SHM_FLAG := -lrt$/;"	m
@@ -41,6 +41,7 @@ deleteProxyConnection	test_http.cpp	/^bool deleteProxyConnection(SocketPtr& clie
 eloop	test_http.cpp	/^EventsLoop eloop;$/;"	v
 errorCallback	test_http.cpp	/^int errorCallback(SocketPtr& sockptr) {$/;"	f
 getClientSocketPtr	test_http.cpp	/^SocketPtr getClientSocketPtr(SocketPtr& serverptr) {$/;"	f
+getKey	test_http.cpp	/^    int getKey() { return sockfd_; }$/;"	f	class:ProxyConnection
 getProxyConnection	test_http.cpp	/^ProxyConnection& getProxyConnection(SocketPtr& clientptr) {$/;"	f
 getServerSocketPtr	test_http.cpp	/^SocketPtr getServerSocketPtr(SocketPtr& clientptr) {$/;"	f
 host_	test_http.cpp	/^    string host_;$/;"	m	class:ProxyConnection	file:
@@ -56,7 +57,6 @@ main	test_buffer.cpp	/^int main(){$/;"	f
 main	test_http.cpp	/^int main() {$/;"	f
 main	test_mutex.cpp	/^int main(int argc, char* argv[]) {$/;"	f
 main	test_thread.cpp	/^int main() {$/;"	f
-operator ==	test_http.cpp	/^    bool operator==(const ProxyConnection& cnns) {$/;"	f	class:ProxyConnection
 parser	test_http.cpp	/^HttpParser parser;$/;"	v
 peerIPstr_	test_http.cpp	/^    string peerIPstr_;$/;"	m	class:TcpConnection	file:
 pid	test_mutex.cpp	/^    pid_t pid;$/;"	m	struct:share_count	file:
@@ -71,6 +71,7 @@ sem	test_mutex.cpp	/^ShmMutex* sem = nullptr;$/;"	v
 serverptr_	test_http.cpp	/^    SocketPtr serverptr_ = nullptr;$/;"	m	class:ProxyConnection	file:
 share_count	test_mutex.cpp	/^    share_count():count(0), pid(-1) {}$/;"	f	struct:share_count
 share_count	test_mutex.cpp	/^struct share_count {$/;"	s	file:
+sockfd_	test_http.cpp	/^    socket_t sockfd_  = -1;$/;"	m	class:ProxyConnection	file:
 tcpServer	test_http.cpp	/^int tcpServer(SocketPtr& master) {$/;"	f
 tunnelReadClientCallback	test_http.cpp	/^int tunnelReadClientCallback(SocketPtr& clientptr) {$/;"	f
 tunnelReadServerCallback	test_http.cpp	/^int tunnelReadServerCallback(SocketPtr& serverptr) {$/;"	f

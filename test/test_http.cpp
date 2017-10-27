@@ -27,22 +27,15 @@ class ProxyConnection {
 
 public:
 
-    explicit ProxyConnection(SocketPtr& clientptr, SocketPtr& serverptr) {
+    explicit ProxyConnection(SocketPtr& clientptr, SocketPtr& serverptr): sockfd_(clientptr->getSocket()) {
         clientptr_ = clientptr;
         serverptr_ = serverptr;
     }
 
-    explicit ProxyConnection(SocketPtr& sockptr) {
+    explicit ProxyConnection(SocketPtr& sockptr): sockfd_(sockptr->getSocket()) {
         if(sockptr->exist() && sockptr->getRole() == SOCKET_ROLE_CLIENT) {
             clientptr_ = sockptr;
         }
-    }
-
-    bool operator==(const ProxyConnection& cnns) {
-        if(clientptr_ == nullptr || cnns.clientptr_ == nullptr) {
-            return false;
-        }
-        return clientptr_->getSocket() == cnns.clientptr_->getSocket();
     }
 
     bool linkServer(SocketPtr& sockptr) {
@@ -63,6 +56,8 @@ public:
             serverptr_->close();
             serverptr_ = nullptr;
         }
+        host_.clear();
+        port_.clear();
         return true;
     }
 
@@ -76,11 +71,15 @@ public:
         closeProxy();
     }*/
 
+    int getKey() { return sockfd_; }
+
     SocketPtr clientptr_ = nullptr;
     SocketPtr serverptr_ = nullptr;
     string host_;
     string port_;
 
+private:
+    socket_t sockfd_  = -1;
 };
 
 EventsLoop eloop;
@@ -152,12 +151,13 @@ SocketPtr getServerSocketPtr(SocketPtr& clientptr) {
 }
 
 bool linkServerSocketPtr(SocketPtr& clientptr, SocketPtr& serverptr) {
-    for (auto it = httpproxypool.begin(); it != httpproxypool.end(); it++) {
+    for (auto it = httpproxypool.begin(); it != httpproxypool.end();) {
         if(it->clientptr_ == nullptr) { it = httpproxypool.erase(it); continue; }
         if(clientptr->getSocket() == it->clientptr_->getSocket()) {
             it->linkServer(serverptr);
             return true;
         }
+        ++it;
     }
 
     ProxyConnection cnns = ProxyConnection(clientptr, serverptr);
@@ -170,17 +170,18 @@ bool deleteProxyConnection(SocketPtr& clientptr) {
         return false;
     }
 
-    for (auto it = httpproxypool.begin(); it != httpproxypool.end(); it++) {
-        if (it->clientptr_ == nullptr) {
+    for (auto it = httpproxypool.begin(); it != httpproxypool.end();) {
+        if (it->clientptr_ == nullptr || (it->clientptr_ != nullptr && !(it->clientptr_->exist()))) {
+            it = httpproxypool.erase(it);
             continue;
         }
         if(clientptr->getSocket() == it->clientptr_->getSocket()) {
             httpproxypool.erase(it);
             it->closeProxy();
-            return true;
         }
+        ++it;
     }
-    return false;
+    return true;
 }
 
 ProxyConnection& getProxyConnection(SocketPtr& clientptr) {
@@ -363,20 +364,22 @@ int readCallback(SocketPtr& sockptr) {
                 sockptr->close();
                 deleteProxyConnection(sockptr);
                 return EVENT_CALLBACK_BREAK;
-                /*
-                outptr->addData(outstr);
-                ChannelPtr cnptr = sockptr->getChannel();
-                cnptr->setWriteCallback(writeCallback);
-                cnptr->enableWriteEvent();
-                */
             }
             else {
                 if(!reused) {
                     vector<string> hosts;
                     SocketUtil::ResolveHost2IP(domain, hosts);
+                    if(hosts.empty()) {
+                        cout << "Error: Host resolve failed" <<endl;
+                        sockptr->close();
+                        deleteProxyConnection(sockptr);
+                        return EVENT_CALLBACK_BREAK;
+                    }
+
                     for(auto &item : hosts) {
                         cout << " >> - Host: " << item << endl;
                     }
+                    
                     server = std::make_shared<Socket>();
                     SocketUtil::Connect(*server, hosts[0], port.c_str());
                     if(server->exist()) {
@@ -400,7 +403,7 @@ int readCallback(SocketPtr& sockptr) {
                     reps.setVersion("HTTP/1.1");
                     reps.setStatuscode(200);
                     reps.setDesc("Connection established");
-                    reps.appendHeader("Proxy-agent", "tigerso/1.0.0");
+                    reps.appendHeader("Proxy-server", "tigerso/1.0.0");
                     cout << reps.toString() <<endl;
                     sockptr->getOutBufferPtr()->addData(reps.toString());
                     cnptr->enableReadEvent();
@@ -494,14 +497,15 @@ int writeCallback(SocketPtr& sockptr) {
 int acceptMasterSocket(SocketPtr& master) {
     
     std::cout << "+ Accept handle" << endl;
+    bool accepted = false;
     while(master) {
         SocketPtr sockptr = make_shared<Socket>();
         int ret = SocketUtil::Accept(*master, *sockptr);
         if (ret != 0) {
-            std::cout << "Accept error" << endl;
+            if(!accepted) { std::cout << "Accept error" << endl; }
             return EVENT_CALLBACK_CONTINUE;
         }
-        
+        accepted = true;
         cout << "- Accept socket [" << sockptr->getSocket() << "] from " << sockptr->getStrAddr() << ":" << sockptr->getStrPort() <<endl;
     
         sockptr->setNIO(true);
