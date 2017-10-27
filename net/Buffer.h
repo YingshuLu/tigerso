@@ -25,7 +25,7 @@ class Buffer: public core::nocopyable {
 
 public:
     typedef int socket_t;
-    Buffer(const size_t size = least_len);
+    explicit Buffer(const size_t size = least_len);
     ~Buffer();
     const char* getReadPtr()const;
     ssize_t getReadableBytes()const;
@@ -57,7 +57,9 @@ private:
     size_t bufsize_;
 
     static const size_t pregap = 8;
-    static const size_t least_len = 10240;
+    //initilize 16KB size
+    static const size_t least_len = 16384;
+    //gain space with 512B stepsize
     static const size_t gain_gap = 512;
 };
 

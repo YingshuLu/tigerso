@@ -17,6 +17,12 @@ ChannelPtr EventsLoop::getChannel(const SocketPtr& sockptr) {
         return cp;
     }
     else {
+        if (nullptr == sockptr->getChannel()) {
+            ChannelPtr cp = std::make_shared<Channel>(*this, sockptr);
+            sockptr->setChannel(cp);
+            registerChannel(cp);
+            return cp;
+        }
         return sockptr->getChannel();
     }
     //should never be here
@@ -49,7 +55,7 @@ int EventsLoop::unregisterChannel(const ChannelPtr& cnnl) {
         return -1;
     }
     
-    std::cout << ">> unregisterChannel" << std::endl;
+    //std::cout << ">> unregisterChannel" << std::endl;
     SocketPtr sockptr = cnnl->getChannelSocket();
     channels_.erase(sockptr->getSocket());
     removeChannel(cnnl);
@@ -91,11 +97,11 @@ int EventsLoop::updateChannel(const ChannelPtr& cnptr) {
 
     if(ctlChannel(cnptr, EPOLL_CTL_MOD) == -1) {
         if(errno == ENOENT) {
-            std::cout << ">> first add channel event" << std::endl;
+            //std::cout << ">> first add channel event" << std::endl;
             return ctlChannel(cnptr, EPOLL_CTL_ADD);
         }
         else {
-            std::cout << ">> Mod channel event error: no such channel, ignore" << std::endl;
+            //std::cout << ">> Mod channel event error: no such channel, ignore" << std::endl;
             return -1;
         }
     }
@@ -103,7 +109,6 @@ int EventsLoop::updateChannel(const ChannelPtr& cnptr) {
 }
 
 int EventsLoop::loop() {
-
     loop_ = true;
     while(loop_) {
         std::cout << ">> loop now" << std::endl;
@@ -129,7 +134,7 @@ int EventsLoop::waitChannel() {
         ChannelPtr cnptr = nullptr;
         SocketPtr sockptr = nullptr;
         
-        std::cout << ">> waited [" << num <<"] events" << std::endl;
+        std::cout << ">> epoll waited " << num <<" events" << std::endl;
         for(int i = 0; i < num; i++) {
             cnptr = nullptr;
             sockptr = nullptr;
@@ -138,7 +143,7 @@ int EventsLoop::waitChannel() {
 
             displayChannelList();
             if( iter == channels_.end()) {
-                std::cout << ">> not find socket[" << fd <<"] events in registered list" << std::endl;
+                //std::cout << ">> not find socket[" << fd <<"] events in registered list" << std::endl;
                 epoll_ctl(epfd_, EPOLL_CTL_DEL, fd, &epevents_[i]); 
                 continue;
             }
@@ -146,7 +151,8 @@ int EventsLoop::waitChannel() {
             cnptr = iter->second;
             if(!cnptr) { 
                 std::cout << ">> cnptr is null in registered list" << std::endl;
-                unregisterChannel(cnptr);
+                //unregisterChannel(cnptr);
+                channels_.erase(iter);
                 continue;
             }
             else {
@@ -248,7 +254,7 @@ int EventsLoop::addChannel(const ChannelPtr& cnptr) {
 
     int fd = sp->getSocket();
 
-    std::cout<< "socket [" <<fd <<"] add event" << std::endl;
+    //std::cout<< "socket [" <<fd <<"] add event" << std::endl;
     if(ctlChannel(cnptr, EPOLL_CTL_ADD) == -1) {
         if(errno == EEXIST) {
             INFO_LOG("the supplied [%d] is already in epfd [%d]", fd, epfd_);
@@ -282,13 +288,16 @@ int EventsLoop::removeChannel(const ChannelPtr& cnptr) {
 
 evf_t EventsLoop::transFlag(const ChannelPtr& cnptr) {
     evf_t evts = 0;
+    SocketPtr sockptr = cnptr->getChannelSocket();
+    if (sockptr == nullptr) { return evts; }
+    int sockfd = sockptr->getSocket();
     if(cnptr->events.readFlag) {
         evts |= EPOLLIN;
-        std::cout<<" >> enable read event" << std::endl;
+        std::cout<<">> enable ["<< sockfd <<"]  read event" << std::endl;
     }
     if(cnptr->events.writeFlag) {
         evts |= EPOLLOUT;
-        std::cout<<" >> enable write event" << std::endl;
+        std::cout<<">> enable ["<< sockfd <<"] write event" << std::endl;
     }
     if(cnptr->events.hupFlag) {
         evts |= EPOLLRDHUP;

@@ -118,7 +118,6 @@ bool Channel::update() {
         std::cout << "Channel ptr is null" << std::endl;
         return false;
     }
-    std::cout << "share ptr: " << cnptr << std::endl;
     loop_.updateChannel(getPtr());
     return true;
 }

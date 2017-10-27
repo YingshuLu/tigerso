@@ -91,7 +91,7 @@ ssize_t Buffer::recvNIO(const socket_t sockfd) {
         }
     }
 
-    std::cout << ">> ---In Buffer:\n " <<toString() << std::endl;
+    //std::cout << ">> ---In Buffer:\n" <<toString() << std::endl;
 
     if(n == 0) {
         return SOCKET_IOSTATE_CLOSED;
@@ -120,8 +120,8 @@ ssize_t Buffer::sendBIO(const socket_t fd) {
     ssize_t n = send(fd, (void*) (buffer_+ readIdx_), readableBytes(), MSG_DONTWAIT|MSG_NOSIGNAL);
     if(n > 0) {
         readIdx_ += n;     
-        if(writeIdx_ == readIdx_ + 1) {
-            align();
+        if(writeIdx_ == readIdx_) {
+            clear();
         }
         return n;
     }
@@ -134,16 +134,18 @@ ssize_t Buffer::sendNIO(const socket_t sockfd) {
     if (sockfd < 0) {
         return -1;
     }
-    std::cout << ">> --- Out Buffer: " <<toString() << std::endl;
+    //std::cout << ">> --- Out Buffer:\n" <<toString() << std::endl;
     ssize_t n = 0;
     ssize_t len = 0;
     while(readableBytes() >0 && (n = send(sockfd, (void*) (buffer_  + readIdx_), readableBytes(), MSG_DONTWAIT|MSG_NOSIGNAL)) > 0) {
         len += n;
         readIdx_ += n;     
-        if(writeIdx_ == readIdx_ + gain_gap) {
-            align();
-        }
     }
+
+    //no data now, reset the buffer
+    if(writeIdx_ == readIdx_) { clear(); }
+    else if(writeIdx_ < readIdx_ + gain_gap) { align(); } // align, save space
+
     if(n == -1) {
         if(errno == EAGAIN || errno == EWOULDBLOCK) {
             return len;
@@ -238,8 +240,8 @@ int Buffer::makeSpace(const size_t len) {
     size_t extend = gain_gap;
     while((extend + bufsize_) <= need ) {
         extend = extend << 1;
-        std::cout<< "extend : " << extend << std::endl;
     }
+    std::cout<< "extend : " << extend << std::endl;
 
     char* new_ptr = (char*) realloc(buffer_, extend + bufsize_);
     if (new_ptr == NULL) {
@@ -251,7 +253,7 @@ int Buffer::makeSpace(const size_t len) {
 }
 
 int Buffer::align() {
-    if (prefreeBytes() < gain_gap || writeableBytes() > readableBytes()) {
+    if (prefreeBytes() < gain_gap) {
         return 0;
     }
 

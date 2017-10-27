@@ -285,6 +285,7 @@ bool SocketUtil::TestConnect(Socket& sock) {
     if(!sock.exist()) {
         return false;
     }
+
     if (sock.getRole() == SOCKET_ROLE_CLIENT) {
         if(sock.getStage() >= SOCKET_STAGE_ACCEPT) {
             return true;

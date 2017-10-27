@@ -251,6 +251,7 @@ ShmMutex::~ShmMutex()
 {
     pid_t pid = getpid();
 
+    if(locked_) { this->unlock(); }
     if(mutex_ptr) {
         //DBG_LOG("[Test in destroy] get mutex refer num: %d ", mutex_ptr->refer_num);
         mutex_ptr->refer_num --;
@@ -335,7 +336,9 @@ int ShmMutex::lock()
         int ret = pthread_mutex_lock(&(mutex_ptr->mutex));
         if(ret != 0) {
             DBG_LOG("mutex lock failed, return code [%d] : %s", ret, strerror(errno));
+            return ret;
         }
+        locked_ = true;
         return ret;
     }
     return -1;
@@ -348,7 +351,9 @@ int ShmMutex::try_lock()
         int ret =  pthread_mutex_trylock(&(mutex_ptr->mutex));
         if(ret != 0) {
             DBG_LOG("mutex try lock failed, return code [%d] : %s", ret, strerror(errno));
+            return ret;
         }
+        locked_ = true;
         return ret;
     }
     return -1;
@@ -365,6 +370,7 @@ int ShmMutex::unlock()
              DBG_LOG("mutex unlock failed, return code [%d] : %s", ret, strerror(errno));
         }
         else {
+            locked_ = false;
             std::cout<< "shm mutex unlock success" << std::endl;
         }
         return ret;

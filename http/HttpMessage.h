@@ -92,9 +92,13 @@ public:
     }
 
     virtual void removeHeader(const std::string& header) {
-        for ( auto iter = headers_.begin(); iter != headers_.end(); iter++ ) {
-            if( strcasecmp(header.c_str(), iter->first.c_str()) == 0) {
+        for ( auto iter = headers_.begin(); ; iter++ ) {
+            if( iter != headers_.end() && strcasecmp(header.c_str(), iter->first.c_str()) == 0) {
                 iter = headers_.erase(iter);
+            }
+
+            if(iter == headers_.end()) {
+                break;
             }
         }
         return;
@@ -106,10 +110,22 @@ public:
 
     virtual void markTrade() {
         std::string val = getValueByHeader("Via");
-        val.append(",");
+        if (!val.empty()) { val.append(", "); }
         val.append("tigerso/");
         val.append(core::VERSION);
         headers_.push_back(std::make_pair("Via", val));
+    }
+
+    virtual void appendHeader(std::string header, std::string value) {
+        for ( auto iter = headers_.begin(); iter != headers_.end(); iter++ ) {
+            if( strcasecmp(header.c_str(), iter->first.c_str()) == 0) {
+                if (!iter->second.empty()) { iter->second.append(", "); }
+                iter->second.append(value);
+                return;
+            }
+        }
+        headers_.push_back(std::make_pair(header,value));
+        return;
     }
 
     virtual std::string toString() = 0;
@@ -163,9 +179,42 @@ public:
         HttpMessage::clear();
     }
 
+    std::string getHostPort() {
+        if(!port_.empty()) { return port_; }
+
+        std::string url = url_;
+        std::string::size_type pos = url.find("http://");
+        if(pos != std::string::npos) { url = url.substr(pos+7); }
+        else {
+            pos = url.find("https://");
+            if(pos != std::string::npos) { url = url.substr(pos+8); }
+        }
+        
+        pos = url.find("/");
+        if (pos != std::string::npos) {
+            url = url.substr(0,pos);
+            std::string::size_type label = url.find(":");
+            if(label != std::string::npos) {
+                port_ = url.substr(label+1);
+                return port_;
+            }
+        }
+        
+        port_ = "80";
+        const std::string& host = getValueByHeader("host");
+        if(!host.empty()) {
+            pos = host.find(":");
+            if(pos != std::string::npos) {
+                port_ = host.substr(pos+1);
+            }
+        }
+        return port_;
+    }
+
 private:
     std::string method_;
     std::string url_;
+    std::string port_;
 };
 
 //Http response

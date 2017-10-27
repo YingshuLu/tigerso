@@ -136,6 +136,7 @@ private:
     shm_mutex_t* mutex_ptr;
     string shm_name;
     pid_t shm_pid;
+    bool locked_ = false;
 };
 
 class LockGuard {

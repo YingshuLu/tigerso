@@ -21,8 +21,6 @@ CONTENT_LENGTH	lib/http_parser.c	166;"	d	file:
 COUNT_HEADER_SIZE	lib/http_parser.c	154;"	d	file:
 CR	lib/http_parser.c	410;"	d	file:
 CURRENT_STATE	lib/http_parser.c	59;"	d	file:
-DBG_LOG	sendfile.cc	17;"	d	file:
-DBG_LOG	sendfile.cc	19;"	d	file:
 DESC	HttpMessage.cpp	/^const std::string HttpMessage::DESC = "DESC";$/;"	m	class:tigerso::http::HttpMessage	file:
 DESC	HttpMessage.h	/^    static const std::string DESC;$/;"	m	class:tigerso::http::HttpMessage
 ELEM_AT	lib/http_parser.c	51;"	d	file:
@@ -147,6 +145,7 @@ XX	lib/http_parser.h	157;"	d
 XX	lib/http_parser.h	159;"	d
 XX	lib/http_parser.h	208;"	d
 XX	lib/http_parser.h	210;"	d
+appendHeader	HttpMessage.h	/^    virtual void appendHeader(std::string header, std::string value) {$/;"	f	class:tigerso::http::HttpMessage
 body_	HttpMessage.h	/^    std::string body_;$/;"	m	class:tigerso::http::HttpMessage
 buffer_	HttpMessage.h	/^    const char* buffer_;$/;"	m	class:tigerso::http::HttpParser
 clear	HttpMessage.h	/^    virtual void clear() {$/;"	f	class:tigerso::http::HttpMessage
@@ -164,7 +163,7 @@ flags	lib/http_parser.h	/^enum flags$/;"	g
 getBody	HttpMessage.h	/^    virtual std::string& getBody() { return body_; }$/;"	f	class:tigerso::http::HttpMessage
 getDesc	HttpMessage.h	/^    std::string getDesc() { return desc_; }$/;"	f	class:tigerso::http::HttpResponse
 getDesc	HttpMessage.h	/^    virtual std::string getDesc(){ return ""; };$/;"	f	class:tigerso::http::HttpMessage
-getFileLength	sendfile.cc	/^ssize_t getFileLength(int fd) {$/;"	f
+getHostPort	HttpMessage.h	/^    std::string getHostPort() {$/;"	f	class:tigerso::http::HttpRequest
 getMethod	HttpMessage.h	/^    std::string getMethod() { return method_; }$/;"	f	class:tigerso::http::HttpRequest
 getMethod	HttpMessage.h	/^    virtual std::string getMethod(){ return ""; };$/;"	f	class:tigerso::http::HttpMessage
 getResponseStatusDesc	HttpMessage.h	/^    static std::string getResponseStatusDesc(const int code) {$/;"	f	class:tigerso::http::HttpHelper
@@ -252,16 +251,13 @@ isVaildResponseStatusCode	HttpMessage.h	/^    static bool isVaildResponseStatusC
 len	lib/http_parser.h	/^    uint16_t len;               \/* Length of run in buffer *\/$/;"	m	struct:http_parser_url::__anon1
 length_	HttpMessage.h	/^    size_t length_;$/;"	m	class:tigerso::http::HttpParser
 lenient_http_headers	lib/http_parser.h	/^  unsigned int lenient_http_headers : 1;$/;"	m	struct:http_parser
-listenfd	sendfile.cc	/^int listenfd = socket(AF_INET, SOCK_STREAM, 0);$/;"	v
-listeningOnLocal	sendfile.cc	/^int listeningOnLocal() {$/;"	f
 loop_	HttpProxy.h	/^    EventsLoop& loop_;$/;"	m	class:tigerso::http::HttpProxy
-main	sendfile.cc	/^int main(int argc, char* argv[]) {$/;"	f
+markTrade	HttpMessage.h	/^    virtual void markTrade() {$/;"	f	class:tigerso::http::HttpMessage
 method	lib/http_parser.h	/^  unsigned int method : 8;       \/* requests only *\/$/;"	m	struct:http_parser
 method_	HttpMessage.h	/^    std::string method_;$/;"	m	class:tigerso::http::HttpRequest
 method_strings	lib/http_parser.c	/^static const char *method_strings[] =$/;"	v	file:
 name	lib/http_parser.c	/^  const char *name;$/;"	m	struct:__anon2	file:
 needCloseSocketPtrs_	HttpProxy.h	/^    std::vector<SocketPtr> needCloseSocketPtrs_;$/;"	m	class:tigerso::http::HttpProxy
-nonBlocking	sendfile.cc	14;"	d	file:
 normal_url_char	lib/http_parser.c	/^static const uint8_t normal_url_char[32] = {$/;"	v	file:
 nread	lib/http_parser.h	/^  uint32_t nread;          \/* # bytes read in various scenarios *\/$/;"	m	struct:http_parser
 off	lib/http_parser.h	/^    uint16_t off;               \/* Offset into buffer in which field starts *\/$/;"	m	struct:http_parser_url::__anon1
@@ -289,6 +285,7 @@ parse_url_char	lib/http_parser.c	/^parse_url_char(enum state s, const char ch)$/
 parser_	HttpMessage.h	/^    http_parser parser_;$/;"	m	class:tigerso::http::HttpParser
 parser_	HttpProxy.h	/^    HttpParser parser_;$/;"	m	class:tigerso::http::HttpProxy
 port	lib/http_parser.h	/^  uint16_t port;                \/* Converted UF_PORT string *\/$/;"	m	struct:http_parser_url
+port_	HttpMessage.h	/^    std::string port_;$/;"	m	class:tigerso::http::HttpRequest
 removeHeader	HttpMessage.h	/^    virtual void removeHeader(const std::string& header) {$/;"	f	class:tigerso::http::HttpMessage
 removeRepeatHeader	HttpMessage.h	/^    virtual void removeRepeatHeader() {$/;"	f	class:tigerso::http::HttpMessage
 requestCallbacks_	HttpMessage.h	/^    std::map<std::string, httpInspectCallback> requestCallbacks_;$/;"	m	class:tigerso::http::HttpInSpection
@@ -369,7 +366,6 @@ s_res_status_start	lib/http_parser.c	/^  , s_res_status_start$/;"	e	enum:state	f
 s_start_req	lib/http_parser.c	/^  , s_start_req$/;"	e	enum:state	file:
 s_start_req_or_res	lib/http_parser.c	/^  , s_start_req_or_res$/;"	e	enum:state	file:
 s_start_res	lib/http_parser.c	/^  , s_start_res$/;"	e	enum:state	file:
-sendFile	sendfile.cc	/^ssize_t sendFile(int out_fd, int in_fd, ssize_t len) {$/;"	f
 setBody	HttpMessage.h	/^    virtual void setBody(const std::string& body) {$/;"	f	class:tigerso::http::HttpMessage
 setDesc	HttpMessage.h	/^    virtual void setDesc(const std::string&){};$/;"	f	class:tigerso::http::HttpMessage
 setDesc	HttpMessage.h	/^    void setDesc(const std::string& desc) { desc_ = desc; }$/;"	f	class:tigerso::http::HttpResponse
@@ -382,8 +378,6 @@ setUrl	HttpMessage.h	/^    void setUrl(const std::string& url) { url_ = url; }$/
 setValueByHeader	HttpMessage.h	/^    virtual void setValueByHeader(const std::string& header, const std::string& value) {$/;"	f	class:tigerso::http::HttpMessage
 setVersion	HttpMessage.h	/^    virtual void setVersion(const std::string& verison) { version_ = verison; }$/;"	f	class:tigerso::http::HttpMessage
 settings_	HttpMessage.h	/^    http_parser_settings settings_;$/;"	m	class:tigerso::http::HttpParser
-showComplete	sendfile.cc	22;"	d	file:
-showProcess	sendfile.cc	/^void showProcess(long now, long total) {$/;"	f
 start_state	lib/http_parser.c	445;"	d	file:
 state	lib/http_parser.c	/^enum state$/;"	g	file:
 state	lib/http_parser.h	/^  unsigned int state : 7;        \/* enum state from http_parser.c *\/$/;"	m	struct:http_parser

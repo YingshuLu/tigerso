@@ -61,6 +61,7 @@ int Socket::getSockAddr(sockaddr_in& inaddr) {
     inaddr.sin_port = htons(atoi(port_.c_str()));
     return 0;
 }
+
 std::shared_ptr<Channel>& Socket::getChannel() { 
     return channelPtr_;
 }
@@ -215,10 +216,14 @@ ssize_t Socket::sendNIO(std::string& data) {
 }
 
 int Socket::close() {
+    if(!this->exist()) { return 0; }
+
     std::shared_ptr<Channel> cnptr = this->getChannel();
     if(cnptr != nullptr) {
         cnptr->remove();
     }
+    //clear channelptr
+    channelPtr_ = nullptr;
     return SocketUtil::Close(*this);
 }
  
