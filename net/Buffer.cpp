@@ -83,11 +83,13 @@ ssize_t Buffer::recvNIO(const socket_t sockfd) {
     ssize_t len = 0;
     ssize_t n = 0;
 
+    size_t extend = gain_gap;
     while ((n = recv(sockfd, (void*) (buffer_ + getWriteIdx()), writeableBytes(), MSG_DONTWAIT)) > 0) {
         writeIdx_ += n;
         len += n;
         if (writeableBytes() < pregap) {
-            makeSpace();
+            makeSpace(extend);
+            extend = extend << 1;
         }
     }
 

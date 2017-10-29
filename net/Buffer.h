@@ -60,7 +60,7 @@ private:
     //initilize 16KB size
     static const size_t least_len = 16384;
     //gain space with 512B stepsize
-    static const size_t gain_gap = 512;
+    static const size_t gain_gap = 1024;
 };
 
 } //namespace tigerso::net
