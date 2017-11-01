@@ -370,4 +370,55 @@ int SocketUtil::CreateListenSocket(
     return 0;
 }
 
+int SocketUtil::CreateUDPConnect(
+            const std::string& ipaddr, 
+            const std::string& port, 
+            const bool unblock,
+            Socket& mcsock) {
+
+    std::string ip = ipaddr;
+    if (ipaddr.empty() || !ValidateAddr(ipaddr)) {
+        return -1;
+    }
+
+    std::string pt = port;
+	
+    // socket()
+    if (SocketUtil::InitSocket(AF_INET, SOCK_DGRAM, mcsock) != 0) {
+		DBG_LOG("socket: UDP socket initilizaion failed");
+		return -1;
+	}
+
+    // set addr reuse
+    if(!SocketUtil::SetAddrReuseable(mcsock, true)) {
+        DBG_LOG("error: can not set master socket addr reuseable");
+		return 1;
+    }
+
+    // set port reuse
+    if(!SocketUtil::SetPortReuseable(mcsock, true)) {
+        DBG_LOG("error: can not set master socket port reuseable");
+		return 2;
+    }
+
+    //set noblocking
+    mcsock.setNIO(unblock);
+
+    // bind()
+	if(SocketUtil::Bind(mcsock, ip, pt, -1) != 0) {
+		DBG_LOG("socket: master socket Bind failed");
+		return 4;
+	}
+    
+    INFO_LOG("UDP socket[%d] connect to  %s:%s", mcsock.getSocket(), ip.c_str(), pt.c_str());
+
+    //connect()
+    if(SocketUtil::Connect(mcsock, ip, port) != 0)
+    {
+		DBG_LOG("socket: UDP socket connect failed");
+		return 5;
+    }
+    return 0;
+}
+
 } //namespace tigerso::net

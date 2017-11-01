@@ -17,7 +17,6 @@ namespace tigerso::net {
 
 class DNSCache;
 
-
 static int calcMd5(const char* buf, unsigned char* key, int keylen) {
     if(buf == nullptr || key == nullptr || keylen < MD5_KEYSIZE) {
         return -1;

@@ -11,7 +11,6 @@ Buffer	Buffer.h	/^class Buffer: public core::nocopyable {$/;"	c	namespace:tigers
 BufferPtr	Socket.h	/^    BufferPtr(std::shared_ptr<Buffer>& buffer)$/;"	f	struct:tigerso::net::BufferPtr
 BufferPtr	Socket.h	/^    BufferPtr(std::shared_ptr<Buffer>& bufferIn, std::shared_ptr<Buffer>& bufferOut)$/;"	f	struct:tigerso::net::BufferPtr
 BufferPtr	Socket.h	/^struct BufferPtr {$/;"	s	namespace:tigerso::net
-CACHE_FILE_NAME	DNSCache.h	13;"	d
 Channel	Channel.h	/^    Channel(EventsLoop& loop, const std::shared_ptr<Socket>& sock)$/;"	f	class:tigerso::net::Channel
 Channel	Channel.h	/^class Channel: public std::enable_shared_from_this<Channel> {$/;"	c	namespace:tigerso::net
 ChannelPtr	EventsLoop.h	/^typedef std::shared_ptr<Channel> ChannelPtr;$/;"	t	namespace:tigerso::net
@@ -21,23 +20,15 @@ CreateListenSocket	SocketUtil.cpp	/^int SocketUtil::CreateListenSocket($/;"	f	cl
 DBG_LOG	sendfile.cc	17;"	d	file:
 DBG_LOG	sendfile.cc	19;"	d	file:
 DEFAULT_CHANNEL_NUM	EventsLoop.h	/^static const int DEFAULT_CHANNEL_NUM = 1024;$/;"	m	namespace:tigerso::net
-DNSCache	DNSCache.cpp	/^DNSCache::DNSCache(const std::string& filename):$/;"	f	class:tigerso::net::DNSCache
-DNSCache	DNSCache.h	/^class DNSCache: public core::singleton {$/;"	c	namespace:tigerso::net
-DNSCacheData	DNSCache.h	/^struct DNSCacheData {$/;"	s	namespace:tigerso::net
-DNSNode	DNSCache.h	/^    explicit DNSNode() {}$/;"	f	struct:tigerso::net::DNSNode
-DNSNode	DNSCache.h	/^struct DNSNode {$/;"	s	namespace:tigerso::net
 EVENT_CALLBACK_BREAK	Channel.h	/^const int EVENT_CALLBACK_BREAK = 1;$/;"	m	namespace:tigerso::net
 EVENT_CALLBACK_CONTINUE	Channel.h	/^const int EVENT_CALLBACK_CONTINUE = 0;$/;"	m	namespace:tigerso::net
 EventFunc	Channel.h	/^typedef std::function<int(SocketPtr&)> EventFunc; $/;"	t	namespace:tigerso::net
 EventsLoop	EventsLoop.h	/^    EventsLoop(const int channels = DEFAULT_CHANNEL_NUM) $/;"	f	class:tigerso::net::EventsLoop
 EventsLoop	EventsLoop.h	/^class EventsLoop: public core::nocopyable {$/;"	c	namespace:tigerso::net
 GraceClose	SocketUtil.cpp	/^int SocketUtil::GraceClose(Socket& mcsock) {$/;"	f	class:tigerso::net::SocketUtil
-HASH_NODENUM	DNSCache.h	16;"	d
-IPV4_ADDRSIZE	DNSCache.h	15;"	d
 InitSocket	SocketUtil.cpp	/^int SocketUtil::InitSocket(const int domain, const int type, Socket& mcsock) {$/;"	f	class:tigerso::net::SocketUtil
 Listen	SocketUtil.cpp	/^int SocketUtil::Listen(Socket& mcsock, const int backlog) {$/;"	f	class:tigerso::net::SocketUtil
 MAX_CHANNEL_NUM	EventsLoop.h	/^static const int MAX_CHANNEL_NUM = 10240;$/;"	m	namespace:tigerso::net
-MD5_KEYSIZE	DNSCache.h	14;"	d
 PackSockAddr	SocketUtil.cpp	/^int SocketUtil::PackSockAddr(const std::string& s_addr, const std::string& port, const int family, sockaddr_in& sock_addr) {$/;"	f	class:tigerso::net::SocketUtil
 ResolveHost2IP	SocketUtil.cpp	/^int SocketUtil::ResolveHost2IP(const std::string& hostname, std::vector<std::string>& ip_vec ) {$/;"	f	class:tigerso::net::SocketUtil
 ResolveSockAddr	SocketUtil.cpp	/^int SocketUtil::ResolveSockAddr(const sockaddr_in& sock_addr, std::string& s_addr, std::string& port) {$/;"	f	class:tigerso::net::SocketUtil
@@ -67,7 +58,6 @@ SocketPtr	Socket.h	/^typedef std::shared_ptr<Socket> SocketPtr;$/;"	t	namespace:
 SocketUtil	SocketUtil.h	/^class SocketUtil {$/;"	c	namespace:tigerso::net
 TS_NET_BUFFER_H_	Buffer.h	2;"	d
 TS_NET_CHANNEL_H_	Channel.h	2;"	d
-TS_NET_DNSCACHE_H_	DNSCache.h	2;"	d
 TS_NET_EVENTSLOOP_H_	EventsLoop.h	2;"	d
 TS_NET_SOCKETUTIL_H_	SocketUtil.h	2;"	d
 TS_NET_SOCKET_H_	Socket.h	2;"	d
@@ -77,20 +67,15 @@ ValidatePort	SocketUtil.cpp	/^bool SocketUtil::ValidatePort(const std::string& s
 addChannel	EventsLoop.cpp	/^int EventsLoop::addChannel(const ChannelPtr& cnptr) {$/;"	f	class:tigerso::net::EventsLoop
 addData	Buffer.cpp	/^size_t Buffer::addData(const char* buf, size_t len) {$/;"	f	class:tigerso::net::Buffer
 addData	Buffer.cpp	/^size_t Buffer::addData(const std::string& data) {$/;"	f	class:tigerso::net::Buffer
-addr_	DNSCache.h	/^    char addr_[IPV4_ADDRSIZE] = {0};$/;"	m	struct:tigerso::net::DNSNode
 addr_	Socket.h	/^    std::string addr_;$/;"	m	class:tigerso::net::Socket
 after_cb	Channel.h	/^    EventFunc after_cb = nullptr;$/;"	m	class:tigerso::net::Channel
 align	Buffer.cpp	/^int Buffer::align() {$/;"	f	class:tigerso::net::Buffer
 alive	Channel.cpp	/^bool Channel::alive() {$/;"	f	class:tigerso::net::Channel
-array	DNSCache.h	/^    DNSNode array[HASH_NODENUM];$/;"	m	struct:tigerso::net::DNSCacheData
 before_cb	Channel.h	/^    EventFunc before_cb = nullptr;$/;"	m	class:tigerso::net::Channel
 blockIO_	Socket.h	/^    bool blockIO_ = false;$/;"	m	class:tigerso::net::Socket
 bufPtr_	Socket.h	/^    BufferPtr bufPtr_;$/;"	m	class:tigerso::net::Socket
 buffer_	Buffer.h	/^    char* buffer_;$/;"	m	class:tigerso::net::Buffer
 bufsize_	Buffer.h	/^    size_t bufsize_;$/;"	m	class:tigerso::net::Buffer
-cachefile_	DNSCache.h	/^    std::string cachefile_; $/;"	m	class:tigerso::net::DNSCache
-cachehitnum	DNSCache.h	/^    volatile cachehitnum;$/;"	m	struct:tigerso::net::DNSCacheData
-calcMd5	DNSCache.h	/^static int calcMd5(const char* buf, unsigned char* key, int keylen) {$/;"	f	namespace:tigerso::net
 channelNum_	EventsLoop.h	/^    const int channelNum_ = DEFAULT_CHANNEL_NUM;$/;"	m	class:tigerso::net::EventsLoop
 channelPtr_	Socket.h	/^    std::shared_ptr<Channel> channelPtr_ = nullptr;$/;"	m	class:tigerso::net::Socket
 channels_	EventsLoop.h	/^    std::map<socket_t, ChannelPtr> channels_;$/;"	m	class:tigerso::net::EventsLoop
@@ -113,24 +98,19 @@ error_cb	Channel.h	/^    EventFunc error_cb = nullptr;$/;"	m	class:tigerso::net:
 events	Channel.h	/^    } events;$/;"	m	class:tigerso::net::Channel	typeref:struct:tigerso::net::Channel::__anon1
 evf_t	Channel.h	/^typedef unsigned int evf_t;$/;"	t	namespace:tigerso::net
 exist	Socket.cpp	/^bool Socket::exist() const {$/;"	f	class:tigerso::net::Socket
-expriedAt_	DNSCache.h	/^    time_t expriedAt_ = 0;$/;"	m	struct:tigerso::net::DNSNode
-gain_gap	Buffer.h	/^    static const size_t gain_gap = 512;$/;"	m	class:tigerso::net::Buffer
-getAddr	DNSCache.cpp	/^const char* DNSNode::getAddr() { return addr_; }$/;"	f	class:tigerso::net::DNSNode
+gain_gap	Buffer.h	/^    static const size_t gain_gap = 1024;$/;"	m	class:tigerso::net::Buffer
 getChannel	EventsLoop.cpp	/^ChannelPtr EventsLoop::getChannel(const SocketPtr& sockptr) {$/;"	f	class:tigerso::net::EventsLoop
 getChannel	Socket.cpp	/^std::shared_ptr<Channel>& Socket::getChannel() { $/;"	f	class:tigerso::net::Socket
 getChannelSocket	Channel.cpp	/^std::shared_ptr<Socket> Channel::getChannelSocket() const {$/;"	f	class:tigerso::net::Channel
 getEpollBase	EventsLoop.cpp	/^int EventsLoop::getEpollBase() const {$/;"	f	class:tigerso::net::EventsLoop
-getExpiredAtTime	DNSCache.cpp	/^time_t DNSNode::getExpiredAtTime() { return expriedAt_; }$/;"	f	class:tigerso::net::DNSNode
 getFileLength	sendfile.cc	/^ssize_t getFileLength(int fd) {$/;"	f
 getInBufferPtr	Socket.h	/^    std::shared_ptr<Buffer> getInBufferPtr() const { return bufPtr_.in_.lock(); }$/;"	f	class:tigerso::net::Socket
-getMd5Key	DNSCache.cpp	/^const unsigned char* DNSNode::getMd5Key() { return key_; }$/;"	f	class:tigerso::net::DNSNode
 getOutBufferPtr	Socket.h	/^    std::shared_ptr<Buffer> getOutBufferPtr() const { return bufPtr_.out_.lock(); }$/;"	f	class:tigerso::net::Socket
 getPtr	Channel.cpp	/^std::shared_ptr<Channel> Channel::getPtr() {$/;"	f	class:tigerso::net::Channel
 getReadIdx	Buffer.cpp	/^size_t Buffer::getReadIdx() const {$/;"	f	class:tigerso::net::Buffer
 getReadPtr	Buffer.cpp	/^const char* Buffer::getReadPtr() const {$/;"	f	class:tigerso::net::Buffer
 getReadableBytes	Buffer.cpp	/^ssize_t Buffer::getReadableBytes() const {$/;"	f	class:tigerso::net::Buffer
 getRole	Socket.cpp	/^socket_role_t Socket::getRole() const {$/;"	f	class:tigerso::net::Socket
-getShmPtr	DNSCache.cpp	/^DNSCacheData* DNSCache::getShmPtr() {$/;"	f	class:tigerso::net::DNSCache
 getSockAddr	Socket.cpp	/^int Socket::getSockAddr(sockaddr_in& inaddr) {$/;"	f	class:tigerso::net::Socket
 getSocket	Socket.cpp	/^socket_t Socket::getSocket() const {$/;"	f	class:tigerso::net::Socket
 getStage	Socket.cpp	/^socket_stage_t Socket::getStage() const {$/;"	f	class:tigerso::net::Socket
@@ -142,7 +122,6 @@ inBuffer_	Socket.h	/^    std::shared_ptr<Buffer> inBuffer_ = std::make_shared<Bu
 in_	Socket.h	/^    std::weak_ptr<Buffer> in_;$/;"	m	struct:tigerso::net::BufferPtr
 isNIO	Socket.cpp	/^bool Socket::isNIO() const {$/;"	f	class:tigerso::net::Socket
 keepFlag	Channel.h	/^        bool keepFlag;$/;"	m	struct:tigerso::net::Channel::__anon1
-key_	DNSCache.h	/^    char key_[MD5_KEYSIZE] = {0};$/;"	m	struct:tigerso::net::DNSNode
 least_len	Buffer.h	/^    static const size_t least_len = 16384;$/;"	m	class:tigerso::net::Buffer
 listenfd	sendfile.cc	/^int listenfd = socket(AF_INET, SOCK_STREAM, 0);$/;"	v
 listeningOnLocal	sendfile.cc	/^int listeningOnLocal() {$/;"	f
@@ -151,13 +130,10 @@ loop_	Channel.h	/^    EventsLoop& loop_;$/;"	m	class:tigerso::net::Channel
 loop_	EventsLoop.h	/^    bool loop_ = false;$/;"	m	class:tigerso::net::EventsLoop
 main	sendfile.cc	/^int main(int argc, char* argv[]) {$/;"	f
 makeSpace	Buffer.cpp	/^int Buffer::makeSpace(const size_t len) {$/;"	f	class:tigerso::net::Buffer
-mutex_	DNSCache.h	/^    core::ShmMutex  mutex_; \/\/process-shared mutex$/;"	m	class:tigerso::net::DNSCache
 net	Buffer.cpp	/^namespace tigerso::net {$/;"	n	class:tigerso	file:
 net	Buffer.h	/^namespace tigerso::net {$/;"	n	class:tigerso
 net	Channel.cpp	/^namespace tigerso::net {$/;"	n	class:tigerso	file:
 net	Channel.h	/^namespace tigerso::net {$/;"	n	class:tigerso
-net	DNSCache.cpp	/^namespace tigerso::net {$/;"	n	class:tigerso	file:
-net	DNSCache.h	/^namespace tigerso::net {$/;"	n	class:tigerso
 net	EventsLoop.cpp	/^namespace tigerso::net {$/;"	n	class:tigerso	file:
 net	EventsLoop.h	/^namespace tigerso::net {$/;"	n	class:tigerso
 net	Socket.cpp	/^namespace tigerso::net {$/;"	n	class:tigerso	file:
@@ -198,16 +174,13 @@ sendFile	sendfile.cc	/^ssize_t sendFile(int out_fd, int in_fd, ssize_t len) {$/;
 sendNIO	Buffer.cpp	/^ssize_t Buffer::sendNIO(const socket_t sockfd) {$/;"	f	class:tigerso::net::Buffer
 sendNIO	Socket.cpp	/^ssize_t Socket::sendNIO() {$/;"	f	class:tigerso::net::Socket
 sendNIO	Socket.cpp	/^ssize_t Socket::sendNIO(std::string& data) {$/;"	f	class:tigerso::net::Socket
-setAddr	DNSCache.cpp	/^int DNSNode::setAddr(const char* addr, size_t len) {$/;"	f	class:tigerso::net::DNSNode
 setAfterCallback	Channel.cpp	/^EventFunc Channel::setAfterCallback(EventFunc func) {$/;"	f	class:tigerso::net::Channel
 setBeforeCallback	Channel.cpp	/^EventFunc Channel::setBeforeCallback(EventFunc func) {$/;"	f	class:tigerso::net::Channel
 setChannel	Socket.cpp	/^void Socket::setChannel(std::shared_ptr<Channel>& ptr) {$/;"	f	class:tigerso::net::Socket
 setErrorCallback	Channel.cpp	/^EventFunc Channel::setErrorCallback(EventFunc func) {$/;"	f	class:tigerso::net::Channel
 setEvents	Channel.cpp	/^int Channel::setEvents(bool readable, bool writeable, bool edge, bool keep) {$/;"	f	class:tigerso::net::Channel
-setExpiredAtTime	DNSCache.cpp	/^int DNSNode::setExpiredAtTime(time_t tm) {$/;"	f	class:tigerso::net::DNSNode
 setInBufferPtr	Socket.h	/^    void setInBufferPtr(std::shared_ptr<Buffer> inptr) { bufPtr_.in_ = inptr; }$/;"	f	class:tigerso::net::Socket
 setKeepAlive	Socket.cpp	/^void Socket::setKeepAlive(bool on) {$/;"	f	class:tigerso::net::Socket
-setMd5Key	DNSCache.cpp	/^int DNSNode::setMd5Key(const char* key, size_t keylen) {$/;"	f	class:tigerso::net::DNSNode
 setNIO	Socket.cpp	/^void Socket::setNIO(bool unblock) {$/;"	f	class:tigerso::net::Socket
 setOutBufferPtr	Socket.h	/^    void setOutBufferPtr(std::shared_ptr<Buffer> outptr) { bufPtr_.out_ = outptr; }$/;"	f	class:tigerso::net::Socket
 setReadCallback	Channel.cpp	/^EventFunc Channel::setReadCallback(EventFunc func) {$/;"	f	class:tigerso::net::Channel
@@ -219,7 +192,6 @@ setStrPort	Socket.cpp	/^void Socket::setStrPort(const std::string& port) {$/;"	f
 setTcpNoDelay	Socket.cpp	/^void Socket::setTcpNoDelay(bool on) {$/;"	f	class:tigerso::net::Socket
 setTimeout	EventsLoop.cpp	/^void EventsLoop::setTimeout(const int time) {$/;"	f	class:tigerso::net::EventsLoop
 setWriteCallback	Channel.cpp	/^EventFunc Channel::setWriteCallback(EventFunc func) {$/;"	f	class:tigerso::net::Channel
-shm_	DNSCache.h	/^    core::SharedMemory shm_;$/;"	m	class:tigerso::net::DNSCache
 showComplete	sendfile.cc	22;"	d	file:
 showProcess	sendfile.cc	/^void showProcess(long now, long total) {$/;"	f
 sock_	Channel.h	/^    const std::weak_ptr<Socket> sock_;$/;"	m	class:tigerso::net::Channel

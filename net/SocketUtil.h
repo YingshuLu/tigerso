@@ -52,6 +52,7 @@ public:
     static bool SetCloseOnExec(Socket&);
     static bool TestConnect(Socket&);
     static int CreateListenSocket(const std::string& ip, const std::string& port, const bool unblock, Socket& mcsock);
+    static int CreateUDPConnect(const std::string&ip, const std::string& port, const bool unblock, Socket& mcsock);
 	static bool ValidateAddr(const std::string& addr);
 	static bool ValidatePort(const std::string& port);
 
