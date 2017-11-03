@@ -1,3 +1,5 @@
+#ifndef TS_DNS_DNSRESOLVER_H_
+#define TS_DNS_DNSRESOLVER_H_
 
 #include <stdlib.h>
 #include <string.h>
@@ -9,14 +11,16 @@
 #include <time.h>
 #include <string>
 #include <iostream>
-/*
 #include "net/Socket.h"
 #include "core/BaseClass.h"
-extern DNSCache* DNSCachePtr;
-*/
+#include "dns/DNSCache.h"
 
-#define GLOBAL
-#define DNS_API
+namespace tigerso::dns {
+
+/*
+ * Marco definitions refer to DNS RFC 1035:
+ * https://tools.ietf.org/html/rfc1035  
+*/
 
 #define DNS_HEAD_EMPTY                 0x0000
 
@@ -26,7 +30,7 @@ extern DNSCache* DNSCachePtr;
 /*DNS Header Flags Macros*/
 #define DNS_HEADER_FLAGS_QR_QUERY            0x0000
 #define DNS_HEADER_FLAGS_QR_RESPONSE         0x8000
-#define DNS_HEADER_FLAGS_OPCODE _QUERY       0x0000
+#define DNS_HEADER_FLAGS_OPCODE_QUERY       0x0000
 #define DNS_HEADER_FLAGS_OPCODE_IQUERY       0x0800
 #define DNS_HEADER_FLAGS_OPCODE_STATUS       0x1000
 #define DNS_HEADER_FLAGS_AA                  0x0400
@@ -43,7 +47,6 @@ extern DNSCache* DNSCachePtr;
 #define FLAGS_CONBIME(flagset,flag) (flagset|flag)
 #define FLAGS_CONTAIN(flagset,flag) (flagset&flag)
 #define BITS_COMPARE(a,b) (a^b)
-
 
 /*DNS TYPE MACROS*/
 #define DNS_TYPE_A                      0x0001  /*IPV4*/
@@ -75,12 +78,6 @@ extern DNSCache* DNSCachePtr;
 #define DNS_DOMAIN_NAME_LIMIT 255
 #define DNS_RRNAME_POINTERSIZE 2
 
-/*
- * Marco definitions refer to DNS RFC 1035:
- * https://tools.ietf.org/html/rfc1035  
-*/
-
-using namespace std;
 typedef int socket_t;
 
 struct DNSHeader {
@@ -118,7 +115,7 @@ public:
         query_name_ = name;
         if(sendQuery() < 0) {
             //cout << "send err" <<endl;
-            return string("");
+            return std::string("");
         }
         if(recvAnswer() < 0) {
             //cout << "recv error" <<endl;
@@ -135,6 +132,9 @@ public:
         ttl = answer_ttl_;
         return 0;
     }
+
+    static void setPrimaryAddr(const std::string& paddr) { primary_addr_ = paddr; }
+    static void setSecondAddr(const std::string& saddr) { second_addr_ = saddr; }
 
 private:
     DNSResolver(const DNSResolver&){}
@@ -202,7 +202,6 @@ private:
         cur += sizeof(query.dns_class);
 
         return (cur - query_buf_);
-        
     }
 
     int resvDNSAnswer() {
@@ -347,7 +346,6 @@ private:
         //Get Type
         *type = ntohs(*((unsigned short*) cur));
         cur += 2;
-
         //cout << "RR >> Type: " << *type <<endl;
 
         //Get Class
@@ -363,9 +361,8 @@ private:
         //Get RDLENGTH
         unsigned short num = ntohs(*((unsigned short*) cur));      
         cur += 2;
-
         //cout << "RR >> RData length: " << size_t(num) <<endl;
-    
+        
         //Get RData
         //Data is a pointer
         if(DNS_RRNAME_POINTERSIZE == num && startWithPointer(cur)) {
@@ -419,8 +416,8 @@ private:
            cur ++;
            memcpy(name, cur, size_t(num));
            name += size_t(num);
-           memcpy(name, ".", 1);
            cur += size_t(num);
+           memcpy(name, ".", 1);
            name ++;
            num = *cur;
         }
@@ -454,4 +451,15 @@ private:
     std::string query_name_;
     std::string answer_name_;
     time_t answer_ttl_ = 0;
+
+private:
+    std::string assigned_addr_ = "";
+    static std::string primary_addr_;
+    static std::string second_addr_;
 };
+
+std::string DNSResolver::primary_addr_ = DNS_SERVER_ADDR;
+std::string DNSResolver::second_addr_ = "";
+
+} //namespace tigerso::dns
+#endif

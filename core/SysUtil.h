@@ -163,7 +163,7 @@ public:
 
     ~LockTryGuard() {
 
-        std::cout << "Try lock deconstruction" <<std::endl;
+    //  std::cout << "Try lock deconstruction" <<std::endl;
         if (locked) {
             Lock_obj.unlock();
         }

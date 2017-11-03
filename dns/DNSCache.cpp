@@ -58,6 +58,89 @@ DNSCacheData* DNSCache::getShmPtr() {
     return (DNSCacheData*) h;
 }
 
+int DNSCache::queryIP(const char* host, char* ipaddr, size_t len) {
+    if(nullptr == host || nullptr == ipaddr) {
+        return -1;
+    }
+
+    unsigned char md5[MD5_KEYSIZE] = {0};
+    hashkey_t key = getHashkey(host, md5, MD5_KEYSIZE);
+    offset_t of = key;
+
+    {
+        core::LockTryGuard lock(mutex_);
+        if(!lock.isLocked()) { return -1; }
+
+        DNSCacheData* shmptr = getShmPtr();
+        if(nullptr == shmptr) { return -1; }
+
+        int detect = 1;
+        while(true) {
+            if(shmptr->array[of].isUsed() && memcmp(md5, shmptr->array[of].getMd5Key(), MD5_KEYSIZE) == 0) {
+                memcpy(ipaddr, shmptr->array[of].getAddr(), IPV4_ADDRSIZE);
+                return 0;
+            }
+            if(detect >= HASH_MAXCONFLICT) {
+                return -1;
+            }
+            detect ++;
+            of ++;
+            of = of % HASH_NODENUM;
+        }
+    }
+    // Never be here
+    return -1;
+}
+
+int DNSCache::updateDNS(const char* host, const char* ip, int& ttl) {
+    if(nullptr == host || nullptr == ip) {
+        return -1;
+    }
+
+    unsigned char md5[MD5_KEYSIZE] = {0};
+    hashkey_t key = getHashkey(host, md5, MD5_KEYSIZE);
+    offset_t of = key;
+
+    {
+        core::LockTryGuard lock(mutex_);
+        if(lock.isLocked()) { return -1; }
+        
+        DNSCacheData* shmptr = getShmPtr();
+        int detect = 1;
+        int first = -1;
+        while(true) {
+            if(detect >= HASH_MAXCONFLICT) {
+                break;
+            }
+
+            if(shmptr->array[of].isUsed()
+               && memcmp(shmptr->array[of].getMd5Key(), md5, MD5_KEYSIZE) == 0) {
+                if(shmptr->array[of].updateNode(md5, ip, ttl) != 0) { return -1; }
+                shmptr->cachehitnum++;
+                return 0;
+            }
+
+            if(!shmptr->array[of].isUsed() && -1 == first) {
+                first = of;
+            }
+
+            of++;
+            of = of % HASH_NODENUM;
+        }
+
+        if (-1 == first) {
+            return -1;
+        }
+
+        if(shmptr->array[of].updateNode(md5, ip, ttl) != 0) { return -1; }    
+
+        return 0;
+    }
+
+    return -1;
+}
+
+
 }
 
 

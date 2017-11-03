@@ -14,8 +14,10 @@ namespace tigerso::net {
 #define MD5_KEYSIZE 16
 #define IPV4_ADDRSIZE 16
 #define HASH_NODENUM 65536
+#define HASH_MAXCONFLICT 8
 
-class DNSCache;
+typedef unsigned short hashkey_t;
+typedef unsigned int offset_t;
 
 static int calcMd5(const char* buf, unsigned char* key, int keylen) {
     if(buf == nullptr || key == nullptr || keylen < MD5_KEYSIZE) {
@@ -32,6 +34,27 @@ static int calcMd5(const char* buf, unsigned char* key, int keylen) {
 struct DNSNode {
     explicit DNSNode() {}
 
+    inline bool isUsed() {
+       time_t now = time(NULL);
+       if(!reserved_ && expriedAt_ < now) {
+            return false;
+       }
+       return true;
+    }
+
+    inline int updateNode(unsigned char* key, const char* ip, int& ttl) {
+        if(nullptr == key || nullptr == ip) { return -1; }
+        if(ttl < 0) {
+            reserved_ = true;
+        }
+        else {
+            expriedAt_ = time(NULL) + time_t(ttl);
+        }
+        memcpy(key_, key, MD5_KEYSIZE);
+        memcmp(addr_, ip, IPV4_ADDRSIZE);
+        return 0;
+    }
+
     int setAddr(const char* addr, size_t len);
     int setExpiredAtTime(time_t);
     int setMd5Key(const char* key, size_t keylen);
@@ -44,6 +67,7 @@ private:
     unsigned char key_[MD5_KEYSIZE] = {0};
     char addr_[IPV4_ADDRSIZE] = {0};
     time_t expriedAt_ = 0;
+    bool reserved_ = false;
 };
 
 struct DNSCacheData {
@@ -54,7 +78,8 @@ struct DNSCacheData {
 class DNSCache {
 public:
     static DNSCache* getInstance();
-    int findAddr(const char*,  char*, size_t);
+    int queryIP(const char*,  char*, size_t);
+    int updateDNS(const char* host, const char* ip, int& ttl);
     ~DNSCache();
 
 private:
@@ -62,8 +87,18 @@ private:
     DNSCache(const DNSCache&);
     DNSCache& operator=(const DNSCache&);
     DNSCacheData* getShmPtr();
-    DNSNode* findNode(const char*);
     
+private:
+    hashkey_t getHashkey(const std::string& host, unsigned char* pkey, size_t len) {
+        unsigned char key[MD5_KEYSIZE] = {0};
+        unsigned char* p = key;
+        if(nullptr != pkey && len >= MD5_KEYSIZE) {
+            p = pkey;
+        }
+        calcMd5(host.c_str(), p, MD5_KEYSIZE);
+        return *((hashkey_t*) p) % HASH_NODENUM;
+    }
+       
 private:
     static DNSCache* pInstance_;
     core::SharedMemory shm_;
@@ -72,7 +107,7 @@ private:
 };
 
 //net Global DNS cache
-DNSCache* DNSCachePtr = DNSCache::getInstance();
+GLOBAL DNSCache* DNSCachePtr = DNSCache::getInstance();
 }// namespace tigerso::net
 
 

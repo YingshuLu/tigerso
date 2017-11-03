@@ -33,6 +33,8 @@
 
 namespace tigerso::core {
 
+#define GLOBAL
+
 //Project Marcos
 const std::string  PROJECT     =  "tigerso";
 const std::string  VERSION     =  "1.0.0";

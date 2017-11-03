@@ -18,12 +18,13 @@ OLDOBJS := $(patsubst %.cpp, %.o, $(SRCS))
 OBJSLIST := $(notdir $(OLDOBJS))
 OBJS := $(foreach obj, $(OBJSLIST), $(BUILDDIR)/$(obj))
 
-DEPY := http_parser
+DEPY := -lhttp_parser -lmagic
 
 SHM_FLAG := -lrt
+SSL_FLAG := -lssl -lcrypto
 PTHREAD_FLAG := -lpthread
 CPPFLAGS := -fPIC -shared
-LIBFLAGS := -L$(LIBPATH) -l$(DEPY) $(PTHREAD_FLAG) $(SHM_FLAG)
+LIBFLAGS := -L$(LIBPATH) $(DEPY) $(PTHREAD_FLAG) $(SHM_FLAG) $(SSL_FLAG)
 INCFLAGS := -I $(WORKPATH)
 
 TARGET := $(OUTPUT)/$(PROJECT)
@@ -45,7 +46,7 @@ print:
 	@echo PATH=$(PATH)
 
 clean:
-	-rm -f $(OBJS) $(OLDOBJS)
+#	-rm -f $(OBJS) $(OLDOBJS)
 
 cleanall: clean
 	-rm -f $(TARGET)

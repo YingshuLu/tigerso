@@ -78,9 +78,10 @@ void* SysUtil::create_process_shared_memory(const string& shm_name, size_t len)
 
     void* ptr = mmap(NULL, len, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
 
+    bzero(ptr, len);
     ::close(fd);
 
-     DBG_LOG("4. create error: %s", strerror(errno));
+    DBG_LOG("4. create error: %s", strerror(errno));
     return ptr;
 }
 
@@ -252,14 +253,17 @@ ShmMutex::~ShmMutex()
     pid_t pid = getpid();
 
     if(locked_) { this->unlock(); }
-    if(mutex_ptr) {
+    if(NULL != mutex_ptr) {
         //DBG_LOG("[Test in destroy] get mutex refer num: %d ", mutex_ptr->refer_num);
         mutex_ptr->refer_num --;
     }
 
-    if(pid == shm_pid && mutex_ptr != NULL && mutex_ptr->refer_num == 0)
+    //if(pid == shm_pid && mutex_ptr != NULL && mutex_ptr->refer_num == 0)
+    std::cout << "current pid = " << pid << ", parent pid = " << shm_pid << std::endl;
+    if(pid == shm_pid)
     {
         //DBG_LOG("shm mutex destroy mutex_ptr: %d", mutex_ptr);
+        std::cout << "shm mutex destroy mutex_ptr: "<< mutex_ptr <<std::endl;
         destroy();
         SysUtil::destroy_process_shared_memory(shm_name, (void*) mutex_ptr, sizeof(shm_mutex_t));
     }
