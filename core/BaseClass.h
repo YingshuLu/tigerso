@@ -8,6 +8,7 @@ namespace tigerso::core {
 class nocopyable {
 public:
     nocopyable(){}
+    ~nocopyable(){}
 private:
     nocopyable(const nocopyable&);
     nocopyable& operator=(const nocopyable&);

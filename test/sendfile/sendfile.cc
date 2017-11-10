@@ -8,11 +8,14 @@
 #include <netinet/in.h>
 #include <netinet/ip.h>
 #include <arpa/inet.h>
+#include <time.h>
 #include <errno.h>
 #include <string.h>
+#include "File.h"
 
 #define nonBlocking(fd) fcntl(fd, F_SETFL, fcntl(fd, F_GETFL) | O_NONBLOCK)
 
+#define SEND_DEBUG
 #ifndef SEND_DEBUG
 #define DBG_LOG //printf
 #else
@@ -54,7 +57,7 @@ int listeningOnLocal() {
     sockaddr_in addr;
     addr.sin_family = AF_INET;
     addr.sin_port = htons(8061);
-    inet_pton(AF_INET, "10.64.75.135", &addr.sin_addr);
+    inet_pton(AF_INET, "10.64.75.131", &addr.sin_addr);
 
     bind(listenfd, (sockaddr*)&addr, sizeof(addr));
     listen(listenfd, 64);
@@ -99,16 +102,10 @@ int main(int argc, char* argv[]) {
     }
 
     const char* infile = argv[1];
+    File file(infile);
 
     //daemon(0,0);
-    int in_fd = open(infile, O_RDWR);
-    if(in_fd <= 0 || nonBlocking(in_fd) == -1) {
-        DBG_LOG("nonBlocking fd: %d error\n", in_fd);
-        return -1;
-    }
-
-    ssize_t file_len = getFileLength(in_fd);
-
+    ssize_t file_len = file.getFileSize();
     DBG_LOG("file: %s, size: %ld \n", infile, file_len);
     if(file_len == 0) {
         return -1;
@@ -121,14 +118,27 @@ int main(int argc, char* argv[]) {
             return -1;
         }
 
-        sendFile(out_fd, in_fd, file_len);
+        int res = 1;
+        size_t total = 0;
+        time_t now = time(NULL);
+        do{
+            size_t sendn = 0;
+            res = file.send2Socket(out_fd, sendn);
+            //DBG_LOG("file send2socket return: %d, send %d bytes\n", res, (int)sendn);
+            total += sendn;
+            showProcess(total, file_len);
+        }
+        while(res == FILE_SENDFILE_RECALL);
+
+        time_t cost = time(NULL) - now;
+
         showComplete();
+        DBG_LOG("\ntransport cost:%ld seconds\n", cost);
         printf("\tTransfer completed!\n");
         DBG_LOG("now close client fd: %d\n", out_fd);
         shutdown(out_fd, SHUT_RDWR);
     }
 
-    close(in_fd);
     close(listenfd);
     return 0;
 }

@@ -44,5 +44,9 @@ const std::string  LOGPATH     =  WORKPATH + "/log";
 const std::string  CONFIGFILE  =  CONFIGPATH + "/" + PROJECT  +".ini";
 const std::string  LOGNAME     =  "httpd";
 
+#define nonBlocking(fd) fcntl(fd, F_SETFL, fcntl(fd, F_GETFL) | O_NONBLOCK)
+#define blocking(fd) fcntl(fd, F_SETFL, fcntl(fd, F_GETFL) & (~O_NONBLOCK))
+#define validFd(fd) (fd > 0)
+
 } //namespace tscore
 #endif // TS_CORE_TIGERSO_H_

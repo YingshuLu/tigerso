@@ -8,7 +8,7 @@
 #include "core/SysUtil.h"
 #include "ssl/SSLHelper.h"
 
-namespace tigerso::net {
+namespace tigerso::dns {
 
 #define CACHE_FILE_NAME "dnscache.dat"
 #define MD5_KEYSIZE 16
@@ -107,8 +107,7 @@ private:
 };
 
 //net Global DNS cache
-GLOBAL DNSCache* DNSCachePtr = DNSCache::getInstance();
-}// namespace tigerso::net
+}// namespace tigerso::dns
 
 
 #endif // TS_NET_DNSCACHE_H_

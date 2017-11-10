@@ -30,7 +30,7 @@ namespace tigerso::dns {
 /*DNS Header Flags Macros*/
 #define DNS_HEADER_FLAGS_QR_QUERY            0x0000
 #define DNS_HEADER_FLAGS_QR_RESPONSE         0x8000
-#define DNS_HEADER_FLAGS_OPCODE_QUERY       0x0000
+#define DNS_HEADER_FLAGS_OPCODE_QUERY        0x0000
 #define DNS_HEADER_FLAGS_OPCODE_IQUERY       0x0800
 #define DNS_HEADER_FLAGS_OPCODE_STATUS       0x1000
 #define DNS_HEADER_FLAGS_AA                  0x0400
@@ -106,6 +106,8 @@ struct DNSAnswer {
 typedef struct DNSAnswer DNSAuthority;
 typedef struct DNSAnswer DNSAddition;
 
+static DNSCache* g_DNSCachePtr = DNSCache::getInstance(); 
+
 class DNSResolver {
 
 public:
@@ -113,6 +115,13 @@ public:
 
     std::string queryDNS(std::string& name) {
         query_name_ = name;
+
+        char buf[IPV4_ADDRSIZE] = {0};
+        if(!g_DNSCachePtr -> queryIP(query_name_.c_str(), buf, IPV4_ADDRSIZE)) {
+            answer_name_ = buf;
+            return answer_name_;
+        }
+
         if(sendQuery() < 0) {
             //cout << "send err" <<endl;
             return std::string("");
@@ -279,7 +288,6 @@ private:
 
 
     int sendQuery() {
-
         int len = packDNSQuery(query_name_.c_str(), query_name_.size());
         if(len < 0) {
             //cout << "Pack DNS query error" <<endl;

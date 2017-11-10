@@ -92,11 +92,18 @@ int SysUtil::destroy_process_shared_memory(const string& shm_name, void* ptr, si
          return -1;
     }
 
+    std::cout << "Delete shared file" << std::endl;
     DBG_LOG("destroy process shared memory: %s", shm_name);
     if(!munmap(ptr, len))
     {
-        return shm_unlink(shm_name.c_str()); 
+        //return shm_unlink(shm_name.c_str()); 
+        if( shm_unlink(shm_name.c_str()) != 0) {
+            std::cout << "munmap failed" << errno << std::endl;
+        }
+        return 0;
     }
+
+
     return -1;
 }
 
@@ -166,7 +173,7 @@ int SharedMemory::init() {
     shm_ptr = mmap(NULL, shm_len, PROT_READ|PROT_WRITE, shm_prot, fd, 0);
     */
 
-    this->shm_name += SysUtil::getFormatTime("-%G%b%d%H%M%S");
+    //this->shm_name += SysUtil::getFormatTime("-%G%b%d%H%M%S");
     shm_unlink(shm_name.c_str()); 
     shm_ptr = SysUtil::create_process_shared_memory(shm_name, shm_len);
 
@@ -263,9 +270,11 @@ ShmMutex::~ShmMutex()
     if(pid == shm_pid)
     {
         //DBG_LOG("shm mutex destroy mutex_ptr: %d", mutex_ptr);
-        std::cout << "shm mutex destroy mutex_ptr: "<< mutex_ptr <<std::endl;
+        std::cout <<"shm mutex: " << shm_name<< "shm mutex destroy mutex_ptr: "<< mutex_ptr <<std::endl;
         destroy();
         SysUtil::destroy_process_shared_memory(shm_name, (void*) mutex_ptr, sizeof(shm_mutex_t));
+        std::string fn = "/dev/shm" + shm_name;
+        remove(fn.c_str());
     }
 }
 
@@ -293,7 +302,7 @@ int ShmMutex::init()
         this->shm_name = DEFAULT_SHM_MUTEX_FILENAME;
     }
 
-    this->shm_name += SysUtil::getFormatTime("-%G%b%d%H%M%S");
+    //this->shm_name += SysUtil::getFormatTime("-%G%b%d%H%M%S");
     shm_unlink(shm_name.c_str()); 
     size_t len = sizeof(shm_mutex_t);
     void* ptr = SysUtil::create_process_shared_memory(shm_name, len);

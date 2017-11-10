@@ -2,8 +2,10 @@
 #include <string>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "core/SysUtil.h"
 #include "core/Logging.h"
+#include "core/FileLock.h"
 #include "core/tigerso.h"
 
 using namespace std;
@@ -18,7 +20,7 @@ struct share_count {
 };
 
 share_count* c_ptr = nullptr;
-ShmMutex* sem = nullptr;
+FileLock* sem = nullptr;
 Logging* log_ptr = nullptr;
 
 void print_share_count() {
@@ -46,6 +48,13 @@ int child_start() {
         else {
             
             cout << "############## (" <<cnt << ") child [" << getpid() << "] locked, go die" << endl;
+            /*
+            char buf[512] = {0};
+            sem->getFileContent(buf, 512);
+            cout << "File Lock content: " << buf << endl;
+            FileLock fl("./tigerso.lock");
+            cout << "new file lock, content: " << fl.getFileContent(buf, 25) << endl;
+            */
             if (c_ptr != nullptr) {
                 c_ptr->count += 1;
                 c_ptr->pid = getpid();
@@ -65,7 +74,13 @@ int main(int argc, char* argv[]) {
     log_ptr->setLogPath("/tmp");
     log_ptr->setLogPath("enable");
 
-    sem = new ShmMutex();
+    char buf[25] = {0};
+    
+    pid_t mainpid = getpid();
+    
+    snprintf(buf, 25,"%d", mainpid);
+    cout << "lock content to write: " << buf <<endl;
+    sem = new FileLock("./tigerso.lock",buf);
     SharedMemory shm("count", sizeof(share_count));
 
     c_ptr = (share_count*) shm.get_shm_ptr();

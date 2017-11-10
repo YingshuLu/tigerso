@@ -1,6 +1,6 @@
 #include "dns/DNSCache.h"
 
-namespace tigerso::net {
+namespace tigerso::dns {
     
 int DNSNode::setAddr(const char* addr, size_t len) {
     if( addr == nullptr || len < 7 ) { return -1; }
@@ -78,6 +78,7 @@ int DNSCache::queryIP(const char* host, char* ipaddr, size_t len) {
         while(true) {
             if(shmptr->array[of].isUsed() && memcmp(md5, shmptr->array[of].getMd5Key(), MD5_KEYSIZE) == 0) {
                 memcpy(ipaddr, shmptr->array[of].getAddr(), IPV4_ADDRSIZE);
+                std::cout << "Hit DNS cache" << std::endl;
                 return 0;
             }
             if(detect >= HASH_MAXCONFLICT) {
@@ -124,6 +125,7 @@ int DNSCache::updateDNS(const char* host, const char* ip, int& ttl) {
                 first = of;
             }
 
+            detect++;
             of++;
             of = of % HASH_NODENUM;
         }
@@ -132,7 +134,7 @@ int DNSCache::updateDNS(const char* host, const char* ip, int& ttl) {
             return -1;
         }
 
-        if(shmptr->array[of].updateNode(md5, ip, ttl) != 0) { return -1; }    
+        if(shmptr->array[first].updateNode(md5, ip, ttl) != 0) { return -1; }    
 
         return 0;
     }
