@@ -2,6 +2,7 @@
 #define TS_HTTP_HTTPMESSAGE_H_
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <iostream>
 #include <string>
@@ -10,10 +11,8 @@
 #include <memory>
 #include "core/BaseClass.h"
 #include "core/tigerso.h"
+#include "core/File.h"
 
-extern "C" {
-#include "http/lib/http_parser.h"
-}
 namespace tigerso::http {
 
 typedef int http_role_t;
@@ -27,20 +26,23 @@ const int HTTP_INSPECTION_CONTINUE = 0;
 const int HTTP_INSPECTION_BLOCK = -1;
 const int HTTP_INSPECTION_MODIFIED = 1;
 
+class HttpResponse;
 class HttpHelper {
 public:
     HttpHelper(){}
-    static bool isVaildResponseStatusCode(const int code) {
-       return (RESPONSE_STATUS_MAP.find(code) != RESPONSE_STATUS_MAP.end());
-    }
+    static int prepare200Response(HttpResponse& response);
+    static int prepare400Response(HttpResponse& response);
+    static int prepare403Response(HttpResponse& response);
+    static int prepare503Response(HttpResponse& response);
+    static int prepare504Response(HttpResponse& response);
+    static int prepareDNSErrorResponse(HttpResponse& response);
+    static bool isVaildResponseStatusCode(const int code);
+    static std::string getResponseStatusDesc(const int code);
 
-    static std::string getResponseStatusDesc(const int code) {
-        auto iter = RESPONSE_STATUS_MAP.find(code);
-        if( iter == RESPONSE_STATUS_MAP.end() ) {
-            return std::string("");
-        }
-        return iter->second;
-    }
+// html file name
+public:
+    static std::string response403html;
+    static std::string response503html;
 
 private:
     static const std::map<int, std::string> RESPONSE_STATUS_MAP;
@@ -69,7 +71,15 @@ public:
         }
         return ""; 
     }
+    virtual std::string& getHeader() { return headstr_; }
     virtual std::string& getBody() { return body_; }
+
+    virtual int getContentLength() {
+        std::string content_length = getValueByHeader("content-length");
+        //Not found
+        if(content_length.empty()) { return -1; }
+        return ::atoi(content_length.c_str());
+    }
     
     virtual void setMethod(const std::string& method){};
     virtual void setUrl(const std::string& Url){};
@@ -87,9 +97,7 @@ public:
         return;
     }
 
-    virtual void setBody(const std::string& body) {
-        body_.append(body);
-    }
+    virtual void setBody(const std::string& body) { body_.append(body); }
 
     virtual void removeHeader(const std::string& header) {
         for ( auto iter = headers_.begin(); ; iter++ ) {
@@ -133,6 +141,7 @@ public:
     virtual void clear() {
         version_ = "HTTP/1.1";
         headers_.clear();
+        headstr_.clear();
         body_.clear();
     }
     
@@ -143,6 +152,7 @@ protected:
     http_role_t role_ = HTTP_ROLE_UINIT;
     std::string version_ = "HTTP/1.1";
     headers_t headers_;
+    std::string headstr_;
     std::string body_;
 };
 
@@ -156,16 +166,32 @@ public:
     void setMethod(const std::string& method) { method_ = method; }
     void setUrl(const std::string& url) { url_ = url; }
 
+    std::string& getHeader() {
+        if(method_.empty() || url_.empty()) {
+            headstr_ = "";
+            return headstr_;
+        }
+        headstr_ = method_ + " " + url_ + " " + version_ + "\r\n";
+        auto iter = headers_.begin();
+        while (iter != headers_.end()) {
+            headstr_.append(iter->first + ": " + iter->second + "\r\n");
+            ++iter;
+        }
+        return headstr_;
+    }
+
     std::string toString() {
+        std::string request;
         if(method_.empty() || url_.empty()) {
             return std::string("");
         }
-        std::string request = method_ + " " + url_ + " " + version_ + "\r\n";
+        request = method_ + " " + url_ + " " + version_ + "\r\n";
         auto iter = headers_.begin();
         while (iter != headers_.end()) {
             request.append(iter->first + ": " + iter->second + "\r\n");
             ++iter;
         }
+        
         request.append("\r\n");
         if(!body_.empty()) {
             request.append(body_ + "\r\n");
@@ -176,7 +202,23 @@ public:
     void clear() {
         method_.clear();
         url_.clear();
+        port_.clear();
+        host_.clear();
         HttpMessage::clear();
+    }
+
+    std::string getHost() {
+        if(!host_.empty()) {
+            return host_;
+        }
+        std::string host = getValueByHeader("host");
+        std::string::size_type pos = host.find(":");
+        if(pos != std::string::npos) {
+            host = host.substr(0, pos);
+        }
+
+        host_ = host;
+        return host_;
     }
 
     std::string getHostPort() {
@@ -214,6 +256,7 @@ public:
 private:
     std::string method_;
     std::string url_;
+    std::string host_;
     std::string port_;
 };
 
@@ -232,6 +275,20 @@ public:
         }
     }
     void setDesc(const std::string& desc) { desc_ = desc; }
+
+    std::string& getHeader() { 
+        if(statuscode_ == 0 || desc_.empty() ) {
+            headstr_ = "";
+            return headstr_;
+        }
+        headstr_ = version_ + " " + std::to_string(statuscode_) + " " + desc_ + "\r\n";
+        auto iter = headers_.begin();
+        while (iter != headers_.end()) {
+            headstr_.append(iter->first + ": " + iter->second + "\r\n");
+            ++iter;
+        }
+        return headstr_;
+    }
 
     std::string toString() {
         if(statuscode_ == 0 || desc_.empty() ) {
@@ -261,35 +318,11 @@ public:
     static const std::string BAD_REQUEST; 
     static const std::string NOT_FOUND;
     static const std::string FORBIDDEN;
-   
+
 private:
     int         statuscode_;
     std::string desc_;
-};
 
-//Http parser
-class HttpParser: public core::nocopyable {
-public:
-    HttpParser(): buffer_(nullptr), length_(0) {}
-    int parse(const char*, size_t, HttpMessage&);
-    int parse(const std::string&, HttpMessage&);
-
-private:
-    // Callbacks for http data parser 
-    static int on_message_begin(http_parser*);
-    static int on_message_complete(http_parser*);
-    static int on_headers_complete(http_parser*);
-    static int on_url(http_parser*, const char*, size_t);
-    static int on_status(http_parser*, const char*, size_t);
-    static int on_header_field(http_parser*, const char*, size_t);
-    static int on_header_value(http_parser*, const char*, size_t);
-    static int on_body(http_parser*, const char*, size_t);
-    int initParser(HttpMessage&);
-
-    const char* buffer_;
-    size_t length_;
-    http_parser parser_;
-    http_parser_settings settings_;
 };
 
 //Http Role inspection

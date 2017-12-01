@@ -1,0 +1,287 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARRAY_SIZE	http_parser.c	41;"	d	file:
+BIT_AT	http_parser.c	45;"	d	file:
+Base64decode	base64.c	/^int Base64decode(char *bufplain, const char *bufcoded)$/;"	f
+Base64decode_len	base64.c	/^int Base64decode_len(const char *bufcoded)$/;"	f
+Base64encode	base64.c	/^int Base64encode(char *encoded, const char *string, int len)$/;"	f
+Base64encode_len	base64.c	/^int Base64encode_len(int len)$/;"	f
+CALLBACK_DATA	http_parser.c	128;"	d	file:
+CALLBACK_DATA_	http_parser.c	105;"	d	file:
+CALLBACK_DATA_NOADVANCE	http_parser.c	132;"	d	file:
+CALLBACK_NOTIFY	http_parser.c	99;"	d	file:
+CALLBACK_NOTIFY_	http_parser.c	80;"	d	file:
+CALLBACK_NOTIFY_NOADVANCE	http_parser.c	102;"	d	file:
+CHUNKED	http_parser.c	169;"	d	file:
+CLOSE	http_parser.c	171;"	d	file:
+CONNECTION	http_parser.c	165;"	d	file:
+CONTENT_LENGTH	http_parser.c	166;"	d	file:
+COUNT_HEADER_SIZE	http_parser.c	154;"	d	file:
+CR	http_parser.c	410;"	d	file:
+CURRENT_STATE	http_parser.c	59;"	d	file:
+ELEM_AT	http_parser.c	51;"	d	file:
+F_CHUNKED	http_parser.h	/^  { F_CHUNKED               = 1 << 0$/;"	e	enum:flags
+F_CONNECTION_CLOSE	http_parser.h	/^  , F_CONNECTION_CLOSE      = 1 << 2$/;"	e	enum:flags
+F_CONNECTION_KEEP_ALIVE	http_parser.h	/^  , F_CONNECTION_KEEP_ALIVE = 1 << 1$/;"	e	enum:flags
+F_CONNECTION_UPGRADE	http_parser.h	/^  , F_CONNECTION_UPGRADE    = 1 << 3$/;"	e	enum:flags
+F_CONTENTLENGTH	http_parser.h	/^  , F_CONTENTLENGTH         = 1 << 7$/;"	e	enum:flags
+F_SKIPBODY	http_parser.h	/^  , F_SKIPBODY              = 1 << 6$/;"	e	enum:flags
+F_TRAILING	http_parser.h	/^  , F_TRAILING              = 1 << 4$/;"	e	enum:flags
+F_UPGRADE	http_parser.h	/^  , F_UPGRADE               = 1 << 5$/;"	e	enum:flags
+HTTP_BOTH	http_parser.h	/^enum http_parser_type { HTTP_REQUEST, HTTP_RESPONSE, HTTP_BOTH };$/;"	e	enum:http_parser_type
+HTTP_ERRNO_GEN	http_parser.h	281;"	d
+HTTP_ERRNO_GEN	http_parser.h	285;"	d
+HTTP_ERRNO_MAP	http_parser.h	/^  HTTP_ERRNO_MAP(HTTP_ERRNO_GEN)$/;"	e	enum:http_errno
+HTTP_ERRNO_MAP	http_parser.h	234;"	d
+HTTP_MAX_HEADER_SIZE	http_parser.h	64;"	d
+HTTP_METHOD_MAP	http_parser.h	/^  HTTP_METHOD_MAP(XX)$/;"	e	enum:http_method
+HTTP_METHOD_MAP	http_parser.h	164;"	d
+HTTP_PARSER_ERRNO	http_parser.h	289;"	d
+HTTP_PARSER_STRICT	http_parser.h	53;"	d
+HTTP_PARSER_VERSION_MAJOR	http_parser.h	28;"	d
+HTTP_PARSER_VERSION_MINOR	http_parser.h	29;"	d
+HTTP_PARSER_VERSION_PATCH	http_parser.h	30;"	d
+HTTP_REQUEST	http_parser.h	/^enum http_parser_type { HTTP_REQUEST, HTTP_RESPONSE, HTTP_BOTH };$/;"	e	enum:http_parser_type
+HTTP_RESPONSE	http_parser.h	/^enum http_parser_type { HTTP_REQUEST, HTTP_RESPONSE, HTTP_BOTH };$/;"	e	enum:http_parser_type
+HTTP_STATUS_MAP	http_parser.h	/^  HTTP_STATUS_MAP(XX)$/;"	e	enum:http_status
+HTTP_STATUS_MAP	http_parser.h	94;"	d
+HTTP_STRERROR_GEN	http_parser.c	464;"	d	file:
+HTTP_STRERROR_GEN	http_parser.c	471;"	d	file:
+IS_ALPHA	http_parser.c	413;"	d	file:
+IS_ALPHANUM	http_parser.c	415;"	d	file:
+IS_HEADER_CHAR	http_parser.c	442;"	d	file:
+IS_HEX	http_parser.c	416;"	d	file:
+IS_HOST_CHAR	http_parser.c	429;"	d	file:
+IS_HOST_CHAR	http_parser.c	434;"	d	file:
+IS_MARK	http_parser.c	417;"	d	file:
+IS_NUM	http_parser.c	414;"	d	file:
+IS_URL_CHAR	http_parser.c	428;"	d	file:
+IS_URL_CHAR	http_parser.c	432;"	d	file:
+IS_USERINFO_CHAR	http_parser.c	420;"	d	file:
+KEEP_ALIVE	http_parser.c	170;"	d	file:
+LF	http_parser.c	411;"	d	file:
+LIKELY	http_parser.c	71;"	d	file:
+LIKELY	http_parser.c	74;"	d	file:
+LOWER	http_parser.c	412;"	d	file:
+MARK	http_parser.c	136;"	d	file:
+MIN	http_parser.c	37;"	d	file:
+NEW_MESSAGE	http_parser.c	456;"	d	file:
+NEW_MESSAGE	http_parser.c	459;"	d	file:
+PARSING_HEADER	http_parser.c	360;"	d	file:
+PROXY_CONNECTION	http_parser.c	164;"	d	file:
+REEXECUTE	http_parser.c	66;"	d	file:
+RETURN	http_parser.c	61;"	d	file:
+SET_ERRNO	http_parser.c	54;"	d	file:
+STRICT_CHECK	http_parser.c	449;"	d	file:
+STRICT_CHECK	http_parser.c	458;"	d	file:
+STRICT_TOKEN	http_parser.c	424;"	d	file:
+T	http_parser.c	237;"	d	file:
+T	http_parser.c	239;"	d	file:
+T	http_parser.c	277;"	d	file:
+TOKEN	http_parser.c	427;"	d	file:
+TOKEN	http_parser.c	431;"	d	file:
+TRANSFER_ENCODING	http_parser.c	167;"	d	file:
+UF_FRAGMENT	http_parser.h	/^  , UF_FRAGMENT         = 5$/;"	e	enum:http_parser_url_fields
+UF_HOST	http_parser.h	/^  , UF_HOST             = 1$/;"	e	enum:http_parser_url_fields
+UF_MAX	http_parser.h	/^  , UF_MAX              = 7$/;"	e	enum:http_parser_url_fields
+UF_PATH	http_parser.h	/^  , UF_PATH             = 3$/;"	e	enum:http_parser_url_fields
+UF_PORT	http_parser.h	/^  , UF_PORT             = 2$/;"	e	enum:http_parser_url_fields
+UF_QUERY	http_parser.h	/^  , UF_QUERY            = 4$/;"	e	enum:http_parser_url_fields
+UF_SCHEMA	http_parser.h	/^  { UF_SCHEMA           = 0$/;"	e	enum:http_parser_url_fields
+UF_USERINFO	http_parser.h	/^  , UF_USERINFO         = 6$/;"	e	enum:http_parser_url_fields
+ULLONG_MAX	http_parser.c	33;"	d	file:
+UNLIKELY	http_parser.c	72;"	d	file:
+UNLIKELY	http_parser.c	75;"	d	file:
+UPDATE_STATE	http_parser.c	60;"	d	file:
+UPGRADE	http_parser.c	168;"	d	file:
+XX	http_parser.c	1013;"	d	file:
+XX	http_parser.c	1034;"	d	file:
+XX	http_parser.c	176;"	d	file:
+XX	http_parser.c	178;"	d	file:
+XX	http_parser.h	157;"	d
+XX	http_parser.h	159;"	d
+XX	http_parser.h	208;"	d
+XX	http_parser.h	210;"	d
+_BASE64_H_	base64.h	85;"	d
+basis_64	base64.c	/^static const char basis_64[] =$/;"	v	file:
+content_length	http_parser.h	/^  uint64_t content_length; \/* # bytes in body (0 if no Content-Length header) *\/$/;"	m	struct:http_parser
+data	http_parser.h	/^  void *data; \/* A pointer to get hook to the "connection" or "socket" object *\/$/;"	m	struct:http_parser
+description	http_parser.c	/^  const char *description;$/;"	m	struct:__anon2	file:
+field_data	http_parser.h	/^  } field_data[UF_MAX];$/;"	m	struct:http_parser_url	typeref:struct:http_parser_url::__anon1
+field_set	http_parser.h	/^  uint16_t field_set;           \/* Bitmask of (1 << UF_*) values *\/$/;"	m	struct:http_parser_url
+flags	http_parser.h	/^  unsigned int flags : 8;        \/* F_* values from 'flags' enum; semi-public *\/$/;"	m	struct:http_parser
+flags	http_parser.h	/^enum flags$/;"	g
+h_C	http_parser.c	/^  , h_C$/;"	e	enum:header_states	file:
+h_CO	http_parser.c	/^  , h_CO$/;"	e	enum:header_states	file:
+h_CON	http_parser.c	/^  , h_CON$/;"	e	enum:header_states	file:
+h_connection	http_parser.c	/^  , h_connection$/;"	e	enum:header_states	file:
+h_connection_close	http_parser.c	/^  , h_connection_close$/;"	e	enum:header_states	file:
+h_connection_keep_alive	http_parser.c	/^  , h_connection_keep_alive$/;"	e	enum:header_states	file:
+h_connection_upgrade	http_parser.c	/^  , h_connection_upgrade$/;"	e	enum:header_states	file:
+h_content_length	http_parser.c	/^  , h_content_length$/;"	e	enum:header_states	file:
+h_general	http_parser.c	/^  { h_general = 0$/;"	e	enum:header_states	file:
+h_matching_connection	http_parser.c	/^  , h_matching_connection$/;"	e	enum:header_states	file:
+h_matching_connection_close	http_parser.c	/^  , h_matching_connection_close$/;"	e	enum:header_states	file:
+h_matching_connection_keep_alive	http_parser.c	/^  , h_matching_connection_keep_alive$/;"	e	enum:header_states	file:
+h_matching_connection_token	http_parser.c	/^  , h_matching_connection_token$/;"	e	enum:header_states	file:
+h_matching_connection_token_start	http_parser.c	/^  , h_matching_connection_token_start$/;"	e	enum:header_states	file:
+h_matching_connection_upgrade	http_parser.c	/^  , h_matching_connection_upgrade$/;"	e	enum:header_states	file:
+h_matching_content_length	http_parser.c	/^  , h_matching_content_length$/;"	e	enum:header_states	file:
+h_matching_proxy_connection	http_parser.c	/^  , h_matching_proxy_connection$/;"	e	enum:header_states	file:
+h_matching_transfer_encoding	http_parser.c	/^  , h_matching_transfer_encoding$/;"	e	enum:header_states	file:
+h_matching_transfer_encoding_chunked	http_parser.c	/^  , h_matching_transfer_encoding_chunked$/;"	e	enum:header_states	file:
+h_matching_upgrade	http_parser.c	/^  , h_matching_upgrade$/;"	e	enum:header_states	file:
+h_transfer_encoding	http_parser.c	/^  , h_transfer_encoding$/;"	e	enum:header_states	file:
+h_transfer_encoding_chunked	http_parser.c	/^  , h_transfer_encoding_chunked$/;"	e	enum:header_states	file:
+h_upgrade	http_parser.c	/^  , h_upgrade$/;"	e	enum:header_states	file:
+header_state	http_parser.h	/^  unsigned int header_state : 7; \/* enum header_state from http_parser.c *\/$/;"	m	struct:http_parser
+header_states	http_parser.c	/^enum header_states$/;"	g	file:
+http_body_is_final	http_parser.c	/^http_body_is_final(const struct http_parser *parser) {$/;"	f
+http_cb	http_parser.h	/^typedef int (*http_cb) (http_parser*);$/;"	t
+http_data_cb	http_parser.h	/^typedef int (*http_data_cb) (http_parser*, const char *at, size_t length);$/;"	t
+http_errno	http_parser.h	/^  unsigned int http_errno : 7;$/;"	m	struct:http_parser
+http_errno	http_parser.h	/^enum http_errno {$/;"	g
+http_errno_description	http_parser.c	/^http_errno_description(enum http_errno err) {$/;"	f
+http_errno_name	http_parser.c	/^http_errno_name(enum http_errno err) {$/;"	f
+http_host_state	http_parser.c	/^enum http_host_state$/;"	g	file:
+http_major	http_parser.h	/^  unsigned short http_major;$/;"	m	struct:http_parser
+http_message_needs_eof	http_parser.c	/^http_message_needs_eof (const http_parser *parser)$/;"	f
+http_method	http_parser.h	/^enum http_method$/;"	g
+http_method_str	http_parser.c	/^http_method_str (enum http_method m)$/;"	f
+http_minor	http_parser.h	/^  unsigned short http_minor;$/;"	m	struct:http_parser
+http_parse_host	http_parser.c	/^http_parse_host(const char * buf, struct http_parser_url *u, int found_at) {$/;"	f	file:
+http_parse_host_char	http_parser.c	/^http_parse_host_char(enum http_host_state s, const char ch) {$/;"	f	file:
+http_parser	http_parser.h	/^struct http_parser {$/;"	s
+http_parser	http_parser.h	/^typedef struct http_parser http_parser;$/;"	t	typeref:struct:http_parser
+http_parser_execute	http_parser.c	/^size_t http_parser_execute (http_parser *parser,$/;"	f
+http_parser_h	http_parser.h	22;"	d
+http_parser_init	http_parser.c	/^http_parser_init (http_parser *parser, enum http_parser_type t)$/;"	f
+http_parser_parse_url	http_parser.c	/^http_parser_parse_url(const char *buf, size_t buflen, int is_connect,$/;"	f
+http_parser_pause	http_parser.c	/^http_parser_pause(http_parser *parser, int paused) {$/;"	f
+http_parser_settings	http_parser.h	/^struct http_parser_settings {$/;"	s
+http_parser_settings	http_parser.h	/^typedef struct http_parser_settings http_parser_settings;$/;"	t	typeref:struct:http_parser_settings
+http_parser_settings_init	http_parser.c	/^http_parser_settings_init(http_parser_settings *settings)$/;"	f
+http_parser_type	http_parser.h	/^enum http_parser_type { HTTP_REQUEST, HTTP_RESPONSE, HTTP_BOTH };$/;"	g
+http_parser_url	http_parser.h	/^struct http_parser_url {$/;"	s
+http_parser_url_fields	http_parser.h	/^enum http_parser_url_fields$/;"	g
+http_parser_url_init	http_parser.c	/^http_parser_url_init(struct http_parser_url *u) {$/;"	f
+http_parser_version	http_parser.c	/^http_parser_version(void) {$/;"	f
+http_should_keep_alive	http_parser.c	/^http_should_keep_alive (const http_parser *parser)$/;"	f
+http_status	http_parser.h	/^enum http_status$/;"	g
+http_strerror_tab	http_parser.c	/^} http_strerror_tab[] = {$/;"	v	typeref:struct:__anon2	file:
+index	http_parser.h	/^  unsigned int index : 7;        \/* index into current matcher *\/$/;"	m	struct:http_parser
+int16_t	http_parser.h	/^typedef __int16 int16_t;$/;"	t
+int32_t	http_parser.h	/^typedef __int32 int32_t;$/;"	t
+int64_t	http_parser.h	/^typedef __int64 int64_t;$/;"	t
+int8_t	http_parser.h	/^typedef __int8 int8_t;$/;"	t
+len	http_parser.h	/^    uint16_t len;               \/* Length of run in buffer *\/$/;"	m	struct:http_parser_url::__anon1
+lenient_http_headers	http_parser.h	/^  unsigned int lenient_http_headers : 1;$/;"	m	struct:http_parser
+method	http_parser.h	/^  unsigned int method : 8;       \/* requests only *\/$/;"	m	struct:http_parser
+method_strings	http_parser.c	/^static const char *method_strings[] =$/;"	v	file:
+name	http_parser.c	/^  const char *name;$/;"	m	struct:__anon2	file:
+normal_url_char	http_parser.c	/^static const uint8_t normal_url_char[32] = {$/;"	v	file:
+nread	http_parser.h	/^  uint32_t nread;          \/* # bytes read in various scenarios *\/$/;"	m	struct:http_parser
+off	http_parser.h	/^    uint16_t off;               \/* Offset into buffer in which field starts *\/$/;"	m	struct:http_parser_url::__anon1
+on_body	http_parser.h	/^  http_data_cb on_body;$/;"	m	struct:http_parser_settings
+on_chunk_complete	http_parser.h	/^  http_cb      on_chunk_complete;$/;"	m	struct:http_parser_settings
+on_chunk_header	http_parser.h	/^  http_cb      on_chunk_header;$/;"	m	struct:http_parser_settings
+on_header_field	http_parser.h	/^  http_data_cb on_header_field;$/;"	m	struct:http_parser_settings
+on_header_value	http_parser.h	/^  http_data_cb on_header_value;$/;"	m	struct:http_parser_settings
+on_headers_complete	http_parser.h	/^  http_cb      on_headers_complete;$/;"	m	struct:http_parser_settings
+on_message_begin	http_parser.h	/^  http_cb      on_message_begin;$/;"	m	struct:http_parser_settings
+on_message_complete	http_parser.h	/^  http_cb      on_message_complete;$/;"	m	struct:http_parser_settings
+on_status	http_parser.h	/^  http_data_cb on_status;$/;"	m	struct:http_parser_settings
+on_url	http_parser.h	/^  http_data_cb on_url;$/;"	m	struct:http_parser_settings
+parse_url_char	http_parser.c	/^parse_url_char(enum state s, const char ch)$/;"	f	file:
+port	http_parser.h	/^  uint16_t port;                \/* Converted UF_PORT string *\/$/;"	m	struct:http_parser_url
+pr2six	base64.c	/^static const unsigned char pr2six[256] =$/;"	v	file:
+s_body_identity	http_parser.c	/^  , s_body_identity$/;"	e	enum:state	file:
+s_body_identity_eof	http_parser.c	/^  , s_body_identity_eof$/;"	e	enum:state	file:
+s_chunk_data	http_parser.c	/^  , s_chunk_data$/;"	e	enum:state	file:
+s_chunk_data_almost_done	http_parser.c	/^  , s_chunk_data_almost_done$/;"	e	enum:state	file:
+s_chunk_data_done	http_parser.c	/^  , s_chunk_data_done$/;"	e	enum:state	file:
+s_chunk_parameters	http_parser.c	/^  , s_chunk_parameters$/;"	e	enum:state	file:
+s_chunk_size	http_parser.c	/^  , s_chunk_size$/;"	e	enum:state	file:
+s_chunk_size_almost_done	http_parser.c	/^  , s_chunk_size_almost_done$/;"	e	enum:state	file:
+s_chunk_size_start	http_parser.c	/^  , s_chunk_size_start$/;"	e	enum:state	file:
+s_dead	http_parser.c	/^  { s_dead = 1 \/* important that this is > 0 *\/$/;"	e	enum:state	file:
+s_header_almost_done	http_parser.c	/^  , s_header_almost_done$/;"	e	enum:state	file:
+s_header_field	http_parser.c	/^  , s_header_field$/;"	e	enum:state	file:
+s_header_field_start	http_parser.c	/^  , s_header_field_start$/;"	e	enum:state	file:
+s_header_value	http_parser.c	/^  , s_header_value$/;"	e	enum:state	file:
+s_header_value_discard_lws	http_parser.c	/^  , s_header_value_discard_lws$/;"	e	enum:state	file:
+s_header_value_discard_ws	http_parser.c	/^  , s_header_value_discard_ws$/;"	e	enum:state	file:
+s_header_value_discard_ws_almost_done	http_parser.c	/^  , s_header_value_discard_ws_almost_done$/;"	e	enum:state	file:
+s_header_value_lws	http_parser.c	/^  , s_header_value_lws$/;"	e	enum:state	file:
+s_header_value_start	http_parser.c	/^  , s_header_value_start$/;"	e	enum:state	file:
+s_headers_almost_done	http_parser.c	/^  , s_headers_almost_done$/;"	e	enum:state	file:
+s_headers_done	http_parser.c	/^  , s_headers_done$/;"	e	enum:state	file:
+s_http_host	http_parser.c	/^  , s_http_host$/;"	e	enum:http_host_state	file:
+s_http_host_dead	http_parser.c	/^    s_http_host_dead = 1$/;"	e	enum:http_host_state	file:
+s_http_host_port	http_parser.c	/^  , s_http_host_port$/;"	e	enum:http_host_state	file:
+s_http_host_port_start	http_parser.c	/^  , s_http_host_port_start$/;"	e	enum:http_host_state	file:
+s_http_host_start	http_parser.c	/^  , s_http_host_start$/;"	e	enum:http_host_state	file:
+s_http_host_v6	http_parser.c	/^  , s_http_host_v6$/;"	e	enum:http_host_state	file:
+s_http_host_v6_end	http_parser.c	/^  , s_http_host_v6_end$/;"	e	enum:http_host_state	file:
+s_http_host_v6_start	http_parser.c	/^  , s_http_host_v6_start$/;"	e	enum:http_host_state	file:
+s_http_host_v6_zone	http_parser.c	/^  , s_http_host_v6_zone$/;"	e	enum:http_host_state	file:
+s_http_host_v6_zone_start	http_parser.c	/^  , s_http_host_v6_zone_start$/;"	e	enum:http_host_state	file:
+s_http_userinfo	http_parser.c	/^  , s_http_userinfo$/;"	e	enum:http_host_state	file:
+s_http_userinfo_start	http_parser.c	/^  , s_http_userinfo_start$/;"	e	enum:http_host_state	file:
+s_message_done	http_parser.c	/^  , s_message_done$/;"	e	enum:state	file:
+s_req_first_http_major	http_parser.c	/^  , s_req_first_http_major$/;"	e	enum:state	file:
+s_req_first_http_minor	http_parser.c	/^  , s_req_first_http_minor$/;"	e	enum:state	file:
+s_req_fragment	http_parser.c	/^  , s_req_fragment$/;"	e	enum:state	file:
+s_req_fragment_start	http_parser.c	/^  , s_req_fragment_start$/;"	e	enum:state	file:
+s_req_http_H	http_parser.c	/^  , s_req_http_H$/;"	e	enum:state	file:
+s_req_http_HT	http_parser.c	/^  , s_req_http_HT$/;"	e	enum:state	file:
+s_req_http_HTT	http_parser.c	/^  , s_req_http_HTT$/;"	e	enum:state	file:
+s_req_http_HTTP	http_parser.c	/^  , s_req_http_HTTP$/;"	e	enum:state	file:
+s_req_http_major	http_parser.c	/^  , s_req_http_major$/;"	e	enum:state	file:
+s_req_http_minor	http_parser.c	/^  , s_req_http_minor$/;"	e	enum:state	file:
+s_req_http_start	http_parser.c	/^  , s_req_http_start$/;"	e	enum:state	file:
+s_req_line_almost_done	http_parser.c	/^  , s_req_line_almost_done$/;"	e	enum:state	file:
+s_req_method	http_parser.c	/^  , s_req_method$/;"	e	enum:state	file:
+s_req_path	http_parser.c	/^  , s_req_path$/;"	e	enum:state	file:
+s_req_query_string	http_parser.c	/^  , s_req_query_string$/;"	e	enum:state	file:
+s_req_query_string_start	http_parser.c	/^  , s_req_query_string_start$/;"	e	enum:state	file:
+s_req_schema	http_parser.c	/^  , s_req_schema$/;"	e	enum:state	file:
+s_req_schema_slash	http_parser.c	/^  , s_req_schema_slash$/;"	e	enum:state	file:
+s_req_schema_slash_slash	http_parser.c	/^  , s_req_schema_slash_slash$/;"	e	enum:state	file:
+s_req_server	http_parser.c	/^  , s_req_server$/;"	e	enum:state	file:
+s_req_server_start	http_parser.c	/^  , s_req_server_start$/;"	e	enum:state	file:
+s_req_server_with_at	http_parser.c	/^  , s_req_server_with_at$/;"	e	enum:state	file:
+s_req_spaces_before_url	http_parser.c	/^  , s_req_spaces_before_url$/;"	e	enum:state	file:
+s_res_H	http_parser.c	/^  , s_res_H$/;"	e	enum:state	file:
+s_res_HT	http_parser.c	/^  , s_res_HT$/;"	e	enum:state	file:
+s_res_HTT	http_parser.c	/^  , s_res_HTT$/;"	e	enum:state	file:
+s_res_HTTP	http_parser.c	/^  , s_res_HTTP$/;"	e	enum:state	file:
+s_res_first_http_major	http_parser.c	/^  , s_res_first_http_major$/;"	e	enum:state	file:
+s_res_first_http_minor	http_parser.c	/^  , s_res_first_http_minor$/;"	e	enum:state	file:
+s_res_first_status_code	http_parser.c	/^  , s_res_first_status_code$/;"	e	enum:state	file:
+s_res_http_major	http_parser.c	/^  , s_res_http_major$/;"	e	enum:state	file:
+s_res_http_minor	http_parser.c	/^  , s_res_http_minor$/;"	e	enum:state	file:
+s_res_line_almost_done	http_parser.c	/^  , s_res_line_almost_done$/;"	e	enum:state	file:
+s_res_or_resp_H	http_parser.c	/^  , s_res_or_resp_H$/;"	e	enum:state	file:
+s_res_status	http_parser.c	/^  , s_res_status$/;"	e	enum:state	file:
+s_res_status_code	http_parser.c	/^  , s_res_status_code$/;"	e	enum:state	file:
+s_res_status_start	http_parser.c	/^  , s_res_status_start$/;"	e	enum:state	file:
+s_start_req	http_parser.c	/^  , s_start_req$/;"	e	enum:state	file:
+s_start_req_or_res	http_parser.c	/^  , s_start_req_or_res$/;"	e	enum:state	file:
+s_start_res	http_parser.c	/^  , s_start_res$/;"	e	enum:state	file:
+start_state	http_parser.c	445;"	d	file:
+state	http_parser.c	/^enum state$/;"	g	file:
+state	http_parser.h	/^  unsigned int state : 7;        \/* enum state from http_parser.c *\/$/;"	m	struct:http_parser
+status_code	http_parser.h	/^  unsigned int status_code : 16; \/* responses only *\/$/;"	m	struct:http_parser
+tokens	http_parser.c	/^static const char tokens[256] = {$/;"	v	file:
+type	http_parser.h	/^  unsigned int type : 2;         \/* enum http_parser_type *\/$/;"	m	struct:http_parser
+uint16_t	http_parser.h	/^typedef unsigned __int16 uint16_t;$/;"	t
+uint32_t	http_parser.h	/^typedef unsigned __int32 uint32_t;$/;"	t
+uint64_t	http_parser.h	/^typedef unsigned __int64 uint64_t;$/;"	t
+uint8_t	http_parser.h	/^typedef unsigned __int8 uint8_t;$/;"	t
+unhex	http_parser.c	/^static const int8_t unhex[256] =$/;"	v	file:
+upgrade	http_parser.h	/^  unsigned int upgrade : 1;$/;"	m	struct:http_parser

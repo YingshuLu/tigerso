@@ -66,104 +66,106 @@ static const status_pair_t response_status_array [] = {
 
 const std::map<int, std::string> HttpHelper::RESPONSE_STATUS_MAP(response_status_array, response_status_array + (sizeof(response_status_array)/sizeof(response_status_array[0])));
 
+
+static const std::string defaultResponse403Body = "<html><head><title>TIGERSO NOTIFICATION</title></head><body><p>You Are Forbidden To Access This Website!</p></body></html>";
+static const std::string defaultResponse503Body = "<html><head><title>TIGERSO NOTIFICATION</title></head><body><p> Service Unavailable!</p></body></html>";
+static const std::string defaultResponse504Body = "<html><head><title>TIGERSO NOTIFICATION</title></head><body><p>Gateway Timeout! Please Inspect Your Gateway.</p></body></html>";
+
+static const std::string defaultResponseDNSErrorBody = "<html><head><title>TIGERSO NOTIFICATION</title></head><body><p>Gateway Timeout! Please Inspect Your Gateway.</p></body></html>";
+
+int HttpHelper::prepare200Response(HttpResponse& response) {
+    response.setStatuscode(200);
+    response.setDesc(getResponseStatusDesc(200));
+    response.setVersion("HTTP/1.1");
+
+    response.setValueByHeader("Connection", "keep-alive");
+    response.markTrade();
+    return 0;
+}
+
+int HttpHelper::prepare400Response(HttpResponse& response) {
+    return prepare403Response(response);
+}
+
+int HttpHelper::prepare403Response(HttpResponse& response) {
+    response.setStatuscode(403);
+    response.setDesc(getResponseStatusDesc(403));
+    response.setVersion("HTTP/1.1");
+
+    response.setValueByHeader("Connection", "close");
+    response.markTrade();
+    char content_length[60] = {0};
+    sprintf(content_length, "%u", defaultResponse403Body.size());
+    response.setValueByHeader("Content-length", content_length);
+    response.setBody(defaultResponse403Body); 
+    return 0;
+}
+
+int HttpHelper::prepare503Response(HttpResponse& response) {
+    response.setStatuscode(503);
+    response.setDesc(getResponseStatusDesc(503));
+    response.setVersion("HTTP/1.1");
+
+    response.setValueByHeader("Connection", "close");
+    response.markTrade();
+    char content_length[60] = {0};
+    sprintf(content_length, "%u", defaultResponse503Body.size());
+    response.setValueByHeader("Content-length", content_length);
+    response.setBody(defaultResponse503Body);
+    return 0;
+}
+
+int HttpHelper::prepare504Response(HttpResponse& response) {
+    response.setStatuscode(504);
+    response.setDesc(getResponseStatusDesc(504));
+    response.setVersion("HTTP/1.1");
+
+    response.setValueByHeader("Connection", "close");
+    response.markTrade();
+    char content_length[60] = {0};
+    sprintf(content_length, "%u", defaultResponse504Body.size());
+    response.setValueByHeader("Content-length", content_length);
+    response.setBody(defaultResponse504Body);
+    return 0;
+}
+
+int HttpHelper::prepareDNSErrorResponse(HttpResponse& response) {
+    response.setStatuscode(503);
+    response.setDesc(getResponseStatusDesc(503));
+    response.setVersion("HTTP/1.1");
+
+    response.setValueByHeader("Connection", "close");
+    response.markTrade();
+    char content_length[60] = {0};
+    sprintf(content_length, "%u", defaultResponseDNSErrorBody.size());
+    response.setValueByHeader("Content-length", content_length);
+    response.setBody(defaultResponseDNSErrorBody);
+    return 0;
+}
+
+bool HttpHelper::isVaildResponseStatusCode(const int code) {
+    return (RESPONSE_STATUS_MAP.find(code) != RESPONSE_STATUS_MAP.end());
+}
+
+std::string HttpHelper::getResponseStatusDesc(const int code) {
+    auto iter = RESPONSE_STATUS_MAP.find(code);
+    if( iter == RESPONSE_STATUS_MAP.end() ) {
+        return std::string("");
+    }
+    return iter->second;
+}
+
+
 const std::string HttpMessage::METHOD = "METHOD";
 const std::string HttpMessage::URL = "URL";
 const std::string HttpMessage::VERSION = "VERSION";
 const std::string HttpMessage::STATUSCODE = "STATUSCODE";
 const std::string HttpMessage::DESC = "DESC";
 
-const std::string HttpResponse::OK = "HTTP/1.1 200 OK\r\nserver: meltcat/" + core::VERSION + "\r\n\r\n";
-const std::string HttpResponse::BAD_REQUEST = "HTTP/1.1 400 Bad Request\r\nserver: meltcat/" + core::VERSION + "\r\n\r\n";
-const std::string HttpResponse::NOT_FOUND = "HTTP/1.1 404 Not Found\r\nserver: meltcat/" + core::VERSION + "\r\n\r\n";
-const std::string HttpResponse::FORBIDDEN = "HTTP/1.1 403 Forbidden\r\nserver: meltcat/" + core::VERSION + "\r\n\r\n";
-
-int HttpParser::initParser(HttpMessage& message) {
-    if(buffer_ == nullptr || length_ <= 0) {
-        return -1;
-    }
-
-    http_parser_type parser_type;
-    int retcode = 0;
-
-    if(message.getRole() == HTTP_ROLE_REQUEST) { parser_type = HTTP_REQUEST; }
-    else if (message.getRole() == HTTP_ROLE_RESPONSE) { parser_type = HTTP_RESPONSE; }
-    else { retcode = -1; }
-
-    if (retcode != 0) { return retcode; }
-
-    http_parser_init(&parser_, parser_type);
-    http_parser_settings_init(&settings_);
-    parser_.data = static_cast<void*>(&message);
-
-    settings_.on_message_begin = on_message_begin;
-    settings_.on_message_complete = on_message_complete;
-    settings_.on_headers_complete = on_headers_complete;
-
-    settings_.on_url = on_url;
-    settings_.on_status = on_status;
-    settings_.on_header_field = on_header_field;
-    settings_.on_header_value = on_header_value;
-    settings_.on_body = on_body;
-    return 0;
-}
-
-int HttpParser::parse(const char* buf,size_t len, HttpMessage& message) {
-    buffer_ = buf;
-    length_ = len;
-    if( initParser(message) != 0 ){ return -1; }
-    return http_parser_execute(&parser_, &settings_, buffer_, length_);
-}
-
-int HttpParser::parse(const std::string& buffer, HttpMessage& message) {
-    return parse(buffer.c_str(), buffer.length(), message);
-}
-
-int HttpParser::on_message_begin(http_parser* parser) {
-    return 0;
-}
-
-int HttpParser::on_message_complete(http_parser* parser) {
-    return 0;
-}
-
-int HttpParser::on_url(http_parser* parser, const char* at, size_t len) {
-    HttpMessage* message_ = static_cast<HttpMessage*>(parser->data);
-    message_->setUrl(std::string(at, len));
-    return 0;
-}
-
-int HttpParser::on_status(http_parser* parser, const char* at, size_t len) {
-    HttpMessage* message_ = static_cast<HttpMessage*>(parser->data);
-    message_->setDesc(std::string(at, len));
-    return 0;
-}
-
-int HttpParser::on_header_field(http_parser* parser, const char* at, size_t len) {
-    HttpMessage* message_ = static_cast<HttpMessage*>(parser->data);
-    message_->header_field.assign(at, len);
-    return 0;
-}
-
-int HttpParser::on_header_value(http_parser* parser, const char* at, size_t len) {
-    HttpMessage* message_ = static_cast<HttpMessage*>(parser->data);
-    message_->setValueByHeader(message_->header_field, std::string(at, len));
-    return 0;
-}
-
-int HttpParser::on_headers_complete(http_parser* parser) {
-    HttpMessage* message_ = static_cast<HttpMessage*>(parser->data);
-    if(message_->getRole() == HTTP_ROLE_REQUEST) { message_->setMethod(http_method_str((http_method)parser->method)); }
-    else { message_->setStatuscode(parser->status_code); }
-    
-    if( !(parser->http_major > 0 && parser->http_minor > 0 ) ) { message_->setVersion("HTTP/1.0"); }
-    return 0;
-}
-
-int HttpParser::on_body(http_parser* parser, const char* at, size_t len) {
-    HttpMessage* message_ = static_cast<HttpMessage*>(parser->data);
-    message_->setBody(std::string(at, len));
-    return 0;
-}
+const std::string HttpResponse::OK = "HTTP/1.1 200 OK\r\nserver: tigerso/" + core::VERSION + "\r\n\r\n";
+const std::string HttpResponse::BAD_REQUEST = "HTTP/1.1 400 Bad Request\r\nserver: tigerso/" + core::VERSION + "\r\n\r\n";
+const std::string HttpResponse::NOT_FOUND = "HTTP/1.1 404 Not Found\r\nserver: tigerso/" + core::VERSION + "\r\n\r\n";
+const std::string HttpResponse::FORBIDDEN = "HTTP/1.1 403 Forbidden\r\nserver: tigerso/" + core::VERSION + "\r\n\r\n";
 
 //Http rule inspection
 int HttpInSpection::Inspect(const std::string& header,  const std::weak_ptr<HttpMessage>& wptr) {

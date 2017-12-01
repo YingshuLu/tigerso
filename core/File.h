@@ -33,6 +33,9 @@ namespace tigerso::core {
 #define FILE_SENDFILE_RECALL       1
 #define FILE_SENDFILE_DONE         2 
 
+#define FILE_BIG_CONTENT           128*1024  //128KB
+
+//Need buffer support
 class File {
 
 public:

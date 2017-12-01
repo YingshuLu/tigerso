@@ -14,12 +14,17 @@
 #include <string>
 #include <vector>
 #include "core/BaseClass.h"
+#include "core/File.h"
 
 namespace tigerso::net {
 
 const int SOCKET_IOSTATE_CLOSED   = -1;
 const int SOCKET_IOSTATE_CONTINUE = 0;
 const int SOCKET_IOSTATE_ERROR    = -2;
+
+//256KB
+#define BUFFER_LEAST_LENGTH (256*1024)
+#define BUFFER_GAP_LENGTH (8*1024)
 
 class Buffer: public core::nocopyable {
 
@@ -38,6 +43,7 @@ public:
     size_t addData(const std::string&);
     size_t removeData(std::string&, const size_t);
     size_t clear();
+    core::File* getFilePtr() { return &file_; }
 
 private:
     size_t readableBytes() const;
@@ -55,12 +61,13 @@ private:
     size_t writeIdx_;
     char* buffer_;
     size_t bufsize_;
+    core::File file_;
 
     static const size_t pregap = 8;
-    //initilize 16KB size
-    static const size_t least_len = 16384;
-    //gain space with 512B stepsize
-    static const size_t gain_gap = 1024;
+    //initilize 256KB size
+    static const size_t least_len = BUFFER_LEAST_LENGTH;
+    //gain space with 8KB stepsize
+    static const size_t gain_gap = BUFFER_GAP_LENGTH;
 };
 
 } //namespace tigerso::net

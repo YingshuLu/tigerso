@@ -11,12 +11,17 @@
 #include <time.h>
 #include <string>
 #include <iostream>
+#include <functional>
 #include "net/Socket.h"
+#include "net/SocketUtil.h"
+#include "net/Channel.h"
+#include "net/EventsLoop.h"
 #include "core/BaseClass.h"
 #include "dns/DNSCache.h"
 
 namespace tigerso::dns {
 
+using namespace tigerso::net;
 /*
  * Marco definitions refer to DNS RFC 1035:
  * https://tools.ietf.org/html/rfc1035  
@@ -37,6 +42,7 @@ namespace tigerso::dns {
 #define DNS_HEADER_FLAGS_TC                  0x0200
 #define DNS_HEADER_FLAGS_RD                  0x0100
 #define DNS_HEADER_FLAGS_RA                  0x0080
+#define DNS_HEADER_FLAGS_AD                  0x0020
 #define DNS_HEADER_FLAGS_RCODE_NONE_ERR      0x0000
 #define DNS_HEADER_FLAGS_RCODE_FRMT_ERR      0x0001
 #define DNS_HEADER_FLAGS_RCODE_SEVR_ERR      0x0002
@@ -73,10 +79,19 @@ namespace tigerso::dns {
 
 #define IPV4_ADDRSIZE 16
 #define DNS_SERVER_ADDR "8.8.8.8"
-#define DNS_SERVER_PORT 53
+#define DNS_SERVER_PORT "53"
 #define DNS_MESSAGE_LIMIT 512          
 #define DNS_DOMAIN_NAME_LIMIT 255
 #define DNS_RRNAME_POINTERSIZE 2
+
+#define DNS_NEED_MORE_DATA 40
+#define DNS_SEND_ERR DNS_ERR
+#define DNS_RECV_ERR DNS_ERR
+#define DNS_SOCKET_IO_COMPLETE DNS_OK
+
+/*EDNS, refer to rfc2671*/
+#define MAX_UDP_PAYLOAD 1280
+#define DNS_ADDITION_OPT 0x0029
 
 typedef int socket_t;
 
@@ -105,291 +120,44 @@ struct DNSAnswer {
 
 typedef struct DNSAnswer DNSAuthority;
 typedef struct DNSAnswer DNSAddition;
-
-static DNSCache* g_DNSCachePtr = DNSCache::getInstance(); 
+typedef std::function<int(const char*, time_t)> DNS_CALLBACK;
 
 class DNSResolver {
 
 public:
-    DNSResolver() {}
+    DNSResolver();
 
-    std::string queryDNS(std::string& name) {
-        query_name_ = name;
+    int queryDNSCache(const std::string& host, std::string& ipaddr);
+    int asyncQueryInit(const std::string& host, Socket& udpsock);
+    int setCallback(DNS_CALLBACK cb) {callback_ = cb;}
 
-        char buf[IPV4_ADDRSIZE] = {0};
-        if(!g_DNSCachePtr -> queryIP(query_name_.c_str(), buf, IPV4_ADDRSIZE)) {
-            answer_name_ = buf;
-            return answer_name_;
-        }
+    int asyncQueryStart(EventsLoop& loop, Socket& udpsock);
 
-        if(sendQuery() < 0) {
-            //cout << "send err" <<endl;
-            return std::string("");
-        }
-        if(recvAnswer() < 0) {
-            //cout << "recv error" <<endl;
-        }
-        return answer_name_;
-    }
-
-    int getAnswer(std::string& name, time_t& ttl) {
-        if(answer_name_.empty()) {
-            return -1;
-        }
-
-        name = answer_name_;
-        ttl = answer_ttl_;
-        return 0;
-    }
-
+    int getAnswer(std::string& name, time_t& ttl);
     static void setPrimaryAddr(const std::string& paddr) { primary_addr_ = paddr; }
     static void setSecondAddr(const std::string& saddr) { second_addr_ = saddr; }
 
+    int sendQuery(Socket& udpsock);
+    int recvAnswer(Socket& udpsock);
+    int errorHandle(Socket& udpsock);
+
+    ~DNSResolver();
 private:
+    /*nocopyable*/
     DNSResolver(const DNSResolver&){}
     DNSResolver& operator=(const DNSResolver&){}
 
 private:
-    int packDNSQuery(const char* query_name, size_t len) {
-        if(query_name == NULL) {
-            return DNS_INPUT_ERR;
-        }
-
-        bzero(query_buf_, sizeof(query_buf_));
-        unsigned char* cur = query_buf_;
-
-        DNSHeader header;
-        
-        // Generate transaction ID
-        time_t seed = time(NULL);
-        unsigned short tid = (unsigned short) rand_r((unsigned int*)&seed);
-
-        //cout << "query->id: " << tid <<endl;
-        header.id = htons(tid);
-        header.flags = htons(FLAGS_CONBIME(DNS_STANDARD_QUERY_FLAGS, DNS_HEADER_FLAGS_RA));
-        header.questions = htons(0x0001);
-        header.answers = htons(DNS_HEAD_EMPTY);
-        header.authorities = htons(DNS_HEAD_EMPTY);
-        header.additions = htons(DNS_HEAD_EMPTY);
-
-        //copy header to send buffer
-        memcpy(cur, &header, sizeof(header));
-        cur += sizeof(header);
-
-        //Store query info
-        ID_ = tid;
-        query_name_ = std::string(query_name, len);
-
-        DNSQuery query;
-        query.dns_name = cur;
-        
-        unsigned char num = 0x00;
-        size_t domain_len = 0;
-        char domain[DNS_DOMAIN_NAME_LIMIT] = {0};
-        memcpy(domain, query_name, strlen(query_name));
-        unsigned char* ptr = (unsigned char*) strtok(domain, ".");
-       
-        //copy query to send buffer
-        while(NULL != ptr) {
-            domain_len = strlen((const char*)ptr);
-            num = (unsigned char) domain_len;
-            memcpy(cur, &num, sizeof(num));
-            cur++;
-
-            memcpy(cur, ptr, domain_len);
-            cur += domain_len;
-            ptr = (unsigned char*) strtok(NULL, ".");
-        }
-        cur++;
-
-        ////cout << "domain packed, size: " << cur - query_buf_ <<endl;
-        query.dns_type = htons(DNS_TYPE_A);
-        query.dns_class = htons(DNS_CLASS_INTERNET);
-        memcpy(cur, &(query.dns_type), sizeof(query.dns_type));
-        cur += sizeof(query.dns_type);
-        memcpy(cur, &(query.dns_class), sizeof(query.dns_class));
-        cur += sizeof(query.dns_class);
-
-        return (cur - query_buf_);
-    }
-
-    int resvDNSAnswer() {
-        unsigned char* cur = response_buf_;
-
-        /* START RESOLVE HEADER */ 
-        DNSHeader* hptr = (DNSHeader*) cur;
-        //cout<< "saved id: " << ID_ << endl;
-        //cout<< "header->id: " << ntohs(hptr->id) << endl;
-        //cout<< "header->flags: " << ntohs(hptr->flags) << endl;
-        //cout<< "header->questions " << ntohs(hptr->questions) << endl;
-        //cout<< "header->answers " << ntohs(hptr->answers) << endl;
-        //cout<< "header->authotities: " << ntohs(hptr->authorities) << endl;
-        //cout<< "header->additions: " << ntohs(hptr->additions) << endl;
-
-        if (ID_ != ntohs(hptr->id)) {
-            //cout << "ID Mismatched!" <<endl;
-            return DNS_ID_MISMATCH;
-        }
-        if(0 != BITS_COMPARE(DNS_STANDARD_ANSWER_FLAGS,ntohs(hptr->flags) || 0x0001 > ntohs(hptr->answers))) {
-            //cout << "answer header info not match" <<endl;
-            //return DNS_ERR;
-        }
-
-        cur += sizeof(DNSHeader);
-        /* END  HEADER */ 
-
-        /* START RESOLVE QUERY SECTION*/
-        unsigned char RRName[DNS_DOMAIN_NAME_LIMIT] = {0};
-        int resolved = resolveRRName(response_buf_, sizeof(response_buf_), cur, RRName, sizeof(RRName));
-        if(0 > resolved) {return resolved;}
-        //cout << "resolve query name: " << RRName <<endl;
-        cur += resolved;
-        //skip query type check
-        cur += 2;
-        //skip query class check
-        cur += 2;
-        /* END QUERY SECTION */
-
-        /* START RESOLVE RR SECTIONS */
-        int RRNums[3] = {ntohs(hptr->answers), ntohs(hptr->authorities), ntohs(hptr->additions)};
-        for (int n = 0; n < 3; n++) {
-            int sections =  RRNums[n];
-
-            //Empty Answers
-            if(0 == sections && 0 == n) {
-                return DNS_ERR;        
-            }
-            //cout << "Total section : " << sections <<"\n start resolve answers"<< endl;
-            for(int i = 0; i < sections; i++) {
-                unsigned char rdomain[DNS_DOMAIN_NAME_LIMIT] = {0};
-                unsigned char rdata[DNS_DOMAIN_NAME_LIMIT] = {0};
-                unsigned short rtype = 0;
-                unsigned short rclass = 0;
-                time_t rttl = 0;
-
-                int resolved = resolveRR(response_buf_, sizeof(response_buf_), cur, rdomain, DNS_DOMAIN_NAME_LIMIT, &rtype, &rclass, &rttl, rdata);
-                if(0 > resolved) {
-                    return resolved;
-                }
-
-                // Get First IP Address from Answer(s)
-                if( 0 == n && 0 == BITS_COMPARE(rtype, DNS_TYPE_A)) { 
-                    answer_name_ = std::string((char*)rdata); 
-                    answer_ttl_ = rttl;
-                    return DNS_OK;
-                }
-                cur += resolved;
-            }
-        }
-        /* END RR SECTIONS*/
-
-        return DNS_ERR;
-    }
-
-
-    int sendQuery() {
-        int len = packDNSQuery(query_name_.c_str(), query_name_.size());
-        if(len < 0) {
-            //cout << "Pack DNS query error" <<endl;
-            return len;
-        }
-
-        sockfd_ = socket(AF_INET, SOCK_DGRAM, 0);
-        if(sockfd_ < 0) {
-            return DNS_ERR;
-        }
-
-        bzero(&server_addr_, sizeof(server_addr_));
-        server_addr_.sin_family = AF_INET;
-        inet_aton(DNS_SERVER_ADDR, &server_addr_.sin_addr);
-        server_addr_.sin_port = htons(DNS_SERVER_PORT);
-
-        size_t addr_len = sizeof(server_addr_);
-
-        int sendn = sendto(sockfd_, query_buf_, len, 0, (sockaddr*) &server_addr_, addr_len);
-        //cout << "send " << sendn << " bytes" <<endl;
-        return sendn;
-    }
-
-    int recvAnswer() {
-        if(sockfd_ < 0) {
-            //cout << "Invalid sockfd" <<endl;
-            return DNS_ERR;
-        }
-
-        socklen_t len = socklen_t(sizeof(server_addr_));
-
-        int recvn = recvfrom(sockfd_, (void*) response_buf_, sizeof(response_buf_), 0, (sockaddr*) &server_addr_, &len);
-        if(recvn == -1) {
-            //cout << "recvfrom return -1" <<endl;
-            return DNS_ERR;
-        }
-
-        //cout << "recv " << recvn << " bytes" <<endl;
-        return resvDNSAnswer();    
-    }
+    int packDNSQuery(const char* query_name, size_t len);
+    int resvDNSAnswer();
 
 private:
-    int resolveRR(unsigned char* buf, size_t buf_len, unsigned char* curp, unsigned char* name, size_t name_len, unsigned short* type, unsigned short* rclass, time_t* ttl, unsigned char* rdata) {
-        if(NULL == buf 
-           || NULL == curp
-           || NULL == name
-           || NULL == type
-           || NULL == rclass
-           || NULL == ttl 
-           || NULL == rdata) {
-            return DNS_INPUT_ERR;
-        }
+    int aresPackDNSQuery(const char* query_name, size_t len);
+    int aresResvDNSAnswer();
 
-        unsigned char* cur = curp;
-
-        //Get Name
-        int resolved = resolveRRName(buf, buf_len, cur, name, name_len);
-        if(0 > resolved) {
-            return DNS_RESOLVE_ERR;
-        }
-        //cout << "RR >>  name: " << name <<endl;
-        cur += resolved;
-
-        //Get Type
-        *type = ntohs(*((unsigned short*) cur));
-        cur += 2;
-        //cout << "RR >> Type: " << *type <<endl;
-
-        //Get Class
-        *rclass = ntohs(*((unsigned short*) cur));
-        cur += 2;
-        //cout << "RR >> class: " << *rclass <<endl;
-
-        //Get TTL
-        *ttl = ntohl(*((int*)cur));
-        cur += 4;
-        //cout << "RR >> TTL: " << *ttl <<endl;
-
-        //Get RDLENGTH
-        unsigned short num = ntohs(*((unsigned short*) cur));      
-        cur += 2;
-        //cout << "RR >> RData length: " << size_t(num) <<endl;
-        
-        //Get RData
-        //Data is a pointer
-        if(DNS_RRNAME_POINTERSIZE == num && startWithPointer(cur)) {
-            int res = resolveRRName(response_buf_, sizeof(response_buf_), cur, rdata, 0); 
-            if(0 > res) { return res; }
-        }
-        else { memcpy(rdata, cur, size_t(num)); }
-
-        if(BITS_COMPARE(*type, DNS_TYPE_A) == 0) {
-            char ip[IPV4_ADDRSIZE] = {0};
-            strncpy(ip, inet_ntoa(*((struct in_addr*)rdata)), IPV4_ADDRSIZE);
-            memcpy(rdata, ip, sizeof(ip));
-        }
-        //cout << ">> response rdata: " << rdata <<endl;
-
-        cur += size_t(num);
-        return (cur - curp);
-    }
-
+private:
+    int resolveRR(unsigned char* buf, size_t buf_len, unsigned char* curp, unsigned char* name, size_t name_len, unsigned short* type, unsigned short* rclass, time_t* ttl, unsigned char* rdata);
+   
     inline bool startWithPointer(unsigned char* cur) {
         return !startWithLabel(cur);
     }
@@ -412,41 +180,8 @@ private:
      * Success: resolved size
      * Failure: DNS_ERR, DNS_INPUT_ERR
     */
-    int resolveRRName(unsigned char* buf, size_t buf_len, unsigned char* curp, unsigned char* pname, size_t name_len) {
-        if(NULL == buf || NULL == curp || NULL == pname) {
-            return DNS_INPUT_ERR;
-        }
-
-        unsigned char* cur = curp;
-        unsigned char* name = pname;
-        unsigned char num = *cur;
-        while(0x00 != num && startWithLabel(cur)) {
-           cur ++;
-           memcpy(name, cur, size_t(num));
-           name += size_t(num);
-           cur += size_t(num);
-           memcpy(name, ".", 1);
-           name ++;
-           num = *cur;
-        }
-
-        if(0x00 == num) {cur++;}
-        else if(startWithPointer(cur)) {
-            unsigned char high = *cur & ~DNS_RRNAME_OFFSETFLAG;
-            unsigned char low = *(cur+1);
-            unsigned short offset = high;
-            offset = offset << 8;
-            offset = high + low;
-            //cout << "RRname Offset : " << offset <<endl;
-            if(0 > resolveRRName(buf, buf_len, buf + size_t(offset), name, name_len)) {
-                 return DNS_RESOLVE_ERR;
-            }
-            cur += 2;
-        }
-
-        return (cur - curp);
-    }
-    
+    int resolveRRName(unsigned char* buf, size_t buf_len, unsigned char* curp, unsigned char* pname, size_t name_len);
+   
 private:
     unsigned char query_buf_ [DNS_MESSAGE_LIMIT] = {0};
     unsigned char response_buf_[DNS_MESSAGE_LIMIT] = {0};
@@ -454,6 +189,9 @@ private:
     unsigned short ID_ = 0x00;
     socket_t sockfd_ = -1;
     sockaddr_in server_addr_;
+
+private:
+    DNS_CALLBACK callback_ = nullptr;
 
 private:
     std::string query_name_;
@@ -464,10 +202,8 @@ private:
     std::string assigned_addr_ = "";
     static std::string primary_addr_;
     static std::string second_addr_;
+    static DNSCache* g_DNSCachePtr; 
 };
-
-std::string DNSResolver::primary_addr_ = DNS_SERVER_ADDR;
-std::string DNSResolver::second_addr_ = "";
 
 } //namespace tigerso::dns
 #endif

@@ -8,6 +8,10 @@ File::File(const char* filename) {
     memcpy(filename_, filename, len);
 }
 
+File::File() {
+    this->reset();
+}
+
 ssize_t File::readOut(char* buf, size_t len) {
     if(NULL == buf || len <= 0) { 
         return FILE_ARGS_INVALID;

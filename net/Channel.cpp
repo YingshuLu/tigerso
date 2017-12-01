@@ -7,48 +7,40 @@ namespace tigerso::net {
 
  // quick set event
 bool Channel::enableReadEvent() {
+    if(events.readFlag) { return true; }
     events.readFlag = true;
     update();
+    std::cout<<">> enable ["<< sockfd <<"]  read event" << std::endl;
     return true;
 }
 
 bool Channel::disableReadEvent() {
+    if(!events.readFlag) { return true; }
     events.readFlag = false;
     update();
+    std::cout<<">> disable ["<< sockfd <<"] read event" << std::endl;
     return true;
 }
 
 bool Channel::enableWriteEvent() {
+    if(events.writeFlag) { return true; }
     events.writeFlag = true;
     update();
+    std::cout<<">> enable ["<< sockfd <<"] write event" << std::endl;
     return true;
 }
 
 bool Channel::disableWriteEvent() {
+    if(!events.writeFlag) { return true; }
     events.writeFlag = false;
     update();
+    std::cout<<">> disable ["<< sockfd <<"] write event" << std::endl;
     return true;
-}
-
-bool Channel::alive() {
-    if( sock_.lock() ) {
-        return true;
-    }
-    return false;
 }
 
 void Channel::remove() {
      disableAllEvent();
-     loop_.unregisterChannel(getPtr());
-}
-
-void Channel::reset() {
-    resetFlag();
-}
-
-std::shared_ptr<Channel> Channel::getPtr() {
-    std::shared_ptr<Channel> cnptr = shared_from_this();
-    return cnptr;
+     loop_.unregisterChannel(*sock_);
 }
 
 int Channel::setEvents(bool readable, bool writeable, bool edge, bool keep) {
@@ -60,12 +52,8 @@ int Channel::setEvents(bool readable, bool writeable, bool edge, bool keep) {
     return 0;
 }
 
-std::shared_ptr<Socket> Channel::getChannelSocket() const {
-    auto ptr = sock_.lock();
-    if( !ptr ) {
-        return nullptr;
-    }
-    return ptr;
+Socket* Channel::getSocketPtr() const {
+    return sock_;
 }
 
 EventFunc Channel::setBeforeCallback(EventFunc func) {
@@ -93,6 +81,11 @@ EventFunc Channel::setErrorCallback(EventFunc func) {
     return func;
 }
 
+EventFunc Channel::setRdhupCallback(EventFunc func) {
+    error_cb = func;
+    return func;
+}
+
 bool Channel::disableAllEvent() {
     disableReadEvent();
     disableWriteEvent();
@@ -104,22 +97,7 @@ void Channel::resetFlag() {
 }
 
 bool Channel::update() {
-
-    /*
-       if (!events.readFlag && !events.writeFlag) {
-       loop_.removeEvent(*this);
-       }
-       else {
-       loop_.updateEvent(*this);
-       }
-       */
-    ChannelPtr cnptr = getPtr();
-    if (!cnptr) {
-        std::cout << "Channel ptr is null" << std::endl;
-        return false;
-    }
-    loop_.updateChannel(getPtr());
-    return true;
+    return loop_.updateChannel(this) == 0;
 }
 
 }

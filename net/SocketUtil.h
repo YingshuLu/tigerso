@@ -30,6 +30,8 @@
 
 namespace tigerso::net {
 
+#define MIN_SOCKET_FD 256
+
 class SocketUtil {
 public:
 	//basic socket API
@@ -37,7 +39,7 @@ public:
 	static int Bind(Socket& mcsock, const std::string& s_addr, const std::string& port, const int family);
 	static int Listen(Socket& listen_mcsock, const int backlog);
 	static int Accept(Socket& listen_mcsock, Socket& accept_mcsock);
-	static int Connect(Socket& mcsock, const std::string& s_addr, const std::string& port);
+	static int Connect(Socket& mcsock, const std::string& s_addr, const std::string& port, const int type = SOCK_STREAM);
     static int Close(Socket&);
     static int GraceClose(Socket&);
 
@@ -55,6 +57,8 @@ public:
     static int CreateUDPConnect(const std::string&ip, const std::string& port, const bool unblock, Socket& mcsock);
 	static bool ValidateAddr(const std::string& addr);
 	static bool ValidatePort(const std::string& port);
+    static int RelocateFileDescriptor(int oldfd, int leastfd);
+    static int SetResourceLimitation();
 
 private:
 	SocketUtil();

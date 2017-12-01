@@ -7,6 +7,7 @@
 #include <string.h>
 #include <vector>
 #include <map>
+#include <set>
 #include <memory>
 #include <string.h>
 #include "core/Logging.h"
@@ -16,46 +17,59 @@
 
 namespace tigerso::net {
 
-typedef std::shared_ptr<Channel> ChannelPtr;
+//typedef std::shared_ptr<Channel> ChannelPtr;
 
-static const int MAX_CHANNEL_NUM = 10240;
-static const int DEFAULT_CHANNEL_NUM = 1024;
+static const int MAX_CHANNEL_NUM = 1024;
+static const int DEFAULT_CHANNEL_NUM = 512;
 
 class EventsLoop: public core::nocopyable {
+    struct EventData {
+        Channel* cnptr = nullptr;
+        int sockfd = -1;
+        int alive = 0;
+    };
+    typedef EventData* DataPtr;
 public:
     EventsLoop(const int channels = DEFAULT_CHANNEL_NUM) 
         :channelNum_(channels) {
         createEpollBase();
+        std::cout << "Epoll createdm socket: " << epfd_ << std::endl;
     }
 
-    ChannelPtr getChannel(const SocketPtr&);
-    int registerChannel(const ChannelPtr&);
-    int unregisterChannel(const ChannelPtr&);
-    bool contains(const ChannelPtr&);
-    bool contains(const SocketPtr&);
+    int registerChannel(Socket&);
+    int unregisterChannel(Socket&);
 
     void setTimeout(const int time);
     int getEpollBase() const;
-    int updateChannel(const ChannelPtr&);
+    int updateChannel(Channel*);
     int loop();
+    int stop() {loop_ = false;}
 
-    void displayChannelList() const;
+    ~EventsLoop() {
+        std::cout << "close epoll fd [" << epfd_ << "]" << std::endl; 
+        ::close(epfd_);
+        epfd_ = -1;
+    }
 
 private:
     int waitChannel();
-    void loopEvents();
     int createEpollBase();
-    int ctlChannel(const ChannelPtr&, const int op);
-    int addChannel(const ChannelPtr&);
-    int removeChannel(const ChannelPtr&);
-    evf_t transFlag(const ChannelPtr&);
+    int ctlChannel(Channel*, const int op);
+    int addChannel(Channel*);
+    int removeChannel(Channel*);
+    evf_t transFlag(Channel*);
+    int cleanNeedDeletedChannels();
 
+private:
     int epfd_ = -1;
     epoll_event epevents_[MAX_CHANNEL_NUM];
     const int channelNum_ = DEFAULT_CHANNEL_NUM;
-    int waitTime_ = 10000;
+    int waitTime_ = 10000; //10s
     bool loop_ = false;
-    std::map<socket_t, ChannelPtr> channels_;
+
+private:
+    std::set<Channel*> needDeletedChannelSet_;
+
 };
 
 }//namespace mcutil

@@ -62,10 +62,6 @@ int Socket::getSockAddr(sockaddr_in& inaddr) {
     return 0;
 }
 
-std::shared_ptr<Channel>& Socket::getChannel() { 
-    return channelPtr_;
-}
-
 void Socket::setSocket(const socket_t& sockfd) {
     sockfd_ = sockfd;
 }
@@ -110,10 +106,6 @@ void Socket::setKeepAlive(bool on) {
 
 void Socket::setTcpNoDelay(bool on) {
     SocketUtil::SetTcpNoDelay(*this, on);
-}
-
-void Socket::setChannel(std::shared_ptr<Channel>& ptr) {
-    channelPtr_ = ptr;
 }
 
 ssize_t Socket::recvNIO() {
@@ -216,15 +208,56 @@ ssize_t Socket::sendNIO(std::string& data) {
 }
 
 int Socket::close() {
-    if(!this->exist()) { return 0; }
-
-    std::shared_ptr<Channel> cnptr = this->getChannel();
+    Channel* cnptr = this->channelptr;
     if(cnptr != nullptr) {
         cnptr->remove();
     }
     //clear channelptr
-    channelPtr_ = nullptr;
+    channelptr = nullptr;
     return SocketUtil::Close(*this);
+}
+
+void Socket::reset() {
+    channelptr = nullptr;
+    blockIO_ = false;
+    role_ = SOCKET_ROLE_UINIT;
+    stage_ = SOCKET_STAGE_UINIT;
+    addr_ = "";
+    port_ = "";
+    sockfd_ = -1;
+
+    inBuffer_->clear();
+    outBuffer_->clear();
+    bufPtr_.in_ = inBuffer_;
+    bufPtr_.out_ = outBuffer_;
+}
+
+bool Socket::enableEvent(unsigned short flags) {
+    if(this->exist() && channelptr != nullptr) { 
+        if(flags & SOCKET_EVENT_READ) {
+            channelptr->enableReadEvent();
+        }
+        
+        if(flags & SOCKET_EVENT_WRITE) {
+            channelptr->enableWriteEvent();
+        }
+        return true;
+    }
+    return false;
+}
+
+bool Socket::disableEvent(unsigned short flags) {
+    if(this->exist() && channelptr != nullptr) { 
+        if(flags & SOCKET_EVENT_READ) {
+            channelptr->disableReadEvent();
+        }
+        
+        if(flags & SOCKET_EVENT_WRITE) {
+            channelptr->disableWriteEvent();
+        }
+        return true;
+    }
+    return false;
 }
  
 }

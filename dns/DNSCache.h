@@ -5,6 +5,8 @@
 #include <string.h>
 #include <time.h>
 #include <string>
+#include <vector>
+#include <map>
 #include "core/SysUtil.h"
 #include "ssl/SSLHelper.h"
 
@@ -15,59 +17,16 @@ namespace tigerso::dns {
 #define IPV4_ADDRSIZE 16
 #define HASH_NODENUM 65536
 #define HASH_MAXCONFLICT 8
+#define HOST_MAXLENGTH 256
 
 typedef unsigned short hashkey_t;
 typedef unsigned int offset_t;
 
-static int calcMd5(const char* buf, unsigned char* key, int keylen) {
-    if(buf == nullptr || key == nullptr || keylen < MD5_KEYSIZE) {
-        return -1;
-    }
-
-    MD5_CTX    mctx;
-    MD5_Init(&mctx);
-    MD5_Update(&mctx, (unsigned char*) buf, strlen(buf));
-    MD5_Final(key, &mctx);
-    return 0;
-}
-
 struct DNSNode {
-    explicit DNSNode() {}
-
-    inline bool isUsed() {
-       time_t now = time(NULL);
-       if(!reserved_ && expriedAt_ < now) {
-            return false;
-       }
-       return true;
-    }
-
-    inline int updateNode(unsigned char* key, const char* ip, int& ttl) {
-        if(nullptr == key || nullptr == ip) { return -1; }
-        if(ttl < 0) {
-            reserved_ = true;
-        }
-        else {
-            expriedAt_ = time(NULL) + time_t(ttl);
-        }
-        memcpy(key_, key, MD5_KEYSIZE);
-        memcmp(addr_, ip, IPV4_ADDRSIZE);
-        return 0;
-    }
-
-    int setAddr(const char* addr, size_t len);
-    int setExpiredAtTime(time_t);
-    int setMd5Key(const char* key, size_t keylen);
-
-    const char* getAddr();
-    time_t getExpiredAtTime();
-    const unsigned char* getMd5Key();
-    
-private:
+    char host_[HOST_MAXLENGTH] = {0};
     unsigned char key_[MD5_KEYSIZE] = {0};
     char addr_[IPV4_ADDRSIZE] = {0};
     time_t expriedAt_ = 0;
-    bool reserved_ = false;
 };
 
 struct DNSCacheData {
@@ -80,6 +39,8 @@ public:
     static DNSCache* getInstance();
     int queryIP(const char*,  char*, size_t);
     int updateDNS(const char* host, const char* ip, int& ttl);
+    int setStickDNSNode(std::string& host, std::string& ip);
+    int getStickDNSNode(const std::string& host, std::string& ip);
     ~DNSCache();
 
 private:
@@ -89,20 +50,16 @@ private:
     DNSCacheData* getShmPtr();
     
 private:
-    hashkey_t getHashkey(const std::string& host, unsigned char* pkey, size_t len) {
-        unsigned char key[MD5_KEYSIZE] = {0};
-        unsigned char* p = key;
-        if(nullptr != pkey && len >= MD5_KEYSIZE) {
-            p = pkey;
-        }
-        calcMd5(host.c_str(), p, MD5_KEYSIZE);
-        return *((hashkey_t*) p) % HASH_NODENUM;
-    }
+    hashkey_t getHashkey(const std::string& host, unsigned char* pkey, size_t len);
+    hashkey_t getNextHashkey(const unsigned char* pkey, const size_t len, const offset_t cnt);
+    bool isNodeUsed(DNSNode& node);
+    int updateNode(DNSNode& dst, const char* host, unsigned char* key, const char* ip, int& ttl);
        
 private:
     static DNSCache* pInstance_;
     core::SharedMemory shm_;
     core::ShmMutex  mutex_; //process-shared mutex
+    std::map<std::string, std::vector<std::string>> stickDNSData_;
     static std::string cachefile_; 
 };
 

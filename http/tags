@@ -1,0 +1,445 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARRAY_SIZE	lib/http_parser.c	41;"	d	file:
+BAD_REQUEST	HttpMessage.cpp	/^const std::string HttpResponse::BAD_REQUEST = "HTTP\/1.1 400 Bad Request\\r\\nserver: tigerso\/" + core::VERSION + "\\r\\n\\r\\n";$/;"	m	class:tigerso::http::HttpResponse	file:
+BAD_REQUEST	HttpMessage.h	/^    static const std::string BAD_REQUEST; $/;"	m	class:tigerso::http::HttpResponse
+BIT_AT	lib/http_parser.c	45;"	d	file:
+Base64decode	lib/base64.c	/^int Base64decode(char *bufplain, const char *bufcoded)$/;"	f
+Base64decode_len	lib/base64.c	/^int Base64decode_len(const char *bufcoded)$/;"	f
+Base64encode	lib/base64.c	/^int Base64encode(char *encoded, const char *string, int len)$/;"	f
+Base64encode_len	lib/base64.c	/^int Base64encode_len(int len)$/;"	f
+CALLBACK_DATA	lib/http_parser.c	128;"	d	file:
+CALLBACK_DATA_	lib/http_parser.c	105;"	d	file:
+CALLBACK_DATA_NOADVANCE	lib/http_parser.c	132;"	d	file:
+CALLBACK_NOTIFY	lib/http_parser.c	99;"	d	file:
+CALLBACK_NOTIFY_	lib/http_parser.c	80;"	d	file:
+CALLBACK_NOTIFY_NOADVANCE	lib/http_parser.c	102;"	d	file:
+CHUNKED	lib/http_parser.c	169;"	d	file:
+CLOSE	lib/http_parser.c	171;"	d	file:
+CONNECTION	lib/http_parser.c	165;"	d	file:
+CONTENT_LENGTH	lib/http_parser.c	166;"	d	file:
+COUNT_HEADER_SIZE	lib/http_parser.c	154;"	d	file:
+CR	lib/http_parser.c	410;"	d	file:
+CURRENT_STATE	lib/http_parser.c	59;"	d	file:
+DESC	HttpMessage.cpp	/^const std::string HttpMessage::DESC = "DESC";$/;"	m	class:tigerso::http::HttpMessage	file:
+DESC	HttpMessage.h	/^    static const std::string DESC;$/;"	m	class:tigerso::http::HttpMessage
+ELEM_AT	lib/http_parser.c	51;"	d	file:
+FORBIDDEN	HttpMessage.cpp	/^const std::string HttpResponse::FORBIDDEN = "HTTP\/1.1 403 Forbidden\\r\\nserver: tigerso\/" + core::VERSION + "\\r\\n\\r\\n";$/;"	m	class:tigerso::http::HttpResponse	file:
+FORBIDDEN	HttpMessage.h	/^    static const std::string FORBIDDEN;$/;"	m	class:tigerso::http::HttpResponse
+F_CHUNKED	lib/http_parser.h	/^  { F_CHUNKED               = 1 << 0$/;"	e	enum:flags
+F_CONNECTION_CLOSE	lib/http_parser.h	/^  , F_CONNECTION_CLOSE      = 1 << 2$/;"	e	enum:flags
+F_CONNECTION_KEEP_ALIVE	lib/http_parser.h	/^  , F_CONNECTION_KEEP_ALIVE = 1 << 1$/;"	e	enum:flags
+F_CONNECTION_UPGRADE	lib/http_parser.h	/^  , F_CONNECTION_UPGRADE    = 1 << 3$/;"	e	enum:flags
+F_CONTENTLENGTH	lib/http_parser.h	/^  , F_CONTENTLENGTH         = 1 << 7$/;"	e	enum:flags
+F_SKIPBODY	lib/http_parser.h	/^  , F_SKIPBODY              = 1 << 6$/;"	e	enum:flags
+F_TRAILING	lib/http_parser.h	/^  , F_TRAILING              = 1 << 4$/;"	e	enum:flags
+F_UPGRADE	lib/http_parser.h	/^  , F_UPGRADE               = 1 << 5$/;"	e	enum:flags
+HP_PARSE_BAD_REQUEST	HttpParser.h	36;"	d
+HP_PARSE_BAD_RESPONSE	HttpParser.h	37;"	d
+HP_PARSE_COMPLETE	HttpParser.h	38;"	d
+HP_PARSE_ERROR	HttpParser.h	35;"	d
+HP_PARSE_NEED_MOREDATA	HttpParser.h	39;"	d
+HTTP_BOTH	lib/http_parser.h	/^enum http_parser_type { HTTP_REQUEST, HTTP_RESPONSE, HTTP_BOTH };$/;"	e	enum:http_parser_type
+HTTP_ERRNO_GEN	lib/http_parser.h	281;"	d
+HTTP_ERRNO_GEN	lib/http_parser.h	285;"	d
+HTTP_ERRNO_MAP	lib/http_parser.h	/^  HTTP_ERRNO_MAP(HTTP_ERRNO_GEN)$/;"	e	enum:http_errno
+HTTP_ERRNO_MAP	lib/http_parser.h	234;"	d
+HTTP_INSPECTION_BLOCK	HttpMessage.h	/^const int HTTP_INSPECTION_BLOCK = -1;$/;"	m	namespace:tigerso::http
+HTTP_INSPECTION_CONTINUE	HttpMessage.h	/^const int HTTP_INSPECTION_CONTINUE = 0;$/;"	m	namespace:tigerso::http
+HTTP_INSPECTION_MODIFIED	HttpMessage.h	/^const int HTTP_INSPECTION_MODIFIED = 1;$/;"	m	namespace:tigerso::http
+HTTP_MAX_HEADER_SIZE	lib/http_parser.h	64;"	d
+HTTP_METHOD_MAP	lib/http_parser.h	/^  HTTP_METHOD_MAP(XX)$/;"	e	enum:http_method
+HTTP_METHOD_MAP	lib/http_parser.h	164;"	d
+HTTP_PARSER_ERRNO	lib/http_parser.h	289;"	d
+HTTP_PARSER_STRICT	lib/http_parser.h	53;"	d
+HTTP_PARSER_VERSION_MAJOR	lib/http_parser.h	28;"	d
+HTTP_PARSER_VERSION_MINOR	lib/http_parser.h	29;"	d
+HTTP_PARSER_VERSION_PATCH	lib/http_parser.h	30;"	d
+HTTP_REQUEST	lib/http_parser.h	/^enum http_parser_type { HTTP_REQUEST, HTTP_RESPONSE, HTTP_BOTH };$/;"	e	enum:http_parser_type
+HTTP_RESPONSE	lib/http_parser.h	/^enum http_parser_type { HTTP_REQUEST, HTTP_RESPONSE, HTTP_BOTH };$/;"	e	enum:http_parser_type
+HTTP_ROLE_REQUEST	HttpMessage.h	/^const http_role_t HTTP_ROLE_REQUEST = 0;$/;"	m	namespace:tigerso::http
+HTTP_ROLE_RESPONSE	HttpMessage.h	/^const http_role_t HTTP_ROLE_RESPONSE = 1;$/;"	m	namespace:tigerso::http
+HTTP_ROLE_UINIT	HttpMessage.h	/^const http_role_t HTTP_ROLE_UINIT = -1;$/;"	m	namespace:tigerso::http
+HTTP_STATUS_MAP	lib/http_parser.h	/^  HTTP_STATUS_MAP(XX)$/;"	e	enum:http_status
+HTTP_STATUS_MAP	lib/http_parser.h	94;"	d
+HTTP_STRERROR_GEN	lib/http_parser.c	464;"	d	file:
+HTTP_STRERROR_GEN	lib/http_parser.c	471;"	d	file:
+HttpHelper	HttpMessage.h	/^    HttpHelper(){}$/;"	f	class:tigerso::http::HttpHelper
+HttpHelper	HttpMessage.h	/^class HttpHelper {$/;"	c	namespace:tigerso::http
+HttpInSpection	HttpMessage.h	/^class HttpInSpection {$/;"	c	namespace:tigerso::http
+HttpMessage	HttpMessage.h	/^class HttpMessage {$/;"	c	namespace:tigerso::http
+HttpParser	HttpParser.h	/^    HttpParser(): buffer_(nullptr), length_(0), parsedn_(0), state_(PARSE_UNINIT), message_(nullptr) {}$/;"	f	class:tigerso::http::HttpParser
+HttpParser	HttpParser.h	/^class HttpParser: public core::nocopyable {$/;"	c	namespace:tigerso::http
+HttpRequest	HttpMessage.h	/^    HttpRequest() { role_ = HTTP_ROLE_REQUEST; }$/;"	f	class:tigerso::http::HttpRequest
+HttpRequest	HttpMessage.h	/^class HttpRequest: public HttpMessage {$/;"	c	namespace:tigerso::http
+HttpResponse	HttpMessage.h	/^    HttpResponse() { role_ = HTTP_ROLE_RESPONSE; }$/;"	f	class:tigerso::http::HttpResponse
+HttpResponse	HttpMessage.h	/^class HttpResponse: public HttpMessage {$/;"	c	namespace:tigerso::http
+IS_ALPHA	lib/http_parser.c	413;"	d	file:
+IS_ALPHANUM	lib/http_parser.c	415;"	d	file:
+IS_HEADER_CHAR	lib/http_parser.c	442;"	d	file:
+IS_HEX	lib/http_parser.c	416;"	d	file:
+IS_HOST_CHAR	lib/http_parser.c	429;"	d	file:
+IS_HOST_CHAR	lib/http_parser.c	434;"	d	file:
+IS_HTTPPARSER_INITED	HttpParser.h	34;"	d
+IS_MARK	lib/http_parser.c	417;"	d	file:
+IS_NUM	lib/http_parser.c	414;"	d	file:
+IS_URL_CHAR	lib/http_parser.c	428;"	d	file:
+IS_URL_CHAR	lib/http_parser.c	432;"	d	file:
+IS_USERINFO_CHAR	lib/http_parser.c	420;"	d	file:
+Inspect	HttpMessage.cpp	/^int HttpInSpection::Inspect(const std::string& header,  const std::weak_ptr<HttpMessage>& wptr) {$/;"	f	class:tigerso::http::HttpInSpection
+KEEP_ALIVE	lib/http_parser.c	170;"	d	file:
+LF	lib/http_parser.c	411;"	d	file:
+LIKELY	lib/http_parser.c	71;"	d	file:
+LIKELY	lib/http_parser.c	74;"	d	file:
+LOWER	lib/http_parser.c	412;"	d	file:
+MARK	lib/http_parser.c	136;"	d	file:
+METHOD	HttpMessage.cpp	/^const std::string HttpMessage::METHOD = "METHOD";$/;"	m	class:tigerso::http::HttpMessage	file:
+METHOD	HttpMessage.h	/^    static const std::string METHOD;$/;"	m	class:tigerso::http::HttpMessage
+MIN	lib/http_parser.c	37;"	d	file:
+NEW_MESSAGE	lib/http_parser.c	456;"	d	file:
+NEW_MESSAGE	lib/http_parser.c	459;"	d	file:
+NOT_FOUND	HttpMessage.cpp	/^const std::string HttpResponse::NOT_FOUND = "HTTP\/1.1 404 Not Found\\r\\nserver: tigerso\/" + core::VERSION + "\\r\\n\\r\\n";$/;"	m	class:tigerso::http::HttpResponse	file:
+NOT_FOUND	HttpMessage.h	/^    static const std::string NOT_FOUND;$/;"	m	class:tigerso::http::HttpResponse
+OK	HttpMessage.cpp	/^const std::string HttpResponse::OK = "HTTP\/1.1 200 OK\\r\\nserver: tigerso\/" + core::VERSION + "\\r\\n\\r\\n";$/;"	m	class:tigerso::http::HttpResponse	file:
+OK	HttpMessage.h	/^    static const std::string OK;$/;"	m	class:tigerso::http::HttpResponse
+PARSER_TO_MESSAGE	HttpParser.cpp	6;"	d	file:
+PARSE_BODY_NEED_MORE_DATA	HttpParser.h	/^    PARSE_BODY_NEED_MORE_DATA,$/;"	e	enum:tigerso::http::__anon3
+PARSE_COMPLETE	HttpParser.h	/^    PARSE_COMPLETE$/;"	e	enum:tigerso::http::__anon3
+PARSE_ERR	HttpParser.h	/^    PARSE_ERR = 0,$/;"	e	enum:tigerso::http::__anon3
+PARSE_HEADER_COMPLETE	HttpParser.h	/^    PARSE_HEADER_COMPLETE,$/;"	e	enum:tigerso::http::__anon3
+PARSE_HEADER_NEED_MORE_DATA	HttpParser.h	/^    PARSE_HEADER_NEED_MORE_DATA,$/;"	e	enum:tigerso::http::__anon3
+PARSE_INIT	HttpParser.h	/^    PARSE_INIT,$/;"	e	enum:tigerso::http::__anon3
+PARSE_STATE	HttpParser.h	/^} PARSE_STATE; $/;"	t	namespace:tigerso::http	typeref:enum:tigerso::http::__anon3
+PARSE_UNINIT	HttpParser.h	/^    PARSE_UNINIT = -1,$/;"	e	enum:tigerso::http::__anon3
+PARSING_HEADER	lib/http_parser.c	360;"	d	file:
+PROXY_CONNECTION	lib/http_parser.c	164;"	d	file:
+REEXECUTE	lib/http_parser.c	66;"	d	file:
+RESPONSE_STATUS_MAP	HttpMessage.h	/^    static const std::map<int, std::string> RESPONSE_STATUS_MAP;$/;"	m	class:tigerso::http::HttpHelper
+RETURN	lib/http_parser.c	61;"	d	file:
+Register	HttpMessage.cpp	/^void HttpInSpection::Register(const std::string& header, httpInspectCallback callback, http_role_t role) { $/;"	f	class:tigerso::http::HttpInSpection
+SET_ERRNO	lib/http_parser.c	54;"	d	file:
+STATUSCODE	HttpMessage.cpp	/^const std::string HttpMessage::STATUSCODE = "STATUSCODE";$/;"	m	class:tigerso::http::HttpMessage	file:
+STATUSCODE	HttpMessage.h	/^    static const std::string STATUSCODE;$/;"	m	class:tigerso::http::HttpMessage
+STRICT_CHECK	lib/http_parser.c	449;"	d	file:
+STRICT_CHECK	lib/http_parser.c	458;"	d	file:
+STRICT_TOKEN	lib/http_parser.c	424;"	d	file:
+T	lib/http_parser.c	237;"	d	file:
+T	lib/http_parser.c	239;"	d	file:
+T	lib/http_parser.c	277;"	d	file:
+TOKEN	lib/http_parser.c	427;"	d	file:
+TOKEN	lib/http_parser.c	431;"	d	file:
+TRANSFER_ENCODING	lib/http_parser.c	167;"	d	file:
+TS_HTTP_HTTPMESSAGE_H_	HttpMessage.h	2;"	d
+TS_HTTP_HTTPPARSER_H_	HttpParser.h	2;"	d
+UF_FRAGMENT	lib/http_parser.h	/^  , UF_FRAGMENT         = 5$/;"	e	enum:http_parser_url_fields
+UF_HOST	lib/http_parser.h	/^  , UF_HOST             = 1$/;"	e	enum:http_parser_url_fields
+UF_MAX	lib/http_parser.h	/^  , UF_MAX              = 7$/;"	e	enum:http_parser_url_fields
+UF_PATH	lib/http_parser.h	/^  , UF_PATH             = 3$/;"	e	enum:http_parser_url_fields
+UF_PORT	lib/http_parser.h	/^  , UF_PORT             = 2$/;"	e	enum:http_parser_url_fields
+UF_QUERY	lib/http_parser.h	/^  , UF_QUERY            = 4$/;"	e	enum:http_parser_url_fields
+UF_SCHEMA	lib/http_parser.h	/^  { UF_SCHEMA           = 0$/;"	e	enum:http_parser_url_fields
+UF_USERINFO	lib/http_parser.h	/^  , UF_USERINFO         = 6$/;"	e	enum:http_parser_url_fields
+ULLONG_MAX	lib/http_parser.c	33;"	d	file:
+UNLIKELY	lib/http_parser.c	72;"	d	file:
+UNLIKELY	lib/http_parser.c	75;"	d	file:
+UPDATE_STATE	lib/http_parser.c	60;"	d	file:
+UPGRADE	lib/http_parser.c	168;"	d	file:
+URL	HttpMessage.cpp	/^const std::string HttpMessage::URL = "URL";$/;"	m	class:tigerso::http::HttpMessage	file:
+URL	HttpMessage.h	/^    static const std::string URL;$/;"	m	class:tigerso::http::HttpMessage
+Unregister	HttpMessage.cpp	/^void HttpInSpection::Unregister(const std::string& header, http_role_t role) {$/;"	f	class:tigerso::http::HttpInSpection
+VERSION	HttpMessage.cpp	/^const std::string HttpMessage::VERSION = "VERSION";$/;"	m	class:tigerso::http::HttpMessage	file:
+VERSION	HttpMessage.h	/^    static const std::string VERSION;$/;"	m	class:tigerso::http::HttpMessage
+XX	lib/http_parser.c	1013;"	d	file:
+XX	lib/http_parser.c	1034;"	d	file:
+XX	lib/http_parser.c	176;"	d	file:
+XX	lib/http_parser.c	178;"	d	file:
+XX	lib/http_parser.h	157;"	d
+XX	lib/http_parser.h	159;"	d
+XX	lib/http_parser.h	208;"	d
+XX	lib/http_parser.h	210;"	d
+_BASE64_H_	lib/base64.h	85;"	d
+appendHeader	HttpMessage.h	/^    virtual void appendHeader(std::string header, std::string value) {$/;"	f	class:tigerso::http::HttpMessage
+basis_64	lib/base64.c	/^static const char basis_64[] =$/;"	v	file:
+body_	HttpMessage.h	/^    std::string body_;$/;"	m	class:tigerso::http::HttpMessage
+buffer_	HttpParser.h	/^    const char* buffer_;$/;"	m	class:tigerso::http::HttpParser
+clear	HttpMessage.h	/^    virtual void clear() {$/;"	f	class:tigerso::http::HttpMessage
+clear	HttpMessage.h	/^    void clear() {$/;"	f	class:tigerso::http::HttpRequest
+clear	HttpMessage.h	/^    void clear() {$/;"	f	class:tigerso::http::HttpResponse
+content_length	lib/http_parser.h	/^  uint64_t content_length; \/* # bytes in body (0 if no Content-Length header) *\/$/;"	m	struct:http_parser
+data	lib/http_parser.h	/^  void *data; \/* A pointer to get hook to the "connection" or "socket" object *\/$/;"	m	struct:http_parser
+defaultResponse403Body	HttpMessage.cpp	/^static const std::string defaultResponse403Body = "<html><head><title>TIGERSO NOTIFICATION<\/title><\/head><body><p>You Are Forbidden To Access This Website!<\/p><\/body><\/html>";$/;"	m	namespace:tigerso::http	file:
+defaultResponse503Body	HttpMessage.cpp	/^static const std::string defaultResponse503Body = "<html><head><title>TIGERSO NOTIFICATION<\/title><\/head><body><p> Service Unavailable!<\/p><\/body><\/html>";$/;"	m	namespace:tigerso::http	file:
+defaultResponse504Body	HttpMessage.cpp	/^static const std::string defaultResponse504Body = "<html><head><title>TIGERSO NOTIFICATION<\/title><\/head><body><p>Gateway Timeout! Please Inspect Your Gateway.<\/p><\/body><\/html>";$/;"	m	namespace:tigerso::http	file:
+defaultResponseDNSErrorBody	HttpMessage.cpp	/^static const std::string defaultResponseDNSErrorBody = "<html><head><title>TIGERSO NOTIFICATION<\/title><\/head><body><p>Gateway Timeout! Please Inspect Your Gateway.<\/p><\/body><\/html>";$/;"	m	namespace:tigerso::http	file:
+desc_	HttpMessage.h	/^    std::string desc_;$/;"	m	class:tigerso::http::HttpResponse
+description	lib/http_parser.c	/^  const char *description;$/;"	m	struct:__anon2	file:
+field_data	lib/http_parser.h	/^  } field_data[UF_MAX];$/;"	m	struct:http_parser_url	typeref:struct:http_parser_url::__anon1
+field_set	lib/http_parser.h	/^  uint16_t field_set;           \/* Bitmask of (1 << UF_*) values *\/$/;"	m	struct:http_parser_url
+flags	lib/http_parser.h	/^  unsigned int flags : 8;        \/* F_* values from 'flags' enum; semi-public *\/$/;"	m	struct:http_parser
+flags	lib/http_parser.h	/^enum flags$/;"	g
+getBody	HttpMessage.h	/^    virtual std::string& getBody() { return body_; }$/;"	f	class:tigerso::http::HttpMessage
+getContentLength	HttpMessage.h	/^    virtual int getContentLength() {$/;"	f	class:tigerso::http::HttpMessage
+getDesc	HttpMessage.h	/^    std::string getDesc() { return desc_; }$/;"	f	class:tigerso::http::HttpResponse
+getDesc	HttpMessage.h	/^    virtual std::string getDesc(){ return ""; };$/;"	f	class:tigerso::http::HttpMessage
+getHeader	HttpMessage.h	/^    std::string& getHeader() { $/;"	f	class:tigerso::http::HttpResponse
+getHeader	HttpMessage.h	/^    std::string& getHeader() {$/;"	f	class:tigerso::http::HttpRequest
+getHeader	HttpMessage.h	/^    virtual std::string& getHeader() { return headstr_; }$/;"	f	class:tigerso::http::HttpMessage
+getHost	HttpMessage.h	/^    std::string getHost() {$/;"	f	class:tigerso::http::HttpRequest
+getHostPort	HttpMessage.h	/^    std::string getHostPort() {$/;"	f	class:tigerso::http::HttpRequest
+getLastParsedSize	HttpParser.h	/^    size_t getLastParsedSize() { return parsedn_; }$/;"	f	class:tigerso::http::HttpParser
+getMethod	HttpMessage.h	/^    std::string getMethod() { return method_; }$/;"	f	class:tigerso::http::HttpRequest
+getMethod	HttpMessage.h	/^    virtual std::string getMethod(){ return ""; };$/;"	f	class:tigerso::http::HttpMessage
+getParseState	HttpParser.h	/^    inline PARSE_STATE getParseState() { return state_; }$/;"	f	class:tigerso::http::HttpParser
+getResponseStatusDesc	HttpMessage.cpp	/^std::string HttpHelper::getResponseStatusDesc(const int code) {$/;"	f	class:tigerso::http::HttpHelper
+getRole	HttpMessage.h	/^    virtual http_role_t getRole() { return role_; }$/;"	f	class:tigerso::http::HttpMessage
+getStatuscode	HttpMessage.h	/^    int         getStatuscode() { return statuscode_; }$/;"	f	class:tigerso::http::HttpResponse
+getStatuscode	HttpMessage.h	/^    virtual int         getStatuscode(){ return 0; };$/;"	f	class:tigerso::http::HttpMessage
+getStrErr	HttpParser.h	/^    const char* getStrErr() { return http_errno_description(HTTP_PARSER_ERRNO(&parser_)); }$/;"	f	class:tigerso::http::HttpParser
+getUrl	HttpMessage.h	/^    std::string getUrl() { return url_; }$/;"	f	class:tigerso::http::HttpRequest
+getUrl	HttpMessage.h	/^    virtual std::string getUrl(){ return ""; };$/;"	f	class:tigerso::http::HttpMessage
+getValueByHeader	HttpMessage.h	/^    virtual std::string getValueByHeader(const std::string& header) {$/;"	f	class:tigerso::http::HttpMessage
+getVersion	HttpMessage.h	/^    virtual std::string getVersion() { return version_; };$/;"	f	class:tigerso::http::HttpMessage
+h_C	lib/http_parser.c	/^  , h_C$/;"	e	enum:header_states	file:
+h_CO	lib/http_parser.c	/^  , h_CO$/;"	e	enum:header_states	file:
+h_CON	lib/http_parser.c	/^  , h_CON$/;"	e	enum:header_states	file:
+h_connection	lib/http_parser.c	/^  , h_connection$/;"	e	enum:header_states	file:
+h_connection_close	lib/http_parser.c	/^  , h_connection_close$/;"	e	enum:header_states	file:
+h_connection_keep_alive	lib/http_parser.c	/^  , h_connection_keep_alive$/;"	e	enum:header_states	file:
+h_connection_upgrade	lib/http_parser.c	/^  , h_connection_upgrade$/;"	e	enum:header_states	file:
+h_content_length	lib/http_parser.c	/^  , h_content_length$/;"	e	enum:header_states	file:
+h_general	lib/http_parser.c	/^  { h_general = 0$/;"	e	enum:header_states	file:
+h_matching_connection	lib/http_parser.c	/^  , h_matching_connection$/;"	e	enum:header_states	file:
+h_matching_connection_close	lib/http_parser.c	/^  , h_matching_connection_close$/;"	e	enum:header_states	file:
+h_matching_connection_keep_alive	lib/http_parser.c	/^  , h_matching_connection_keep_alive$/;"	e	enum:header_states	file:
+h_matching_connection_token	lib/http_parser.c	/^  , h_matching_connection_token$/;"	e	enum:header_states	file:
+h_matching_connection_token_start	lib/http_parser.c	/^  , h_matching_connection_token_start$/;"	e	enum:header_states	file:
+h_matching_connection_upgrade	lib/http_parser.c	/^  , h_matching_connection_upgrade$/;"	e	enum:header_states	file:
+h_matching_content_length	lib/http_parser.c	/^  , h_matching_content_length$/;"	e	enum:header_states	file:
+h_matching_proxy_connection	lib/http_parser.c	/^  , h_matching_proxy_connection$/;"	e	enum:header_states	file:
+h_matching_transfer_encoding	lib/http_parser.c	/^  , h_matching_transfer_encoding$/;"	e	enum:header_states	file:
+h_matching_transfer_encoding_chunked	lib/http_parser.c	/^  , h_matching_transfer_encoding_chunked$/;"	e	enum:header_states	file:
+h_matching_upgrade	lib/http_parser.c	/^  , h_matching_upgrade$/;"	e	enum:header_states	file:
+h_transfer_encoding	lib/http_parser.c	/^  , h_transfer_encoding$/;"	e	enum:header_states	file:
+h_transfer_encoding_chunked	lib/http_parser.c	/^  , h_transfer_encoding_chunked$/;"	e	enum:header_states	file:
+h_upgrade	lib/http_parser.c	/^  , h_upgrade$/;"	e	enum:header_states	file:
+headerCompleted	HttpParser.h	/^    bool headerCompleted() {  return (state_ >= PARSE_HEADER_COMPLETE? true : false); }$/;"	f	class:tigerso::http::HttpParser
+header_field	HttpMessage.h	/^    std::string header_field;$/;"	m	class:tigerso::http::HttpMessage
+header_state	lib/http_parser.h	/^  unsigned int header_state : 7; \/* enum header_state from http_parser.c *\/$/;"	m	struct:http_parser
+header_states	lib/http_parser.c	/^enum header_states$/;"	g	file:
+headers_	HttpMessage.h	/^    headers_t headers_;$/;"	m	class:tigerso::http::HttpMessage
+headers_t	HttpMessage.h	/^typedef std::vector<std::pair<std::string,std::string>> headers_t;$/;"	t	namespace:tigerso::http
+headstr_	HttpMessage.h	/^    std::string headstr_;$/;"	m	class:tigerso::http::HttpMessage
+host_	HttpMessage.h	/^    std::string host_;$/;"	m	class:tigerso::http::HttpRequest
+http	HttpMessage.cpp	/^namespace tigerso::http {$/;"	n	class:tigerso	file:
+http	HttpMessage.h	/^namespace tigerso::http {$/;"	n	class:tigerso
+http	HttpParser.cpp	/^namespace tigerso::http {$/;"	n	class:tigerso	file:
+http	HttpParser.h	/^namespace tigerso::http {$/;"	n	class:tigerso
+httpInspectCallback	HttpMessage.h	/^typedef int (*httpInspectCallback)(const std::weak_ptr<HttpMessage>&);$/;"	t	namespace:tigerso::http
+http_body_is_final	lib/http_parser.c	/^http_body_is_final(const struct http_parser *parser) {$/;"	f
+http_cb	lib/http_parser.h	/^typedef int (*http_cb) (http_parser*);$/;"	t
+http_data_cb	lib/http_parser.h	/^typedef int (*http_data_cb) (http_parser*, const char *at, size_t length);$/;"	t
+http_errno	lib/http_parser.h	/^  unsigned int http_errno : 7;$/;"	m	struct:http_parser
+http_errno	lib/http_parser.h	/^enum http_errno {$/;"	g
+http_errno_description	lib/http_parser.c	/^http_errno_description(enum http_errno err) {$/;"	f
+http_errno_name	lib/http_parser.c	/^http_errno_name(enum http_errno err) {$/;"	f
+http_host_state	lib/http_parser.c	/^enum http_host_state$/;"	g	file:
+http_major	lib/http_parser.h	/^  unsigned short http_major;$/;"	m	struct:http_parser
+http_message_needs_eof	lib/http_parser.c	/^http_message_needs_eof (const http_parser *parser)$/;"	f
+http_method	lib/http_parser.h	/^enum http_method$/;"	g
+http_method_str	lib/http_parser.c	/^http_method_str (enum http_method m)$/;"	f
+http_minor	lib/http_parser.h	/^  unsigned short http_minor;$/;"	m	struct:http_parser
+http_parse_host	lib/http_parser.c	/^http_parse_host(const char * buf, struct http_parser_url *u, int found_at) {$/;"	f	file:
+http_parse_host_char	lib/http_parser.c	/^http_parse_host_char(enum http_host_state s, const char ch) {$/;"	f	file:
+http_parser	lib/http_parser.h	/^struct http_parser {$/;"	s
+http_parser	lib/http_parser.h	/^typedef struct http_parser http_parser;$/;"	t	typeref:struct:http_parser
+http_parser_execute	lib/http_parser.c	/^size_t http_parser_execute (http_parser *parser,$/;"	f
+http_parser_h	lib/http_parser.h	22;"	d
+http_parser_init	lib/http_parser.c	/^http_parser_init (http_parser *parser, enum http_parser_type t)$/;"	f
+http_parser_parse_url	lib/http_parser.c	/^http_parser_parse_url(const char *buf, size_t buflen, int is_connect,$/;"	f
+http_parser_pause	lib/http_parser.c	/^http_parser_pause(http_parser *parser, int paused) {$/;"	f
+http_parser_settings	lib/http_parser.h	/^struct http_parser_settings {$/;"	s
+http_parser_settings	lib/http_parser.h	/^typedef struct http_parser_settings http_parser_settings;$/;"	t	typeref:struct:http_parser_settings
+http_parser_settings_init	lib/http_parser.c	/^http_parser_settings_init(http_parser_settings *settings)$/;"	f
+http_parser_type	lib/http_parser.h	/^enum http_parser_type { HTTP_REQUEST, HTTP_RESPONSE, HTTP_BOTH };$/;"	g
+http_parser_url	lib/http_parser.h	/^struct http_parser_url {$/;"	s
+http_parser_url_fields	lib/http_parser.h	/^enum http_parser_url_fields$/;"	g
+http_parser_url_init	lib/http_parser.c	/^http_parser_url_init(struct http_parser_url *u) {$/;"	f
+http_parser_version	lib/http_parser.c	/^http_parser_version(void) {$/;"	f
+http_role_t	HttpMessage.h	/^typedef int http_role_t;$/;"	t	namespace:tigerso::http
+http_should_keep_alive	lib/http_parser.c	/^http_should_keep_alive (const http_parser *parser)$/;"	f
+http_status	lib/http_parser.h	/^enum http_status$/;"	g
+http_strerror_tab	lib/http_parser.c	/^} http_strerror_tab[] = {$/;"	v	typeref:struct:__anon2	file:
+index	lib/http_parser.h	/^  unsigned int index : 7;        \/* index into current matcher *\/$/;"	m	struct:http_parser
+initParser	HttpParser.cpp	/^int HttpParser::initParser(HttpMessage& message) {$/;"	f	class:tigerso::http::HttpParser
+int16_t	lib/http_parser.h	/^typedef __int16 int16_t;$/;"	t
+int32_t	lib/http_parser.h	/^typedef __int32 int32_t;$/;"	t
+int64_t	lib/http_parser.h	/^typedef __int64 int64_t;$/;"	t
+int8_t	lib/http_parser.h	/^typedef __int8 int8_t;$/;"	t
+isVaildResponseStatusCode	HttpMessage.cpp	/^bool HttpHelper::isVaildResponseStatusCode(const int code) {$/;"	f	class:tigerso::http::HttpHelper
+len	lib/http_parser.h	/^    uint16_t len;               \/* Length of run in buffer *\/$/;"	m	struct:http_parser_url::__anon1
+length_	HttpParser.h	/^    size_t length_;$/;"	m	class:tigerso::http::HttpParser
+lenient_http_headers	lib/http_parser.h	/^  unsigned int lenient_http_headers : 1;$/;"	m	struct:http_parser
+markTrade	HttpMessage.h	/^    virtual void markTrade() {$/;"	f	class:tigerso::http::HttpMessage
+message_	HttpParser.h	/^    HttpMessage* message_;$/;"	m	class:tigerso::http::HttpParser
+method	lib/http_parser.h	/^  unsigned int method : 8;       \/* requests only *\/$/;"	m	struct:http_parser
+method_	HttpMessage.h	/^    std::string method_;$/;"	m	class:tigerso::http::HttpRequest
+method_strings	lib/http_parser.c	/^static const char *method_strings[] =$/;"	v	file:
+name	lib/http_parser.c	/^  const char *name;$/;"	m	struct:__anon2	file:
+needMoreData	HttpParser.h	/^    bool needMoreData() { return state_ != PARSE_COMPLETE; }$/;"	f	class:tigerso::http::HttpParser
+normal_url_char	lib/http_parser.c	/^static const uint8_t normal_url_char[32] = {$/;"	v	file:
+nread	lib/http_parser.h	/^  uint32_t nread;          \/* # bytes read in various scenarios *\/$/;"	m	struct:http_parser
+off	lib/http_parser.h	/^    uint16_t off;               \/* Offset into buffer in which field starts *\/$/;"	m	struct:http_parser_url::__anon1
+on_body	HttpParser.cpp	/^int HttpParser::on_body(http_parser* parser, const char* at, size_t len) {$/;"	f	class:tigerso::http::HttpParser
+on_body	lib/http_parser.h	/^  http_data_cb on_body;$/;"	m	struct:http_parser_settings
+on_chunk_complete	lib/http_parser.h	/^  http_cb      on_chunk_complete;$/;"	m	struct:http_parser_settings
+on_chunk_header	lib/http_parser.h	/^  http_cb      on_chunk_header;$/;"	m	struct:http_parser_settings
+on_header_field	HttpParser.cpp	/^int HttpParser::on_header_field(http_parser* parser, const char* at, size_t len) {$/;"	f	class:tigerso::http::HttpParser
+on_header_field	lib/http_parser.h	/^  http_data_cb on_header_field;$/;"	m	struct:http_parser_settings
+on_header_value	HttpParser.cpp	/^int HttpParser::on_header_value(http_parser* parser, const char* at, size_t len) {$/;"	f	class:tigerso::http::HttpParser
+on_header_value	lib/http_parser.h	/^  http_data_cb on_header_value;$/;"	m	struct:http_parser_settings
+on_headers_complete	HttpParser.cpp	/^int HttpParser::on_headers_complete(http_parser* parser) {$/;"	f	class:tigerso::http::HttpParser
+on_headers_complete	lib/http_parser.h	/^  http_cb      on_headers_complete;$/;"	m	struct:http_parser_settings
+on_message_begin	HttpParser.cpp	/^int HttpParser::on_message_begin(http_parser* parser) {$/;"	f	class:tigerso::http::HttpParser
+on_message_begin	lib/http_parser.h	/^  http_cb      on_message_begin;$/;"	m	struct:http_parser_settings
+on_message_complete	HttpParser.cpp	/^int HttpParser::on_message_complete(http_parser* parser) {$/;"	f	class:tigerso::http::HttpParser
+on_message_complete	lib/http_parser.h	/^  http_cb      on_message_complete;$/;"	m	struct:http_parser_settings
+on_status	HttpParser.cpp	/^int HttpParser::on_status(http_parser* parser, const char* at, size_t len) {$/;"	f	class:tigerso::http::HttpParser
+on_status	lib/http_parser.h	/^  http_data_cb on_status;$/;"	m	struct:http_parser_settings
+on_url	HttpParser.cpp	/^int HttpParser::on_url(http_parser* parser, const char* at, size_t len) {$/;"	f	class:tigerso::http::HttpParser
+on_url	lib/http_parser.h	/^  http_data_cb on_url;$/;"	m	struct:http_parser_settings
+parse	HttpParser.cpp	/^int HttpParser::parse(const char* buf,size_t len, HttpMessage& message) {$/;"	f	class:tigerso::http::HttpParser
+parse	HttpParser.cpp	/^int HttpParser::parse(const std::string& buffer, HttpMessage& message) {$/;"	f	class:tigerso::http::HttpParser
+parse_url_char	lib/http_parser.c	/^parse_url_char(enum state s, const char ch)$/;"	f	file:
+parsedn_	HttpParser.h	/^    size_t parsedn_;$/;"	m	class:tigerso::http::HttpParser
+parser_	HttpParser.h	/^    http_parser parser_;$/;"	m	class:tigerso::http::HttpParser
+port	lib/http_parser.h	/^  uint16_t port;                \/* Converted UF_PORT string *\/$/;"	m	struct:http_parser_url
+port_	HttpMessage.h	/^    std::string port_;$/;"	m	class:tigerso::http::HttpRequest
+pr2six	lib/base64.c	/^static const unsigned char pr2six[256] =$/;"	v	file:
+prepare200Response	HttpMessage.cpp	/^int HttpHelper::prepare200Response(HttpResponse& response) {$/;"	f	class:tigerso::http::HttpHelper
+prepare400Response	HttpMessage.cpp	/^int HttpHelper::prepare400Response(HttpResponse& response) {$/;"	f	class:tigerso::http::HttpHelper
+prepare403Response	HttpMessage.cpp	/^int HttpHelper::prepare403Response(HttpResponse& response) {$/;"	f	class:tigerso::http::HttpHelper
+prepare503Response	HttpMessage.cpp	/^int HttpHelper::prepare503Response(HttpResponse& response) {$/;"	f	class:tigerso::http::HttpHelper
+prepare504Response	HttpMessage.cpp	/^int HttpHelper::prepare504Response(HttpResponse& response) {$/;"	f	class:tigerso::http::HttpHelper
+prepareDNSErrorResponse	HttpMessage.cpp	/^int HttpHelper::prepareDNSErrorResponse(HttpResponse& response) {$/;"	f	class:tigerso::http::HttpHelper
+removeHeader	HttpMessage.h	/^    virtual void removeHeader(const std::string& header) {$/;"	f	class:tigerso::http::HttpMessage
+removeRepeatHeader	HttpMessage.h	/^    virtual void removeRepeatHeader() {$/;"	f	class:tigerso::http::HttpMessage
+requestCallbacks_	HttpMessage.h	/^    std::map<std::string, httpInspectCallback> requestCallbacks_;$/;"	m	class:tigerso::http::HttpInSpection
+reset	HttpParser.cpp	/^void HttpParser::reset() {$/;"	f	class:tigerso::http::HttpParser
+response403html	HttpMessage.h	/^    static std::string response403html;$/;"	m	class:tigerso::http::HttpHelper
+response503html	HttpMessage.h	/^    static std::string response503html;$/;"	m	class:tigerso::http::HttpHelper
+responseCallbacks_	HttpMessage.h	/^    std::map<std::string, httpInspectCallback> responseCallbacks_;$/;"	m	class:tigerso::http::HttpInSpection
+response_status_array	HttpMessage.cpp	/^static const status_pair_t response_status_array [] = {$/;"	m	namespace:tigerso::http	file:
+role_	HttpMessage.h	/^    http_role_t role_ = HTTP_ROLE_UINIT;$/;"	m	class:tigerso::http::HttpMessage
+s_body_identity	lib/http_parser.c	/^  , s_body_identity$/;"	e	enum:state	file:
+s_body_identity_eof	lib/http_parser.c	/^  , s_body_identity_eof$/;"	e	enum:state	file:
+s_chunk_data	lib/http_parser.c	/^  , s_chunk_data$/;"	e	enum:state	file:
+s_chunk_data_almost_done	lib/http_parser.c	/^  , s_chunk_data_almost_done$/;"	e	enum:state	file:
+s_chunk_data_done	lib/http_parser.c	/^  , s_chunk_data_done$/;"	e	enum:state	file:
+s_chunk_parameters	lib/http_parser.c	/^  , s_chunk_parameters$/;"	e	enum:state	file:
+s_chunk_size	lib/http_parser.c	/^  , s_chunk_size$/;"	e	enum:state	file:
+s_chunk_size_almost_done	lib/http_parser.c	/^  , s_chunk_size_almost_done$/;"	e	enum:state	file:
+s_chunk_size_start	lib/http_parser.c	/^  , s_chunk_size_start$/;"	e	enum:state	file:
+s_dead	lib/http_parser.c	/^  { s_dead = 1 \/* important that this is > 0 *\/$/;"	e	enum:state	file:
+s_header_almost_done	lib/http_parser.c	/^  , s_header_almost_done$/;"	e	enum:state	file:
+s_header_field	lib/http_parser.c	/^  , s_header_field$/;"	e	enum:state	file:
+s_header_field_start	lib/http_parser.c	/^  , s_header_field_start$/;"	e	enum:state	file:
+s_header_value	lib/http_parser.c	/^  , s_header_value$/;"	e	enum:state	file:
+s_header_value_discard_lws	lib/http_parser.c	/^  , s_header_value_discard_lws$/;"	e	enum:state	file:
+s_header_value_discard_ws	lib/http_parser.c	/^  , s_header_value_discard_ws$/;"	e	enum:state	file:
+s_header_value_discard_ws_almost_done	lib/http_parser.c	/^  , s_header_value_discard_ws_almost_done$/;"	e	enum:state	file:
+s_header_value_lws	lib/http_parser.c	/^  , s_header_value_lws$/;"	e	enum:state	file:
+s_header_value_start	lib/http_parser.c	/^  , s_header_value_start$/;"	e	enum:state	file:
+s_headers_almost_done	lib/http_parser.c	/^  , s_headers_almost_done$/;"	e	enum:state	file:
+s_headers_done	lib/http_parser.c	/^  , s_headers_done$/;"	e	enum:state	file:
+s_http_host	lib/http_parser.c	/^  , s_http_host$/;"	e	enum:http_host_state	file:
+s_http_host_dead	lib/http_parser.c	/^    s_http_host_dead = 1$/;"	e	enum:http_host_state	file:
+s_http_host_port	lib/http_parser.c	/^  , s_http_host_port$/;"	e	enum:http_host_state	file:
+s_http_host_port_start	lib/http_parser.c	/^  , s_http_host_port_start$/;"	e	enum:http_host_state	file:
+s_http_host_start	lib/http_parser.c	/^  , s_http_host_start$/;"	e	enum:http_host_state	file:
+s_http_host_v6	lib/http_parser.c	/^  , s_http_host_v6$/;"	e	enum:http_host_state	file:
+s_http_host_v6_end	lib/http_parser.c	/^  , s_http_host_v6_end$/;"	e	enum:http_host_state	file:
+s_http_host_v6_start	lib/http_parser.c	/^  , s_http_host_v6_start$/;"	e	enum:http_host_state	file:
+s_http_host_v6_zone	lib/http_parser.c	/^  , s_http_host_v6_zone$/;"	e	enum:http_host_state	file:
+s_http_host_v6_zone_start	lib/http_parser.c	/^  , s_http_host_v6_zone_start$/;"	e	enum:http_host_state	file:
+s_http_userinfo	lib/http_parser.c	/^  , s_http_userinfo$/;"	e	enum:http_host_state	file:
+s_http_userinfo_start	lib/http_parser.c	/^  , s_http_userinfo_start$/;"	e	enum:http_host_state	file:
+s_message_done	lib/http_parser.c	/^  , s_message_done$/;"	e	enum:state	file:
+s_req_first_http_major	lib/http_parser.c	/^  , s_req_first_http_major$/;"	e	enum:state	file:
+s_req_first_http_minor	lib/http_parser.c	/^  , s_req_first_http_minor$/;"	e	enum:state	file:
+s_req_fragment	lib/http_parser.c	/^  , s_req_fragment$/;"	e	enum:state	file:
+s_req_fragment_start	lib/http_parser.c	/^  , s_req_fragment_start$/;"	e	enum:state	file:
+s_req_http_H	lib/http_parser.c	/^  , s_req_http_H$/;"	e	enum:state	file:
+s_req_http_HT	lib/http_parser.c	/^  , s_req_http_HT$/;"	e	enum:state	file:
+s_req_http_HTT	lib/http_parser.c	/^  , s_req_http_HTT$/;"	e	enum:state	file:
+s_req_http_HTTP	lib/http_parser.c	/^  , s_req_http_HTTP$/;"	e	enum:state	file:
+s_req_http_major	lib/http_parser.c	/^  , s_req_http_major$/;"	e	enum:state	file:
+s_req_http_minor	lib/http_parser.c	/^  , s_req_http_minor$/;"	e	enum:state	file:
+s_req_http_start	lib/http_parser.c	/^  , s_req_http_start$/;"	e	enum:state	file:
+s_req_line_almost_done	lib/http_parser.c	/^  , s_req_line_almost_done$/;"	e	enum:state	file:
+s_req_method	lib/http_parser.c	/^  , s_req_method$/;"	e	enum:state	file:
+s_req_path	lib/http_parser.c	/^  , s_req_path$/;"	e	enum:state	file:
+s_req_query_string	lib/http_parser.c	/^  , s_req_query_string$/;"	e	enum:state	file:
+s_req_query_string_start	lib/http_parser.c	/^  , s_req_query_string_start$/;"	e	enum:state	file:
+s_req_schema	lib/http_parser.c	/^  , s_req_schema$/;"	e	enum:state	file:
+s_req_schema_slash	lib/http_parser.c	/^  , s_req_schema_slash$/;"	e	enum:state	file:
+s_req_schema_slash_slash	lib/http_parser.c	/^  , s_req_schema_slash_slash$/;"	e	enum:state	file:
+s_req_server	lib/http_parser.c	/^  , s_req_server$/;"	e	enum:state	file:
+s_req_server_start	lib/http_parser.c	/^  , s_req_server_start$/;"	e	enum:state	file:
+s_req_server_with_at	lib/http_parser.c	/^  , s_req_server_with_at$/;"	e	enum:state	file:
+s_req_spaces_before_url	lib/http_parser.c	/^  , s_req_spaces_before_url$/;"	e	enum:state	file:
+s_res_H	lib/http_parser.c	/^  , s_res_H$/;"	e	enum:state	file:
+s_res_HT	lib/http_parser.c	/^  , s_res_HT$/;"	e	enum:state	file:
+s_res_HTT	lib/http_parser.c	/^  , s_res_HTT$/;"	e	enum:state	file:
+s_res_HTTP	lib/http_parser.c	/^  , s_res_HTTP$/;"	e	enum:state	file:
+s_res_first_http_major	lib/http_parser.c	/^  , s_res_first_http_major$/;"	e	enum:state	file:
+s_res_first_http_minor	lib/http_parser.c	/^  , s_res_first_http_minor$/;"	e	enum:state	file:
+s_res_first_status_code	lib/http_parser.c	/^  , s_res_first_status_code$/;"	e	enum:state	file:
+s_res_http_major	lib/http_parser.c	/^  , s_res_http_major$/;"	e	enum:state	file:
+s_res_http_minor	lib/http_parser.c	/^  , s_res_http_minor$/;"	e	enum:state	file:
+s_res_line_almost_done	lib/http_parser.c	/^  , s_res_line_almost_done$/;"	e	enum:state	file:
+s_res_or_resp_H	lib/http_parser.c	/^  , s_res_or_resp_H$/;"	e	enum:state	file:
+s_res_status	lib/http_parser.c	/^  , s_res_status$/;"	e	enum:state	file:
+s_res_status_code	lib/http_parser.c	/^  , s_res_status_code$/;"	e	enum:state	file:
+s_res_status_start	lib/http_parser.c	/^  , s_res_status_start$/;"	e	enum:state	file:
+s_start_req	lib/http_parser.c	/^  , s_start_req$/;"	e	enum:state	file:
+s_start_req_or_res	lib/http_parser.c	/^  , s_start_req_or_res$/;"	e	enum:state	file:
+s_start_res	lib/http_parser.c	/^  , s_start_res$/;"	e	enum:state	file:
+setBody	HttpMessage.h	/^    virtual void setBody(const std::string& body) { body_.append(body); }$/;"	f	class:tigerso::http::HttpMessage
+setDesc	HttpMessage.h	/^    virtual void setDesc(const std::string&){};$/;"	f	class:tigerso::http::HttpMessage
+setDesc	HttpMessage.h	/^    void setDesc(const std::string& desc) { desc_ = desc; }$/;"	f	class:tigerso::http::HttpResponse
+setMethod	HttpMessage.h	/^    virtual void setMethod(const std::string& method){};$/;"	f	class:tigerso::http::HttpMessage
+setMethod	HttpMessage.h	/^    void setMethod(const std::string& method) { method_ = method; }$/;"	f	class:tigerso::http::HttpRequest
+setParseState	HttpParser.h	/^    void setParseState(PARSE_STATE state) { state_ = state; }$/;"	f	class:tigerso::http::HttpParser
+setSkipBody	HttpParser.h	/^    void setSkipBody(bool skip) { skipbody_ = skip; }$/;"	f	class:tigerso::http::HttpParser
+setStatuscode	HttpMessage.h	/^    virtual void setStatuscode(int){};$/;"	f	class:tigerso::http::HttpMessage
+setStatuscode	HttpMessage.h	/^    void setStatuscode(int code) { $/;"	f	class:tigerso::http::HttpResponse
+setUrl	HttpMessage.h	/^    virtual void setUrl(const std::string& Url){};$/;"	f	class:tigerso::http::HttpMessage
+setUrl	HttpMessage.h	/^    void setUrl(const std::string& url) { url_ = url; }$/;"	f	class:tigerso::http::HttpRequest
+setValueByHeader	HttpMessage.h	/^    virtual void setValueByHeader(const std::string& header, const std::string& value) {$/;"	f	class:tigerso::http::HttpMessage
+setVersion	HttpMessage.h	/^    virtual void setVersion(const std::string& verison) { version_ = verison; }$/;"	f	class:tigerso::http::HttpMessage
+settings_	HttpParser.h	/^    http_parser_settings settings_;$/;"	m	class:tigerso::http::HttpParser
+skipBody	HttpParser.h	/^    bool skipBody() { return skipbody_; }$/;"	f	class:tigerso::http::HttpParser
+skipbody_	HttpParser.h	/^    bool skipbody_ = false;$/;"	m	class:tigerso::http::HttpParser
+start_state	lib/http_parser.c	445;"	d	file:
+state	lib/http_parser.c	/^enum state$/;"	g	file:
+state	lib/http_parser.h	/^  unsigned int state : 7;        \/* enum state from http_parser.c *\/$/;"	m	struct:http_parser
+state_	HttpParser.h	/^    PARSE_STATE state_;$/;"	m	class:tigerso::http::HttpParser
+status_code	lib/http_parser.h	/^  unsigned int status_code : 16; \/* responses only *\/$/;"	m	struct:http_parser
+status_pair_t	HttpMessage.cpp	/^typedef std::map<int, std::string>::value_type  status_pair_t;$/;"	t	namespace:tigerso::http	file:
+statuscode_	HttpMessage.h	/^    int         statuscode_;$/;"	m	class:tigerso::http::HttpResponse
+toString	HttpMessage.h	/^    std::string toString() {$/;"	f	class:tigerso::http::HttpRequest
+toString	HttpMessage.h	/^    std::string toString() {$/;"	f	class:tigerso::http::HttpResponse
+tokens	lib/http_parser.c	/^static const char tokens[256] = {$/;"	v	file:
+type	lib/http_parser.h	/^  unsigned int type : 2;         \/* enum http_parser_type *\/$/;"	m	struct:http_parser
+uint16_t	lib/http_parser.h	/^typedef unsigned __int16 uint16_t;$/;"	t
+uint32_t	lib/http_parser.h	/^typedef unsigned __int32 uint32_t;$/;"	t
+uint64_t	lib/http_parser.h	/^typedef unsigned __int64 uint64_t;$/;"	t
+uint8_t	lib/http_parser.h	/^typedef unsigned __int8 uint8_t;$/;"	t
+unhex	lib/http_parser.c	/^static const int8_t unhex[256] =$/;"	v	file:
+upgrade	lib/http_parser.h	/^  unsigned int upgrade : 1;$/;"	m	struct:http_parser
+url_	HttpMessage.h	/^    std::string url_;$/;"	m	class:tigerso::http::HttpRequest
+version_	HttpMessage.h	/^    std::string version_ = "HTTP\/1.1";$/;"	m	class:tigerso::http::HttpMessage

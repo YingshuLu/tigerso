@@ -11,6 +11,14 @@
 #include "net/Buffer.h"
 
 namespace tigerso::net {
+#define SOCKET_EVENT_NONE  0x0000
+#define SOCKET_EVENT_READ  0x0001
+#define SOCKET_EVENT_WRITE  (SOCKET_EVENT_READ << 1)
+#define SOCKET_EVENT_BEFORE (SOCKET_EVENT_READ << 2)
+#define SOCKET_EVENT_AFTER  (SOCKET_EVENT_READ << 3)
+#define SOCKET_EVENT_ERROR  (SOCKET_EVENT_READ << 4)
+#define SOCKET_EVENT_RDHUP  (SOCKET_EVENT_READ << 5)
+#define SOCKET_EVENT_ALL (SOCKET_EVENT_READ | SOCKET_EVENT_WRITE | SOCKET_EVENT_BEFORE |SOCKET_EVENT_AFTER |SOCKET_EVENT_ERROR | SOCKET_EVENT_RDHUP)
 
 typedef int socket_t;
 typedef int socket_role_t;
@@ -69,12 +77,10 @@ public:
     socket_role_t getRole() const;
     socket_stage_t getStage() const;
     int getSockAddr(sockaddr_in&);
-    std::shared_ptr<Channel>& getChannel();
    
     void setNIO(bool);
     void setKeepAlive(bool);
     void setTcpNoDelay(bool);
-    void setChannel(std::shared_ptr<Channel>&);
 
     ssize_t recvNIO();
     ssize_t recvBIO();
@@ -90,7 +96,16 @@ public:
     void setOutBufferPtr(std::shared_ptr<Buffer> outptr) { bufPtr_.out_ = outptr; }
     //connect
     int close();
+
+    void reset();
     ~Socket() { this->close(); }
+
+public:
+    bool enableEvent(unsigned short);
+    bool disableEvent(unsigned short);
+
+public:
+    Channel* channelptr = nullptr;
 
 private:
     void setSocket(const socket_t&);
@@ -108,11 +123,7 @@ private:
     socket_t sockfd_ = -1;
     std::shared_ptr<Buffer> inBuffer_ = std::make_shared<Buffer>();
     std::shared_ptr<Buffer> outBuffer_ = std::make_shared<Buffer>();
-    std::shared_ptr<Channel> channelPtr_ = nullptr;
-    
-public:
     BufferPtr bufPtr_;
-
 };
 
 typedef std::shared_ptr<Socket> SocketPtr;

@@ -1,0 +1,298 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALLLOG	Logging.h	/^	ALLLOG$/;"	e	enum:tigerso::core::LOGLEVEL
+COMMENT	ConfigParser.h	/^const int COMMENT = 1;$/;"	m	namespace:tigerso::core
+COMTB	ConfigParser.h	13;"	d
+CONFIGFILE	tigerso.h	/^const std::string  CONFIGFILE  =  CONFIGPATH + "\/" + PROJECT  +".ini";$/;"	m	namespace:tigerso::core
+CONFIGPATH	tigerso.h	/^const std::string  CONFIGPATH  =  WORKPATH + "\/etc";$/;"	m	namespace:tigerso::core
+Condition	Condition.h	/^    Condition(ThreadMutex& mutex)$/;"	f	class:tigerso::core::Condition
+Condition	Condition.h	/^class Condition: public nocopyable {$/;"	c	namespace:tigerso::core
+ConfigParser	ConfigParser.h	/^	ConfigParser() :isFileExisted(false), isRefreshed(false){}$/;"	f	class:tigerso::core::ConfigParser
+ConfigParser	ConfigParser.h	/^class ConfigParser$/;"	c	namespace:tigerso::core
+CurrentThread	CurrentThread.h	/^namespace CurrentThread {$/;"	n	namespace:tigerso::core
+CurrentThread	Thread.cpp	/^namespace CurrentThread {$/;"	n	namespace:tigerso::core	file:
+DBG_LOG	Logging.h	23;"	d
+DEBUG	Logging.h	/^	DEBUG,$/;"	e	enum:tigerso::core::LOGLEVEL
+DEFAULT_SHM_MUTEX_FILENAME	SysUtil.h	/^const string DEFAULT_SHM_MUTEX_FILENAME = "TIGERSOSHMMUTEX";$/;"	m	namespace:tigerso::core
+ERRLINE	ConfigParser.h	/^const int ERRLINE = -1;$/;"	m	namespace:tigerso::core
+FILE_ACTION_OK	File.h	25;"	d
+FILE_ARGS_INVALID	File.h	30;"	d
+FILE_BIG_CONTENT	File.h	36;"	d
+FILE_FD_INVALID	File.h	29;"	d
+FILE_NAME_MAX_LENGTH	File.h	24;"	d
+FILE_OPEN_ERROR	File.h	26;"	d
+FILE_READ_ACCESS_DENY	File.h	28;"	d
+FILE_SENDFILE_DONE	File.h	34;"	d
+FILE_SENDFILE_ERROR	File.h	32;"	d
+FILE_SENDFILE_RECALL	File.h	33;"	d
+FILE_WRITE_ACCESS_DENY	File.h	27;"	d
+File	File.cpp	/^File::File() {$/;"	f	class:tigerso::core::File
+File	File.cpp	/^File::File(const char* filename) {$/;"	f	class:tigerso::core::File
+File	File.h	/^class File {$/;"	c	namespace:tigerso::core
+FileLock	FileLock.cpp	/^FileLock::FileLock(const std::string& filename, const std::string& content): filename_(filename), content_(content) {$/;"	f	class:tigerso::core::FileLock
+FileLock	FileLock.h	/^class FileLock: public Lock {$/;"	c	namespace:tigerso::core
+GLOBAL	tigerso.h	36;"	d
+INFO	Logging.h	/^	INFO,$/;"	e	enum:tigerso::core::LOGLEVEL
+INFO_LOG	Logging.h	24;"	d
+KEYB	ConfigParser.h	14;"	d
+KEYVAL	ConfigParser.h	/^const int KEYVAL = 2;$/;"	m	namespace:tigerso::core
+LOCK_FAILURE	FileLock.h	10;"	d
+LOCK_SUCCESS	FileLock.h	9;"	d
+LOGLEVEL	Logging.h	/^enum LOGLEVEL{$/;"	g	namespace:tigerso::core
+LOGNAME	tigerso.h	/^const std::string  LOGNAME     =  "httpd";$/;"	m	namespace:tigerso::core
+LOGPATH	tigerso.h	/^const std::string  LOGPATH     =  WORKPATH + "\/log";$/;"	m	namespace:tigerso::core
+Lock	SysUtil.h	/^class Lock: public nocopyable {$/;"	c	namespace:tigerso::core
+LockGuard	SysUtil.h	/^   explicit LockGuard(Lock& Lock)$/;"	f	class:tigerso::core::LockGuard
+LockGuard	SysUtil.h	/^class LockGuard {$/;"	c	namespace:tigerso::core
+LockTryGuard	SysUtil.h	/^    explicit LockTryGuard(Lock& Lock)$/;"	f	class:tigerso::core::LockTryGuard
+LockTryGuard	SysUtil.h	/^class LockTryGuard {$/;"	c	namespace:tigerso::core
+Lock_obj	SysUtil.h	/^    Lock& Lock_obj;$/;"	m	class:tigerso::core::LockGuard
+Lock_obj	SysUtil.h	/^    Lock& Lock_obj;$/;"	m	class:tigerso::core::LockTryGuard
+Logging	Logging.h	/^	Logging():endFmt("<__FUNC__>@__FILE__"), level(NOLOG){}$/;"	f	class:tigerso::core::Logging
+Logging	Logging.h	/^class Logging {$/;"	c	namespace:tigerso::core
+MC_LOCK_PRIVATE	SysUtil.h	/^const int MC_LOCK_PRIVATE = 0;$/;"	m	namespace:tigerso::core
+MC_LOCK_SHARE_PROCESS	SysUtil.h	/^const int MC_LOCK_SHARE_PROCESS = 1;$/;"	m	namespace:tigerso::core
+NOLOG	Logging.h	/^	NOLOG = 0,$/;"	e	enum:tigerso::core::LOGLEVEL
+PROJECT	tigerso.h	/^const std::string  PROJECT     =  "tigerso";$/;"	m	namespace:tigerso::core
+SECTB	ConfigParser.h	11;"	d
+SECTE	ConfigParser.h	12;"	d
+SECTION	ConfigParser.h	/^const int SECTION = 0;$/;"	m	namespace:tigerso::core
+SPLIT	Logging.h	15;"	d
+SPLIT	Logging.h	18;"	d
+SharedMemory	SysUtil.h	/^    SharedMemory():$/;"	f	class:tigerso::core::SharedMemory
+SharedMemory	SysUtil.h	/^    SharedMemory(const string& name, const size_t size, const int prot = MAP_SHARED):$/;"	f	class:tigerso::core::SharedMemory
+SharedMemory	SysUtil.h	/^class SharedMemory: public nocopyable {$/;"	c	namespace:tigerso::core
+ShmMutex	SysUtil.cpp	/^ShmMutex::ShmMutex()$/;"	f	class:tigerso::core::ShmMutex
+ShmMutex	SysUtil.cpp	/^ShmMutex::ShmMutex(const ShmMutex& mutex)$/;"	f	class:tigerso::core::ShmMutex
+ShmMutex	SysUtil.cpp	/^ShmMutex::ShmMutex(const string& shm_name)$/;"	f	class:tigerso::core::ShmMutex
+ShmMutex	SysUtil.h	/^class ShmMutex: public Lock {$/;"	c	namespace:tigerso::core
+SysUtil	SysUtil.h	/^class SysUtil {$/;"	c	namespace:tigerso::core
+TEST_FILEACCESS	File.h	22;"	d
+TS_CORE_BASECLASS_H_	BaseClass.h	2;"	d
+TS_CORE_CONDITION_H_	Condition.h	2;"	d
+TS_CORE_CONFIGPARSER_H_	ConfigParser.h	2;"	d
+TS_CORE_CURRENTTHREAD_H_	CurrentThread.h	2;"	d
+TS_CORE_FILELOCK_H_	FileLock.h	2;"	d
+TS_CORE_FILE_H_	File.h	2;"	d
+TS_CORE_LOGGING_H_	Logging.h	7;"	d
+TS_CORE_PTHREAD_H_	Thread.h	2;"	d
+TS_CORE_SYSUTIL_H_	SysUtil.h	2;"	d
+TS_CORE_THREADMUTEX_H_	ThreadMutex.h	2;"	d
+TS_CORE_THREADPOOL_H_	ThreadPool.h	2;"	d
+TS_CORE_TIGERSO_H_	tigerso.h	2;"	d
+Task	ThreadPool.h	/^    typedef Thread::ThreadFunc Task;$/;"	t	class:tigerso::core::ThreadPool
+Thread	Thread.cpp	/^Thread::Thread(const ThreadFunc& func, const std::string& name)$/;"	f	class:tigerso::core::Thread
+Thread	Thread.h	/^class Thread: public nocopyable {$/;"	c	namespace:tigerso::core
+ThreadData	Thread.cpp	/^    ThreadData(const ThreadFunc& func,$/;"	f	class:tigerso::core::ThreadData
+ThreadData	Thread.cpp	/^class ThreadData {$/;"	c	namespace:tigerso::core	file:
+ThreadFunc	Thread.cpp	/^    typedef Thread::ThreadFunc ThreadFunc;$/;"	t	class:tigerso::core::ThreadData	file:
+ThreadFunc	Thread.h	/^    typedef std::function<void()>  ThreadFunc;$/;"	t	class:tigerso::core::Thread
+ThreadInit	Thread.cpp	/^    ThreadInit() {$/;"	f	class:tigerso::core::initmain__::ThreadInit
+ThreadInit	Thread.cpp	/^class ThreadInit {$/;"	c	namespace:tigerso::core::initmain__	file:
+ThreadMutex	ThreadMutex.h	/^    ThreadMutex()$/;"	f	class:tigerso::core::ThreadMutex
+ThreadMutex	ThreadMutex.h	/^class ThreadMutex: public Lock {$/;"	c	namespace:tigerso::core
+ThreadPool	ThreadPool.h	/^    explicit ThreadPool(const std::string& name = "ThreadPool")$/;"	f	class:tigerso::core::ThreadPool
+ThreadPool	ThreadPool.h	/^class ThreadPool: public nocopyable {$/;"	c	namespace:tigerso::core
+ThreadPtr	ThreadPool.h	/^    typedef std::shared_ptr<Thread> ThreadPtr;$/;"	t	class:tigerso::core::ThreadPool
+UnassignGuard	ThreadMutex.h	/^        UnassignGuard(ThreadMutex& mutex)$/;"	f	class:tigerso::core::ThreadMutex::UnassignGuard
+UnassignGuard	ThreadMutex.h	/^    class UnassignGuard {$/;"	c	class:tigerso::core::ThreadMutex
+VERSION	tigerso.h	/^const std::string  VERSION     =  "1.0.0";$/;"	m	namespace:tigerso::core
+WORKPATH	tigerso.h	/^const std::string  WORKPATH    =  "\/usr\/" + PROJECT;$/;"	m	namespace:tigerso::core
+afterFork	Thread.cpp	/^void afterFork() {$/;"	f	namespace:tigerso::core::initmain__
+appendWriteIn	File.cpp	/^ssize_t File::appendWriteIn(const char* buf, size_t len) {$/;"	f	class:tigerso::core::File
+assignHolder	ThreadMutex.h	/^    void assignHolder() {$/;"	f	class:tigerso::core::ThreadMutex
+blocking	tigerso.h	48;"	d
+cacheTid_	Thread.cpp	/^   __thread int cacheTid_ = 0;$/;"	m	namespace:tigerso::core::CurrentThread	file:
+cond_	Condition.h	/^    pthread_cond_t cond_;$/;"	m	class:tigerso::core::Condition
+configMap	ConfigParser.h	/^	std::map<std::string, std::map<std::string, std::string> > configMap;$/;"	m	class:tigerso::core::ConfigParser
+content_	FileLock.h	/^    std::string content_;$/;"	m	class:tigerso::core::FileLock
+core	BaseClass.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+core	Condition.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+core	ConfigParser.cpp	/^namespace tigerso::core {$/;"	n	class:tigerso	file:
+core	ConfigParser.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+core	CurrentThread.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+core	File.cpp	/^namespace tigerso::core {$/;"	n	class:tigerso	file:
+core	File.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+core	FileLock.cpp	/^namespace tigerso::core {$/;"	n	class:tigerso	file:
+core	FileLock.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+core	Logging.cpp	/^namespace tigerso::core {$/;"	n	class:tigerso	file:
+core	Logging.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+core	SysUtil.cpp	/^namespace tigerso::core {$/;"	n	class:tigerso	file:
+core	SysUtil.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+core	Thread.cpp	/^namespace tigerso::core {$/;"	n	class:tigerso	file:
+core	Thread.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+core	ThreadMutex.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+core	ThreadPool.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+core	tigerso.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+create_process_shared_memory	SysUtil.cpp	/^void* SysUtil::create_process_shared_memory(const string& shm_name, size_t len)$/;"	f	class:tigerso::core::SysUtil
+cur_	File.h	/^    off_t cur_;$/;"	m	class:tigerso::core::File
+dbgLog	Logging.cpp	/^int Logging::dbgLog(const char* fmt, ...)$/;"	f	class:tigerso::core::Logging
+decideLineType	ConfigParser.cpp	/^int ConfigParser::decideLineType(const std::string& line, std::string& content)$/;"	f	class:tigerso::core::ConfigParser
+destroy	FileLock.cpp	/^int FileLock::destroy() {$/;"	f	class:tigerso::core::FileLock
+destroy	SysUtil.cpp	/^int SharedMemory::destroy() {$/;"	f	class:tigerso::core::SharedMemory
+destroy	SysUtil.cpp	/^int ShmMutex::destroy()$/;"	f	class:tigerso::core::ShmMutex
+destroy	ThreadMutex.h	/^    int destroy() {$/;"	f	class:tigerso::core::ThreadMutex
+destroy_process_shared_memory	SysUtil.cpp	/^int SysUtil::destroy_process_shared_memory(const string& shm_name, void* ptr, size_t len)$/;"	f	class:tigerso::core::SysUtil
+endFmt	Logging.h	/^	const std::string endFmt;$/;"	m	class:tigerso::core::Logging
+fd_	File.h	/^    int fd_;$/;"	m	class:tigerso::core::File
+fd_	FileLock.h	/^    int fd_;$/;"	m	class:tigerso::core::FileLock
+filename	ConfigParser.h	/^	std::string filename;$/;"	m	class:tigerso::core::ConfigParser
+filename_	File.h	/^    char filename_[FILE_NAME_MAX_LENGTH];$/;"	m	class:tigerso::core::File
+filename_	FileLock.h	/^    std::string filename_;$/;"	m	class:tigerso::core::FileLock
+func_	Thread.cpp	/^    ThreadFunc func_;$/;"	m	class:tigerso::core::ThreadData	file:
+func_	Thread.h	/^    ThreadFunc func_;$/;"	m	class:tigerso::core::Thread
+getAllKey	ConfigParser.cpp	/^void ConfigParser::getAllKey()$/;"	f	class:tigerso::core::ConfigParser
+getFileSize	File.cpp	/^ssize_t File::getFileSize() {$/;"	f	class:tigerso::core::File
+getFormatTime	SysUtil.cpp	/^string SysUtil::getFormatTime(const string& fmt){$/;"	f	class:tigerso::core::SysUtil
+getInstance	ConfigParser.cpp	/^ConfigParser* ConfigParser::getInstance()$/;"	f	class:tigerso::core::ConfigParser
+getInstance	Logging.cpp	/^Logging* Logging::getInstance()$/;"	f	class:tigerso::core::Logging
+getLogFile	Logging.cpp	/^std::string Logging::getLogFile() const$/;"	f	class:tigerso::core::Logging
+getThreadMutex	ThreadMutex.h	/^    pthread_mutex_t* getThreadMutex() {$/;"	f	class:tigerso::core::ThreadMutex
+getTime	Logging.cpp	/^std::string Logging::getTime()$/;"	f	class:tigerso::core::Logging
+getValueByKey	ConfigParser.cpp	/^std::string ConfigParser::getValueByKey(const std::string& section, const std::string& key)$/;"	f	class:tigerso::core::ConfigParser
+get_shm_mutex	SysUtil.cpp	/^shm_mutex_t* ShmMutex::get_shm_mutex() const$/;"	f	class:tigerso::core::ShmMutex
+get_shm_name	SysUtil.cpp	/^string ShmMutex::get_shm_name() const$/;"	f	class:tigerso::core::ShmMutex
+get_shm_ptr	SysUtil.cpp	/^void* SharedMemory::get_shm_ptr() const {$/;"	f	class:tigerso::core::SharedMemory
+get_work_path	SysUtil.cpp	/^string SysUtil::get_work_path()$/;"	f	class:tigerso::core::SysUtil
+holder_	ThreadMutex.h	/^    pid_t holder_ = 0;$/;"	m	class:tigerso::core::ThreadMutex
+infoLog	Logging.cpp	/^int Logging::infoLog(const char* fmt, ...)$/;"	f	class:tigerso::core::Logging
+init	FileLock.cpp	/^int FileLock::init() {$/;"	f	class:tigerso::core::FileLock
+init	SysUtil.cpp	/^int SharedMemory::init() {$/;"	f	class:tigerso::core::SharedMemory
+init	SysUtil.cpp	/^int ShmMutex::init()$/;"	f	class:tigerso::core::ShmMutex
+init	Thread.cpp	/^ThreadInit init;$/;"	m	namespace:tigerso::core::initmain__	file:
+init	ThreadMutex.h	/^    int init() {$/;"	f	class:tigerso::core::ThreadMutex
+initmain__	Thread.cpp	/^namespace initmain__ {$/;"	n	namespace:tigerso::core	file:
+isFileExisted	ConfigParser.h	/^	bool isFileExisted;$/;"	m	class:tigerso::core::ConfigParser
+isFull	ThreadPool.h	/^    bool isFull() const {$/;"	f	class:tigerso::core::ThreadPool
+isLocked	SysUtil.h	/^    bool isLocked() const {$/;"	f	class:tigerso::core::LockTryGuard
+isLockedByCurrentThread	ThreadMutex.h	/^    bool isLockedByCurrentThread() const {$/;"	f	class:tigerso::core::ThreadMutex
+isMainThread	CurrentThread.h	/^   inline bool isMainThread() { return CurrentThread::tid() == getpid(); }$/;"	f	namespace:tigerso::core::CurrentThread
+isRefreshed	ConfigParser.h	/^	bool isRefreshed;$/;"	m	class:tigerso::core::ConfigParser
+join	Thread.cpp	/^int Thread::join() {$/;"	f	class:tigerso::core::Thread
+joined_	Thread.h	/^    bool joined_ = false;$/;"	m	class:tigerso::core::Thread
+level	Logging.h	/^	int level;$/;"	m	class:tigerso::core::Logging
+loadConfig2Map	ConfigParser.cpp	/^int ConfigParser::loadConfig2Map()$/;"	f	class:tigerso::core::ConfigParser
+lock	FileLock.cpp	/^int FileLock::lock() {$/;"	f	class:tigerso::core::FileLock
+lock	SysUtil.cpp	/^int ShmMutex::lock()$/;"	f	class:tigerso::core::ShmMutex
+lock	ThreadMutex.h	/^    int lock() {$/;"	f	class:tigerso::core::ThreadMutex
+lock_cmd	FileLock.cpp	/^int FileLock::lock_cmd(int cmd) {$/;"	f	class:tigerso::core::FileLock
+locked	SysUtil.h	/^    bool locked;$/;"	m	class:tigerso::core::LockTryGuard
+locked_	FileLock.h	/^    bool locked_ = false;$/;"	m	class:tigerso::core::FileLock
+locked_	SysUtil.h	/^    bool locked_ = false;$/;"	m	class:tigerso::core::ShmMutex
+logFile	Logging.h	/^	std::string logFile;$/;"	m	class:tigerso::core::Logging
+logPath	Logging.h	/^	std::string logPath;$/;"	m	class:tigerso::core::Logging
+loopmutex_	ThreadPool.h	/^    mutable ThreadMutex loopmutex_;$/;"	m	class:tigerso::core::ThreadPool
+make_dirtree	SysUtil.cpp	/^int SysUtil::make_dirtree(const string& dirname)$/;"	f	class:tigerso::core::SysUtil
+mutex	SysUtil.h	/^    pthread_mutex_t mutex;$/;"	m	struct:tigerso::core::shm_mutex_t
+mutex_	Condition.h	/^    ThreadMutex& mutex_;$/;"	m	class:tigerso::core::Condition
+mutex_	ThreadMutex.h	/^    pthread_mutex_t  mutex_;$/;"	m	class:tigerso::core::ThreadMutex
+mutex_	ThreadPool.h	/^    mutable ThreadMutex mutex_;$/;"	m	class:tigerso::core::ThreadPool
+mutex_ptr	SysUtil.h	/^    shm_mutex_t* mutex_ptr;$/;"	m	class:tigerso::core::ShmMutex
+mutexattr	SysUtil.h	/^    pthread_mutexattr_t mutexattr;$/;"	m	struct:tigerso::core::shm_mutex_t
+name	CurrentThread.h	/^   inline const char* name() { return threadName_; }$/;"	f	namespace:tigerso::core::CurrentThread
+name	Thread.h	/^    const std::string& name() { return name_; }$/;"	f	class:tigerso::core::Thread
+name_	Thread.cpp	/^    std::string name_;$/;"	m	class:tigerso::core::ThreadData	file:
+name_	Thread.h	/^    std::string name_="";$/;"	m	class:tigerso::core::Thread
+name_	ThreadPool.h	/^    std::string name_;$/;"	m	class:tigerso::core::ThreadPool
+nocopyable	BaseClass.h	/^    nocopyable(){}$/;"	f	class:tigerso::core::nocopyable
+nocopyable	BaseClass.h	/^class nocopyable {$/;"	c	namespace:tigerso::core
+nonBlocking	tigerso.h	47;"	d
+notEmpty	ThreadPool.h	/^    bool notEmpty = false;$/;"	m	class:tigerso::core::ThreadPool
+notEmpty_	ThreadPool.h	/^    Condition notEmpty_;$/;"	m	class:tigerso::core::ThreadPool
+notFull	ThreadPool.h	/^    bool notFull = true;$/;"	m	class:tigerso::core::ThreadPool
+notFull_	ThreadPool.h	/^    Condition notFull_;$/;"	m	class:tigerso::core::ThreadPool
+notify	Condition.h	/^    void notify() {$/;"	f	class:tigerso::core::Condition
+notifyAll	Condition.h	/^    void notifyAll() {$/;"	f	class:tigerso::core::Condition
+numCreated	Thread.h	/^    static int numCreated() { return numCreated_.load(); }$/;"	f	class:tigerso::core::Thread
+numCreated_	Thread.h	/^    static std::atomic<int> numCreated_;$/;"	m	class:tigerso::core::Thread
+operator =	SysUtil.cpp	/^ShmMutex ShmMutex::operator=(const ShmMutex& mutex)$/;"	f	class:tigerso::core::ShmMutex
+owner_	ThreadMutex.h	/^        ThreadMutex& owner_;$/;"	m	class:tigerso::core::ThreadMutex::UnassignGuard
+pInstance	BaseClass.h	/^    static singleton* pInstance; $/;"	m	class:tigerso::core::singleton
+pInstance	ConfigParser.cpp	/^ConfigParser* ConfigParser::pInstance = NULL;$/;"	m	class:tigerso::core::ConfigParser	file:
+pInstance	ConfigParser.h	/^	static ConfigParser* pInstance;$/;"	m	class:tigerso::core::ConfigParser
+pInstance	Logging.cpp	/^Logging* Logging::pInstance = NULL;$/;"	m	class:tigerso::core::Logging	file:
+pInstance	Logging.h	/^	static Logging* pInstance;$/;"	m	class:tigerso::core::Logging
+readOut	File.cpp	/^ssize_t File::readOut(char* buf, size_t len) {$/;"	f	class:tigerso::core::File
+refer_num	SysUtil.h	/^    int refer_num;$/;"	m	struct:tigerso::core::shm_mutex_t
+reload	ConfigParser.cpp	/^int ConfigParser::reload() {$/;"	f	class:tigerso::core::ConfigParser
+remove_file	SysUtil.cpp	/^int SysUtil::remove_file(const string& file)$/;"	f	class:tigerso::core::SysUtil
+reset	File.h	/^    inline void reset() { $/;"	f	class:tigerso::core::File
+run	ThreadPool.h	/^    void run(const Task task) {$/;"	f	class:tigerso::core::ThreadPool
+runInThread	Thread.cpp	/^    void runInThread() {$/;"	f	class:tigerso::core::ThreadData
+runInThread	ThreadPool.h	/^    void runInThread() {$/;"	f	class:tigerso::core::ThreadPool
+running_	ThreadPool.h	/^    std::atomic<bool> running_;$/;"	m	class:tigerso::core::ThreadPool
+send2Socket	File.cpp	/^int File::send2Socket(int sockfd, size_t& sendn) {$/;"	f	class:tigerso::core::File
+setBlockingIO	File.h	/^    inline int setBlockingIO(int block) { if(validFd(fd_)) { return block != 1? nonBlocking(fd_): blocking(fd_); } return -1; }$/;"	f	class:tigerso::core::File
+setConfigPath	ConfigParser.cpp	/^void ConfigParser::setConfigPath(const std::string& file)$/;"	f	class:tigerso::core::ConfigParser
+setDefaultName	Thread.cpp	/^void Thread::setDefaultName() {$/;"	f	class:tigerso::core::Thread
+setFilename	File.cpp	/^void File::setFilename(const char* filename) {$/;"	f	class:tigerso::core::File
+setLevel	Logging.cpp	/^int Logging::setLevel(const std::string& le)$/;"	f	class:tigerso::core::Logging
+setLogFile	Logging.cpp	/^int Logging::setLogFile(const std::string& file)$/;"	f	class:tigerso::core::Logging
+setLogPath	Logging.cpp	/^int Logging::setLogPath(const std::string& path)$/;"	f	class:tigerso::core::Logging
+set_signal_handler	SysUtil.cpp	/^signal_func* SysUtil::set_signal_handler(int signo, signal_func* func) {$/;"	f	class:tigerso::core::SysUtil
+shm_len	SysUtil.h	/^    size_t shm_len;$/;"	m	class:tigerso::core::SharedMemory
+shm_mutex_t	SysUtil.h	/^struct shm_mutex_t {$/;"	s	namespace:tigerso::core
+shm_name	SysUtil.h	/^    string shm_name;$/;"	m	class:tigerso::core::SharedMemory
+shm_name	SysUtil.h	/^    string shm_name;$/;"	m	class:tigerso::core::ShmMutex
+shm_name	SysUtil.h	/^    string shm_name;$/;"	m	struct:tigerso::core::shm_mutex_t
+shm_pid	SysUtil.h	/^    pid_t shm_pid;$/;"	m	class:tigerso::core::SharedMemory
+shm_pid	SysUtil.h	/^    pid_t shm_pid;$/;"	m	class:tigerso::core::ShmMutex
+shm_prot	SysUtil.h	/^    int shm_prot;$/;"	m	class:tigerso::core::SharedMemory
+shm_ptr	SysUtil.h	/^    void* shm_ptr;$/;"	m	class:tigerso::core::SharedMemory
+signal_func	SysUtil.h	/^typedef void (signal_func)(int);$/;"	t	namespace:tigerso::core
+singleton	BaseClass.h	/^class singleton {$/;"	c	namespace:tigerso::core
+size_	File.h	/^    off_t size_;$/;"	m	class:tigerso::core::File
+start	Thread.cpp	/^void Thread::start() {$/;"	f	class:tigerso::core::Thread
+start	ThreadPool.h	/^    void start(const int threadNum) {$/;"	f	class:tigerso::core::ThreadPool
+startThread	Thread.cpp	/^void* startThread(void* obj) {$/;"	f	namespace:tigerso::core
+start_	Thread.h	/^    bool start_ = false;$/;"	m	class:tigerso::core::Thread
+started	Thread.h	/^    bool started() const { return start_; }$/;"	f	class:tigerso::core::Thread
+stop	ThreadPool.h	/^    void stop() {$/;"	f	class:tigerso::core::ThreadPool
+take	ThreadPool.h	/^    Task take() {$/;"	f	class:tigerso::core::ThreadPool
+tasks_	ThreadPool.h	/^    std::deque<Task> tasks_;$/;"	m	class:tigerso::core::ThreadPool
+testExist	File.h	/^    inline bool testExist() { return TEST_FILEACCESS(filename_, F_OK); }$/;"	f	class:tigerso::core::File
+testRead	File.h	/^    inline bool testRead()  { return TEST_FILEACCESS(filename_, R_OK); }$/;"	f	class:tigerso::core::File
+testWrite	File.h	/^    inline bool testWrite() { return TEST_FILEACCESS(filename_, W_OK); }$/;"	f	class:tigerso::core::File
+threadId_	Thread.h	/^    pthread_t threadId_ = 0;$/;"	m	class:tigerso::core::Thread
+threadName_	Thread.cpp	/^   __thread const char* threadName_ = "unknow thread";$/;"	m	namespace:tigerso::core::CurrentThread	file:
+threadNum_	ThreadPool.h	/^    int threadNum_;$/;"	m	class:tigerso::core::ThreadPool
+threads_	ThreadPool.h	/^    std::vector<ThreadPtr> threads_;$/;"	m	class:tigerso::core::ThreadPool
+tid	Thread.cpp	/^   pid_t tid() {$/;"	f	namespace:tigerso::core::CurrentThread
+tid	Thread.h	/^    pid_t tid() const { return *tid_; }$/;"	f	class:tigerso::core::Thread
+tidStrLength	Thread.cpp	/^   __thread size_t tidStrLength = 0;$/;"	m	namespace:tigerso::core::CurrentThread	file:
+tidString	CurrentThread.h	/^   inline const char* tidString() { return tidString_; }$/;"	f	namespace:tigerso::core::CurrentThread
+tidString_	Thread.cpp	/^   __thread char tidString_[32] = {0};$/;"	m	namespace:tigerso::core::CurrentThread	file:
+tid_	Thread.h	/^    std::shared_ptr<pid_t> tid_;$/;"	m	class:tigerso::core::Thread
+toLower	SysUtil.h	/^    void toLower(std::string& src, std::string& dst) { std::transform(src.begin(), src.end(), dst.begin(), ::tolower); }$/;"	f	class:tigerso::core::SysUtil
+toUpper	SysUtil.h	/^    void toUpper(std::string& src, std::string& dst) { std::transform(src.begin(), src.end(), dst.begin(), ::toupper); }$/;"	f	class:tigerso::core::SysUtil
+try_lock	FileLock.cpp	/^int FileLock::try_lock() {$/;"	f	class:tigerso::core::FileLock
+try_lock	SysUtil.cpp	/^int ShmMutex::try_lock()$/;"	f	class:tigerso::core::ShmMutex
+try_lock	ThreadMutex.h	/^    int try_lock() {$/;"	f	class:tigerso::core::ThreadMutex
+unassignHolder	ThreadMutex.h	/^    void unassignHolder() {$/;"	f	class:tigerso::core::ThreadMutex
+unlink	File.h	/^    inline int unlink() { return ::unlink(filename_); }$/;"	f	class:tigerso::core::File
+unlock	FileLock.cpp	/^int FileLock::unlock() {$/;"	f	class:tigerso::core::FileLock
+unlock	SysUtil.cpp	/^int ShmMutex::unlock()$/;"	f	class:tigerso::core::ShmMutex
+unlock	ThreadMutex.h	/^    int unlock() {$/;"	f	class:tigerso::core::ThreadMutex
+validFd	tigerso.h	49;"	d
+validate_filename	SysUtil.cpp	/^bool SysUtil::validate_filename(const string& filename)$/;"	f	class:tigerso::core::SysUtil
+wait	Condition.h	/^    void wait() {$/;"	f	class:tigerso::core::Condition
+waitForSeconds	Condition.h	/^    bool waitForSeconds(double seconds) {$/;"	f	class:tigerso::core::Condition
+wkTid_	Thread.cpp	/^    std::weak_ptr<pid_t> wkTid_;$/;"	m	class:tigerso::core::ThreadData	file:
+writeIn	File.cpp	/^ssize_t File::writeIn(const char* buf, size_t len) {$/;"	f	class:tigerso::core::File
+~Condition	Condition.h	/^    ~Condition() {$/;"	f	class:tigerso::core::Condition
+~ConfigParser	ConfigParser.h	/^    ~ConfigParser() { delete pInstance; }$/;"	f	class:tigerso::core::ConfigParser
+~File	File.cpp	/^File::~File() {$/;"	f	class:tigerso::core::File
+~FileLock	FileLock.cpp	/^FileLock::~FileLock() {$/;"	f	class:tigerso::core::FileLock
+~LockGuard	SysUtil.h	/^    ~LockGuard() {$/;"	f	class:tigerso::core::LockGuard
+~LockTryGuard	SysUtil.h	/^    ~LockTryGuard() {$/;"	f	class:tigerso::core::LockTryGuard
+~SharedMemory	SysUtil.h	/^    ~SharedMemory() {$/;"	f	class:tigerso::core::SharedMemory
+~ShmMutex	SysUtil.cpp	/^ShmMutex::~ShmMutex()$/;"	f	class:tigerso::core::ShmMutex
+~Thread	Thread.cpp	/^Thread::~Thread() {$/;"	f	class:tigerso::core::Thread
+~ThreadMutex	ThreadMutex.h	/^    ~ThreadMutex() {$/;"	f	class:tigerso::core::ThreadMutex
+~UnassignGuard	ThreadMutex.h	/^        ~UnassignGuard() {$/;"	f	class:tigerso::core::ThreadMutex::UnassignGuard
+~nocopyable	BaseClass.h	/^    ~nocopyable(){}$/;"	f	class:tigerso::core::nocopyable
+~singleton	BaseClass.h	/^    virtual ~singleton(){ if ( pInstance != nullptr) { delete pInstance; } };$/;"	f	class:tigerso::core::singleton

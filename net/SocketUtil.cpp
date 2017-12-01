@@ -14,6 +14,7 @@ using tigerso::core::Logging;
 int SocketUtil::InitSocket(const int domain, const int type, Socket& mcsock) {
 	socket_t sockfd = ::socket(domain, type, 0);
     if(sockfd > 0) {
+        sockfd = RelocateFileDescriptor(sockfd, MIN_SOCKET_FD);
 	    mcsock.setSocket(sockfd);
         return 0;
     }
@@ -54,6 +55,14 @@ int SocketUtil::Listen(Socket& mcsock, const int backlog) {
 		back = 5;
 	}
 
+    //Dup Listen socket to 64
+    socket_t oldfd = mcsock.getSocket();
+    socket_t newfd = ::dup2(mcsock.getSocket(), 64);
+    if(newfd != -1) {
+        ::close(oldfd);
+        mcsock.setSocket(newfd);
+    }
+
 	if(::listen(mcsock.getSocket(), back) != 0) {
 		return -1;
 	}
@@ -76,6 +85,8 @@ int SocketUtil::Accept(Socket& listen_mcsock, Socket& accept_mcsock) {
 	if(client_socket < 0) {
 		return -1;
 	}
+
+    client_socket = RelocateFileDescriptor(client_socket, MIN_SOCKET_FD);
 	
 	std::string s_addr;
 	std::string u_port;
@@ -95,7 +106,7 @@ int SocketUtil::Accept(Socket& listen_mcsock, Socket& accept_mcsock) {
 	return 0;
 }
 
-int SocketUtil::Connect(Socket& mcsock, const std::string& s_addr, const std::string& port){
+int SocketUtil::Connect(Socket& mcsock, const std::string& s_addr, const std::string& port, const int type){
 	if(!ValidateAddr(s_addr)|| !ValidatePort(port)) {
         DBG_LOG("ip/port: [%s/%s] invalid", s_addr.c_str(), port.c_str());
 		return -1;
@@ -111,7 +122,9 @@ int SocketUtil::Connect(Socket& mcsock, const std::string& s_addr, const std::st
         return -1;
     }
 
-    socket_t sockfd = ::socket(AF_INET, SOCK_STREAM, 0);
+    socket_t sockfd = ::socket(AF_INET, type, 0);
+    sockfd = RelocateFileDescriptor(sockfd, MIN_SOCKET_FD);
+
     mcsock.setStrAddr(s_addr);
     mcsock.setStrPort(port);
 	mcsock.setRole(SOCKET_ROLE_SERVER); 
@@ -119,6 +132,7 @@ int SocketUtil::Connect(Socket& mcsock, const std::string& s_addr, const std::st
 
 	int ret = ::connect(sockfd, (sockaddr*) &server_addr, addr_len);
     std::cout << "connect return: " <<ret << std::endl;
+
     mcsock.setSocket(sockfd);
     if( ret < 0 ) { return ret; }
 	mcsock.setStage(SOCKET_STAGE_CONNECT);
@@ -405,20 +419,35 @@ int SocketUtil::CreateUDPConnect(
     mcsock.setNIO(unblock);
 
     // bind()
-	if(SocketUtil::Bind(mcsock, ip, pt, -1) != 0) {
+    /*
+	if(SocketUtil::Bind(mcsock, "10.64.75.131", "3553", -1) != 0) {
 		DBG_LOG("socket: master socket Bind failed");
 		return 4;
 	}
-    
     INFO_LOG("UDP socket[%d] connect to  %s:%s", mcsock.getSocket(), ip.c_str(), pt.c_str());
+    */
 
     //connect()
-    if(SocketUtil::Connect(mcsock, ip, port) != 0)
+    if(SocketUtil::Connect(mcsock, ip, port, SOCK_DGRAM) != 0)
     {
 		DBG_LOG("socket: UDP socket connect failed");
 		return 5;
     }
     return 0;
+}
+
+int SocketUtil::RelocateFileDescriptor(int oldfd, int leastfd) {
+    if(leastfd < oldfd) {
+        return oldfd;
+    }
+
+    int newfd = ::fcntl(oldfd, F_DUPFD, leastfd);
+    if(0 > newfd) {
+        return oldfd;
+    }
+    //std::cout << "close the old fd [" << oldfd <<"]" << std::endl;
+    ::close(oldfd);
+    return newfd;
 }
 
 } //namespace tigerso::net

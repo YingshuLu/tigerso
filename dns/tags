@@ -1,0 +1,163 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BITS_COMPARE	DNSResolver.h	55;"	d
+CACHE_FILE_NAME	DNSCache.h	15;"	d
+DNSAddition	DNSResolver.h	/^typedef struct DNSAnswer DNSAddition;$/;"	t	namespace:tigerso::dns	typeref:struct:tigerso::dns::DNSAnswer
+DNSAnswer	DNSResolver.h	/^struct DNSAnswer {$/;"	s	namespace:tigerso::dns
+DNSAuthority	DNSResolver.h	/^typedef struct DNSAnswer DNSAuthority;$/;"	t	namespace:tigerso::dns	typeref:struct:tigerso::dns::DNSAnswer
+DNSCache	DNSCache.cpp	/^DNSCache::DNSCache():$/;"	f	class:tigerso::dns::DNSCache
+DNSCache	DNSCache.h	/^class DNSCache {$/;"	c	namespace:tigerso::dns
+DNSCacheData	DNSCache.h	/^struct DNSCacheData {$/;"	s	namespace:tigerso::dns
+DNSHeader	DNSResolver.h	/^struct DNSHeader {$/;"	s	namespace:tigerso::dns
+DNSNode	DNSCache.h	/^struct DNSNode {$/;"	s	namespace:tigerso::dns
+DNSQuery	DNSResolver.h	/^struct DNSQuery {$/;"	s	namespace:tigerso::dns
+DNSResolver	DNSResolver.cpp	/^DNSResolver::DNSResolver() {$/;"	f	class:tigerso::dns::DNSResolver
+DNSResolver	DNSResolver.h	/^    DNSResolver(const DNSResolver&){}$/;"	f	class:tigerso::dns::DNSResolver
+DNSResolver	DNSResolver.h	/^class DNSResolver {$/;"	c	namespace:tigerso::dns
+DNS_ADDITION_OPT	DNSResolver.h	94;"	d
+DNS_CALLBACK	DNSResolver.h	/^typedef std::function<int(const char*, time_t)> DNS_CALLBACK;$/;"	t	namespace:tigerso::dns
+DNS_CLASS_INTERNET	DNSResolver.h	70;"	d
+DNS_DOMAIN_NAME_LIMIT	DNSResolver.h	84;"	d
+DNS_ERR	DNSResolver.h	74;"	d
+DNS_HEADER_FLAGS_AA	DNSResolver.h	41;"	d
+DNS_HEADER_FLAGS_AD	DNSResolver.h	45;"	d
+DNS_HEADER_FLAGS_OPCODE_IQUERY	DNSResolver.h	39;"	d
+DNS_HEADER_FLAGS_OPCODE_QUERY	DNSResolver.h	38;"	d
+DNS_HEADER_FLAGS_OPCODE_STATUS	DNSResolver.h	40;"	d
+DNS_HEADER_FLAGS_QR_QUERY	DNSResolver.h	36;"	d
+DNS_HEADER_FLAGS_QR_RESPONSE	DNSResolver.h	37;"	d
+DNS_HEADER_FLAGS_RA	DNSResolver.h	44;"	d
+DNS_HEADER_FLAGS_RCODE_FRMT_ERR	DNSResolver.h	47;"	d
+DNS_HEADER_FLAGS_RCODE_NAME_ERR	DNSResolver.h	49;"	d
+DNS_HEADER_FLAGS_RCODE_NONE_ERR	DNSResolver.h	46;"	d
+DNS_HEADER_FLAGS_RCODE_REFUSED	DNSResolver.h	51;"	d
+DNS_HEADER_FLAGS_RCODE_SEVR_ERR	DNSResolver.h	48;"	d
+DNS_HEADER_FLAGS_RCODE_SPRT_ERR	DNSResolver.h	50;"	d
+DNS_HEADER_FLAGS_RD	DNSResolver.h	43;"	d
+DNS_HEADER_FLAGS_TC	DNSResolver.h	42;"	d
+DNS_HEAD_EMPTY	DNSResolver.h	30;"	d
+DNS_ID_MISMATCH	DNSResolver.h	77;"	d
+DNS_INPUT_ERR	DNSResolver.h	75;"	d
+DNS_MESSAGE_LIMIT	DNSResolver.h	83;"	d
+DNS_NEED_MORE_DATA	DNSResolver.h	87;"	d
+DNS_NOANSWERS	DNSResolver.h	78;"	d
+DNS_OK	DNSResolver.h	73;"	d
+DNS_RECV_ERR	DNSResolver.h	89;"	d
+DNS_RESOLVE_ERR	DNSResolver.h	76;"	d
+DNS_RRNAME_OFFSETFLAG	DNSResolver.h	71;"	d
+DNS_RRNAME_POINTERSIZE	DNSResolver.h	85;"	d
+DNS_SEND_ERR	DNSResolver.h	88;"	d
+DNS_SERVER_ADDR	DNSResolver.h	81;"	d
+DNS_SERVER_PORT	DNSResolver.h	82;"	d
+DNS_SOCKET_IO_COMPLETE	DNSResolver.h	90;"	d
+DNS_STANDARD_ANSWER_FLAGS	DNSResolver.h	33;"	d
+DNS_STANDARD_QUERY_FLAGS	DNSResolver.h	32;"	d
+DNS_TYPE_A	DNSResolver.h	58;"	d
+DNS_TYPE_AAAA	DNSResolver.h	66;"	d
+DNS_TYPE_ANY	DNSResolver.h	68;"	d
+DNS_TYPE_AXFR	DNSResolver.h	67;"	d
+DNS_TYPE_CNAME	DNSResolver.h	60;"	d
+DNS_TYPE_HINFO	DNSResolver.h	64;"	d
+DNS_TYPE_MX	DNSResolver.h	65;"	d
+DNS_TYPE_NS	DNSResolver.h	59;"	d
+DNS_TYPE_PTR	DNSResolver.h	63;"	d
+DNS_TYPE_SOA	DNSResolver.h	61;"	d
+DNS_TYPE_WKS	DNSResolver.h	62;"	d
+FLAGS_CONBIME	DNSResolver.h	53;"	d
+FLAGS_CONTAIN	DNSResolver.h	54;"	d
+HASH_MAXCONFLICT	DNSCache.h	19;"	d
+HASH_NODENUM	DNSCache.h	18;"	d
+HOST_MAXLENGTH	DNSCache.h	20;"	d
+ID_	DNSResolver.h	/^    unsigned short ID_ = 0x00;$/;"	m	class:tigerso::dns::DNSResolver
+IPV4_ADDRSIZE	DNSCache.h	17;"	d
+IPV4_ADDRSIZE	DNSResolver.h	80;"	d
+MAX_UDP_PAYLOAD	DNSResolver.h	93;"	d
+MD5_KEYSIZE	DNSCache.h	16;"	d
+TS_DNS_DNSRESOLVER_H_	DNSResolver.h	2;"	d
+TS_NET_DNSCACHE_H_	DNSCache.h	2;"	d
+additions	DNSResolver.h	/^    unsigned short additions;$/;"	m	struct:tigerso::dns::DNSHeader
+addr_	DNSCache.h	/^    char addr_[IPV4_ADDRSIZE] = {0};$/;"	m	struct:tigerso::dns::DNSNode
+answer_name_	DNSResolver.h	/^    std::string answer_name_;$/;"	m	class:tigerso::dns::DNSResolver
+answer_ttl_	DNSResolver.h	/^    time_t answer_ttl_ = 0;$/;"	m	class:tigerso::dns::DNSResolver
+answers	DNSResolver.h	/^    unsigned short answers;$/;"	m	struct:tigerso::dns::DNSHeader
+aresPackDNSQuery	DNSResolver.cpp	/^int DNSResolver::aresPackDNSQuery(const char* host, size_t len) {$/;"	f	class:tigerso::dns::DNSResolver
+aresResvDNSAnswer	DNSResolver.cpp	/^int DNSResolver::aresResvDNSAnswer() {$/;"	f	class:tigerso::dns::DNSResolver
+array	DNSCache.h	/^    DNSNode array[HASH_NODENUM];$/;"	m	struct:tigerso::dns::DNSCacheData
+assigned_addr_	DNSResolver.h	/^    std::string assigned_addr_ = "";$/;"	m	class:tigerso::dns::DNSResolver
+asyncQueryInit	DNSResolver.cpp	/^int DNSResolver::asyncQueryInit(const std::string& host, Socket& udpsock){$/;"	f	class:tigerso::dns::DNSResolver
+asyncQueryStart	DNSResolver.cpp	/^int DNSResolver::asyncQueryStart(EventsLoop& loop, Socket& udpsock) {$/;"	f	class:tigerso::dns::DNSResolver
+authorities	DNSResolver.h	/^    unsigned short authorities;$/;"	m	struct:tigerso::dns::DNSHeader
+cachefile_	DNSCache.cpp	/^std::string DNSCache::cachefile_ = CACHE_FILE_NAME;$/;"	m	class:tigerso::dns::DNSCache	file:
+cachefile_	DNSCache.h	/^    static std::string cachefile_; $/;"	m	class:tigerso::dns::DNSCache
+cachehitnum	DNSCache.h	/^    volatile size_t cachehitnum;$/;"	m	struct:tigerso::dns::DNSCacheData
+calcMd5	DNSCache.cpp	/^static int calcMd5(const char* buf, unsigned char* key, int keylen) {$/;"	f	namespace:tigerso::dns
+callback_	DNSResolver.h	/^    DNS_CALLBACK callback_ = nullptr;$/;"	m	class:tigerso::dns::DNSResolver
+dhs_name	DNSResolver.h	/^    unsigned char* dhs_name;$/;"	m	struct:tigerso::dns::DNSAnswer
+dns	DNSCache.cpp	/^namespace tigerso::dns {$/;"	n	class:tigerso	file:
+dns	DNSCache.h	/^namespace tigerso::dns {$/;"	n	class:tigerso
+dns	DNSResolver.cpp	/^namespace tigerso::dns {$/;"	n	class:tigerso	file:
+dns	DNSResolver.h	/^namespace tigerso::dns {$/;"	n	class:tigerso
+dns_class	DNSResolver.h	/^    unsigned short dns_class;$/;"	m	struct:tigerso::dns::DNSAnswer
+dns_class	DNSResolver.h	/^    unsigned short dns_class;$/;"	m	struct:tigerso::dns::DNSQuery
+dns_data	DNSResolver.h	/^    char* dns_data;$/;"	m	struct:tigerso::dns::DNSAnswer
+dns_name	DNSResolver.h	/^    unsigned char* dns_name;$/;"	m	struct:tigerso::dns::DNSQuery
+dns_ttl	DNSResolver.h	/^    unsigned short dns_ttl;$/;"	m	struct:tigerso::dns::DNSAnswer
+dns_type	DNSResolver.h	/^    unsigned short dns_type;$/;"	m	struct:tigerso::dns::DNSAnswer
+dns_type	DNSResolver.h	/^    unsigned short dns_type;$/;"	m	struct:tigerso::dns::DNSQuery
+errorHandle	DNSResolver.cpp	/^int DNSResolver::errorHandle(Socket& udpsock) {$/;"	f	class:tigerso::dns::DNSResolver
+expriedAt_	DNSCache.h	/^    time_t expriedAt_ = 0;$/;"	m	struct:tigerso::dns::DNSNode
+flags	DNSResolver.h	/^    unsigned short flags;$/;"	m	struct:tigerso::dns::DNSHeader
+g_DNSCachePtr	DNSResolver.cpp	/^DNSCache* DNSResolver::g_DNSCachePtr = DNSCache::getInstance(); $/;"	m	class:tigerso::dns::DNSResolver	file:
+g_DNSCachePtr	DNSResolver.h	/^    static DNSCache* g_DNSCachePtr; $/;"	m	class:tigerso::dns::DNSResolver
+getAnswer	DNSResolver.cpp	/^int DNSResolver::getAnswer(std::string& name, time_t& ttl) {$/;"	f	class:tigerso::dns::DNSResolver
+getHashkey	DNSCache.cpp	/^hashkey_t DNSCache::getHashkey(const std::string& host, unsigned char* pkey, size_t len) {$/;"	f	class:tigerso::dns::DNSCache
+getInstance	DNSCache.cpp	/^DNSCache* DNSCache::getInstance() {$/;"	f	class:tigerso::dns::DNSCache
+getNextHashkey	DNSCache.cpp	/^hashkey_t DNSCache::getNextHashkey(const unsigned char* pkey, const size_t len, const offset_t cnt) {$/;"	f	class:tigerso::dns::DNSCache
+getShmPtr	DNSCache.cpp	/^DNSCacheData* DNSCache::getShmPtr() {$/;"	f	class:tigerso::dns::DNSCache
+getStickDNSNode	DNSCache.cpp	/^int DNSCache::getStickDNSNode(const std::string& host, std::string& ip) {$/;"	f	class:tigerso::dns::DNSCache
+hashkey_t	DNSCache.h	/^typedef unsigned short hashkey_t;$/;"	t	namespace:tigerso::dns
+host_	DNSCache.h	/^    char host_[HOST_MAXLENGTH] = {0};$/;"	m	struct:tigerso::dns::DNSNode
+id	DNSResolver.h	/^    unsigned short id;$/;"	m	struct:tigerso::dns::DNSHeader
+isNodeUsed	DNSCache.cpp	/^bool DNSCache::isNodeUsed(DNSNode& node) {$/;"	f	class:tigerso::dns::DNSCache
+key_	DNSCache.h	/^    unsigned char key_[MD5_KEYSIZE] = {0};$/;"	m	struct:tigerso::dns::DNSNode
+main	resolver.cc	/^int main(int argc, char* argv[]) {$/;"	f
+mutex_	DNSCache.h	/^    core::ShmMutex  mutex_; \/\/process-shared mutex$/;"	m	class:tigerso::dns::DNSCache
+offset_t	DNSCache.h	/^typedef unsigned int offset_t;$/;"	t	namespace:tigerso::dns
+operator =	DNSResolver.h	/^    DNSResolver& operator=(const DNSResolver&){}$/;"	f	class:tigerso::dns::DNSResolver
+pInstance_	DNSCache.cpp	/^DNSCache* DNSCache::pInstance_ = nullptr;$/;"	m	class:tigerso::dns::DNSCache	file:
+pInstance_	DNSCache.h	/^    static DNSCache* pInstance_;$/;"	m	class:tigerso::dns::DNSCache
+packDNSQuery	DNSResolver.cpp	/^int DNSResolver::packDNSQuery(const char* query_name, size_t len) {$/;"	f	class:tigerso::dns::DNSResolver
+primary_addr_	DNSResolver.cpp	/^std::string DNSResolver::primary_addr_ = DNS_SERVER_ADDR;$/;"	m	class:tigerso::dns::DNSResolver	file:
+primary_addr_	DNSResolver.h	/^    static std::string primary_addr_;$/;"	m	class:tigerso::dns::DNSResolver
+queryDNSCache	DNSResolver.cpp	/^int DNSResolver::queryDNSCache(const std::string& host, std::string& ipaddr) {$/;"	f	class:tigerso::dns::DNSResolver
+queryIP	DNSCache.cpp	/^int DNSCache::queryIP(const char* host, char* ipaddr, size_t len) {$/;"	f	class:tigerso::dns::DNSCache
+query_buf_	DNSResolver.h	/^    unsigned char query_buf_ [DNS_MESSAGE_LIMIT] = {0};$/;"	m	class:tigerso::dns::DNSResolver
+query_name_	DNSResolver.h	/^    std::string query_name_;$/;"	m	class:tigerso::dns::DNSResolver
+questions	DNSResolver.h	/^    unsigned short questions;$/;"	m	struct:tigerso::dns::DNSHeader
+recvAnswer	DNSResolver.cpp	/^int DNSResolver::recvAnswer(Socket& udpsock) {$/;"	f	class:tigerso::dns::DNSResolver
+resolveRR	DNSResolver.cpp	/^int DNSResolver::resolveRR(unsigned char* buf, size_t buf_len, unsigned char* curp, unsigned char* name, size_t name_len, unsigned short* type, unsigned short* rclass, time_t* ttl, unsigned char* rdata) {$/;"	f	class:tigerso::dns::DNSResolver
+resolveRRName	DNSResolver.cpp	/^int DNSResolver::resolveRRName(unsigned char* buf, size_t buf_len, unsigned char* curp, unsigned char* pname, size_t name_len) {$/;"	f	class:tigerso::dns::DNSResolver
+response_buf_	DNSResolver.h	/^    unsigned char response_buf_[DNS_MESSAGE_LIMIT] = {0};$/;"	m	class:tigerso::dns::DNSResolver
+resvDNSAnswer	DNSResolver.cpp	/^int DNSResolver::resvDNSAnswer() {$/;"	f	class:tigerso::dns::DNSResolver
+second_addr_	DNSResolver.cpp	/^std::string DNSResolver::second_addr_ = "";$/;"	m	class:tigerso::dns::DNSResolver	file:
+second_addr_	DNSResolver.h	/^    static std::string second_addr_;$/;"	m	class:tigerso::dns::DNSResolver
+sendQuery	DNSResolver.cpp	/^int DNSResolver::sendQuery(Socket& udpsock) {$/;"	f	class:tigerso::dns::DNSResolver
+server_addr_	DNSResolver.h	/^    sockaddr_in server_addr_;$/;"	m	class:tigerso::dns::DNSResolver
+setCallback	DNSResolver.h	/^    int setCallback(DNS_CALLBACK cb) {callback_ = cb;}$/;"	f	class:tigerso::dns::DNSResolver
+setPrimaryAddr	DNSResolver.h	/^    static void setPrimaryAddr(const std::string& paddr) { primary_addr_ = paddr; }$/;"	f	class:tigerso::dns::DNSResolver
+setSecondAddr	DNSResolver.h	/^    static void setSecondAddr(const std::string& saddr) { second_addr_ = saddr; }$/;"	f	class:tigerso::dns::DNSResolver
+setStickDNSNode	DNSCache.cpp	/^int DNSCache::setStickDNSNode(std::string& host, std::string& ip) {$/;"	f	class:tigerso::dns::DNSCache
+shm_	DNSCache.h	/^    core::SharedMemory shm_;$/;"	m	class:tigerso::dns::DNSCache
+socket_t	DNSResolver.h	/^typedef int socket_t;$/;"	t	namespace:tigerso::dns
+sockfd_	DNSResolver.h	/^    socket_t sockfd_ = -1;$/;"	m	class:tigerso::dns::DNSResolver
+startWithLabel	DNSResolver.h	/^    inline bool startWithLabel(unsigned char* cur) {$/;"	f	class:tigerso::dns::DNSResolver
+startWithPointer	DNSResolver.h	/^    inline bool startWithPointer(unsigned char* cur) {$/;"	f	class:tigerso::dns::DNSResolver
+stickDNSData_	DNSCache.h	/^    std::map<std::string, std::vector<std::string>> stickDNSData_;$/;"	m	class:tigerso::dns::DNSCache
+updateDNS	DNSCache.cpp	/^int DNSCache::updateDNS(const char* host, const char* ip, int& ttl) {$/;"	f	class:tigerso::dns::DNSCache
+updateNode	DNSCache.cpp	/^int DNSCache::updateNode(DNSNode& dst, const char* host, unsigned char* key, const char* ip, int& ttl) {$/;"	f	class:tigerso::dns::DNSCache
+~DNSCache	DNSCache.cpp	/^DNSCache::~DNSCache() {$/;"	f	class:tigerso::dns::DNSCache
+~DNSResolver	DNSResolver.cpp	/^DNSResolver::~DNSResolver() {$/;"	f	class:tigerso::dns::DNSResolver

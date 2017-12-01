@@ -30,7 +30,8 @@ public:
     }
     
     void run(const Task task) {
-        LockGuard lock(mutex_);
+        LockGuard lock(loopmutex_);
+        printf("Lock run\n");
         while(isFull()) {
             notFull_.wait();
         }
@@ -55,9 +56,9 @@ public:
     }
 
     void runInThread() {
-
         while(running_) {
             Task task(take());
+            printf("no task, thread loop\n");
             if(task) {
                 task();
             }
@@ -66,7 +67,8 @@ public:
 
     void stop() {
         {
-        LockGuard lock(mutex_);
+        LockGuard lock(loopmutex_);
+        printf("Lock stop\n");
         running_ = false;
         notEmpty_.notifyAll();
         }
@@ -78,10 +80,11 @@ public:
 private:
 
     Task take() {
-        LockGuard lock(mutex_);
+        LockGuard lock(loopmutex_);
         while(tasks_.empty()) {
             std::cout << "no task, looping" <<std::endl;
             notEmpty_.wait();
+            std::cout << "not get task mutex" <<std::endl;
         }
         
         Task task = tasks_.front();
@@ -92,13 +95,14 @@ private:
     }
 
     bool isFull() const {
-        if (mutex_.isLockedByCurrentThread()) {
+        if (loopmutex_.isLockedByCurrentThread()) {
             return tasks_.size() >= threadNum_;
         }
-        LockGuard lock(mutex_);
+        LockGuard lock(loopmutex_);
         return tasks_.size() >= threadNum_;
     }
 
+    mutable ThreadMutex loopmutex_;
     mutable ThreadMutex mutex_;
     Condition notFull_;
     Condition notEmpty_;
