@@ -10,6 +10,7 @@
 #include "net/EventsLoop.h"
 #include "net/Channel.h"
 #include "http/HttpMessage.h"
+#include "http/HttpParser.h"
 #include "util/FileTypeDetector.h"
 
 using namespace std;
@@ -331,7 +332,9 @@ int readCallback(SocketPtr& sockptr) {
         // parse Http Message
         if(sockptr->getRole() == SOCKET_ROLE_CLIENT) {
             HttpRequest request;
-            parser.parse(instr, request);
+            size_t parsedn = parser.parse(instr, request);
+            cout << " >> Http Parser parsed: " << parsedn << " bytes" << endl;
+            cout << " >> Http Parser Info: "<< parser.getStrErr() << endl;
 
             cout<< " >> Request Info\n" << "    Method: " << request.getMethod() << "\n    Host:" << request.getValueByHeader("host") <<endl;
             string outstr = HttpResponse::NOT_FOUND;

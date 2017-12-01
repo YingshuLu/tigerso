@@ -1,0 +1,767 @@
+shm_t shm name: dnscache.dat
+shm_ptr: 0x7f01ae637000
+Epoll createdm socket: 128
+socket [64] add event
+>> enable [64]  read event
+Master socket listening now
+>> Epoll detected 1 sockets
+>> Detected socket [64] Events
+socket [64]: READ event
+>> HttpProxyConnection [1] insert into connections
+----- Connection socket fd [256]Accepted from client [10.64.75.131:36716]
+----- Current connection number: 1
+socket [256] add event
+>> enable [256]  read event
+>> HttpProxyConnection [2] insert into connections
+Accept errno: 11, :Resource temporarily unavailable
+>> Epoll detected 1 sockets
+>> Detected socket [256] Events
+socket [256]: READ event
+P:1|C:256|S:-1 [Enter client first read request]
+P:1|C:256|S:-1 [client First Read recv 1bytes]
+>> disable [256] read event
+P:1|C:256|S:-1 [client parsed first request]
+P:1|C:256|S:-1 [---- Fist line: GET http://www.qq.com/ HTTP/1.1]
+P:1|C:256|S:-1 [GET http://www.qq.com/ HTTP/1.1
+Host: www.qq.com
+User-Agent: curl/7.50.1
+Accept: */*
+]
+query host: www.qq.com, hash key: 11421
+shm mutex unlock success
+P:1|C:256|S:-1 [Async DNS query]
+connect return: 0
+socket [258] add event
+>> enable [258] write event
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: WRITE event
+>> enable [258]  read event
+>> disable [258] write event
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+*********DNS Answer Header**************
+query->id: 38982
+header->id: 38982
+header->flags: 33152
+header->questions: 1
+header->answers: 1
+header->authotities: 0
+header->additions: 1
+****************************************
+host: www.qq.com, hash key: 11421
+ip: 103.7.30.123
+update DNS cache
+shm mutex unlock success
+updateDNS return : 0
+>> disable [258] read event
+>> unregister Socket [258]
+connect return: 0
+P:1|C:256|S:258 [Connect to server: 103.7.30.123:80]
+socket [258] add event
+>> enable [258] write event
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: WRITE event
+ >> socket connected!
+P:1|C:256|S:258 [server first send 91bytes]
+P:1|C:256|S:258 [server First send completed]
+>> disable [258] write event
+>> enable [258]  read event
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 2421 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 2920 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1080 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 2136 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1072 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1696 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 836 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1152 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 2224 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 2920 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1072 bytes]
+>> enable [256] write event
+>> Epoll detected 1 sockets
+>> Detected socket [256] Events
+socket [256]: WRITE event
+P:1|C:256|S:258 [client only write response]
+P:1|C:256|S:258 [client send 133409 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 2920 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 2920 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 2452 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1152 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1948 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 1460 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: READ event
+P:1|C:256|S:258 [server recv 2050 bytes]
+P:1|C:256|S:258 [server response parsed completed]
+P:1|C:256|S:258 [HTTP/1.1 200 OK
+Server: squid/3.5.20
+Date: Thu, 30 Nov 2017 12:38:23 GMT
+Content-Type: text/html; charset=GB2312
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+Expires: Thu, 30 Nov 2017 12:39:23 GMT
+Cache-Control: max-age=60
+X-Cache: MISS from xianggang.qq.com
+]
+>> Epoll detected 0 sockets
+>> Epoll detected 0 sockets
+>> Epoll detected 0 sockets
+>> Epoll detected 1 sockets
+>> Detected socket [258] Events
+socket [258]: RDHUP event
+socket [258]: READ event
+>> disable [258] read event
+socket [258]: AFTER event
+>> unregister Socket [258]
+>> enable [256]  read event
+>> Epoll detected 1 sockets
+>> Detected socket [256] Events
+socket [256]: WRITE event
+P:1|C:256|S:-1 [client only write response]
+P:1|C:256|S:-1 [client send 111262 bytes]
+>> Epoll detected 1 sockets
+>> Detected socket [256] Events
+socket [256]: RDHUP event
+socket [256]: READ event
+P:1|C:256|S:-1 [Enter client first read request]
+P:1|C:256|S:-1 [Client first read request, recv failed!]
+>> disable [256] read event
+socket [256]: WRITE event
+P:1|C:256|S:-1 [client only write response]
+P:1|C:256|S:-1 [client send 0 bytes]
+socket [256]: AFTER event
+>> disable [256] write event
+>> unregister Socket [256]
+>> Epoll detected 0 sockets

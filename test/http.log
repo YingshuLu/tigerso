@@ -1,0 +1,1491 @@
+shm_t shm name: dnscache.dat
+shm_ptr: 0x7fc479b4f000
+socket [4] add event
+>> enable [4]  read event
+Master socket listening now
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [1] insert into connections
+socket [5] add event
+>> enable [5]  read event
+>> HttpProxyConnection [2] insert into connections
+socket [6] add event
+>> enable [6]  read event
+>> HttpProxyConnection [3] insert into connections
+P:3|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[5]
+socket [5]: READ event
+P:1|C:5|S:-1 [Enter client first read request]
+P:1|C:5|S:-1 [client First Read recv 1bytes]
+>> disable [5] read event
+P:1|C:5|S:-1 [client parsed first request]
+P:1|C:5|S:-1 [---- Fist line: CONNECT www.google.com.hk:443 HTTP/1.1]
+P:1|C:5|S:-1 [CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: www.google.com.hk, hash key: 64373
+shm mutex unlock success
+P:1|C:5|S:-1 [Async DNS query]
+query->id: 41106
+connect return: 0
+packed query len: 17
+socket [8] add event
+>> enable [8] write event
+>> loop now
+>> epoll waited 2 events
+>> waited socket[6]
+socket [6]: READ event
+P:2|C:6|S:-1 [Enter client first read request]
+P:2|C:6|S:-1 [client First Read recv 1bytes]
+>> disable [6] read event
+P:2|C:6|S:-1 [client parsed first request]
+P:2|C:6|S:-1 [---- Fist line: CONNECT ssl.gstatic.com:443 HTTP/1.1]
+P:2|C:6|S:-1 [CONNECT ssl.gstatic.com:443 HTTP/1.1
+Host: ssl.gstatic.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: ssl.gstatic.com, hash key: 13251
+shm mutex unlock success
+P:2|C:6|S:-1 [Async DNS query]
+query->id: 41106
+connect return: 0
+packed query len: 33
+socket [10] add event
+>> enable [10] write event
+>> waited socket[8]
+socket [8]: WRITE event
+ret: 17, send query
+>> enable [8]  read event
+>> disable [8] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[10]
+socket [10]: WRITE event
+ret: 33, send query
+>> enable [10]  read event
+>> disable [10] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[8]
+socket [8]: READ event
+recv 92 bytes
+*********DNS Answer Header**************
+query->id: 41106
+header->id: 41106
+header->flags: 33152
+header->questions: 1
+header->answers: 0
+header->authotities: 1
+header->additions: 0
+****************************************
+Error handle
+P:1|C:5|S:-1 [Failed to query DNS record]
+>> enable [5] write event
+>> disable [8] read event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[5]
+socket [5]: WRITE event
+socket [5]: AFTER event
+>> disable [5] write event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[10]
+socket [10]: READ event
+recv 49 bytes
+*********DNS Answer Header**************
+query->id: 41106
+header->id: 41106
+header->flags: 33152
+header->questions: 1
+header->answers: 1
+header->authotities: 0
+header->additions: 0
+****************************************
+Total section : 1
+start resolve answers
+host: ssl.gstatic.com, hash key: 13251
+ip: 216.58.200.3
+node host: , query host: ssl.gstatic.com
+updateNode now
+update cache 1
+shm mutex unlock success
+updateDNS return : 0
+>> disable [10] read event
+>> unregister Socket
+connect return: 0
+socket [5] add event
+P:2|C:6|S:5 [ssl.gstatic.comEnter HTTPS proxy, now tunnel it]
+>> enable [6] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[6]
+socket [6]: WRITE event
+>> enable [6]  read event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[6]
+socket [6]: WRITE event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[6]
+socket [6]: READ event
+>> enable [5]  read event
+>> enable [5] write event
+socket [6]: WRITE event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[5]
+socket [5]: WRITE event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+socket [8] add event
+>> enable [8]  read event
+>> HttpProxyConnection [4] insert into connections
+P:4|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[8]
+socket [8]: READ event
+P:1|C:8|S:-1 [Enter client first read request]
+P:1|C:8|S:-1 [client First Read recv 1bytes]
+>> disable [8] read event
+P:1|C:8|S:-1 [client parsed first request]
+P:1|C:8|S:-1 [---- Fist line: CONNECT www.google.com.hk:443 HTTP/1.1]
+P:1|C:8|S:-1 [CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: www.google.com.hk, hash key: 64373
+shm mutex unlock success
+P:1|C:8|S:-1 [Async DNS query]
+query->id: 41106
+connect return: 0
+packed query len: 17
+socket [11] add event
+>> enable [11] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[11]
+socket [11]: WRITE event
+ret: 17, send query
+>> enable [11]  read event
+>> disable [11] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[5]
+socket [5]: RDHUP event
+socket [5]: HUP event
+socket [5]: ERROR event
+socket [5]: READ event
+socket [5]: WRITE event
+socket [5]: AFTER event
+>> disable [5] read event
+>> disable [5] write event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[11]
+socket [11]: READ event
+recv 92 bytes
+*********DNS Answer Header**************
+query->id: 41106
+header->id: 41106
+header->flags: 33152
+header->questions: 1
+header->answers: 0
+header->authotities: 1
+header->additions: 0
+****************************************
+Error handle
+P:1|C:8|S:-1 [Failed to query DNS record]
+>> enable [8] write event
+>> disable [11] read event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[8]
+socket [8]: WRITE event
+socket [8]: AFTER event
+>> disable [8] write event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+socket [5] add event
+>> enable [5]  read event
+>> HttpProxyConnection [5] insert into connections
+P:5|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[5]
+socket [5]: READ event
+P:1|C:5|S:-1 [Enter client first read request]
+P:1|C:5|S:-1 [client First Read recv 1bytes]
+>> disable [5] read event
+P:1|C:5|S:-1 [client parsed first request]
+P:1|C:5|S:-1 [---- Fist line: CONNECT www.google.com.hk:443 HTTP/1.1]
+P:1|C:5|S:-1 [CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: www.google.com.hk, hash key: 64373
+shm mutex unlock success
+P:1|C:5|S:-1 [Async DNS query]
+query->id: 41106
+connect return: 0
+packed query len: 24
+socket [11] add event
+>> enable [11] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[11]
+socket [11]: WRITE event
+ret: 24, send query
+>> enable [11]  read event
+>> disable [11] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [6] insert into connections
+socket [12] add event
+>> enable [12]  read event
+>> HttpProxyConnection [7] insert into connections
+P:7|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[12]
+socket [12]: READ event
+P:6|C:12|S:-1 [Enter client first read request]
+P:6|C:12|S:-1 [client First Read recv 1bytes]
+>> disable [12] read event
+P:6|C:12|S:-1 [client parsed first request]
+P:6|C:12|S:-1 [---- Fist line: CONNECT www.google.com.hk:443 HTTP/1.1]
+P:6|C:12|S:-1 [CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: www.google.com.hk, hash key: 64373
+shm mutex unlock success
+P:6|C:12|S:-1 [Async DNS query]
+query->id: 41106
+connect return: 0
+packed query len: 17
+socket [14] add event
+>> enable [14] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[14]
+socket [14]: WRITE event
+ret: 17, send query
+>> enable [14]  read event
+>> disable [14] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[14]
+socket [14]: READ event
+recv 92 bytes
+*********DNS Answer Header**************
+query->id: 41106
+header->id: 41106
+header->flags: 33152
+header->questions: 1
+header->answers: 0
+header->authotities: 1
+header->additions: 0
+****************************************
+Error handle
+P:6|C:12|S:-1 [Failed to query DNS record]
+>> enable [12] write event
+>> disable [14] read event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[12]
+socket [12]: WRITE event
+socket [12]: AFTER event
+>> disable [12] write event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+socket [12] add event
+>> enable [12]  read event
+>> HttpProxyConnection [8] insert into connections
+P:8|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[12]
+socket [12]: READ event
+P:6|C:12|S:-1 [Enter client first read request]
+P:6|C:12|S:-1 [client First Read recv 1bytes]
+>> disable [12] read event
+P:6|C:12|S:-1 [client parsed first request]
+P:6|C:12|S:-1 [---- Fist line: CONNECT www.google.com.hk:443 HTTP/1.1]
+P:6|C:12|S:-1 [CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: www.google.com.hk, hash key: 64373
+shm mutex unlock success
+P:6|C:12|S:-1 [Async DNS query]
+query->id: 41106
+connect return: 0
+packed query len: 17
+socket [15] add event
+>> enable [15] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[15]
+socket [15]: WRITE event
+ret: 17, send query
+>> enable [15]  read event
+>> disable [15] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[11]
+socket [11]: READ event
+recv 99 bytes
+*********DNS Answer Header**************
+query->id: 41106
+header->id: 41106
+header->flags: 33155
+header->questions: 1
+header->answers: 0
+header->authotities: 1
+header->additions: 0
+****************************************
+Error handle
+P:1|C:5|S:-1 [Failed to query DNS record]
+>> enable [5] write event
+>> disable [11] read event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[5]
+socket [5]: WRITE event
+socket [5]: AFTER event
+>> disable [5] write event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[15]
+socket [15]: READ event
+recv 92 bytes
+*********DNS Answer Header**************
+query->id: 41106
+header->id: 41106
+header->flags: 33152
+header->questions: 1
+header->answers: 0
+header->authotities: 1
+header->additions: 0
+****************************************
+Error handle
+P:6|C:12|S:-1 [Failed to query DNS record]
+>> enable [12] write event
+>> disable [15] read event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[12]
+socket [12]: WRITE event
+socket [12]: AFTER event
+>> disable [12] write event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+socket [5] add event
+>> enable [5]  read event
+P:6|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[5]
+socket [5]: READ event
+P:1|C:5|S:-1 [Enter client first read request]
+P:1|C:5|S:-1 [client First Read recv 1bytes]
+>> disable [5] read event
+P:1|C:5|S:-1 [client parsed first request]
+P:1|C:5|S:-1 [---- Fist line: CONNECT www.google.com.hk:443 HTTP/1.1]
+P:1|C:5|S:-1 [CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: www.google.com.hk, hash key: 64373
+shm mutex unlock success
+P:1|C:5|S:-1 [Async DNS query]
+query->id: 11536
+connect return: 0
+packed query len: 17
+socket [12] add event
+>> enable [12] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[12]
+socket [12]: WRITE event
+ret: 17, send query
+>> enable [12]  read event
+>> disable [12] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[12]
+socket [12]: READ event
+recv 92 bytes
+*********DNS Answer Header**************
+query->id: 11536
+header->id: 11536
+header->flags: 33152
+header->questions: 1
+header->answers: 0
+header->authotities: 1
+header->additions: 0
+****************************************
+Error handle
+P:1|C:5|S:-1 [Failed to query DNS record]
+>> enable [5] write event
+>> disable [12] read event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[5]
+socket [5]: WRITE event
+socket [5]: AFTER event
+>> disable [5] write event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+socket [5] add event
+>> enable [5]  read event
+>> HttpProxyConnection [9] insert into connections
+socket [12] add event
+>> enable [12]  read event
+>> HttpProxyConnection [10] insert into connections
+socket [15] add event
+>> enable [15]  read event
+>> HttpProxyConnection [11] insert into connections
+P:11|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [12] insert into connections
+socket [16] add event
+>> enable [16]  read event
+>> HttpProxyConnection [13] insert into connections
+P:13|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [14] insert into connections
+socket [17] add event
+>> enable [17]  read event
+>> HttpProxyConnection [15] insert into connections
+P:15|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [16] insert into connections
+socket [18] add event
+>> enable [18]  read event
+>> HttpProxyConnection [17] insert into connections
+socket [19] add event
+>> enable [19]  read event
+>> HttpProxyConnection [18] insert into connections
+P:18|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [19] insert into connections
+socket [20] add event
+>> enable [20]  read event
+>> HttpProxyConnection [20] insert into connections
+socket [21] add event
+>> enable [21]  read event
+>> HttpProxyConnection [21] insert into connections
+P:21|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [22] insert into connections
+socket [22] add event
+>> enable [22]  read event
+>> HttpProxyConnection [23] insert into connections
+P:23|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [24] insert into connections
+socket [23] add event
+>> enable [23]  read event
+>> HttpProxyConnection [25] insert into connections
+P:25|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [26] insert into connections
+socket [24] add event
+>> enable [24]  read event
+>> HttpProxyConnection [27] insert into connections
+P:27|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[23]
+socket [23]: READ event
+P:24|C:23|S:-1 [Enter client first read request]
+P:24|C:23|S:-1 [client First Read recv 1bytes]
+>> disable [23] read event
+P:24|C:23|S:-1 [client parsed first request]
+P:24|C:23|S:-1 [---- Fist line: CONNECT image.uc.cn:443 HTTP/1.1]
+P:24|C:23|S:-1 [CONNECT image.uc.cn:443 HTTP/1.1
+Host: image.uc.cn:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: image.uc.cn, hash key: 25311
+shm mutex unlock success
+P:24|C:23|S:-1 [Async DNS query]
+query->id: 46477
+connect return: 0
+packed query len: 29
+socket [26] add event
+>> enable [26] write event
+>> loop now
+>> epoll waited 3 events
+>> waited socket[24]
+socket [24]: READ event
+P:26|C:24|S:-1 [Enter client first read request]
+P:26|C:24|S:-1 [client First Read recv 1bytes]
+>> disable [24] read event
+P:26|C:24|S:-1 [client parsed first request]
+P:26|C:24|S:-1 [---- Fist line: CONNECT vthumb.ykimg.com:443 HTTP/1.1]
+P:26|C:24|S:-1 [CONNECT vthumb.ykimg.com:443 HTTP/1.1
+Host: vthumb.ykimg.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: vthumb.ykimg.com, hash key: 8339
+shm mutex unlock success
+P:26|C:24|S:-1 [Async DNS query]
+query->id: 46477
+connect return: 0
+packed query len: 17
+socket [28] add event
+>> enable [28] write event
+>> waited socket[5]
+socket [5]: READ event
+P:1|C:5|S:-1 [Enter client first read request]
+P:1|C:5|S:-1 [client First Read recv 1bytes]
+>> disable [5] read event
+P:1|C:5|S:-1 [client parsed first request]
+P:1|C:5|S:-1 [---- Fist line: GET http://www.youku.com/ HTTP/1.1]
+P:1|C:5|S:-1 [CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: www.google.com.hk, hash key: 64373
+shm mutex unlock success
+P:1|C:5|S:-1 [Async DNS query]
+query->id: 46477
+connect return: 0
+packed query len: 17
+socket [30] add event
+>> enable [30] write event
+>> waited socket[26]
+socket [26]: WRITE event
+ret: 29, send query
+>> enable [26]  read event
+>> disable [26] write event
+>> loop now
+>> epoll waited 2 events
+>> waited socket[28]
+socket [28]: WRITE event
+ret: 17, send query
+>> enable [28]  read event
+>> disable [28] write event
+>> waited socket[30]
+socket [30]: WRITE event
+ret: 17, send query
+>> enable [30]  read event
+>> disable [30] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[28]
+socket [28]: READ event
+recv 92 bytes
+*********DNS Answer Header**************
+query->id: 46477
+header->id: 46477
+header->flags: 33152
+header->questions: 1
+header->answers: 0
+header->authotities: 1
+header->additions: 0
+****************************************
+Error handle
+P:26|C:24|S:-1 [Failed to query DNS record]
+>> enable [24] write event
+>> disable [28] read event
+>> unregister Socket
+>> loop now
+>> epoll waited 2 events
+>> waited socket[30]
+socket [30]: READ event
+recv 92 bytes
+*********DNS Answer Header**************
+query->id: 46477
+header->id: 46477
+header->flags: 33152
+header->questions: 1
+header->answers: 0
+header->authotities: 1
+header->additions: 0
+****************************************
+Error handle
+P:1|C:5|S:-1 [Failed to query DNS record]
+>> enable [5] write event
+>> disable [30] read event
+>> unregister Socket
+>> waited socket[24]
+socket [24]: WRITE event
+socket [24]: AFTER event
+>> disable [24] write event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[5]
+socket [5]: WRITE event
+socket [5]: AFTER event
+>> disable [5] write event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[26]
+socket [26]: READ event
+recv 198 bytes
+*********DNS Answer Header**************
+query->id: 46477
+header->id: 46477
+header->flags: 33152
+header->questions: 1
+header->answers: 9
+header->authotities: 0
+header->additions: 0
+****************************************
+Total section : 9
+start resolve answers
+host: image.uc.cn, hash key: 25311
+ip: 202.127.76.212
+node host: , query host: image.uc.cn
+updateNode now
+update cache 1
+shm mutex unlock success
+updateDNS return : 0
+>> disable [26] read event
+>> unregister Socket
+connect return: 0
+socket [5] add event
+P:24|C:23|S:5 [image.uc.cnEnter HTTPS proxy, now tunnel it]
+>> enable [23] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[23]
+socket [23]: WRITE event
+>> enable [23]  read event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[23]
+socket [23]: WRITE event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[23]
+socket [23]: READ event
+>> enable [5]  read event
+>> enable [5] write event
+socket [23]: WRITE event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[5]
+socket [5]: WRITE event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+socket [24] add event
+>> enable [24]  read event
+P:26|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[24]
+socket [24]: READ event
+P:1|C:24|S:-1 [Enter client first read request]
+P:1|C:24|S:-1 [client First Read recv 1bytes]
+>> disable [24] read event
+P:1|C:24|S:-1 [client parsed first request]
+P:1|C:24|S:-1 [---- Fist line: GET http://www.youku.com/favicon.ico HTTP/1.1]
+P:1|C:24|S:-1 [CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: www.google.com.hk, hash key: 64373
+shm mutex unlock success
+P:1|C:24|S:-1 [Async DNS query]
+query->id: 16907
+connect return: 0
+packed query len: 17
+socket [28] add event
+>> enable [28] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[28]
+socket [28]: WRITE event
+ret: 17, send query
+>> enable [28]  read event
+>> disable [28] write event
+>> loop now
+>> epoll waited 2 events
+>> waited socket[28]
+socket [28]: READ event
+recv 92 bytes
+*********DNS Answer Header**************
+query->id: 16907
+header->id: 16907
+header->flags: 33152
+header->questions: 1
+header->answers: 0
+header->authotities: 1
+header->additions: 0
+****************************************
+Error handle
+P:1|C:24|S:-1 [Failed to query DNS record]
+>> enable [24] write event
+>> disable [28] read event
+>> unregister Socket
+>> waited socket[5]
+socket [5]: RDHUP event
+socket [5]: READ event
+socket [5]: WRITE event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[24]
+socket [24]: WRITE event
+socket [24]: AFTER event
+>> disable [24] write event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[12]
+socket [12]: RDHUP event
+socket [12]: READ event
+P:9|C:12|S:-1 [Enter client first read request]
+P:9|C:12|S:-1 [Client first read request, recv failed!]
+>> disable [12] read event
+socket [12]: AFTER event
+>> unregister Socket
+>> loop now
+>> epoll waited 7 events
+>> waited socket[16]
+socket [16]: RDHUP event
+socket [16]: READ event
+P:12|C:16|S:-1 [Enter client first read request]
+P:12|C:16|S:-1 [Client first read request, recv failed!]
+>> disable [16] read event
+socket [16]: AFTER event
+>> unregister Socket
+>> waited socket[15]
+socket [15]: RDHUP event
+socket [15]: READ event
+P:10|C:15|S:-1 [Enter client first read request]
+P:10|C:15|S:-1 [Client first read request, recv failed!]
+>> disable [15] read event
+socket [15]: AFTER event
+>> unregister Socket
+>> waited socket[18]
+socket [18]: RDHUP event
+socket [18]: READ event
+P:16|C:18|S:-1 [Enter client first read request]
+P:16|C:18|S:-1 [Client first read request, recv failed!]
+>> disable [18] read event
+socket [18]: AFTER event
+>> unregister Socket
+>> waited socket[17]
+socket [17]: RDHUP event
+socket [17]: READ event
+P:14|C:17|S:-1 [Enter client first read request]
+P:14|C:17|S:-1 [Client first read request, recv failed!]
+>> disable [17] read event
+socket [17]: AFTER event
+>> unregister Socket
+>> waited socket[20]
+socket [20]: RDHUP event
+socket [20]: READ event
+P:19|C:20|S:-1 [Enter client first read request]
+P:19|C:20|S:-1 [Client first read request, recv failed!]
+>> disable [20] read event
+socket [20]: AFTER event
+>> unregister Socket
+>> waited socket[19]
+socket [19]: RDHUP event
+socket [19]: READ event
+P:17|C:19|S:-1 [Enter client first read request]
+P:17|C:19|S:-1 [Client first read request, recv failed!]
+>> disable [19] read event
+socket [19]: AFTER event
+>> unregister Socket
+>> waited socket[21]
+socket [21]: RDHUP event
+socket [21]: READ event
+P:20|C:21|S:-1 [Enter client first read request]
+P:20|C:21|S:-1 [Client first read request, recv failed!]
+>> disable [21] read event
+socket [21]: AFTER event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[22]
+socket [22]: RDHUP event
+socket [22]: READ event
+P:22|C:22|S:-1 [Enter client first read request]
+P:22|C:22|S:-1 [Client first read request, recv failed!]
+>> disable [22] read event
+socket [22]: AFTER event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+socket [12] add event
+>> enable [12]  read event
+P:9|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+socket [15] add event
+>> enable [15]  read event
+P:12|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+socket [16] add event
+>> enable [16]  read event
+P:16|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+socket [17] add event
+>> enable [17]  read event
+P:19|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+socket [18] add event
+>> enable [18]  read event
+P:22|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [28] insert into connections
+socket [19] add event
+>> enable [19]  read event
+>> HttpProxyConnection [29] insert into connections
+P:29|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [30] insert into connections
+socket [20] add event
+>> enable [20]  read event
+>> HttpProxyConnection [31] insert into connections
+P:31|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [32] insert into connections
+socket [21] add event
+>> enable [21]  read event
+>> HttpProxyConnection [33] insert into connections
+P:33|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [34] insert into connections
+socket [22] add event
+>> enable [22]  read event
+>> HttpProxyConnection [35] insert into connections
+P:35|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [36] insert into connections
+socket [24] add event
+>> enable [24]  read event
+>> HttpProxyConnection [37] insert into connections
+P:37|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [38] insert into connections
+socket [28] add event
+>> enable [28]  read event
+>> HttpProxyConnection [39] insert into connections
+P:39|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [40] insert into connections
+socket [30] add event
+>> enable [30]  read event
+>> HttpProxyConnection [41] insert into connections
+P:41|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[4]
+socket [4]: READ event
+>> HttpProxyConnection [42] insert into connections
+socket [31] add event
+>> enable [31]  read event
+>> HttpProxyConnection [43] insert into connections
+P:43|C:-1|S:-1 [>>>> NOTE, HttpProxyConnection destory]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:42|C:31|S:-1 [Enter client first read request]
+P:42|C:31|S:-1 [client First Read recv 1bytes]
+>> disable [31] read event
+P:42|C:31|S:-1 [client parsed first request]
+P:42|C:31|S:-1 [---- Fist line: CONNECT vthumb.ykimg.com:443 HTTP/1.1]
+P:42|C:31|S:-1 [CONNECT vthumb.ykimg.com:443 HTTP/1.1
+Host: vthumb.ykimg.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: vthumb.ykimg.com, hash key: 8339
+shm mutex unlock success
+P:42|C:31|S:-1 [Async DNS query]
+query->id: 26626
+connect return: 0
+packed query len: 17
+socket [33] add event
+>> enable [33] write event
+>> loop now
+>> epoll waited 2 events
+>> waited socket[12]
+socket [12]: READ event
+P:1|C:12|S:-1 [Enter client first read request]
+P:1|C:12|S:-1 [client First Read recv 1bytes]
+>> disable [12] read event
+P:1|C:12|S:-1 [client parsed first request]
+P:1|C:12|S:-1 [---- Fist line: GET http://www.youku.com/ HTTP/1.1]
+P:1|C:12|S:-1 [CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+]
+query host: www.google.com.hk, hash key: 64373
+shm mutex unlock success
+P:1|C:12|S:-1 [Async DNS query]
+query->id: 26626
+connect return: 0
+packed query len: 24
+socket [35] add event
+>> enable [35] write event
+>> waited socket[33]
+socket [33]: WRITE event
+ret: 17, send query
+>> enable [33]  read event
+>> disable [33] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[35]
+socket [35]: WRITE event
+ret: 24, send query
+>> enable [35]  read event
+>> disable [35] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[33]
+socket [33]: READ event
+recv 92 bytes
+*********DNS Answer Header**************
+query->id: 26626
+header->id: 26626
+header->flags: 33152
+header->questions: 1
+header->answers: 0
+header->authotities: 1
+header->additions: 0
+****************************************
+Error handle
+P:42|C:31|S:-1 [Failed to query DNS record]
+>> enable [31] write event
+>> disable [33] read event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: WRITE event
+socket [31]: AFTER event
+>> disable [31] write event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[35]
+socket [35]: READ event
+recv 99 bytes
+*********DNS Answer Header**************
+query->id: 26626
+header->id: 26626
+header->flags: 33155
+header->questions: 1
+header->answers: 0
+header->authotities: 1
+header->additions: 0
+****************************************
+Error handle
+P:1|C:12|S:-1 [Failed to query DNS record]
+>> enable [12] write event
+>> disable [35] read event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[12]
+socket [12]: WRITE event
+socket [12]: AFTER event
+>> disable [12] write event
+>> unregister Socket
+>> loop now
+>> epoll waited 1 events
+>> waited socket[24]
+socket [24]: READ event
+P:36|C:24|S:-1 [Enter client first read request]
+P:36|C:24|S:-1 [client First Read recv 1bytes]
+>> disable [24] read event
+P:36|C:24|S:-1 [client parsed first request]
+P:36|C:24|S:-1 [---- Fist line: GET http://www.youku.com/favicon.ico HTTP/1.1]
+P:36|C:24|S:-1 [GET http://www.youku.com/favicon.ico HTTP/1.1
+Host: www.youku.com
+Proxy-Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://www.youku.com/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: juid=01bo6etbmf25v0; __ysuid=1503455561375PbL; _uab_collina=150345553967935514911544; __aryft=1503456052; cna=SdcjEs9SexkCAT2bBELZAlKg; __ayft=1511774291979; __aysid=1511774291980vAg; __arpvid=151177429198015Hmv3-1511774291990; __arycid=cms-00-1519-27244-0; __ayscnt=1; __arcms=cms-00-1519-27244-0; __aypstp=1; __ayspstp=1; ypvid=1511774292113Z4m2hS; yseid=1511774292113s0HCQj; ysestep=1; yseidcount=4; yseidtimeout=1511781492114; ycid=0; ystep=12; seid=01bvuca24oju4; referhost=; seidtimeout=1511776092121; advideo=%7B%22adv250053_6%22%3A2%2C%22adv250057_2%22%3A2%7D; P_ck_ctl=94C8792DAFC913ECAED24C7DF5C8CAB5; _umdata=2BA477700510A7DF3C5AF34C02E032ABC84B5FD0D9E4A2CF8B9D46A783C022CB04577052C7DE43E1CD43AD3E795C914CF5FF7C04028DF817E99C340C48A60941; isg=ApSUQy-5slxydiVlDuajnLJNZdIMrfNdqQnLIi51Lp-iGTRjVv2IZ0rRPSd6
+]
+query host: www.youku.com, hash key: 5058
+shm mutex unlock success
+P:36|C:24|S:-1 [Async DNS query]
+query->id: 26626
+connect return: 0
+packed query len: 31
+socket [31] add event
+>> enable [31] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: WRITE event
+ret: 31, send query
+>> enable [31]  read event
+>> disable [31] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+recv 138 bytes
+*********DNS Answer Header**************
+query->id: 26626
+header->id: 26626
+header->flags: 33152
+header->questions: 1
+header->answers: 3
+header->authotities: 0
+header->additions: 0
+****************************************
+Total section : 3
+start resolve answers
+host: www.youku.com, hash key: 5058
+ip: 47.91.203.234
+node host: , query host: www.youku.com
+updateNode now
+update cache 1
+shm mutex unlock success
+updateDNS return : 0
+>> disable [31] read event
+>> unregister Socket
+connect return: 0
+socket [31] add event
+>> enable [31] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: WRITE event
+ >> socket connected!
+P:36|C:24|S:31 [server first send 1228bytes]
+P:36|C:24|S:31 [server First send completed]
+>> disable [31] write event
+>> enable [31]  read event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1460bytes]
+>> loop now
+>> epoll waited 1 events
+>> waited socket[31]
+socket [31]: READ event
+extend : 2048
+P:36|C:24|S:31 [server recv 1985bytes]
+P:36|C:24|S:31 [server response parsed completed]
+P:36|C:24|S:31 [HTTP/1.1 200 OK
+Date: Mon, 27 Nov 2017 11:05:49 GMT
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+Last-Modified: Mon, 27 Nov 2017 11:04:52 GMT
+Vary: Accept-Encoding
+X-Via-Tag: cms.static
+Cache-Control: max-age=120
+Content-Encoding: gzip
+Server: Tengine/Aserver
+Timing-Allow-Origin: *
+]
+>> enable [24] write event
+>> loop now
+>> epoll waited 1 events
+>> waited socket[24]
+socket [24]: WRITE event
+P:36|C:24|S:31 [client write response]
+P:36|C:24|S:31 [client send 77905bytes]
+P:36|C:24|S:31 [client write response completed]
+>> disable [24] write event
+>> enable [24]  read event
+>> loop now

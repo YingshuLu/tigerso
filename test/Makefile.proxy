@@ -2,7 +2,7 @@ SHELL = /bin/sh
 CC := g++
 
 WORKPATH := $(shell cd .. && pwd)
-PROJECT := test_thread
+PROJECT := http_proxy
 OUTPUT := $(WORKPATH)/output
 BUILDDIR := $(OUTPUT)/Build/objs
 
@@ -18,8 +18,9 @@ OLDOBJS := $(patsubst %.cpp, %.o, $(SRCS))
 OBJSLIST := $(notdir $(OLDOBJS))
 OBJS := $(foreach obj, $(OBJSLIST), $(BUILDDIR)/$(obj))
 
-DEPY := -lhttp_parser -lmagic
+DEPY :=  -lmagic
 
+HTTP_PARSER := -DHTTP_PARSER_STRICT=0
 SHM_FLAG := -lrt
 SSL_FLAG := -lssl -lcrypto
 PTHREAD_FLAG := -lpthread
@@ -31,7 +32,7 @@ TARGET := $(OUTPUT)/$(PROJECT)
 all:$(TARGET)
 
 $(TARGET):$(SRCS)
-	$(CC) -w -g $(INCFLAGS) $^ $(LIBFLAGS) -o $@ 
+	$(CC) -w -g $(HTTP_PARSER) $(INCFLAGS) $^ $(LIBFLAGS) -o $@ 
 
 #$(OLDOBJS):%.o:%.c
 #	$(CC) -c  $(INCFLAGS) $< -o $@

@@ -2,7 +2,7 @@ SHELL = /bin/sh
 CC := g++
 
 WORKPATH := $(shell cd .. && pwd)
-PROJECT := test_thread
+PROJECT := test_dns
 OUTPUT := $(WORKPATH)/output
 BUILDDIR := $(OUTPUT)/Build/objs
 
@@ -22,6 +22,7 @@ DEPY := -lhttp_parser -lmagic
 
 SHM_FLAG := -lrt
 SSL_FLAG := -lssl -lcrypto
+#DNS_FLAG := -lcares
 PTHREAD_FLAG := -lpthread
 CPPFLAGS := -fPIC -shared
 LIBFLAGS := -L$(LIBPATH) $(DEPY) $(PTHREAD_FLAG) $(SHM_FLAG) $(SSL_FLAG)
