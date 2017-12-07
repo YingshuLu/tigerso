@@ -86,7 +86,7 @@ int Logging::dbgLog(const char* fmt, ...)
 		return -1;
 	}
 
-	std::string sign = "[DEBUG]";
+	std::string sign = "[DBG]";
 	std::string headStr = sign + '>' + getTime() + "<[%d] ";
 	
 	char headbuf[128];
@@ -118,7 +118,7 @@ int Logging::infoLog(const char* fmt, ...)
 		return -1;
 	}
 
-	std::string sign = "[INFO ]";
+	std::string sign = "[INF]";
 	std::string headStr = sign + '>' + getTime() + "<[%d] ";
 
 	char headbuf[128];

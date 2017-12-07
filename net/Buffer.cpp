@@ -1,8 +1,10 @@
 #include <iostream>
 #include "net/Buffer.h"
+#include "core/Logging.h"
 
 namespace tigerso::net {
 
+using namespace core;
 Buffer:: Buffer(const size_t size)
     :prefix_(pregap),
     buffer_(nullptr) {
@@ -96,6 +98,9 @@ ssize_t Buffer::recvNIO(const socket_t sockfd) {
     //std::cout << ">> ---In Buffer:\n" <<toString() << std::endl;
 
     if(n == 0) {
+        if (errno == EAGAIN || errno == EWOULDBLOCK) { 
+            return len;
+        }
         return SOCKET_IOSTATE_CLOSED;
     }
     else if (n == -1) {
@@ -243,7 +248,7 @@ int Buffer::makeSpace(const size_t len) {
     while((extend + bufsize_) <= need ) {
         extend = extend << 1;
     }
-    std::cout<< "extend : " << extend << std::endl;
+    DBG_LOG("buffer extend : %u", extend);
 
     char* new_ptr = (char*) realloc(buffer_, extend + bufsize_);
     if (new_ptr == NULL) {

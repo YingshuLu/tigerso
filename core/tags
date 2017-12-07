@@ -169,6 +169,7 @@ initmain__	Thread.cpp	/^namespace initmain__ {$/;"	n	namespace:tigerso::core	fil
 isFileExisted	ConfigParser.h	/^	bool isFileExisted;$/;"	m	class:tigerso::core::ConfigParser
 isFull	ThreadPool.h	/^    bool isFull() const {$/;"	f	class:tigerso::core::ThreadPool
 isLocked	SysUtil.h	/^    bool isLocked() const {$/;"	f	class:tigerso::core::LockTryGuard
+isLocked	SysUtil.h	/^    bool isLocked() { return locked_ ; }$/;"	f	class:tigerso::core::ShmMutex
 isLockedByCurrentThread	ThreadMutex.h	/^    bool isLockedByCurrentThread() const {$/;"	f	class:tigerso::core::ThreadMutex
 isMainThread	CurrentThread.h	/^   inline bool isMainThread() { return CurrentThread::tid() == getpid(); }$/;"	f	namespace:tigerso::core::CurrentThread
 isRefreshed	ConfigParser.h	/^	bool isRefreshed;$/;"	m	class:tigerso::core::ConfigParser
@@ -183,6 +184,7 @@ lock_cmd	FileLock.cpp	/^int FileLock::lock_cmd(int cmd) {$/;"	f	class:tigerso::c
 locked	SysUtil.h	/^    bool locked;$/;"	m	class:tigerso::core::LockTryGuard
 locked_	FileLock.h	/^    bool locked_ = false;$/;"	m	class:tigerso::core::FileLock
 locked_	SysUtil.h	/^    bool locked_ = false;$/;"	m	class:tigerso::core::ShmMutex
+locked_pid	SysUtil.h	/^    pid_t locked_pid;$/;"	m	class:tigerso::core::ShmMutex
 logFile	Logging.h	/^	std::string logFile;$/;"	m	class:tigerso::core::Logging
 logPath	Logging.h	/^	std::string logPath;$/;"	m	class:tigerso::core::Logging
 loopmutex_	ThreadPool.h	/^    mutable ThreadMutex loopmutex_;$/;"	m	class:tigerso::core::ThreadPool
@@ -236,9 +238,9 @@ setLogPath	Logging.cpp	/^int Logging::setLogPath(const std::string& path)$/;"	f	
 set_signal_handler	SysUtil.cpp	/^signal_func* SysUtil::set_signal_handler(int signo, signal_func* func) {$/;"	f	class:tigerso::core::SysUtil
 shm_len	SysUtil.h	/^    size_t shm_len;$/;"	m	class:tigerso::core::SharedMemory
 shm_mutex_t	SysUtil.h	/^struct shm_mutex_t {$/;"	s	namespace:tigerso::core
+shm_name	SysUtil.h	/^    char shm_name[1024];$/;"	m	struct:tigerso::core::shm_mutex_t
 shm_name	SysUtil.h	/^    string shm_name;$/;"	m	class:tigerso::core::SharedMemory
 shm_name	SysUtil.h	/^    string shm_name;$/;"	m	class:tigerso::core::ShmMutex
-shm_name	SysUtil.h	/^    string shm_name;$/;"	m	struct:tigerso::core::shm_mutex_t
 shm_pid	SysUtil.h	/^    pid_t shm_pid;$/;"	m	class:tigerso::core::SharedMemory
 shm_pid	SysUtil.h	/^    pid_t shm_pid;$/;"	m	class:tigerso::core::ShmMutex
 shm_prot	SysUtil.h	/^    int shm_prot;$/;"	m	class:tigerso::core::SharedMemory

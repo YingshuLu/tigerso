@@ -6,6 +6,7 @@
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 BITS_COMPARE	DNSResolver.h	55;"	d
 CACHE_FILE_NAME	DNSCache.h	15;"	d
+DNS2Shared	DNSCache.cpp	/^int DNSCache::DNS2Shared(const char* host, const char* ip, int ttl) {$/;"	f	class:tigerso::dns::DNSCache
 DNSAddition	DNSResolver.h	/^typedef struct DNSAnswer DNSAddition;$/;"	t	namespace:tigerso::dns	typeref:struct:tigerso::dns::DNSAnswer
 DNSAnswer	DNSResolver.h	/^struct DNSAnswer {$/;"	s	namespace:tigerso::dns
 DNSAuthority	DNSResolver.h	/^typedef struct DNSAnswer DNSAuthority;$/;"	t	namespace:tigerso::dns	typeref:struct:tigerso::dns::DNSAnswer
@@ -124,7 +125,7 @@ host_	DNSCache.h	/^    char host_[HOST_MAXLENGTH] = {0};$/;"	m	struct:tigerso::d
 id	DNSResolver.h	/^    unsigned short id;$/;"	m	struct:tigerso::dns::DNSHeader
 isNodeUsed	DNSCache.cpp	/^bool DNSCache::isNodeUsed(DNSNode& node) {$/;"	f	class:tigerso::dns::DNSCache
 key_	DNSCache.h	/^    unsigned char key_[MD5_KEYSIZE] = {0};$/;"	m	struct:tigerso::dns::DNSNode
-main	resolver.cc	/^int main(int argc, char* argv[]) {$/;"	f
+memory2Shared	DNSCache.cpp	/^int DNSCache::memory2Shared() {$/;"	f	class:tigerso::dns::DNSCache
 mutex_	DNSCache.h	/^    core::ShmMutex  mutex_; \/\/process-shared mutex$/;"	m	class:tigerso::dns::DNSCache
 offset_t	DNSCache.h	/^typedef unsigned int offset_t;$/;"	t	namespace:tigerso::dns
 operator =	DNSResolver.h	/^    DNSResolver& operator=(const DNSResolver&){}$/;"	f	class:tigerso::dns::DNSResolver
@@ -151,12 +152,14 @@ setCallback	DNSResolver.h	/^    int setCallback(DNS_CALLBACK cb) {callback_ = cb
 setPrimaryAddr	DNSResolver.h	/^    static void setPrimaryAddr(const std::string& paddr) { primary_addr_ = paddr; }$/;"	f	class:tigerso::dns::DNSResolver
 setSecondAddr	DNSResolver.h	/^    static void setSecondAddr(const std::string& saddr) { second_addr_ = saddr; }$/;"	f	class:tigerso::dns::DNSResolver
 setStickDNSNode	DNSCache.cpp	/^int DNSCache::setStickDNSNode(std::string& host, std::string& ip) {$/;"	f	class:tigerso::dns::DNSCache
+shmCache_	DNSCache.h	/^    std::map<std::string, std::pair<std::string, time_t>> shmCache_;$/;"	m	class:tigerso::dns::DNSCache
 shm_	DNSCache.h	/^    core::SharedMemory shm_;$/;"	m	class:tigerso::dns::DNSCache
 socket_t	DNSResolver.h	/^typedef int socket_t;$/;"	t	namespace:tigerso::dns
 sockfd_	DNSResolver.h	/^    socket_t sockfd_ = -1;$/;"	m	class:tigerso::dns::DNSResolver
 startWithLabel	DNSResolver.h	/^    inline bool startWithLabel(unsigned char* cur) {$/;"	f	class:tigerso::dns::DNSResolver
 startWithPointer	DNSResolver.h	/^    inline bool startWithPointer(unsigned char* cur) {$/;"	f	class:tigerso::dns::DNSResolver
 stickDNSData_	DNSCache.h	/^    std::map<std::string, std::vector<std::string>> stickDNSData_;$/;"	m	class:tigerso::dns::DNSCache
+store2Memory	DNSCache.cpp	/^int DNSCache::store2Memory(const char* host, const char* ip, int ttl) {$/;"	f	class:tigerso::dns::DNSCache
 updateDNS	DNSCache.cpp	/^int DNSCache::updateDNS(const char* host, const char* ip, int& ttl) {$/;"	f	class:tigerso::dns::DNSCache
 updateNode	DNSCache.cpp	/^int DNSCache::updateNode(DNSNode& dst, const char* host, unsigned char* key, const char* ip, int& ttl) {$/;"	f	class:tigerso::dns::DNSCache
 ~DNSCache	DNSCache.cpp	/^DNSCache::~DNSCache() {$/;"	f	class:tigerso::dns::DNSCache

@@ -29,6 +29,7 @@ static int cnt = 0;
 int queryIP(const char* host);
 
 int showIPAddress(const char* ipaddr, time_t rttl) {
+    cout << "IP: " << ipaddr <<endl;
     string ip;
     time_t ttl;
     int ret = DNSInstance.getAnswer(ip, ttl);
@@ -39,6 +40,7 @@ int showIPAddress(const char* ipaddr, time_t rttl) {
     }
     if(cnt < 2) {
         return queryIP("www.baidu.com");
+        cnt++;
     }
     cout << "IP: " << ip << ", ttl: " << ttl <<endl;
     return 0;

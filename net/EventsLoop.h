@@ -19,21 +19,15 @@ namespace tigerso::net {
 
 //typedef std::shared_ptr<Channel> ChannelPtr;
 
-static const int MAX_CHANNEL_NUM = 1024;
-static const int DEFAULT_CHANNEL_NUM = 512;
+static const int MAX_CHANNEL_NUM = 512;
+static const int DEFAULT_CHANNEL_NUM = 128;
 
 class EventsLoop: public core::nocopyable {
-    struct EventData {
-        Channel* cnptr = nullptr;
-        int sockfd = -1;
-        int alive = 0;
-    };
-    typedef EventData* DataPtr;
+
 public:
     EventsLoop(const int channels = DEFAULT_CHANNEL_NUM) 
         :channelNum_(channels) {
         createEpollBase();
-        std::cout << "Epoll createdm socket: " << epfd_ << std::endl;
     }
 
     int registerChannel(Socket&);
@@ -46,7 +40,6 @@ public:
     int stop() {loop_ = false;}
 
     ~EventsLoop() {
-        std::cout << "close epoll fd [" << epfd_ << "]" << std::endl; 
         ::close(epfd_);
         epfd_ = -1;
     }
@@ -61,14 +54,12 @@ private:
     int cleanNeedDeletedChannels();
 
 private:
-    int epfd_ = -1;
     epoll_event epevents_[MAX_CHANNEL_NUM];
+    std::set<Channel*> needDeletedChannelSet_;
     const int channelNum_ = DEFAULT_CHANNEL_NUM;
     int waitTime_ = 10000; //10s
     bool loop_ = false;
-
-private:
-    std::set<Channel*> needDeletedChannelSet_;
+    int epfd_ = -1;
 
 };
 

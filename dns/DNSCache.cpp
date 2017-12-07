@@ -1,7 +1,11 @@
 #include "dns/DNSCache.h"
+#include "core/Logging.h"
+#include <iostream>
 
 namespace tigerso::dns {
     
+using namespace core;
+
 static int calcMd5(const char* buf, unsigned char* key, int keylen) {
     if(buf == nullptr || key == nullptr || keylen < MD5_KEYSIZE) {
         return -1;
@@ -55,12 +59,13 @@ int DNSCache::queryIP(const char* host, char* ipaddr, size_t len) {
     unsigned char md5[MD5_KEYSIZE] = {0};
     hashkey_t key = getHashkey(host, md5, MD5_KEYSIZE);
 
-    std::cout << "query host: "<< host << ", hash key: " << key << std::endl;
+    DBG_LOG("query host: %s, hash key: %u", host, key);
     offset_t of = key;
 
     {
         core::LockTryGuard lock(mutex_);
         if(!lock.isLocked()) { return -1; }
+        memory2Shared();
 
         DNSCacheData* shmptr = getShmPtr();
         if(nullptr == shmptr) { return -1; }
@@ -69,7 +74,7 @@ int DNSCache::queryIP(const char* host, char* ipaddr, size_t len) {
         while(true) {
             if(isNodeUsed(shmptr->array[of]) && memcmp(host, shmptr->array[of].host_, strlen(host)) == 0) {
                 memcpy(ipaddr, shmptr->array[of].addr_, IPV4_ADDRSIZE);
-                std::cout << "Hit DNS cache" << std::endl;
+                DBG_LOG("Hit DNS Cache, [Host: %s, IP: %s, ttl: %d]", host, ipaddr, int(shmptr->array[of].expriedAt_ - time(NULL)));
                 return 0;
             }
 
@@ -84,15 +89,24 @@ int DNSCache::queryIP(const char* host, char* ipaddr, size_t len) {
 }
 
 int DNSCache::updateDNS(const char* host, const char* ip, int& ttl) {
-    if(nullptr == host || nullptr == ip) {
+    if(nullptr == host || nullptr == ip || ttl < 0) {
         return -1;
     }
 
+    int ret = 0;
+    {
+        core::LockTryGuard lock(mutex_);
+        //Store to memory
+        if(!lock.isLocked()) { return store2Memory(host, ip, ttl); }
+        //store to shared memory
+        ret = DNS2Shared(host, ip, ttl);
+        memory2Shared();
+    }
+    return ret;
+    /*
     unsigned char md5[MD5_KEYSIZE] = {0};
     hashkey_t key = getHashkey(host, md5, MD5_KEYSIZE);
     offset_t of = key;
-    std::cout << "host: "<< host << ", hash key: " << key << std::endl;
-    std::cout << "ip: "<< ip << std::endl;
 
     {
         core::LockTryGuard lock(mutex_);
@@ -104,10 +118,9 @@ int DNSCache::updateDNS(const char* host, const char* ip, int& ttl) {
         int cnt = 0;
 
         while(true) {
-//            std::cout << "node host: " << shmptr->array[of].host_ << ", query host: "<< host << std::endl;
             if(!isNodeUsed(shmptr->array[of]) || memcmp(shmptr->array[of].host_, host, strlen(host)) == 0) {
                 if(updateNode(shmptr->array[of], host, md5, ip, ttl) != 0) { return -1; }
-                std::cout << "update DNS cache" << std::endl;
+                DBG_LOG("update DNS cache");
                 return 0;
             }
 
@@ -124,12 +137,76 @@ int DNSCache::updateDNS(const char* host, const char* ip, int& ttl) {
 
         //overwrite the oldest confilct node
         if(updateNode(shmptr->array[todie_of], host, md5, ip, ttl) != 0) { return -1; }    
-        std::cout << "update DNS cache 2" << std::endl;
+        DBG_LOG("update DNS cache 2");
+    }
+    return 0;
+*/
+}
+
+int DNSCache::store2Memory(const char* host, const char* ip, int ttl) {
+    if(nullptr == host || nullptr == ip || ttl < 0) { return -1; }
+    time_t expriedAt = ::time(NULL) + time_t(ttl);
+    shmCache_[host] = std::make_pair(ip, expriedAt);
+    return 0;
+}
+
+//Should get lock first
+int DNSCache::memory2Shared() {
+    if(!mutex_.isLocked()) { return -1; }
+    auto iter = shmCache_.begin();
+    time_t now = 0;
+    while(iter != shmCache_.end()) {
+        now = time(NULL);
+        if(iter->second.second > now) {
+            DNS2Shared(iter->first.c_str(), iter->second.first.c_str(), (iter->second.second - now));
+        }
+        iter = shmCache_.erase(iter);
+    }
+    return 0;
+}
+
+
+//Should get lock first
+int DNSCache::DNS2Shared(const char* host, const char* ip, int ttl) {
+    if(nullptr == host || nullptr == ip || ttl < 0 || !mutex_.isLocked()) {
+        return -1;
+    }
+
+    unsigned char md5[MD5_KEYSIZE] = {0};
+    hashkey_t key = getHashkey(host, md5, MD5_KEYSIZE);
+    offset_t of = key;
+
+    {
+        DNSCacheData* shmptr = getShmPtr();
+        time_t todie_at = shmptr->array[key].expriedAt_;
+        offset_t todie_of = key;
+        int cnt = 0;
+
+        while(true) {
+            if(!isNodeUsed(shmptr->array[of]) || memcmp(shmptr->array[of].host_, host, strlen(host)) == 0) {
+                if(updateNode(shmptr->array[of], host, md5, ip, ttl) != 0) { return -1; }
+                DBG_LOG("update DNS cache");
+                return 0;
+            }
+
+            if(shmptr->array[of].expriedAt_ < todie_at) {
+                todie_of = of;
+                todie_at = shmptr->array[of].expriedAt_;
+            }
+
+            of = getNextHashkey(md5, MD5_KEYSIZE, ++cnt);
+            if(of == key) {
+                break;
+            }
+        }
+
+        //overwrite the oldest confilct node
+        if(updateNode(shmptr->array[todie_of], host, md5, ip, ttl) != 0) { return -1; }    
+        DBG_LOG("update DNS cache 2");
     }
 
     return 0;
 }
-
 int DNSCache::setStickDNSNode(std::string& host, std::string& ip) {
     stickDNSData_[host].push_back(ip);
     return 0;
@@ -172,7 +249,10 @@ bool DNSCache::isNodeUsed(DNSNode& node) {
 int DNSCache::updateNode(DNSNode& dst, const char* host, unsigned char* key, const char* ip, int& ttl) {
     if(nullptr == key || nullptr == ip) { return -1; }
 
-    dst.expriedAt_ = time(NULL) + time_t(ttl);
+    time_t expriedAt = time(NULL) + time_t(ttl);
+    // no need to update
+    if(memcmp(dst.host_, host, sizeof(host)) == 0 && expriedAt < dst.expriedAt_) { return -1; }
+    dst.expriedAt_ = expriedAt;
     memcpy(dst.host_, host, strlen(host));
     memcpy(dst.key_, key, MD5_KEYSIZE);
     memcpy(dst.addr_, ip, IPV4_ADDRSIZE);

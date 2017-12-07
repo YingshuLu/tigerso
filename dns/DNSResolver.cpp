@@ -1,4 +1,5 @@
 #include "dns/DNSResolver.h"
+#include "core/Logging.h"
 /*
 #include <ares.h>
 #include <arpa/nameser.h>
@@ -8,6 +9,8 @@ namespace tigerso::dns {
 
 using namespace std;
 using namespace tigerso::net;
+using namespace core;
+
 DNSResolver::DNSResolver() {
 }
 
@@ -36,7 +39,7 @@ int DNSResolver::asyncQueryInit(const std::string& host, Socket& udpsock){
     udpsock.reset();
     int ret = SocketUtil::CreateUDPConnect(primary_addr_, DNS_SERVER_PORT, true, udpsock);
     if(ret != 0) {
-        std::cout << "ret: "<< ret << strerror(errno) <<", UDP Socket create failed" << std::endl;
+        INFO_LOG("UDP Socket create failed, errno: %d, %s", errno, strerror(errno));
         return DNS_ERR;
     }
     udpsock.setNIO(true);
@@ -70,7 +73,7 @@ int DNSResolver::getAnswer(std::string& name, time_t& ttl) {
 int DNSResolver::sendQuery(Socket& udpsock) {
     int ret = udpsock.sendNIO();
     if(ret < 0) {
-        std::cout << "send query failed" << std::endl;
+        INFO_LOG("UDP Socket write query failed, errno: %d, %s", errno, strerror(errno));
         return errorHandle(udpsock);
     }
     
@@ -88,11 +91,10 @@ int DNSResolver::sendQuery(Socket& udpsock) {
 int DNSResolver::recvAnswer(Socket& udpsock) {
     int ret = udpsock.recvNIO();
     if(ret < 0) {
-        std::cout << "recv answer failed" << std::endl;
+        INFO_LOG("UDP Socket read response failed, errno: %d, %s", errno, strerror(errno));
         return errorHandle(udpsock);
     }
 
-    //std::cout << "recv "<< ret << " bytes" << std::endl;
     auto ibufptr = udpsock.getInBufferPtr();
     memcpy(response_buf_, ibufptr->getReadPtr(), ibufptr->getReadableBytes());
     ibufptr->clear();
@@ -111,9 +113,9 @@ int DNSResolver::recvAnswer(Socket& udpsock) {
 }
 
 int DNSResolver::errorHandle(Socket& udpsock) {
-    std::cout << "DNS Query Error" << std::endl;
     if(callback_ != nullptr) {
-        callback_(answer_name_.c_str(), answer_ttl_);
+//        callback_(answer_name_.c_str(), answer_ttl_);
+        callback_(nullptr, answer_ttl_);
     }
     udpsock.close();
     return EVENT_CALLBACK_BREAK;
@@ -208,6 +210,7 @@ int DNSResolver::resvDNSAnswer() {
 
     /* START RESOLVE HEADER */ 
     DNSHeader* hptr = (DNSHeader*) cur;
+    /*
     cout << "*********DNS Answer Header**************" << endl;
     cout<< "query->id: " << ID_ << endl;
     cout<< "header->id: " << ntohs(hptr->id) << endl;
@@ -217,7 +220,7 @@ int DNSResolver::resvDNSAnswer() {
     cout<< "header->authotities: " << ntohs(hptr->authorities) << endl;
     cout<< "header->additions: " << ntohs(hptr->additions) << endl;
     cout << "****************************************" << endl;
-
+    */
     if(strlen((char*)response_buf_) < 2) {
         return DNS_ERR;
     }
@@ -274,8 +277,9 @@ int DNSResolver::resvDNSAnswer() {
                 answer_name_ = std::string((char*)rdata); 
                 answer_ttl_ = rttl;
                 int ttl = (int) answer_ttl_;
+                DBG_LOG("DNS Resolver get record. [Host: %s, IP: %s, ttl: %d]", query_name_.c_str(), answer_name_.c_str(), ttl);
                 int code = g_DNSCachePtr->updateDNS(query_name_.c_str(), answer_name_.c_str(), ttl);
-                std::cout << "updateDNS return : " << code << std::endl;
+                DBG_LOG("updateDNS return : %d", code);
                 return DNS_OK;
             }
             cur += resolved;
@@ -286,6 +290,7 @@ int DNSResolver::resvDNSAnswer() {
     return DNS_ERR;
 }
 
+/*Use c-ares lib to pack query*/
 int DNSResolver::aresPackDNSQuery(const char* host, size_t len) {
     /*
     int dnsclass = ns_c_in;
@@ -403,7 +408,6 @@ int DNSResolver::resolveRRName(unsigned char* buf, size_t buf_len, unsigned char
         unsigned short offset = high;
         offset = offset << 8;
         offset = high + low;
-        //cout << "RRname Offset : " << offset <<endl;
         if(0 > resolveRRName(buf, buf_len, buf + size_t(offset), name, name_len)) {
             return DNS_RESOLVE_ERR;
         }

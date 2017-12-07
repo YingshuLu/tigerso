@@ -56,12 +56,16 @@ int SocketUtil::Listen(Socket& mcsock, const int backlog) {
 	}
 
     //Dup Listen socket to 64
+    /*
     socket_t oldfd = mcsock.getSocket();
     socket_t newfd = ::dup2(mcsock.getSocket(), 64);
     if(newfd != -1) {
         ::close(oldfd);
         mcsock.setSocket(newfd);
     }
+    */
+    socket_t newfd = RelocateFileDescriptor(mcsock.getSocket(), 64);
+    mcsock.setSocket(newfd);
 
 	if(::listen(mcsock.getSocket(), back) != 0) {
 		return -1;
@@ -117,7 +121,6 @@ int SocketUtil::Connect(Socket& mcsock, const std::string& s_addr, const std::st
 	bzero(&server_addr, addr_len);
 
     if(PackSockAddr(s_addr, port, AF_INET, server_addr) != 0) {
-        std::cout << "PackSockAddr failed!" << std::endl;
         DBG_LOG("pack str ip to sockaddr failed");
         return -1;
     }
@@ -128,13 +131,20 @@ int SocketUtil::Connect(Socket& mcsock, const std::string& s_addr, const std::st
     mcsock.setStrAddr(s_addr);
     mcsock.setStrPort(port);
 	mcsock.setRole(SOCKET_ROLE_SERVER); 
-    mcsock.setNIO(true);
 
 	int ret = ::connect(sockfd, (sockaddr*) &server_addr, addr_len);
-    std::cout << "connect return: " <<ret << std::endl;
+    DBG_LOG("connect return: %d", ret);
 
     mcsock.setSocket(sockfd);
-    if( ret < 0 ) { return ret; }
+    mcsock.setNIO(true);
+    if( ret < 0 ) {
+        if(errno == EINPROGRESS || errno == EALREADY) {
+	        mcsock.setStage(SOCKET_STAGE_CONNECT);
+            return 0;
+        }
+        return ret;
+    }
+
 	mcsock.setStage(SOCKET_STAGE_CONNECT);
 	return 0;
 }
@@ -312,14 +322,13 @@ bool SocketUtil::TestConnect(Socket& sock) {
 	        bzero(&server_addr, addr_len);
 
             if(PackSockAddr(sock.getStrAddr(), sock.getStrPort(), AF_INET, server_addr) != 0) {
-                std::cout << "PackSockAddr failed!" << std::endl;
                 DBG_LOG("pack str ip to sockaddr failed");
                 return false;
             }
 
 	        ::connect(sock.getSocket(), (sockaddr*) &server_addr, addr_len);
             if(errno == EISCONN) {
-                std::cout << " >> socket connected!" << std::endl;
+                DBG_LOG("socket connected!");
                 return true;
             }
         }
@@ -433,6 +442,8 @@ int SocketUtil::CreateUDPConnect(
 		DBG_LOG("socket: UDP socket connect failed");
 		return 5;
     }
+
+    mcsock.setNIO(unblock);
     return 0;
 }
 
@@ -445,7 +456,6 @@ int SocketUtil::RelocateFileDescriptor(int oldfd, int leastfd) {
     if(0 > newfd) {
         return oldfd;
     }
-    //std::cout << "close the old fd [" << oldfd <<"]" << std::endl;
     ::close(oldfd);
     return newfd;
 }

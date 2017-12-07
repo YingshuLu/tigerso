@@ -107,7 +107,7 @@ private:
 struct shm_mutex_t {
     pthread_mutex_t mutex;
     pthread_mutexattr_t mutexattr;
-    string shm_name;
+    char shm_name[1024];
     int refer_num;
 };
 
@@ -127,6 +127,7 @@ public:
     string get_shm_name() const;
     shm_mutex_t* get_shm_mutex() const;
     pid_t get_shm_pid() const;
+    bool isLocked() { return locked_ ; }
 
     ~ShmMutex();
 
@@ -136,6 +137,7 @@ private:
     shm_mutex_t* mutex_ptr;
     string shm_name;
     pid_t shm_pid;
+    pid_t locked_pid;
     bool locked_ = false;
 };
 

@@ -5,6 +5,8 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 Accept	SocketUtil.cpp	/^int SocketUtil::Accept(Socket& listen_mcsock, Socket& accept_mcsock) {$/;"	f	class:tigerso::net::SocketUtil
+BUFFER_GAP_LENGTH	Buffer.h	27;"	d
+BUFFER_LEAST_LENGTH	Buffer.h	26;"	d
 Bind	SocketUtil.cpp	/^int SocketUtil::Bind(Socket& mcsock, const std::string& s_addr, const std::string& port, const int family) {$/;"	f	class:tigerso::net::SocketUtil
 Buffer	Buffer.cpp	/^Buffer:: Buffer(const size_t size)$/;"	f	class:tigerso::net::Buffer
 Buffer	Buffer.h	/^class Buffer: public core::nocopyable {$/;"	c	namespace:tigerso::net
@@ -13,13 +15,12 @@ BufferPtr	Socket.h	/^    BufferPtr(std::shared_ptr<Buffer>& bufferIn, std::share
 BufferPtr	Socket.h	/^struct BufferPtr {$/;"	s	namespace:tigerso::net
 Channel	Channel.h	/^    Channel(EventsLoop& loop, Socket& sock)$/;"	f	class:tigerso::net::Channel
 Channel	Channel.h	/^class Channel: public core::nocopyable {$/;"	c	namespace:tigerso::net
-ChannelPtr	EventsLoop.h	/^typedef std::shared_ptr<Channel> ChannelPtr;$/;"	t	namespace:tigerso::net
 Close	SocketUtil.cpp	/^int SocketUtil::Close(Socket& mcsock) {$/;"	f	class:tigerso::net::SocketUtil
 Connect	SocketUtil.cpp	/^int SocketUtil::Connect(Socket& mcsock, const std::string& s_addr, const std::string& port, const int type){$/;"	f	class:tigerso::net::SocketUtil
 CreateListenSocket	SocketUtil.cpp	/^int SocketUtil::CreateListenSocket($/;"	f	class:tigerso::net::SocketUtil
 CreateUDPConnect	SocketUtil.cpp	/^int SocketUtil::CreateUDPConnect($/;"	f	class:tigerso::net::SocketUtil
-DECIDE_EVENTCALLBACK	EventsLoop.cpp	8;"	d	file:
-DEFAULT_CHANNEL_NUM	EventsLoop.h	/^static const int DEFAULT_CHANNEL_NUM = 512;$/;"	m	namespace:tigerso::net
+DECIDE_EVENTCALLBACK	EventsLoop.cpp	10;"	d	file:
+DEFAULT_CHANNEL_NUM	EventsLoop.h	/^static const int DEFAULT_CHANNEL_NUM = 128;$/;"	m	namespace:tigerso::net
 EVENT_CALLBACK_BREAK	Channel.h	/^const int EVENT_CALLBACK_BREAK = 1;$/;"	m	namespace:tigerso::net
 EVENT_CALLBACK_CONTINUE	Channel.h	/^const int EVENT_CALLBACK_CONTINUE = 0;$/;"	m	namespace:tigerso::net
 EVENT_CALLBACK_DROPWAITED	Channel.h	/^const int EVENT_CALLBACK_DROPWAITED = 2;$/;"	m	namespace:tigerso::net
@@ -29,7 +30,7 @@ EventsLoop	EventsLoop.h	/^class EventsLoop: public core::nocopyable {$/;"	c	name
 GraceClose	SocketUtil.cpp	/^int SocketUtil::GraceClose(Socket& mcsock) {$/;"	f	class:tigerso::net::SocketUtil
 InitSocket	SocketUtil.cpp	/^int SocketUtil::InitSocket(const int domain, const int type, Socket& mcsock) {$/;"	f	class:tigerso::net::SocketUtil
 Listen	SocketUtil.cpp	/^int SocketUtil::Listen(Socket& mcsock, const int backlog) {$/;"	f	class:tigerso::net::SocketUtil
-MAX_CHANNEL_NUM	EventsLoop.h	/^static const int MAX_CHANNEL_NUM = 1024;$/;"	m	namespace:tigerso::net
+MAX_CHANNEL_NUM	EventsLoop.h	/^static const int MAX_CHANNEL_NUM = 512;$/;"	m	namespace:tigerso::net
 MIN_SOCKET_FD	SocketUtil.h	33;"	d
 PackSockAddr	SocketUtil.cpp	/^int SocketUtil::PackSockAddr(const std::string& s_addr, const std::string& port, const int family, sockaddr_in& sock_addr) {$/;"	f	class:tigerso::net::SocketUtil
 RelocateFileDescriptor	SocketUtil.cpp	/^int SocketUtil::RelocateFileDescriptor(int oldfd, int leastfd) {$/;"	f	class:tigerso::net::SocketUtil
@@ -75,7 +76,7 @@ TS_NET_SOCKET_H_	Socket.h	2;"	d
 TestConnect	SocketUtil.cpp	/^bool SocketUtil::TestConnect(Socket& sock) {$/;"	f	class:tigerso::net::SocketUtil
 ValidateAddr	SocketUtil.cpp	/^bool SocketUtil::ValidateAddr(const std::string& addr) {$/;"	f	class:tigerso::net::SocketUtil
 ValidatePort	SocketUtil.cpp	/^bool SocketUtil::ValidatePort(const std::string& sport) {$/;"	f	class:tigerso::net::SocketUtil
-addChannel	EventsLoop.cpp	/^int EventsLoop::addChannel(const Channel* cnptr) {$/;"	f	class:tigerso::net::EventsLoop
+addChannel	EventsLoop.cpp	/^int EventsLoop::addChannel(Channel* cnptr) {$/;"	f	class:tigerso::net::EventsLoop
 addData	Buffer.cpp	/^size_t Buffer::addData(const char* buf, size_t len) {$/;"	f	class:tigerso::net::Buffer
 addData	Buffer.cpp	/^size_t Buffer::addData(const std::string& data) {$/;"	f	class:tigerso::net::Buffer
 addr_	Socket.h	/^    std::string addr_;$/;"	m	class:tigerso::net::Socket
@@ -88,10 +89,11 @@ buffer_	Buffer.h	/^    char* buffer_;$/;"	m	class:tigerso::net::Buffer
 bufsize_	Buffer.h	/^    size_t bufsize_;$/;"	m	class:tigerso::net::Buffer
 channelNum_	EventsLoop.h	/^    const int channelNum_ = DEFAULT_CHANNEL_NUM;$/;"	m	class:tigerso::net::EventsLoop
 channelptr	Socket.h	/^    Channel* channelptr = nullptr;$/;"	m	class:tigerso::net::Socket
+cleanNeedDeletedChannels	EventsLoop.cpp	/^int EventsLoop::cleanNeedDeletedChannels() {$/;"	f	class:tigerso::net::EventsLoop
 clear	Buffer.cpp	/^size_t Buffer::clear() {$/;"	f	class:tigerso::net::Buffer
 close	Socket.cpp	/^int Socket::close() {$/;"	f	class:tigerso::net::Socket
 createEpollBase	EventsLoop.cpp	/^int EventsLoop::createEpollBase() {$/;"	f	class:tigerso::net::EventsLoop
-ctlChannel	EventsLoop.cpp	/^int EventsLoop::ctlChannel(const Channel* cnptr, const int op) {$/;"	f	class:tigerso::net::EventsLoop
+ctlChannel	EventsLoop.cpp	/^int EventsLoop::ctlChannel(Channel* cnptr, const int op) {$/;"	f	class:tigerso::net::EventsLoop
 disableAllEvent	Channel.cpp	/^bool Channel::disableAllEvent() {$/;"	f	class:tigerso::net::Channel
 disableEvent	Socket.cpp	/^bool Socket::disableEvent(unsigned short flags) {$/;"	f	class:tigerso::net::Socket
 disableReadEvent	Channel.cpp	/^bool Channel::disableReadEvent() {$/;"	f	class:tigerso::net::Channel
@@ -107,7 +109,7 @@ events	Channel.h	/^    } events;$/;"	m	class:tigerso::net::Channel	typeref:struc
 evf_t	Channel.h	/^typedef unsigned int evf_t;$/;"	t	namespace:tigerso::net
 exist	Socket.cpp	/^bool Socket::exist() const {$/;"	f	class:tigerso::net::Socket
 file_	Buffer.h	/^    core::File file_;$/;"	m	class:tigerso::net::Buffer
-gain_gap	Buffer.h	/^    static const size_t gain_gap = 1024;$/;"	m	class:tigerso::net::Buffer
+gain_gap	Buffer.h	/^    static const size_t gain_gap = BUFFER_GAP_LENGTH;$/;"	m	class:tigerso::net::Buffer
 getEpollBase	EventsLoop.cpp	/^int EventsLoop::getEpollBase() const {$/;"	f	class:tigerso::net::EventsLoop
 getFilePtr	Buffer.h	/^    core::File* getFilePtr() { return &file_; }$/;"	f	class:tigerso::net::Buffer
 getInBufferPtr	Socket.h	/^    std::shared_ptr<Buffer> getInBufferPtr() const { return bufPtr_.in_.lock(); }$/;"	f	class:tigerso::net::Socket
@@ -128,11 +130,12 @@ inBuffer_	Socket.h	/^    std::shared_ptr<Buffer> inBuffer_ = std::make_shared<Bu
 in_	Socket.h	/^    std::weak_ptr<Buffer> in_;$/;"	m	struct:tigerso::net::BufferPtr
 isNIO	Socket.cpp	/^bool Socket::isNIO() const {$/;"	f	class:tigerso::net::Socket
 keepFlag	Channel.h	/^        bool keepFlag;$/;"	m	struct:tigerso::net::Channel::__anon1
-least_len	Buffer.h	/^    static const size_t least_len = 16384;$/;"	m	class:tigerso::net::Buffer
+least_len	Buffer.h	/^    static const size_t least_len = BUFFER_LEAST_LENGTH;$/;"	m	class:tigerso::net::Buffer
 loop	EventsLoop.cpp	/^int EventsLoop::loop() {$/;"	f	class:tigerso::net::EventsLoop
 loop_	Channel.h	/^    EventsLoop& loop_;$/;"	m	class:tigerso::net::Channel
 loop_	EventsLoop.h	/^    bool loop_ = false;$/;"	m	class:tigerso::net::EventsLoop
 makeSpace	Buffer.cpp	/^int Buffer::makeSpace(const size_t len) {$/;"	f	class:tigerso::net::Buffer
+needDeletedChannelSet_	EventsLoop.h	/^    std::set<Channel*> needDeletedChannelSet_;$/;"	m	class:tigerso::net::EventsLoop
 net	Buffer.cpp	/^namespace tigerso::net {$/;"	n	class:tigerso	file:
 net	Buffer.h	/^namespace tigerso::net {$/;"	n	class:tigerso
 net	Channel.cpp	/^namespace tigerso::net {$/;"	n	class:tigerso	file:
@@ -166,7 +169,7 @@ recvNIO	Buffer.cpp	/^ssize_t Buffer::recvNIO(const socket_t sockfd) {$/;"	f	clas
 recvNIO	Socket.cpp	/^ssize_t Socket::recvNIO() {$/;"	f	class:tigerso::net::Socket
 registerChannel	EventsLoop.cpp	/^int EventsLoop::registerChannel(Socket& socket) {$/;"	f	class:tigerso::net::EventsLoop
 remove	Channel.cpp	/^void Channel::remove() {$/;"	f	class:tigerso::net::Channel
-removeChannel	EventsLoop.cpp	/^int EventsLoop::removeChannel(const Channel* cnptr) {$/;"	f	class:tigerso::net::EventsLoop
+removeChannel	EventsLoop.cpp	/^int EventsLoop::removeChannel(Channel* cnptr) {$/;"	f	class:tigerso::net::EventsLoop
 removeData	Buffer.cpp	/^size_t Buffer::removeData(std::string& data, const size_t len) {$/;"	f	class:tigerso::net::Buffer
 reset	Socket.cpp	/^void Socket::reset() {$/;"	f	class:tigerso::net::Socket
 resetFlag	Channel.cpp	/^void Channel::resetFlag() {$/;"	f	class:tigerso::net::Channel
@@ -204,10 +207,11 @@ sockfd_	Socket.h	/^    socket_t sockfd_ = -1;$/;"	m	class:tigerso::net::Socket
 stage_	Socket.h	/^    socket_stage_t stage_ = SOCKET_STAGE_UINIT;$/;"	m	class:tigerso::net::Socket
 stop	EventsLoop.h	/^    int stop() {loop_ = false;}$/;"	f	class:tigerso::net::EventsLoop
 toString	Buffer.cpp	/^std::string Buffer::toString() const {$/;"	f	class:tigerso::net::Buffer
-transFlag	EventsLoop.cpp	/^evf_t EventsLoop::transFlag(const Channel* cnptr) {$/;"	f	class:tigerso::net::EventsLoop
+transFlag	EventsLoop.cpp	/^evf_t EventsLoop::transFlag(Channel* cnptr) {$/;"	f	class:tigerso::net::EventsLoop
 unregisterChannel	EventsLoop.cpp	/^int EventsLoop::unregisterChannel(Socket& socket) {$/;"	f	class:tigerso::net::EventsLoop
 update	Channel.cpp	/^bool Channel::update() {$/;"	f	class:tigerso::net::Channel
-updateChannel	EventsLoop.cpp	/^int EventsLoop::updateChannel(const Channel* cnptr) {$/;"	f	class:tigerso::net::EventsLoop
+updateChannel	EventsLoop.cpp	/^int EventsLoop::updateChannel(Channel* cnptr) {$/;"	f	class:tigerso::net::EventsLoop
+validChannel	EventsLoop.cpp	18;"	d	file:
 waitChannel	EventsLoop.cpp	/^int EventsLoop::waitChannel() {$/;"	f	class:tigerso::net::EventsLoop
 waitTime_	EventsLoop.h	/^    int waitTime_ = 10000; \/\/10s$/;"	m	class:tigerso::net::EventsLoop
 writeFlag	Channel.h	/^        bool writeFlag;$/;"	m	struct:tigerso::net::Channel::__anon1

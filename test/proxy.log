@@ -1,9 +1,0 @@
-shm_t shm name: dnscache.dat
-shm_ptr: 0x7f2a8508b000
-Epoll createdm socket: 128
-socket [64] add event
->> enable [64]  read event
-Master socket listening now
->> Epoll detected 1 sockets
->> Detected socket [64] Events
->> Epoll detected 0 sockets

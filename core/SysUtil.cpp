@@ -92,8 +92,7 @@ int SysUtil::destroy_process_shared_memory(const string& shm_name, void* ptr, si
          return -1;
     }
 
-    std::cout << "Delete shared file" << std::endl;
-    DBG_LOG("destroy process shared memory: %s", shm_name);
+    DBG_LOG("destroy process shared memory: %s", shm_name.c_str());
     if(!munmap(ptr, len))
     {
         //return shm_unlink(shm_name.c_str()); 
@@ -176,9 +175,7 @@ int SharedMemory::init() {
     //this->shm_name += SysUtil::getFormatTime("-%G%b%d%H%M%S");
     shm_unlink(shm_name.c_str()); 
     shm_ptr = SysUtil::create_process_shared_memory(shm_name, shm_len);
-
-    std::cout << "shm_t shm name: " << shm_name << std::endl;
-    cout << "shm_ptr: " << shm_ptr << endl;
+    DBG_LOG("shm_t shm name: %s, shm ptr: %ld", shm_name.c_str(), shm_ptr);
 
     //::close(fd);
 
@@ -270,7 +267,7 @@ ShmMutex::~ShmMutex()
     if(pid == shm_pid)
     {
         //DBG_LOG("shm mutex destroy mutex_ptr: %d", mutex_ptr);
-        std::cout <<"shm mutex: " << shm_name<< "shm mutex destroy mutex_ptr: "<< mutex_ptr <<std::endl;
+        DBG_LOG("shm mutex: %s, shm mutex destroy mutex_ptr: %ld", shm_name.c_str(),  mutex_ptr);
         destroy();
         SysUtil::destroy_process_shared_memory(shm_name, (void*) mutex_ptr, sizeof(shm_mutex_t));
         std::string fn = "/dev/shm" + shm_name;
@@ -318,7 +315,7 @@ int ShmMutex::init()
 
     bzero(mutex_ptr, len);
 
-    mutex_ptr->shm_name = this->shm_name;
+    memcpy(mutex_ptr->shm_name, this->shm_name.c_str(), this->shm_name.size());
 
     int ret = 0;
 
@@ -351,6 +348,7 @@ int ShmMutex::lock()
             DBG_LOG("mutex lock failed, return code [%d] : %s", ret, strerror(errno));
             return ret;
         }
+        locked_pid = getpid();
         locked_ = true;
         return ret;
     }
@@ -366,6 +364,7 @@ int ShmMutex::try_lock()
             DBG_LOG("mutex try lock failed, return code [%d] : %s", ret, strerror(errno));
             return ret;
         }
+        locked_pid = getpid();
         locked_ = true;
         return ret;
     }
@@ -383,8 +382,9 @@ int ShmMutex::unlock()
              DBG_LOG("mutex unlock failed, return code [%d] : %s", ret, strerror(errno));
         }
         else {
+            locked_pid = 0;
             locked_ = false;
-            std::cout<< "shm mutex unlock success" << std::endl;
+            DBG_LOG("shm mutex unlock success");
         }
         return ret;
     }

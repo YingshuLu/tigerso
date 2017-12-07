@@ -2,6 +2,7 @@
 #include <memory>
 #include "net/Channel.h"
 #include "net/EventsLoop.h"
+#include "core/Logging.h"
 
 namespace tigerso::net {
 
@@ -10,7 +11,7 @@ bool Channel::enableReadEvent() {
     if(events.readFlag) { return true; }
     events.readFlag = true;
     update();
-    std::cout<<">> enable ["<< sockfd <<"]  read event" << std::endl;
+    DBG_LOG("enable [%d] read event", sockfd);
     return true;
 }
 
@@ -18,7 +19,7 @@ bool Channel::disableReadEvent() {
     if(!events.readFlag) { return true; }
     events.readFlag = false;
     update();
-    std::cout<<">> disable ["<< sockfd <<"] read event" << std::endl;
+    DBG_LOG("disable [%d] read event", sockfd);
     return true;
 }
 
@@ -26,7 +27,7 @@ bool Channel::enableWriteEvent() {
     if(events.writeFlag) { return true; }
     events.writeFlag = true;
     update();
-    std::cout<<">> enable ["<< sockfd <<"] write event" << std::endl;
+    DBG_LOG("enable [%d] write event", sockfd);
     return true;
 }
 
@@ -34,7 +35,7 @@ bool Channel::disableWriteEvent() {
     if(!events.writeFlag) { return true; }
     events.writeFlag = false;
     update();
-    std::cout<<">> disable ["<< sockfd <<"] write event" << std::endl;
+    DBG_LOG("disable [%d] write event", sockfd);
     return true;
 }
 

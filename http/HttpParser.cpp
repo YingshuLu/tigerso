@@ -2,6 +2,7 @@
 #include <functional>
 #include "http/HttpParser.h"
 #include "core/File.h"
+#include "core/Logging.h"
 
 namespace tigerso::http {
 
@@ -110,6 +111,7 @@ int HttpParser::on_headers_complete(http_parser* parser) {
     if( !(parser->http_major > 0 && parser->http_minor > 0 ) ) { pmessage->setVersion("HTTP/1.0"); }
     HttpParser* hptr = static_cast<HttpParser*>(parser->data);
     hptr->setParseState(PARSE_HEADER_COMPLETE);
+    DBG_LOG("Http Parser get complete header:\n%s", pmessage->getHeader().c_str());
 
     //HEAD method request, so null body in response
     if(hptr->skipBody()) { return 1; }

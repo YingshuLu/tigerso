@@ -30,7 +30,7 @@
 
 namespace tigerso::net {
 
-#define MIN_SOCKET_FD 256
+#define MIN_SOCKET_FD 512
 
 class SocketUtil {
 public:

@@ -54,12 +54,16 @@ private:
     hashkey_t getNextHashkey(const unsigned char* pkey, const size_t len, const offset_t cnt);
     bool isNodeUsed(DNSNode& node);
     int updateNode(DNSNode& dst, const char* host, unsigned char* key, const char* ip, int& ttl);
+    int store2Memory(const char* host, const char* ip, int ttl);
+    int memory2Shared();
+    int DNS2Shared(const char* host, const char* ip, int ttl);
        
 private:
     static DNSCache* pInstance_;
     core::SharedMemory shm_;
     core::ShmMutex  mutex_; //process-shared mutex
     std::map<std::string, std::vector<std::string>> stickDNSData_;
+    std::map<std::string, std::pair<std::string, time_t>> shmCache_;
     static std::string cachefile_; 
 };
 

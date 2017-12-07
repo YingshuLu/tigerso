@@ -2,7 +2,7 @@ SHELL = /bin/sh
 CC := g++
 
 WORKPATH := $(shell cd .. && pwd)
-PROJECT := test_http
+PROJECT := https_client
 OUTPUT := $(WORKPATH)/output
 BUILDDIR := $(OUTPUT)/Build/objs
 
