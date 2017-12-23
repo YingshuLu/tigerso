@@ -7,10 +7,12 @@
 #include <arpa/inet.h>
 #include <string>
 #include <memory>
+#include <openssl/ssl.h>
 #include "core/BaseClass.h"
 #include "net/Buffer.h"
+#include "ssl/SSLContext.h"
 
-namespace tigerso::net {
+namespace tigerso {
 #define SOCKET_EVENT_NONE  0x0000
 #define SOCKET_EVENT_READ  0x0001
 #define SOCKET_EVENT_WRITE  (SOCKET_EVENT_READ << 1)
@@ -56,7 +58,7 @@ struct BufferPtr {
 class SocketUtil;
 class Channel;
 
-class Socket: public core::nocopyable {
+class Socket: public nocopyable {
 friend class SocketUtil;
 public:
     Socket(): bufPtr_(inBuffer_, outBuffer_) {
@@ -74,6 +76,7 @@ public:
     std::string getStrAddr() const;
     std::string getStrPort() const;
     bool isNIO() const;
+    bool isListening() { if(exist() && listening) {return true;} return false; }
     socket_role_t getRole() const;
     socket_stage_t getStage() const;
     int getSockAddr(sockaddr_in&);
@@ -81,6 +84,7 @@ public:
     void setNIO(bool);
     void setKeepAlive(bool);
     void setTcpNoDelay(bool);
+    void setCloseExec(bool);
 
     ssize_t recvNIO();
     ssize_t recvBIO();
@@ -88,12 +92,14 @@ public:
     ssize_t sendBIO();
     ssize_t sendNIO(std::string&);
     ssize_t sendFile(const std::string&);
+    void setSocket(const socket_t&);
     
     std::shared_ptr<Buffer> getInBufferPtr() const { return bufPtr_.in_.lock(); }
     std::shared_ptr<Buffer> getOutBufferPtr() const { return bufPtr_.out_.lock(); }
 
     void setInBufferPtr(std::shared_ptr<Buffer> inptr) { bufPtr_.in_ = inptr; }
     void setOutBufferPtr(std::shared_ptr<Buffer> outptr) { bufPtr_.out_ = outptr; }
+    int perpareSSLContext();
     //connect
     int close();
 
@@ -106,9 +112,14 @@ public:
 
 public:
     Channel* channelptr = nullptr;
+    /*SSL support*/
+    bool isSSL() { return sctx.active(); }
+    bool SSLWantReadMore() { return sctx.serrno == SSL_ERROR_WANT_READ; }
+    bool SSLWantWriteMore() { return sctx.serrno == SSL_ERROR_WANT_WRITE; }
+    int SSLErrno() { return sctx.serrno; }
 
 private:
-    void setSocket(const socket_t&);
+
     void setStrAddr(const std::string&);
     void setStrPort(const std::string&);
     void setRole(const socket_role_t&);
@@ -116,6 +127,7 @@ private:
 
 private:
     bool blockIO_ = false;
+    bool listening = false;
     socket_role_t role_ = SOCKET_ROLE_UINIT;
     socket_stage_t stage_ = SOCKET_STAGE_UINIT;
     std::string addr_;
@@ -124,6 +136,8 @@ private:
     std::shared_ptr<Buffer> inBuffer_ = std::make_shared<Buffer>();
     std::shared_ptr<Buffer> outBuffer_ = std::make_shared<Buffer>();
     BufferPtr bufPtr_;
+    /*for SSL socket*/
+    SSLContext sctx;
 };
 
 typedef std::shared_ptr<Socket> SocketPtr;

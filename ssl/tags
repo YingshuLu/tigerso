@@ -1,0 +1,90 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+DBG_LOG	SSLContext.cpp	13;"	d	file:
+GOBAL_DEFAULT_RSA_KEY_LENGTH	SSLHelper.h	29;"	d
+HTTPS_IO_ERROR	SSLHelper.h	32;"	d
+HTTPS_IO_RECALL	SSLHelper.h	31;"	d
+INFO_LOG	SSLContext.cpp	14;"	d	file:
+MD5	SSLHelper.cpp	/^int SSLHelper::MD5(const char*  input, char* output, int len) {$/;"	f	class:tigerso::SSLHelper
+OPENSSL_INITIZED	SSLContext.cpp	/^static bool OPENSSL_INITIZED = false;$/;"	m	namespace:tigerso::_OPENSSL_	file:
+SCTX_CERT_VERIFY_MAX_DEPTH	SSLContext.cpp	19;"	d	file:
+SCTX_ERROR_ERR	SSLContext.h	/^    SCTX_ERROR_ERR = -1,$/;"	e	enum:tigerso::_SSL_ERROR_CODE
+SCTX_ERROR_OK	SSLContext.h	/^    SCTX_ERROR_OK$/;"	e	enum:tigerso::_SSL_ERROR_CODE
+SCTX_IO_ERROR	SSLContext.h	/^   SCTX_IO_ERROR = -1,$/;"	e	enum:tigerso::_SSL_IO_STATE
+SCTX_IO_OK	SSLContext.h	/^   SCTX_IO_OK$/;"	e	enum:tigerso::_SSL_IO_STATE
+SCTX_IO_RECALL	SSLContext.h	/^   SCTX_IO_RECALL,$/;"	e	enum:tigerso::_SSL_IO_STATE
+SCTX_MODE_PROXY	SSLContext.h	/^    SCTX_MODE_PROXY,$/;"	e	enum:tigerso::_SSL_MODE_
+SCTX_MODE_SERVICE	SSLContext.h	/^    SCTX_MODE_SERVICE,$/;"	e	enum:tigerso::_SSL_MODE_
+SCTX_MODE_UNKNOWN	SSLContext.h	/^    SCTX_MODE_UNKNOWN$/;"	e	enum:tigerso::_SSL_MODE_
+SCTX_ROLE_CLIENT	SSLContext.h	/^    SCTX_ROLE_CLIENT,$/;"	e	enum:tigerso::_SSL_ROLE_
+SCTX_ROLE_SERVER	SSLContext.h	/^    SCTX_ROLE_SERVER$/;"	e	enum:tigerso::_SSL_ROLE_
+SCTX_ROLE_UNKNOWN	SSLContext.h	/^    SCTX_ROLE_UNKNOWN = -1,$/;"	e	enum:tigerso::_SSL_ROLE_
+SSLContext	SSLContext.h	/^    SSLContext(){}$/;"	f	class:tigerso::SSLContext
+SSLContext	SSLContext.h	/^class SSLContext {$/;"	c	namespace:tigerso
+SSLHelper	SSLHelper.h	/^class SSLHelper {$/;"	c	namespace:tigerso
+SSLIOState	SSLContext.h	/^}SSLIOState;$/;"	t	namespace:tigerso	typeref:enum:tigerso::_SSL_IO_STATE
+SSLMode	SSLContext.h	/^} SSLMode;$/;"	t	namespace:tigerso	typeref:enum:tigerso::_SSL_MODE_
+SSLRole	SSLContext.h	/^} SSLRole;$/;"	t	namespace:tigerso	typeref:enum:tigerso::_SSL_ROLE_
+SSLStrerror	SSLContext.cpp	15;"	d	file:
+ServerCertVerifyCallback	SSLContext.h	/^typedef int(*ServerCertVerifyCallback)(int, X509_STORE_CTX*);$/;"	t	namespace:tigerso
+TS_SSL_SSLCONTEXT_H_	SSLContext.h	2;"	d
+TS_SSL_SSLHELPER_H_	SSLHelper.h	2;"	d
+_OPENSSL_	SSLContext.cpp	/^namespace _OPENSSL_ {$/;"	n	namespace:tigerso	file:
+_SSL_ERROR_CODE	SSLContext.h	/^typedef enum _SSL_ERROR_CODE {$/;"	g	namespace:tigerso
+_SSL_IO_STATE	SSLContext.h	/^typedef enum _SSL_IO_STATE {$/;"	g	namespace:tigerso
+_SSL_MODE_	SSLContext.h	/^typedef enum _SSL_MODE_ {$/;"	g	namespace:tigerso
+_SSL_ROLE_	SSLContext.h	/^typedef enum _SSL_ROLE_{$/;"	g	namespace:tigerso
+_TMP_CA_PEM_DIR	scripts/ca_converter.py	/^_TMP_CA_PEM_DIR=".\/tmp_capem\/"$/;"	v
+_clientVerifyServerCertCallback	SSLContext.cpp	/^    int _clientVerifyServerCertCallback(int ok, X509_STORE_CTX* xstore) {$/;"	f	namespace:tigerso::_OPENSSL_
+_destoryOpenssl	SSLContext.cpp	/^    void _destoryOpenssl() {$/;"	f	namespace:tigerso::_OPENSSL_
+_initClientContext	SSLContext.cpp	/^    int _initClientContext(const char* trustCAPath, const char* crlPath) {$/;"	f	namespace:tigerso::_OPENSSL_
+_initOpenssl	SSLContext.cpp	/^    void _initOpenssl() {$/;"	f	namespace:tigerso::_OPENSSL_
+_initServerContext	SSLContext.cpp	/^    int _initServerContext(const char* servercert, const char* privatekey) {$/;"	f	namespace:tigerso::_OPENSSL_
+_ownCert	SSLContext.h	/^    X509* _ownCert = nullptr;$/;"	m	class:tigerso::SSLContext
+_peerCert	SSLContext.h	/^    X509* _peerCert = nullptr;$/;"	m	class:tigerso::SSLContext
+_role	SSLContext.h	/^    SSLRole _role = SCTX_ROLE_UNKNOWN;$/;"	m	class:tigerso::SSLContext
+_ssl	SSLContext.h	/^    SSL* _ssl = nullptr;$/;"	m	class:tigerso::SSLContext
+_sslctx	SSLContext.h	/^    SSL_CTX* _sslctx = nullptr;$/;"	m	class:tigerso::SSLContext
+_uinitClientContext	SSLContext.cpp	/^    void _uinitClientContext() {$/;"	f	namespace:tigerso::_OPENSSL_
+_uinitServerContext	SSLContext.cpp	/^    void _uinitServerContext() {$/;"	f	namespace:tigerso::_OPENSSL_
+accept	SSLContext.cpp	/^int SSLContext::accept() {$/;"	f	class:tigerso::SSLContext
+active	SSLContext.cpp	/^bool SSLContext::active() {$/;"	f	class:tigerso::SSLContext
+bindSocket	SSLContext.cpp	/^int SSLContext::bindSocket(int sockfd) {$/;"	f	class:tigerso::SSLContext
+clear_oldPEM	scripts/build_castore.sh	/^clear_oldPEM () {$/;"	f
+close	SSLContext.cpp	/^int SSLContext::close() {$/;"	f	class:tigerso::SSLContext
+connect	SSLContext.cpp	/^int SSLContext::connect() {$/;"	f	class:tigerso::SSLContext
+fetchUrl	scripts/ca_converter.py	/^def fetchUrl(url):$/;"	f
+g_client_ssl_ctx	SSLContext.cpp	/^static SSL_CTX* g_client_ssl_ctx = NULL;$/;"	m	namespace:tigerso::_OPENSSL_	file:
+g_config	SSLContext.cpp	/^ConfigParser* g_config = ConfigParser::getInstance(); $/;"	m	namespace:tigerso::_OPENSSL_	file:
+g_server_cert_verify_cb	SSLContext.cpp	/^static ServerCertVerifyCallback g_server_cert_verify_cb = NULL;$/;"	m	namespace:tigerso::_OPENSSL_	file:
+g_server_ssl_ctx	SSLContext.cpp	/^static SSL_CTX* g_server_ssl_ctx = NULL;$/;"	m	namespace:tigerso::_OPENSSL_	file:
+genRSA	SSLHelper.cpp	/^static RSA* genRSA(int key_length) {$/;"	f	namespace:tigerso
+genSerialNumber	SSLHelper.cpp	/^static bool genSerialNumber(char* issuer, char* commonName, char* serial, char* newSerial, int len) {$/;"	f	namespace:tigerso
+getClientSSLCTX	SSLContext.cpp	/^   SSL_CTX* getClientSSLCTX() {$/;"	f	namespace:tigerso::_OPENSSL_
+getLicense	scripts/ca_converter.py	/^def getLicense(lines, num):$/;"	f
+getServerSSLCTX	SSLContext.cpp	/^    SSL_CTX* getServerSSLCTX() {$/;"	f	namespace:tigerso::_OPENSSL_
+hash_caPEM	scripts/build_castore.sh	/^hash_caPEM() {$/;"	f
+init	SSLContext.cpp	/^int SSLContext::init(SSLRole role) {$/;"	f	class:tigerso::SSLContext
+isCertTrusted	scripts/ca_converter.py	/^def isCertTrusted(cert, trusts, explicitTrustOnly, trustServerAuth,$/;"	f
+loadPrivateKeyFromFile	SSLHelper.cpp	/^EVP_PKEY* loadPrivateKeyFromFile(const char* keyfile, const char* passwd) {$/;"	f	namespace:tigerso
+loadX509FromFile	SSLHelper.cpp	/^X509* loadX509FromFile(const char* filename) {$/;"	f	namespace:tigerso
+main	scripts/ca_converter.py	/^def main(explicitTrustOnly = True, trustServerAuth = True,$/;"	f
+parseMultlineOctal	scripts/ca_converter.py	/^def parseMultlineOctal(lines, num):$/;"	f
+parseNSSFile	scripts/ca_converter.py	/^def parseNSSFile(explicitTrustOnly = True, trustServerAuth = True,$/;"	f
+recv	SSLContext.cpp	/^int SSLContext::recv(void* buf, size_t len, size_t* readn) {$/;"	f	class:tigerso::SSLContext
+send	SSLContext.cpp	/^int SSLContext::send(const void* buf, size_t len, size_t* written) {$/;"	f	class:tigerso::SSLContext
+serrno	SSLContext.h	/^    int serrno = SSL_ERROR_NONE;$/;"	m	class:tigerso::SSLContext
+setupCertKey	SSLContext.cpp	/^int SSLContext::setupCertKey(X509* cert, EVP_PKEY* pkey) {$/;"	f	class:tigerso::SSLContext
+signCert	SSLHelper.cpp	/^bool SSLHelper::signCert(X509* ca_cert, EVP_PKEY* ca_pkey, int key_length, X509* org_cert, X509** cert, EVP_PKEY** pkey) { $/;"	f	class:tigerso::SSLHelper
+storeX509ToPEMStr	SSLHelper.cpp	/^int storeX509ToPEMStr(X509* cert, char* buf, int len) {$/;"	f	namespace:tigerso
+tigerso	SSLContext.cpp	/^namespace tigerso {$/;"	n	file:
+tigerso	SSLContext.h	/^namespace tigerso {$/;"	n
+tigerso	SSLHelper.cpp	/^namespace tigerso {$/;"	n	file:
+tigerso	SSLHelper.h	/^namespace tigerso {$/;"	n
+validSSL	SSLHelper.cpp	/^bool SSLHelper::validSSL(SSL* ssl) {$/;"	f	class:tigerso::SSLHelper
+wrapB64	scripts/ca_converter.py	/^def wrapB64(str, width = 70):$/;"	f
+~SSLContext	SSLContext.cpp	/^SSLContext::~SSLContext() {$/;"	f	class:tigerso::SSLContext

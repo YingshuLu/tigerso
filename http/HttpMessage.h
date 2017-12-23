@@ -13,7 +13,7 @@
 #include "core/tigerso.h"
 #include "core/File.h"
 
-namespace tigerso::http {
+namespace tigerso {
 
 typedef int http_role_t;
 typedef std::vector<std::pair<std::string,std::string>> headers_t;
@@ -98,6 +98,7 @@ public:
     }
 
     virtual void setBody(const std::string& body) { body_.append(body); }
+    virtual void appendBody(const char* buf, size_t len) { body_.append(buf, len); }
 
     virtual void removeHeader(const std::string& header) {
         for ( auto iter = headers_.begin(); ; iter++ ) {

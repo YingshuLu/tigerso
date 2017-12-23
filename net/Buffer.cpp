@@ -1,10 +1,11 @@
 #include <iostream>
 #include "net/Buffer.h"
+#include "core/tigerso.h"
 #include "core/Logging.h"
+#include "net/SocketUtil.h"
 
-namespace tigerso::net {
+namespace tigerso {
 
-using namespace core;
 Buffer:: Buffer(const size_t size)
     :prefix_(pregap),
     buffer_(nullptr) {
@@ -139,7 +140,7 @@ ssize_t Buffer::sendBIO(const socket_t fd) {
 ssize_t Buffer::sendNIO(const socket_t sockfd) {
 
     if (sockfd < 0) {
-        return -1;
+        return SOCKET_IOSTATE_ERROR;
     }
     //std::cout << ">> --- Out Buffer:\n" <<toString() << std::endl;
     ssize_t n = 0;
@@ -161,6 +162,44 @@ ssize_t Buffer::sendNIO(const socket_t sockfd) {
             return SOCKET_IOSTATE_ERROR;
         }
     }
+    return len;
+}
+
+int Buffer::sendToSocket(Socket& mcsock) {
+    size_t n = 0;
+    size_t len = 0;
+    int ret = 0;
+    while(readableBytes() > 0 && (ret = SocketUtil::Send(mcsock, (void*) (buffer_  + readIdx_), readableBytes(), &n) > 0)){
+        len += n;
+        readIdx_ += n;     
+    }
+
+    //no data now, reset the buffer
+    if(writeIdx_ == readIdx_) { clear(); }
+    else if(writeIdx_ < readIdx_ + gain_gap) { align(); } // align, save space
+
+    if(ret != TIGERSO_IO_ERROR) { return len; }
+    else { return TIGERSO_IO_ERROR; }
+    return len;
+}
+
+int Buffer::recvFromSocket(Socket& mcsock) {
+    size_t len = 0;
+    size_t n = 0;
+    int ret = 0;
+
+    size_t extend = gain_gap;
+    while ((ret = SocketUtil::Recv(mcsock, (void*) (buffer_ + getWriteIdx()), writeableBytes(), &n)) > 0) {
+        writeIdx_ += n;
+        len += n;
+        if (writeableBytes() < pregap) {
+            makeSpace(extend);
+            extend = extend << 1;
+        }
+    }
+
+    if(ret != TIGERSO_IO_ERROR) { return len; }
+    else { return TIGERSO_IO_ERROR; }
     return len;
 }
 

@@ -5,11 +5,9 @@
 #include <arpa/nameser.h>
 */
 
-namespace tigerso::dns {
+namespace tigerso {
 
 using namespace std;
-using namespace tigerso::net;
-using namespace core;
 
 DNSResolver::DNSResolver() {
 }

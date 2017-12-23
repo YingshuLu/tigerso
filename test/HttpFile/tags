@@ -1,0 +1,144 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ChunkState	HttpBodyFile.h	/^    } ChunkState;$/;"	t	class:HttpBodyFile	typeref:enum:HttpBodyFile::_chunk_send_state
+DBG_LOG	sendcontent.cc	20;"	d	file:
+DBG_LOG	sendcontent.cc	22;"	d	file:
+DBG_LOG	sendfile.cc	20;"	d	file:
+DBG_LOG	sendfile.cc	22;"	d	file:
+FILE_ACTION_OK	File.h	24;"	d
+FILE_ARGS_INVALID	File.h	29;"	d
+FILE_FD_INVALID	File.h	28;"	d
+FILE_NAME_MAX_LENGTH	File.h	23;"	d
+FILE_OPEN_ERROR	File.h	25;"	d
+FILE_READ_ACCESS_DENY	File.h	27;"	d
+FILE_SENDFILE_DONE	File.h	33;"	d
+FILE_SENDFILE_ERROR	File.h	31;"	d
+FILE_SENDFILE_RECALL	File.h	32;"	d
+FILE_WRITE_ACCESS_DENY	File.h	26;"	d
+File	File.cpp	/^File::File(const char* filename) {$/;"	f	class:File
+File	File.h	/^class File {$/;"	c
+HttpBodyFile	HttpBodyFile.h	/^    HttpBodyFile(const char* filename):_ringbuf(4096), _file(filename) {}$/;"	f	class:HttpBodyFile
+HttpBodyFile	HttpBodyFile.h	/^class HttpBodyFile {$/;"	c
+POINTER	RingBuffer.h	35;"	d
+QQindexAd	index.html	/^	function QQindexAd(obj){$/;"	f
+QQindexAdShut	index.html	/^	function QQindexAdShut(){$/;"	f
+RINGBUFFER_DEFAULT_LENGTH	RingBuffer.h	47;"	d
+RINGBUFFER_MAX_LENGTH	RingBuffer.h	45;"	d
+RINGBUFFER_MIN_LENGTH	RingBuffer.h	46;"	d
+RINGBUFFER_NO_DATA	RingBuffer.h	24;"	d
+RINGBUFFER_NO_SPACE	RingBuffer.h	23;"	d
+RingBuffer	RingBuffer.h	/^    RingBuffer(const size_t len = RINGBUFFER_DEFAULT_LENGTH) {$/;"	f	class:RingBuffer
+RingBuffer	RingBuffer.h	/^class RingBuffer {$/;"	c
+SEND_DEBUG	sendcontent.cc	18;"	d	file:
+SEND_DEBUG	sendfile.cc	18;"	d	file:
+TEST_FILEACCESS	File.h	21;"	d
+TS_CORE_FILE_H_	File.h	2;"	d
+TS_CORE_RINGBUFFER_H_	RingBuffer.h	2;"	d
+__del__	client.py	/^    def __del__(self):$/;"	m	class:client	file:
+__init__	client.py	/^    def __init__(self, addr, port):$/;"	m	class:client
+_buffer	RingBuffer.h	/^    char* _buffer;$/;"	m	class:RingBuffer
+_chunkNulldone	HttpBodyFile.h	/^        _chunkNulldone$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunkNullon	HttpBodyFile.h	/^        _chunkNullon,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunk_send_state	HttpBodyFile.h	/^typedef  enum _chunk_send_state{$/;"	g	class:HttpBodyFile
+_chunkedatadone	HttpBodyFile.h	/^        _chunkedatadone,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunkedataon	HttpBodyFile.h	/^        _chunkedataon,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunkeofdone	HttpBodyFile.h	/^        _chunkeofdone,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunkeofon	HttpBodyFile.h	/^        _chunkeofon,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunkfiledone	HttpBodyFile.h	/^        _chunkfiledone,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunksize	HttpBodyFile.h	/^    int _chunksize = 4096;$/;"	m	class:HttpBodyFile
+_chunksizedone	HttpBodyFile.h	/^        _chunksizedone,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunksizeon	HttpBodyFile.h	/^        _chunksizeon,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunkstate	HttpBodyFile.h	/^    ChunkState _chunkstate = _chunkuinit;$/;"	m	class:HttpBodyFile
+_chunkuinit	HttpBodyFile.h	/^        _chunkuinit,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_file	HttpBodyFile.h	/^    File _file;$/;"	m	class:HttpBodyFile
+_readoffset	HttpBodyFile.h	/^    off_t _readoffset = 0;$/;"	m	class:HttpBodyFile
+_readptr	RingBuffer.h	/^    char* _readptr;$/;"	m	class:RingBuffer
+_ringbuf	HttpBodyFile.h	/^    RingBuffer _ringbuf; \/\/ Cache for file$/;"	m	class:HttpBodyFile
+_senddone	HttpBodyFile.h	/^    bool _senddone = false;$/;"	m	class:HttpBodyFile
+_size	RingBuffer.h	/^    size_t _size;$/;"	m	class:RingBuffer
+_writeptr	RingBuffer.h	/^    char* _writeptr;$/;"	m	class:RingBuffer
+appendWriteIn	File.cpp	/^ssize_t File::appendWriteIn(const char* buf, size_t len) {$/;"	f	class:File
+blocking	File.h	18;"	d
+bossZoneHandler	index.html	/^	function bossZoneHandler(){$/;"	f
+buf	client.py	/^        buf = cli.recv()$/;"	v
+checkImgErr	index.html	/^			function checkImgErr(n) {$/;"	f
+chunked	HttpBodyFile.h	/^    bool chunked = false; $/;"	m	class:HttpBodyFile
+clear	RingBuffer.h	/^    void clear() {$/;"	f	class:RingBuffer
+cli	client.py	/^    cli = client(ip, port)$/;"	v
+client	client.py	/^class client:$/;"	c
+cnt	client.py	/^                cnt = cnt + 1$/;"	v
+cnt	client.py	/^    cnt = 0;$/;"	v
+connect	client.py	/^    def connect(self):$/;"	m	class:client
+content_encoding	HttpBodyFile.h	/^    char content_encoding[1024];$/;"	m	class:HttpBodyFile
+content_type	HttpBodyFile.h	/^    char content_type [1024];$/;"	m	class:HttpBodyFile
+cur_	File.h	/^    off_t cur_;$/;"	m	class:File
+empty	client.py	/^    empty = False;$/;"	v
+endFile	HttpBodyFile.h	/^    void endFile() {$/;"	f	class:HttpBodyFile
+fd_	File.h	/^    int fd_;$/;"	m	class:File
+file	client.py	/^    file = open(filename, 'w')$/;"	v
+filename	HttpBodyFile.h	/^    char filename[1024];$/;"	m	class:HttpBodyFile
+filename	client.py	/^    filename = sys.argv[2]$/;"	v
+filename_	File.h	/^    char filename_[FILE_NAME_MAX_LENGTH] = {0};$/;"	m	class:File
+getFileLength	sendcontent.cc	/^ssize_t getFileLength(int fd) {$/;"	f
+getFileLength	sendfile.cc	/^ssize_t getFileLength(int fd) {$/;"	f
+getFileSize	File.cpp	/^ssize_t File::getFileSize() {$/;"	f	class:File
+getIPPort	client.py	/^def getIPPort(param):$/;"	f
+inter2HexString	HttpBodyFile.h	/^    std::string inter2HexString(int num) {$/;"	f	class:HttpBodyFile
+isEmpty	RingBuffer.h	/^    bool isEmpty() { return  (_readptr == _writeptr); }$/;"	f	class:RingBuffer
+isFull	RingBuffer.h	/^    bool isFull() { return (space() == 0); }$/;"	f	class:RingBuffer
+listenfd	sendcontent.cc	/^int listenfd = socket(AF_INET, SOCK_STREAM, 0);$/;"	v
+listenfd	sendfile.cc	/^int listenfd = socket(AF_INET, SOCK_STREAM, 0);$/;"	v
+listeningOnLocal	sendcontent.cc	/^int listeningOnLocal() {$/;"	f
+listeningOnLocal	sendfile.cc	/^int listeningOnLocal() {$/;"	f
+main	sendcontent.cc	/^int main(int argc, char* argv[]) {$/;"	f
+main	sendfile.cc	/^int main(int argc, char* argv[]) {$/;"	f
+mine_type	HttpBodyFile.h	/^    char mine_type[1024];$/;"	m	class:HttpBodyFile
+nonBlocking	File.h	17;"	d
+nonBlocking	sendcontent.cc	16;"	d	file:
+nonBlocking	sendfile.cc	16;"	d	file:
+printchar	RingBuffer.h	/^void printchar(char* buf, size_t len) {$/;"	f
+ptlogin2_onClose	index.html	/^	function ptlogin2_onClose(){$/;"	f
+ptlogin2_onResize	index.html	/^	function ptlogin2_onResize(width, height) {$/;"	f
+readOut	File.cpp	/^ssize_t File::readOut(char* buf, size_t len, off_t& offset) {$/;"	f	class:File
+readOut	RingBuffer.h	/^    int readOut(char* buf, size_t len) {$/;"	f	class:RingBuffer
+readOut	RingBuffer.h	/^    int readOut(int fd) {$/;"	f	class:RingBuffer
+readOut2File	RingBuffer.h	/^    int readOut2File(File& file) {$/;"	f	class:RingBuffer
+recv	client.py	/^    def recv(self):$/;"	m	class:client
+reset	File.h	/^    inline void reset() { ::close(fd_); fd_ = -1; size_ = 0; cur_ = 0; }$/;"	f	class:File
+reset	HttpBodyFile.h	/^    void reset() {$/;"	f	class:HttpBodyFile
+send	client.py	/^    def send(self, message):$/;"	m	class:client
+send2Socket	File.cpp	/^int File::send2Socket(int sockfd, size_t& sendn) {$/;"	f	class:File
+send2Socket	File.cpp	/^int File::send2Socket(int sockfd, size_t& sendn, off_t& offset, size_t count) {$/;"	f	class:File
+send2Socket	RingBuffer.h	/^    int send2Socket(int sockfd) {$/;"	f	class:RingBuffer
+sendChunk2Socket	HttpBodyFile.h	/^    int sendChunk2Socket(int sockfd) {$/;"	f	class:HttpBodyFile
+sendContent2Socket	HttpBodyFile.h	/^    int sendContent2Socket(int sockfd) {$/;"	f	class:HttpBodyFile
+sendFile	sendcontent.cc	/^ssize_t sendFile(int out_fd, int in_fd, ssize_t len) {$/;"	f
+sendFile	sendfile.cc	/^ssize_t sendFile(int out_fd, int in_fd, ssize_t len) {$/;"	f
+setBlockingIO	File.h	/^    inline int setBlockingIO(int block) { if(validFd(fd_)) { return block != 1? nonBlocking(fd_): blocking(fd_); } return -1; }$/;"	f	class:File
+setFile	HttpBodyFile.h	/^    void setFile(const char* filename) {$/;"	f	class:HttpBodyFile
+setFilename	File.cpp	/^void File::setFilename(const char* filename) {$/;"	f	class:File
+showComplete	sendcontent.cc	25;"	d	file:
+showComplete	sendfile.cc	25;"	d	file:
+showProcess	sendcontent.cc	/^void showProcess(long now, long total) {$/;"	f
+showProcess	sendfile.cc	/^void showProcess(long now, long total) {$/;"	f
+size	HttpBodyFile.h	/^    size_t size() { return _file.getFileSize() + _ringbuf.size(); }$/;"	f	class:HttpBodyFile
+size	RingBuffer.h	/^    size_t size() { return (_size - space() - 1); }$/;"	f	class:RingBuffer
+size_	File.h	/^    off_t size_;$/;"	m	class:File
+sogouShow	index.html	/^		function sogouShow(){}$/;"	f
+sosoShow	index.html	/^		function sosoShow(){}$/;"	f
+space	RingBuffer.h	/^    size_t space() {$/;"	f	class:RingBuffer
+testExist	File.h	/^    inline bool testExist() { return TEST_FILEACCESS(filename_, F_OK); }$/;"	f	class:File
+testRead	File.h	/^    inline bool testRead()  { return TEST_FILEACCESS(filename_, R_OK); }$/;"	f	class:File
+testWrite	File.h	/^    inline bool testWrite() { return TEST_FILEACCESS(filename_, W_OK); }$/;"	f	class:File
+topFixed	index.html	/^	function topFixed(){$/;"	f
+unlink	File.h	/^    inline int unlink() { return ::unlink(filename_); }$/;"	f	class:File
+userLogin	index.html	/^	function userLogin(){$/;"	f
+validFd	File.h	19;"	d
+writeIn	File.cpp	/^ssize_t File::writeIn(const char* buf, size_t len) {$/;"	f	class:File
+writeIn	RingBuffer.h	/^    int writeIn(const char* buf, size_t length) {$/;"	f	class:RingBuffer
+~File	File.cpp	/^File::~File() {$/;"	f	class:File
+~RingBuffer	RingBuffer.h	/^    ~RingBuffer() {$/;"	f	class:RingBuffer

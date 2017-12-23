@@ -1,7 +1,7 @@
 #include "http/HttpProxy.h"
 
 
-namespace tigerso::http{
+namespace tigerso {
 
 HttpProxyConnection::HttpProxyConnection(): ID_(HttpProxyConnection::uuid()), 
     csockptr(std::make_shared<Socket>()),
@@ -24,6 +24,7 @@ int HttpProxyConnection::serverSafeClose(Socket& server) {
     if(!server.exist()) { return EVENT_CALLBACK_BREAK; }
     socketSetEventHandle(server, BIND_EVENTHANDLE(HttpProxyConnection::serverCloseHandle), SOCKET_EVENT_AFTER);
     server2close_ = true;
+    server.close();
     return EVENT_CALLBACK_CONTINUE;
 }
 
@@ -70,13 +71,15 @@ int HttpProxyConnection::socketNullHandle(Socket& sock) {
 }
 
 int HttpProxyConnection::clientRDHUPHandle(Socket& client) {
-    socketDisableReadEvent(client);
+    //socketDisableReadEvent(client);
+    client.close();
     clientSafeClose(client);
     return EVENT_CALLBACK_CONTINUE;
 }
 
 int HttpProxyConnection::serverRDHUPHandle(Socket& server) {
-    socketDisableReadEvent(server);
+    //socketDisableReadEvent(server);
+    server.close();
     serverSafeClose(server);
     return EVENT_CALLBACK_CONTINUE;
 }
@@ -104,7 +107,6 @@ int HttpProxyConnection::clientFinalWriteHandle(Socket& client) {
 }
 
 int HttpProxyConnection::clientFirstReadHandle(Socket& client) {
-    DBG_LOG("Start read client first request");
     int recvn = client.recvNIO();
     if(recvn < 0) {
         INFO_LOG("Client read request failed, errno:%d, %s", errno, strerror(errno));
@@ -164,6 +166,14 @@ int HttpProxyConnection::clientFirstReadHandle(Socket& client) {
     std::string port = request.getHostPort();
 
     std::string ipv4;
+    //Host is IPv4 addr
+    if(SocketUtil::ValidateAddr(host)) {
+        ipv4 = host;
+        serverConnectTo(ipv4.c_str(), 0);
+        return EVENT_CALLBACK_CONTINUE;
+    }
+
+    //Get IPv4 addr from DNS Cache
     int dns_ret = resolver_.queryDNSCache(host, ipv4);
     //Hit DNS Cache
     if(dns_ret == DNS_OK) {
@@ -198,7 +208,7 @@ int HttpProxyConnection::serverConnectTo(const char* ip, time_t ttl) {
     DBG_LOG("Connect to server: %s:%s", ip, sport.c_str());
 
     int ret = SocketUtil::Connect(_serverSocket, ip, sport);
-    if(ret != 0) {
+    if(ret < 0) {
         INFO_LOG("Failed connect to server: %s:%s", ip, sport.c_str());
         HttpResponse response;
         HttpHelper::prepare503Response(response);
@@ -209,7 +219,7 @@ int HttpProxyConnection::serverConnectTo(const char* ip, time_t ttl) {
         _clientSocket.reset();
         return EVENT_CALLBACK_BREAK;
     }
-
+ 
     _serverSocket.setNIO(true);
     transferProxyBuffer();
 
@@ -234,9 +244,16 @@ int HttpProxyConnection::serverConnectTo(const char* ip, time_t ttl) {
         socketSetEventHandle(_serverSocket, BIND_EVENTHANDLE(HttpProxyConnection::serverTunnelReadHandle), SOCKET_EVENT_READ);
         //Decrypt SSL Data
 
+        //connect established immediately
+        if(0 == ret){ return serverTunnelWriteHandle(_serverSocket); }
+
+        //need wait connect establish event
         socketEnableWriteEvent(_clientSocket);
         return EVENT_CALLBACK_CONTINUE;
     }
+
+    //connect established immediately
+    if(0 == ret){ return serverFirstWriteHandle(_serverSocket); }
 
     socketSetEventHandle(_serverSocket, BIND_EVENTHANDLE(HttpProxyConnection::serverFirstWriteHandle), SOCKET_EVENT_WRITE);
     socketEnableWriteEvent(_serverSocket);
@@ -244,7 +261,6 @@ int HttpProxyConnection::serverConnectTo(const char* ip, time_t ttl) {
 }
 
 int HttpProxyConnection::serverFirstWriteHandle(Socket& server) {
-    DBG_LOG( "Write request to server");
     if(!SocketUtil::TestConnect(server)) {
         //Perpare connect timeout page for client
         HttpResponse response;
@@ -279,7 +295,6 @@ int HttpProxyConnection::serverFirstWriteHandle(Socket& server) {
 }
 
 int HttpProxyConnection::serverReadHandle(Socket& server) {
-    DBG_LOG("Read server response");
     HttpResponse& response = stransaction_.response;
 
     int recvn = server.recvNIO();
@@ -336,7 +351,6 @@ int HttpProxyConnection::serverReadHandle(Socket& server) {
 }
 
 int HttpProxyConnection::clientOnlyWriteHandle(Socket& client) {
-    DBG_LOG("Client only write response");
     int sendn = client.sendNIO();
     if(sendn < 0) { 
         INFO_LOG("Client only write failed, errno: %d, %s", errno, strerror(errno));
@@ -349,7 +363,6 @@ int HttpProxyConnection::clientOnlyWriteHandle(Socket& client) {
 }
 
 int HttpProxyConnection::clientWriteHandle(Socket& client) {
-    DBG_LOG("Client write response");
     int sendn = client.sendNIO();
     if(sendn < 0) {
         INFO_LOG("Client write failed, errno: %d, %s", errno, strerror(errno));
@@ -373,7 +386,6 @@ int HttpProxyConnection::clientWriteHandle(Socket& client) {
 }
 
 int HttpProxyConnection::clientReadHandle(Socket& client) {
-    DBG_LOG("client read request");
     int recvn = client.recvNIO();
     if(recvn < 0) {
         INFO_LOG("Client read request failed, errno: %d, %s", errno, strerror(errno));
@@ -432,7 +444,6 @@ int HttpProxyConnection::clientReadHandle(Socket& client) {
 }
 
 int HttpProxyConnection::serverOnlyWriteHandle(Socket& server) {
-    DBG_LOG("Server only write request");
     int sendn = server.sendNIO();
     if(sendn < 0) {
         INFO_LOG("Server write failed, errno: %d, %s", errno, strerror(errno));
@@ -444,7 +455,6 @@ int HttpProxyConnection::serverOnlyWriteHandle(Socket& server) {
 }
 
 int HttpProxyConnection::serverWriteHandle(Socket& server) {
-    DBG_LOG("server write request");
     int sendn = server.sendNIO();
     if(sendn < 0) {
         INFO_LOG("Server write failed, errno: %d, %s", errno, strerror(errno));
@@ -470,7 +480,6 @@ int HttpProxyConnection::clientTunnelWriteHandle(Socket& client) {
         return EVENT_CALLBACK_CONTINUE;
     }
 
-    DBG_LOG("Client Tunnel write");
     int sendn = client.sendNIO();
     if(sendn < 0) {
         INFO_LOG("client write failed, errno: %d, %s", errno, strerror(errno));
@@ -487,7 +496,6 @@ int HttpProxyConnection::clientTunnelWriteHandle(Socket& client) {
 }
 
 int HttpProxyConnection::clientTunnelReadHandle(Socket& client) {
-    DBG_LOG("Client Tunnel read");
     int recvn = client.recvNIO();
     if(recvn < 0) {
         INFO_LOG("Client read failed, errno: %d, %s", errno, strerror(errno));
@@ -503,7 +511,6 @@ int HttpProxyConnection::serverTunnelWriteHandle(Socket& server) {
     if(!server.getOutBufferPtr()->getReadableBytes()) {
         return EVENT_CALLBACK_CONTINUE;
     }
-    DBG_LOG("Server Tunnel write");
     int sendn = server.sendNIO();
     if(sendn < 0) {
         INFO_LOG("Server write failed, errno: %d, %s", errno, strerror(errno));
@@ -520,7 +527,6 @@ int HttpProxyConnection::serverTunnelWriteHandle(Socket& server) {
 }
 
 int HttpProxyConnection::serverTunnelReadHandle(Socket& server) {
-    DBG_LOG("Server Tunnel read");
     int recvn = server.recvNIO();
     if(recvn < 0) {
         INFO_LOG("Server read failed, errno: %d, %s", errno, strerror(errno));

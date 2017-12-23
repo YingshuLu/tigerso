@@ -1,6 +1,9 @@
+#include <fcntl.h>
+#include <unistd.h>
 #include "ssl/SSLHelper.h"
+#include "core/Logging.h"
 
-namespace tigerso::ssl {
+namespace tigerso {
 
 X509* loadX509FromFile(const char* filename) {
     
@@ -55,7 +58,7 @@ EVP_PKEY* loadPrivateKeyFromFile(const char* keyfile, const char* passwd) {
 
     pkey = PEM_read_bio_PrivateKey(bio, NULL, NULL, const_cast<char*>(passwd));
     if(pkey == NULL) {
-        printf("read private key failed");
+        INFO_LOG("read private key failed");
         BIO_free(bio);
         return NULL;
     }
@@ -94,7 +97,7 @@ static RSA* genRSA(int key_length) {
 bool SSLHelper::signCert(X509* ca_cert, EVP_PKEY* ca_pkey, int key_length, X509* org_cert, X509** cert, EVP_PKEY** pkey) { 
     
     if(ca_cert == NULL || ca_pkey == NULL) {
-        printf("Invalid input parameter\n");
+        INFO_LOG("Invalid input parameter");
         return false;
     }
 
@@ -118,18 +121,18 @@ bool SSLHelper::signCert(X509* ca_cert, EVP_PKEY* ca_pkey, int key_length, X509*
     
     char serialNumber[128];
     genSerialNumber(issuer, commonName, serialStr, serialNumber, sizeof(serialNumber));
-    printf("generate new serial number: %s\n", serialNumber);
+    DBG_LOG("generate new serial number: %s", serialNumber);
 
     ASN1_INTEGER * serial = s2i_ASN1_INTEGER(NULL, serialNumber);
     if(serial == NULL) {
-        printf("get serial failed\n");
+        INFO_LOG("get serial failed");
         return false;
     }
 
     new_cert_rsa = genRSA(key_length);
     if(new_cert_rsa == NULL) {
         ASN1_INTEGER_free(serial);
-        printf("gen RSA failed");
+        INFO_LOG("gen RSA failed");
         return false;
     }
 
@@ -137,7 +140,7 @@ bool SSLHelper::signCert(X509* ca_cert, EVP_PKEY* ca_pkey, int key_length, X509*
     if(*pkey == NULL) {
         RSA_free(new_cert_rsa);
         ASN1_INTEGER_free(serial);
-        printf("new private key failed\n");
+        INFO_LOG("new private key failed");
         return false;
     }
 
@@ -146,7 +149,7 @@ bool SSLHelper::signCert(X509* ca_cert, EVP_PKEY* ca_pkey, int key_length, X509*
         RSA_free(new_cert_rsa);
         ASN1_INTEGER_free(serial);
         pkey == NULL;
-        printf("set private key from RSA failed\n");
+        INFO_LOG("set private key from RSA failed");
         return false;
     }
 
@@ -173,7 +176,7 @@ bool SSLHelper::signCert(X509* ca_cert, EVP_PKEY* ca_pkey, int key_length, X509*
         ASN1_INTEGER_free(serial);
         EVP_PKEY_free(*pkey);
         *pkey = NULL;
-        printf("new cert failed\n");
+        INFO_LOG("new cert failed");
         return false;
     }
 
@@ -195,7 +198,7 @@ bool SSLHelper::signCert(X509* ca_cert, EVP_PKEY* ca_pkey, int key_length, X509*
 
         X509_free(*cert);
         *cert = NULL;
-        printf("set cert values failed\n");
+        INFO_LOG("set cert values failed");
         return false;
     }
 
@@ -206,15 +209,22 @@ bool SSLHelper::signCert(X509* ca_cert, EVP_PKEY* ca_pkey, int key_length, X509*
 
         X509_free(*cert);
         *cert = NULL;
-        printf("sign cert failed\n");
+        INFO_LOG("sign cert failed");
         return false;
     }
 
     return true;
 }
 
-int SSLHelper::MD5(const char*  input, char* output, int len) {
+bool SSLHelper::validSSL(SSL* ssl) {
+    if(NULL == ssl || SSL_get_fd(ssl) < 0) { 
+        INFO_LOG("ssl is not a valid SSL");
+        return false;
+    }
+    return true;
+}
 
+int SSLHelper::MD5(const char*  input, char* output, int len) {
     if(input == NULL || output == NULL || len < 0) {
 		return 1;
 	}

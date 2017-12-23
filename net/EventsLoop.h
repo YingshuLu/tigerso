@@ -14,15 +14,16 @@
 #include "core/BaseClass.h"
 #include "net/Socket.h"
 #include "net/Channel.h"
+#include "net/TimeWheelEvent.h"
 
-namespace tigerso::net {
+namespace tigerso {
 
 //typedef std::shared_ptr<Channel> ChannelPtr;
 
 static const int MAX_CHANNEL_NUM = 512;
 static const int DEFAULT_CHANNEL_NUM = 128;
 
-class EventsLoop: public core::nocopyable {
+class EventsLoop: public nocopyable {
 
 public:
     EventsLoop(const int channels = DEFAULT_CHANNEL_NUM) 
@@ -60,6 +61,7 @@ private:
     int waitTime_ = 10000; //10s
     bool loop_ = false;
     int epfd_ = -1;
+    TimeWheelEvent timer_;
 
 };
 

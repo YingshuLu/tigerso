@@ -13,10 +13,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <openssl/ssl.h>
 #include "core/BaseClass.h"
-#include "core/File.h"
+#include "core/tigerso.h"
 
-namespace tigerso::net {
+namespace tigerso {
 
 const int SOCKET_IOSTATE_CLOSED   = -1;
 const int SOCKET_IOSTATE_CONTINUE = 0;
@@ -26,7 +27,9 @@ const int SOCKET_IOSTATE_ERROR    = -2;
 #define BUFFER_LEAST_LENGTH (256*1024)
 #define BUFFER_GAP_LENGTH (8*1024)
 
-class Buffer: public core::nocopyable {
+class Socket;
+
+class Buffer: public nocopyable {
 
 public:
     typedef int socket_t;
@@ -37,13 +40,15 @@ public:
     ssize_t recvBIO(const socket_t);
     ssize_t recvNIO(const socket_t);
     ssize_t sendBIO(const socket_t);
-    ssize_t sendNIO(const socket_t );
+    ssize_t sendNIO(const socket_t);
+    int recvFromSocket(Socket&);
+    int sendToSocket(Socket&);
+
     std::string toString() const; 
     size_t addData(const char*, size_t);
     size_t addData(const std::string&);
     size_t removeData(std::string&, const size_t);
     size_t clear();
-    core::File* getFilePtr() { return &file_; }
 
 private:
     size_t readableBytes() const;
@@ -61,7 +66,6 @@ private:
     size_t writeIdx_;
     char* buffer_;
     size_t bufsize_;
-    core::File file_;
 
     static const size_t pregap = 8;
     //initilize 256KB size

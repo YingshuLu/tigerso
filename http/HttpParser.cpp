@@ -4,7 +4,7 @@
 #include "core/File.h"
 #include "core/Logging.h"
 
-namespace tigerso::http {
+namespace tigerso {
 
 #define PARSER_TO_MESSAGE(parser) (static_cast<HttpParser*>(parser->data))->message_
 

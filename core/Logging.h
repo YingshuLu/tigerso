@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <errno.h>
 
 #define SPLIT '/'
 
@@ -18,16 +19,17 @@
 #define SPLIT '\\'
 #endif
 
-namespace tigerso::core {
+namespace tigerso {
 
-#define DBG_LOG(fmt,...)  core::Logging::getInstance()->dbgLog(fmt" <%s>@<%s:%d>", ##__VA_ARGS__, __func__, basename(__FILE__), __LINE__)
-#define INFO_LOG(fmt,...) core::Logging::getInstance()->infoLog(fmt" <%s>@<%s:%d>", ##__VA_ARGS__, __func__, basename(__FILE__), __LINE__)
+#define DBG_LOG(fmt,...)  Logging::getInstance()->dbgLog(fmt" <%s>@<%s:%d>", ##__VA_ARGS__, __func__, basename(__FILE__), __LINE__)
+#define INFO_LOG(fmt,...) Logging::getInstance()->infoLog(fmt" <%s>@<%s:%d>", ##__VA_ARGS__, __func__, basename(__FILE__), __LINE__)
+#define ERR_RETURN(ret) DBG_LOG("return value: %d, errno: %d,  %s", ret, errno, strerror(errno))
 
 enum LOGLEVEL{
 	NOLOG = 0,
-	DEBUG,
-	INFO,
-	ALLLOG
+	INFO = 1,
+	DEBUG = 2,
+	ALLLOG = 3
 };
 
 class Logging {

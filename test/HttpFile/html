@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Server: squid/3.5.24
+Date: Tue, 12 Dec 2017 13:17:22 GMT
+Content-Type: text/html; charset=GB2312
+Transfer-Encoding: chunked
+Connection: close
+
+1000

@@ -1,0 +1,78 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+DBG_LOG	sendfile.cc	20;"	d	file:
+DBG_LOG	sendfile.cc	22;"	d	file:
+FILE_ACTION_OK	File.h	22;"	d
+FILE_ARGS_INVALID	File.h	27;"	d
+FILE_FD_INVALID	File.h	26;"	d
+FILE_NAME_MAX_LENGTH	File.h	21;"	d
+FILE_OPEN_ERROR	File.h	23;"	d
+FILE_READ_ACCESS_DENY	File.h	25;"	d
+FILE_SENDFILE_DONE	File.h	31;"	d
+FILE_SENDFILE_ERROR	File.h	29;"	d
+FILE_SENDFILE_RECALL	File.h	30;"	d
+FILE_WRITE_ACCESS_DENY	File.h	24;"	d
+File	File.cpp	/^File::File(const char* filename) {$/;"	f	class:File
+File	File.h	/^class File {$/;"	c
+HttpBodyFile	HttpBodyFile.h	/^class HttpBodyFile {$/;"	c
+POINTER	RingBuffer.h	28;"	d
+RINGBUFFER_MAX_LENGTH	RingBuffer.h	35;"	d
+RINGBUFFER_MIN_LENGTH	RingBuffer.h	36;"	d
+RINGBUFFER_NO_DATA	RingBuffer.h	17;"	d
+RINGBUFFER_NO_SPACE	RingBuffer.h	16;"	d
+RingBuffer	RingBuffer.h	/^    RingBuffer(const size_t& len) {$/;"	f	class:RingBuffer
+RingBuffer	RingBuffer.h	/^class RingBuffer {$/;"	c
+SEND_DEBUG	sendfile.cc	18;"	d	file:
+TEST_FILEACCESS	File.h	19;"	d
+_buffer	RingBuffer.h	/^    char* _buffer;$/;"	m	class:RingBuffer
+_file	HttpBodyFile.h	/^    File _file;$/;"	m	class:HttpBodyFile
+_readptr	RingBuffer.h	/^    char* _readptr;$/;"	m	class:RingBuffer
+_ringbuf	HttpBodyFile.h	/^    RingBuffer _ringbuf;$/;"	m	class:HttpBodyFile
+_size	RingBuffer.h	/^    size_t _size;$/;"	m	class:RingBuffer
+_writeptr	RingBuffer.h	/^    char* _writeptr;$/;"	m	class:RingBuffer
+appendWriteIn	File.cpp	/^ssize_t File::appendWriteIn(const char* buf, size_t len) {$/;"	f	class:File
+blocking	File.h	16;"	d
+chunked	HttpBodyFile.h	/^    bool chunked = false; $/;"	m	class:HttpBodyFile
+content_type	HttpBodyFile.h	/^    char content_type [1024];$/;"	m	class:HttpBodyFile
+cur_	File.h	/^    off_t cur_;$/;"	m	class:File
+endFile	HttpBodyFile.h	/^    void endFile() {$/;"	f	class:HttpBodyFile
+fd_	File.h	/^    int fd_;$/;"	m	class:File
+filename	HttpBodyFile.h	/^    char filename[1024];$/;"	m	class:HttpBodyFile
+filename_	File.h	/^    char filename_[FILE_NAME_MAX_LENGTH];$/;"	m	class:File
+getFileLength	sendfile.cc	/^ssize_t getFileLength(int fd) {$/;"	f
+getFileSize	File.cpp	/^ssize_t File::getFileSize() {$/;"	f	class:File
+isEmpty	RingBuffer.h	/^    bool isEmpty() { return  (_readptr == _writeptr); }$/;"	f	class:RingBuffer
+isFull	RingBuffer.h	/^    bool isFull() { return (space() == 0); }$/;"	f	class:RingBuffer
+listenfd	sendfile.cc	/^int listenfd = socket(AF_INET, SOCK_STREAM, 0);$/;"	v
+listeningOnLocal	sendfile.cc	/^int listeningOnLocal() {$/;"	f
+main	sendfile.cc	/^int main(int argc, char* argv[]) {$/;"	f
+nonBlocking	File.h	15;"	d
+nonBlocking	sendfile.cc	16;"	d	file:
+printchar	RingBuffer.h	/^void printchar(char* buf, size_t len) {$/;"	f
+readOut	File.cpp	/^ssize_t File::readOut(char* buf, size_t len) {$/;"	f	class:File
+readOut	RingBuffer.h	/^    int readOut(char* buf, size_t len) {$/;"	f	class:RingBuffer
+reset	File.h	/^    inline void reset() { fd_ = -1; size_ = 0; cur_ = 0; bzero(filename_, FILE_NAME_MAX_LENGTH); }$/;"	f	class:File
+reset	RingBuffer.h	/^    void reset() {$/;"	f	class:RingBuffer
+send2Socket	File.cpp	/^int File::send2Socket(int sockfd, size_t& sendn) {$/;"	f	class:File
+sendFile	sendfile.cc	/^ssize_t sendFile(int out_fd, int in_fd, ssize_t len) {$/;"	f
+setBlockingIO	File.h	/^    inline int setBlockingIO(int block) { if(validFd(fd_)) { return block != 1? nonBlocking(fd_): blocking(fd_); } return -1; }$/;"	f	class:File
+setFilename	File.cpp	/^void File::setFilename(const char* filename) {$/;"	f	class:File
+showComplete	sendfile.cc	25;"	d	file:
+showProcess	sendfile.cc	/^void showProcess(long now, long total) {$/;"	f
+size	HttpBodyFile.h	/^    size_t size() { return _file.getFileSize() + _ringbuf.size(); }$/;"	f	class:HttpBodyFile
+size	RingBuffer.h	/^    size_t size() { return (_size - space() -1); }$/;"	f	class:RingBuffer
+size_	File.h	/^    off_t size_;$/;"	m	class:File
+space	RingBuffer.h	/^    size_t space() {$/;"	f	class:RingBuffer
+testExist	File.h	/^    inline bool testExist() { return TEST_FILEACCESS(filename_, F_OK); }$/;"	f	class:File
+testRead	File.h	/^    inline bool testRead()  { return TEST_FILEACCESS(filename_, R_OK); }$/;"	f	class:File
+testWrite	File.h	/^    inline bool testWrite() { return TEST_FILEACCESS(filename_, W_OK); }$/;"	f	class:File
+unlink	File.h	/^    inline int unlink() { return ::unlink(filename_); }$/;"	f	class:File
+validFd	File.h	17;"	d
+writeIn	File.cpp	/^ssize_t File::writeIn(const char* buf, size_t len) {$/;"	f	class:File
+writeIn	RingBuffer.h	/^    int writeIn(const char* buf, size_t length) {$/;"	f	class:RingBuffer
+~File	File.cpp	/^File::~File() {$/;"	f	class:File
+~RingBuffer	RingBuffer.h	/^    ~RingBuffer() {$/;"	f	class:RingBuffer

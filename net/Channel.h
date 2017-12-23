@@ -12,7 +12,7 @@
 #include "core/BaseClass.h"
 #include "net/Socket.h"
 
-namespace tigerso::net {
+namespace tigerso {
 
 const int EVENT_CALLBACK_CONTINUE = 0;
 const int EVENT_CALLBACK_BREAK = 1;
@@ -23,7 +23,7 @@ int handle_default_error(Socket);
 class EventsLoop;
 typedef unsigned int evf_t;
 
-class Channel: public core::nocopyable {
+class Channel: public nocopyable {
 friend class EventsLoop;
 public:
     Channel(EventsLoop& loop, Socket& sock)
@@ -52,6 +52,7 @@ public:
     EventFunc setWriteCallback(EventFunc);
     EventFunc setErrorCallback(EventFunc);
     EventFunc setRdhupCallback(EventFunc);
+    EventFunc setTimeoutCallback(EventFunc);
 
     //Mark this channel
     int sockfd = -1;
@@ -76,6 +77,7 @@ private:
     EventFunc writeable_cb = nullptr;
     EventFunc error_cb = nullptr;
     EventFunc rdhup_cb = nullptr;
+    EventFunc timeout_cb = nullptr;
 };
 
 }//namespace tigerso::net

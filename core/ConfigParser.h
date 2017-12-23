@@ -6,20 +6,27 @@
 #include <string>
 #include <map>
 
-namespace tigerso::core {
+namespace tigerso {
+
+class ConfigParser
+{
 
 #define SECTB  '['
 #define SECTE  ']'
 #define COMTB  '#'
 #define KEYB   '='
 
+/*
 const int SECTION = 0;
 const int COMMENT = 1;
 const int KEYVAL = 2;
 const int ERRLINE = -1;
+*/
+#define SECTION 0
+#define COMMENT 1
+#define KEYVAL  2
+#define ERRLINE -1
 
-class ConfigParser
-{
 public:
 
 	static ConfigParser* getInstance();

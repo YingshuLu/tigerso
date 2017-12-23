@@ -1,42 +1,29 @@
 #include <stdlib.h>
 #include <string.h>
 #include <string>
+#include <vector>;
 #include <openssl/ssl.h>
 #include <openssl/err.h>
 #include "core/SysUtil.h"
+#include "http/HttpMessage.h"
 #include "net/SocketUtil.h"
 #include "net/Socket.h"
 
 using namespace std;
 using namespace tigerso::core;
 using namespace tigerso::net;
+using namespace tigerso::http;
 
-int create_socket(int port)
+int create_socket(Socket& server, const char* host)
 {
-    int s;
-    struct sockaddr_in addr;
-
-    addr.sin_family = AF_INET;
-    addr.sin_port = htons(port);
-    addr.sin_addr.s_addr = htonl(INADDR_ANY);
-
-    s = socket(AF_INET, SOCK_STREAM, 0);
-    if (s < 0) {
-        perror("Unable to create socket");
-        exit(EXIT_FAILURE);
+    vector<string> ipv;
+    int ret = SocketUtil::ResolveHost2IP(string(host), ipv);
+    if(ret != 0) {
+        printf("DNS resolve failed!\n");
+        return -1;
     }
 
-    if (bind(s, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
-        perror("Unable to bind");
-        exit(EXIT_FAILURE);
-    }
-
-    if (listen(s, 1) < 0) {
-        perror("Unable to listen");
-        exit(EXIT_FAILURE);
-    }
-
-    return s;
+    return SocketUtil::Connect(server, ipv[0], "443");
 }
 
 void init_openssl()
@@ -55,7 +42,7 @@ SSL_CTX *create_context()
     const SSL_METHOD *method;
     SSL_CTX *ctx;
 
-    method = SSLv23_server_method();
+    method = SSLv23_client_method();
 
     ctx = SSL_CTX_new(method);
     if (!ctx) {
@@ -72,20 +59,21 @@ void configure_context(SSL_CTX *ctx)
     SSL_CTX_set_ecdh_auto(ctx, 1);
 
     /* Set the key and cert */
-    if (SSL_CTX_use_certificate_file(ctx, "../ssl/cert/server-cert/tigerso-web-cert.pem", SSL_FILETYPE_PEM) <= 0) {
+    if (SSL_CTX_load_verify_locations(ctx, NULL, "../ssl/cert/trustCA") <= 0) {
         ERR_print_errors_fp(stderr);
         exit(EXIT_FAILURE);
     }
 
-    if (SSL_CTX_use_PrivateKey_file(ctx, "../ssl/cert/server-cert/tigerso-web-key.pem", SSL_FILETYPE_PEM) <= 0 ) {
-        ERR_print_errors_fp(stderr);
-        exit(EXIT_FAILURE);
-    }
 }
 
 int main(int argc, char **argv)
 {
-    int sock;
+    if(argc < 2) {
+        return -1;
+    }
+
+    const char* host = argv[1];
+    Socket sock;
     SSL_CTX *ctx;
 
     init_openssl();
@@ -93,39 +81,36 @@ int main(int argc, char **argv)
 
     configure_context(ctx);
 
-    sock = create_socket(4433);
+    create_socket(sock, host);
+    sock.setNIO(false);
 
-    /* Handle connections */
-    while(1) {
-        struct sockaddr_in addr;
-        uint len = sizeof(addr);
-        SSL *ssl;
-        const char reply[] = "<html><head>hahahaaaas</head></html>\n";
+    SSL* ssl = SSL_new(ctx);
+    SSL_set_tlsext_host_name(ssl, host);
 
-        int client = accept(sock, (struct sockaddr*)&addr, &len);
-        if (client < 0) {
-            perror("Unable to accept");
-            exit(EXIT_FAILURE);
-        }
+    SSL_set_fd(ssl, sock.getSocket());
 
-        ssl = SSL_new(ctx);
-        SSL_set_fd(ssl, client);
-
-        if (SSL_accept(ssl) <= 0) {
-            ERR_print_errors_fp(stderr);
-        }
-        else {
-            char buffer[10240] = {0};
-            SSL_read(ssl, buffer, 10240);
-            SSL_write(ssl, reply, strlen(reply));
-        }
-
-        SSL_free(ssl);
-        close(client);
+    int ret = SSL_connect(ssl);
+    if(ret != 1) {
+        int error = SSL_get_error(ssl, ret);
+        ERR_print_errors_fp(stderr);
+        return error;
     }
+    
+    HttpRequest request;
+    request.setMethod("GET");
+    request.setUrl("/");
+    char hostvalue[1024] = {0};
+    sprintf(hostvalue, "%s:%d", host, 443);
+    request.setValueByHeader("Host", hostvalue);
+    string req = request.toString();
+    
+    SSL_write(ssl, req.c_str(), req.size());
+    char response[1024] = {0};
+    SSL_read(ssl, response, 1024);
+    printf("response: %s\n", response);
 
-    close(sock);
-    SSL_CTX_free(ctx);
     cleanup_openssl();
-}
 
+    return 0;
+
+}

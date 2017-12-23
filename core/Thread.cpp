@@ -3,7 +3,7 @@
 #include "core/CurrentThread.h"
 
 
-namespace tigerso::core {
+namespace tigerso {
 
 namespace CurrentThread {
 

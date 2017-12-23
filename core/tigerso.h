@@ -31,10 +31,20 @@
 #include <string>
 #include <algorithm>
 
-namespace tigerso::core {
+namespace tigerso {
 
 #define GLOBAL
+#define IPV4_ADDRSIZE 16
+#define HOST_MAXLENGTH 256
 
+typedef enum _TIGERSO_IO_STATE_ {
+    TIGERSO_IO_CLOSE = -2,
+    TIGERSO_IO_ERROR = -1,
+    TIGERSO_IO_RECALL,
+    TIGERSO_IO_OK
+};
+    
+namespace core {
 //Project Marcos
 const std::string  PROJECT     =  "tigerso";
 const std::string  VERSION     =  "1.0.0";
@@ -43,6 +53,7 @@ const std::string  CONFIGPATH  =  WORKPATH + "/etc";
 const std::string  LOGPATH     =  WORKPATH + "/log";
 const std::string  CONFIGFILE  =  CONFIGPATH + "/" + PROJECT  +".ini";
 const std::string  LOGNAME     =  "httpd";
+}
 
 #define nonBlocking(fd) fcntl(fd, F_SETFL, fcntl(fd, F_GETFL) | O_NONBLOCK)
 #define blocking(fd) fcntl(fd, F_SETFL, fcntl(fd, F_GETFL) & (~O_NONBLOCK))

@@ -8,7 +8,7 @@
 #include "core/Logging.h"
 #include "core/tigerso.h"
 
-namespace tigerso::core {
+namespace tigerso {
 
 Logging* Logging::pInstance = NULL;
 
@@ -73,7 +73,7 @@ std::string Logging::getLogFile() const
 	char tmpBuf[BUFSIZE];
 	strftime(tmpBuf, BUFSIZE, ".%Y%m%d", localtime(&tm));
 
-	std::string fmtPrefix = logPath + "/" + LOGNAME;
+	std::string fmtPrefix = logPath + "/" + core::LOGNAME;
 	std::string secPrefix = fmtPrefix + tmpBuf;
     return secPrefix + ".log";
 }

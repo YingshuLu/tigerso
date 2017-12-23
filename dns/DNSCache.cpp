@@ -2,10 +2,8 @@
 #include "core/Logging.h"
 #include <iostream>
 
-namespace tigerso::dns {
+namespace tigerso {
     
-using namespace core;
-
 static int calcMd5(const char* buf, unsigned char* key, int keylen) {
     if(buf == nullptr || key == nullptr || keylen < MD5_KEYSIZE) {
         return -1;
@@ -63,7 +61,7 @@ int DNSCache::queryIP(const char* host, char* ipaddr, size_t len) {
     offset_t of = key;
 
     {
-        core::LockTryGuard lock(mutex_);
+        LockTryGuard lock(mutex_);
         if(!lock.isLocked()) { return -1; }
         memory2Shared();
 
@@ -95,7 +93,7 @@ int DNSCache::updateDNS(const char* host, const char* ip, int& ttl) {
 
     int ret = 0;
     {
-        core::LockTryGuard lock(mutex_);
+        LockTryGuard lock(mutex_);
         //Store to memory
         if(!lock.isLocked()) { return store2Memory(host, ip, ttl); }
         //store to shared memory
@@ -109,7 +107,7 @@ int DNSCache::updateDNS(const char* host, const char* ip, int& ttl) {
     offset_t of = key;
 
     {
-        core::LockTryGuard lock(mutex_);
+        LockTryGuard lock(mutex_);
         if(!lock.isLocked()) { return -1; }
         
         DNSCacheData* shmptr = getShmPtr();

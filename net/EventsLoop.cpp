@@ -5,10 +5,10 @@
 #include "net/SocketUtil.h"
 #include "core/Logging.h"
 
-namespace tigerso::net {
+namespace tigerso {
 
 #define DECIDE_EVENTCALLBACK(ret) {\
-        if(ret == EVENT_CALLBACK_BREAK) { continue; }\
+        if(ret == EVENT_CALLBACK_BREAK) { timer_.updateChannel(cnptr); continue; }\
         else if (ret == EVENT_CALLBACK_DROPWAITED){ \
             cleanNeedDeletedChannels();\
             return EVENT_CALLBACK_DROPWAITED;\
@@ -17,7 +17,6 @@ namespace tigerso::net {
 
 #define validChannel(cnptr) (cnptr && cnptr->sockfd > 0)
 
-using namespace core;
 int EventsLoop::registerChannel(Socket& socket) {
     if (!socket.exist()) { return -1; }
 
@@ -26,6 +25,7 @@ int EventsLoop::registerChannel(Socket& socket) {
         Channel* cnptr = new Channel(*this, socket);
         socket.channelptr = cnptr;
         cnptr->sockfd = socket.getSocket();
+        timer_.updateChannel(cnptr);
         return addChannel(cnptr);
         
     }
@@ -41,6 +41,7 @@ int EventsLoop::unregisterChannel(Socket& socket) {
     needDeletedChannelSet_.insert(socket.channelptr);
     //Delete channel
     //delete socket.channelptr;
+    timer_.eraseChannel(socket.channelptr);
     socket.channelptr = nullptr;
     DBG_LOG("unregister Socket [%d]",socket.getSocket());
     return 0;
@@ -56,6 +57,7 @@ int EventsLoop::getEpollBase() const {
 
 int EventsLoop::loop() {
     loop_ = true;
+    timer_.register2EventsLoop(*this);
     while(loop_) {
         waitChannel();
     }
@@ -73,7 +75,7 @@ int EventsLoop::waitChannel() {
             INFO_LOG("epoll wait return -1, error: %d, %s", errno, strerror(errno));
             return -1;
         }
-        DBG_LOG("Epoll detected %d sockets", num);
+        //DBG_LOG("Epoll detected %d sockets", num);
         for(int i = 0; i < num; i++) {
             cnptr = nullptr;
             sockptr = nullptr;
@@ -95,8 +97,8 @@ int EventsLoop::waitChannel() {
             }
 
            // cnptr = sockptr->channelptr;
- 
-            DBG_LOG("Detected socket [%d] Events", fd);
+           //DBG_LOG("Detected socket [%d] Events", fd);
+
             if(cnptr->before_cb && validChannel(cnptr)) {
                 DBG_LOG("socket [%d]: BEFORE event", fd);
                 int ret = cnptr->before_cb(*sockptr);
@@ -148,6 +150,7 @@ int EventsLoop::waitChannel() {
                 int ret = cnptr->after_cb(*sockptr);
                 DECIDE_EVENTCALLBACK(ret);
             }
+            timer_.updateChannel(cnptr);
         }
 
         cleanNeedDeletedChannels();
@@ -251,8 +254,7 @@ int EventsLoop::cleanNeedDeletedChannels() {
     auto iter = needDeletedChannelSet_.begin();
     while(iter != needDeletedChannelSet_.end()) {
         delete *iter;
-        needDeletedChannelSet_.erase(iter);
-        ++iter;
+        iter = needDeletedChannelSet_.erase(iter);
     }
     return 0;
 }

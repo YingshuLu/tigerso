@@ -6,7 +6,7 @@
 #include "core/BaseClass.h"
 #include "core/ThreadMutex.h"
 
-namespace tigerso::core {
+namespace tigerso{
     
 class Condition: public nocopyable {
 public:

@@ -4,7 +4,7 @@
 #include "net/EventsLoop.h"
 #include "core/Logging.h"
 
-namespace tigerso::net {
+namespace tigerso {
 
  // quick set event
 bool Channel::enableReadEvent() {
@@ -83,7 +83,7 @@ EventFunc Channel::setErrorCallback(EventFunc func) {
 }
 
 EventFunc Channel::setRdhupCallback(EventFunc func) {
-    error_cb = func;
+    rdhup_cb = func;
     return func;
 }
 

@@ -15,9 +15,7 @@
 #include "util/FileTypeDetector.h"
 
 using namespace std;
-using namespace tigerso::net;
-using namespace tigerso::http;
-using namespace tigerso::dns;
+using namespace tigerso;
 EventsLoop eloop;
 
 DNSResolver DNSInstance;

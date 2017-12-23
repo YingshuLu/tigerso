@@ -1,0 +1,228 @@
+#ifndef TS_HTTP_HTTPBODYFILE_H_
+#define TS_HTTP_HTTPBODYFILE_H_
+
+#include <string>
+#include <iomanip>
+#include "core/File.h"
+#include "net/RingBuffer.h"
+
+namespace tigerso {
+
+typedef enum _HTTP_BODY_MODE_ {
+    HTTP_BODY_NULL,
+    HTTP_BODY_RINGBUFFER,
+    HTTP_BODY_FILE
+} HttpBodyMode;
+
+class HttpBodyFile {
+
+#define HTTP_FILE_CACHE_SIZE 8192
+typedef  enum _CHUNK_SEND_STATE{
+        _CHUNKUINIT,
+        _CHUNKSIZEON,
+        _CHUNKSIZEDONE,
+        _CHUNKEDATAON,
+        _CHUNKEDATADONE,
+        _CHUNKEOFON,
+        _CHUNKEOFDONE,
+        _CHUNKFILEDONE,
+        _CHUNKNULLON,
+        _CHUNKNULLDONE
+    } ChunkState;
+
+public:
+    HttpBodyFile():_ringbuf(HTTP_FILE_CACHE_SIZE){}
+
+    HttpBodyMode mode() {
+        if(_file.getFileSize()) {
+            flushFile();
+            return HTTP_BODY_FILE;
+        }
+        else if(_ringbuf.size()) {
+            return HTTP_BODY_RINGBUFFER;
+        }
+        return HTTP_BODY_NULL;
+    }
+
+    void setFile(const char* filename) {
+        reset();
+        _file.setFilename(filename);
+    }
+    
+    int writeIn(const char* buf, size_t len) {
+        if(len < _ringbuf.size()) {
+            _ringbuf.writeIn(buf, len);
+            return len;
+        }
+        
+        size_t left = len;
+        const char* bufbeg = buf;
+        int writen = 0;
+        while (left) {
+            while((writen = _ringbuf.writeIn(bufbeg, left)) > 0) {
+                bufbeg += writen;
+                left -= writen;
+            }
+            if(writen == RINGBUFFER_NO_DATA) { return 0; }
+            flushFile(); 
+        }
+        return len;
+    }
+
+    int sendContent2Socket(int sockfd) {
+        int ret = 0;
+        size_t sendn = 0;
+        if(!_sendContentDone) {
+            ret = _file.send2Socket(sockfd, sendn);
+            if(ret < 0) { return FILE_SENDFILE_ERROR; }
+            else if(FILE_SENDFILE_DONE == ret) { 
+                _sendContentDone = true;
+                _ringbuf.clear();
+                _ringbuf.writeIn("\r\n", 2);
+            }
+            else { return FILE_SENDFILE_RECALL; }
+         }
+
+         //Send \r\n to flag end content
+         ret = _ringbuf.send2Socket(sockfd);
+         if(ret < 0) { return  FILE_SENDFILE_ERROR; }
+         if(_ringbuf.size()) {
+            return FILE_SENDFILE_RECALL; 
+         }
+         reset();
+        return FILE_SENDFILE_DONE;
+    }
+
+    int sendChunk2Socket(int sockfd) {
+        if(_file.getFileSize() == 0) { _chunkstate = _chunkfiledone; }
+        size_t leftdata = 0;
+
+        int ret = 0;
+        size_t sendn = 0;
+        size_t count = 0;
+        char size_str[64] = {0};
+        while (_chunkstate != _chunkNulldone) {
+            leftdata = _file.getFileSize() - _readoffset;
+            switch(_chunkstate) {
+        
+                case _CHUNKUINIT:
+                    if(leftdata == 0) {_chunkstate = _chunkfiledone; break;}
+                    if(leftdata < _chunksize) { _chunksize = leftdata; }
+                    _ringbuf.clear();
+                    bzero(size_str, strlen(size_str));
+                    sprintf(size_str, "%s\r\n", inter2HexString(_chunksize).c_str());
+                    _ringbuf.writeIn(size_str, strlen(size_str));
+                    _chunkstate = _CHUNKSIZEON;
+
+                case _CHUNKSIZEON:
+                    ret = _ringbuf.send2Socket(sockfd);
+                    if(ret < 0) {  reset(); return FILE_SENDFILE_ERROR; }
+                    if(_ringbuf.size()) {
+                        _chunkstate = _CHUNKSIZEON;
+                        return FILE_SENDFILE_RECALL;
+                    }
+                    _chunkstate = _CHUNKSIZEDONE;
+
+                case _CHUNKSIZEDONE:
+                
+                case _CHUNKEDATAON:
+                    sendn = 0;
+                    count = _chunksize;
+                    ret = _file.send2Socket(sockfd, sendn, _readoffset, count);
+                    if(ret < 0) { reset(); return FILE_SENDFILE_ERROR; }
+                    else if( ret == FILE_SENDFILE_RECALL) { 
+                        _chunkstate = _CHUNKEDATAON;
+                        _chunksize -= sendn;
+                        return ret;
+                    }
+                    _chunkstate = _CHUNKEDATADONE;
+                
+                case _CHUNKEDATADONE:
+                    _ringbuf.clear();
+                    _ringbuf.writeIn("\r\n", 2);
+                    _chunkstate = _CHUNKEOFON;
+                    
+                case _CHUNKEOFON:
+                    ret = _ringbuf.send2Socket(sockfd);
+                    if(ret < 0) { reset(); return FILE_SENDFILE_ERROR; }
+                    if(FILE_SENDFILE_RECALL == ret) {
+                        _chunkstate = _CHUNKEOFON;
+                        return FILE_SENDFILE_RECALL;
+                    }
+                    _chunksize = HTTP_FILE_CACHE_SIZE;
+                    if(_file.getFileSize() - _readoffset > 0) {
+                        _chunkstate = _CHUNKUINIT;
+                        break;
+                    }
+                    else {
+                        _chunkstate = _CHUNKFILEDONE;
+                    }
+
+                case _CHUNKFILEDONE:
+                    _ringbuf.clear();
+                    _ringbuf.writeIn("0\r\n\r\n", 5);
+                    _chunkstate = _CHUNKNULLON;
+
+                case _CHUNKNULLON:
+                    ret = _ringbuf.send2Socket(sockfd);
+                    if(ret < 0) {  reset(); return FILE_SENDFILE_ERROR; }
+                    if(_ringbuf.size()) { _chunkstate = _CHUNKNULLON; return FILE_SENDFILE_RECALL; }
+                    _chunkstate = _CHUNKNULLDONE;
+
+                case _CHUNKNULLDONE:
+
+                default:
+                    break;
+            }
+        }
+        reset();
+        return FILE_SENDFILE_DONE;
+    }
+
+    size_t size() { return _file.getFileSize() + _ringbuf.size(); }
+
+    void flushFile() {
+        if(_ringbuf.size()) {
+            _ringbuf.readOut2File(_file);
+        }
+        return;
+    }
+
+    void reset() {
+        _ringbuf.clear();
+        _file.reset();
+        _readoffset = 0;
+        _chunksize = HTTP_FILE_CACHE_SIZE;
+        _sendContentDone = false;
+        _chunkstate = _CHUNKUINIT;
+        bzero(content_type, sizeof(content_type));
+        bzero(content_encoding, sizeof(content_encoding));
+        bzero(mime_type, sizeof(mime_type));
+    }
+
+private:
+    std::string inter2HexString(int num) {
+        std::stringstream sstm;
+        sstm << std::hex << num;
+        return std::string(sstm.str());
+    }
+
+public:
+    char content_type [1024] = {0};
+    char content_encoding[1024] = {0};
+    char mime_type[1024] = {0};
+    bool chunked = false; 
+
+private:
+    core::File _file;
+    net::RingBuffer _ringbuf; // Cache for file IO
+    off_t _readoffset = 0;
+    int _chunksize = 4096;
+    bool _sendContentDone = false;
+    ChunkState _chunkstate = _CHUNKUINIT;
+
+};
+
+}//namespace tigerso::http
+
+#endif

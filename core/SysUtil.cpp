@@ -6,7 +6,7 @@
 #include "core/SysUtil.h"
 #include "core/Logging.h"
 
-namespace tigerso::core {
+namespace tigerso {
 
 using std::string;
 using std::cout;
@@ -16,7 +16,7 @@ using std::regex;
 
 string SysUtil::get_work_path()
 {
-    return WORKPATH;
+    return core::WORKPATH;
 }
 
 string SysUtil::getFormatTime(const string& fmt){

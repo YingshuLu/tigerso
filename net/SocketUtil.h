@@ -28,7 +28,7 @@
 #include <vector>
 #include "net/Socket.h"
 
-namespace tigerso::net {
+namespace tigerso {
 
 #define MIN_SOCKET_FD 512
 
@@ -59,6 +59,8 @@ public:
 	static bool ValidatePort(const std::string& port);
     static int RelocateFileDescriptor(int oldfd, int leastfd);
     static int SetResourceLimitation();
+    static int Recv(Socket&, void* , size_t, size_t*);
+    static int Send(Socket&, const void* , size_t, size_t*);
 
 private:
 	SocketUtil();

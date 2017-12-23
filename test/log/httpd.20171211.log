@@ -1,0 +1,1155 @@
+[INF]>11:20:59<[1288] socket[512] listening on 127.0.0.1:8080 <CreateListenSocket>@<SocketUtil.cpp:385>
+[DBG]>11:20:59<[1288] Add socket [512] event <addChannel>@<EventsLoop.cpp:198>
+[DBG]>11:20:59<[1288] enable [512] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>11:20:59<[1288] Master socket listening now <listenHttpClientConnection>@<HttpProxy.cpp:756>
+[DBG]>11:21:09<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:19<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:26<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:26<[1288] Detected socket [512] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:26<[1288] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:26<[1288] ----- Connection socket fd [513], Accepted from client 10.64.75.135:36648 <acceptHttpClientConnection>@<HttpProxy.cpp:677>
+[DBG]>11:21:26<[1288] ----- Current connection number: 1 <acceptHttpClientConnection>@<HttpProxy.cpp:678>
+[DBG]>11:21:26<[1288] Add socket [513] event <addChannel>@<EventsLoop.cpp:198>
+[DBG]>11:21:26<[1288] enable [513] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>11:21:26<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:26<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:26<[1288] socket [513]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:26<[1288] Start read client first request <clientFirstReadHandle>@<HttpProxy.cpp:107>
+[DBG]>11:21:26<[1288] Client read 121 bytes <clientFirstReadHandle>@<HttpProxy.cpp:125>
+[DBG]>11:21:26<[1288] Http Parser get complete header:
+GET http://www.qq.com/ HTTP/1.1
+Host: www.qq.com
+User-Agent: curl/7.47.0
+Accept: */*
+Proxy-Connection: Keep-Alive
+ <on_headers_complete>@<HttpParser.cpp:114>
+[DBG]>11:21:26<[1288] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:154>
+[DBG]>11:21:26<[1288] disable [513] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>11:21:26<[1288] query host: www.qq.com, hash key: 11421 <queryIP>@<DNSCache.cpp:62>
+[DBG]>11:21:26<[1288] mutex try lock, mutex_ptr: 500654080, mutex refer: 1 <try_lock>@<SysUtil.cpp:361>
+[DBG]>11:21:26<[1288] mutex unlock, mutex_ptr: 500654080, mutex refer: 1 <unlock>@<SysUtil.cpp:378>
+[DBG]>11:21:26<[1288] shm mutex unlock success <unlock>@<SysUtil.cpp:387>
+[DBG]>11:21:26<[1288] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:178>
+[DBG]>11:21:26<[1288] connect return: 0 <Connect>@<SocketUtil.cpp:136>
+[DBG]>11:21:26<[1288] Add socket [515] event <addChannel>@<EventsLoop.cpp:198>
+[DBG]>11:21:26<[1288] enable [515] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:26<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:26<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:26<[1288] socket [515]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:26<[1288] enable [515] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>11:21:26<[1288] disable [515] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:27<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:27<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:27<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:27<[1288] DNS Resolver get record. [Host: www.qq.com, IP: 103.7.30.123, ttl: 26] <resvDNSAnswer>@<DNSResolver.cpp:280>
+[DBG]>11:21:27<[1288] mutex try lock, mutex_ptr: 500654080, mutex refer: 1 <try_lock>@<SysUtil.cpp:361>
+[DBG]>11:21:27<[1288] update DNS cache <DNS2Shared>@<DNSCache.cpp:188>
+[DBG]>11:21:27<[1288] mutex unlock, mutex_ptr: 500654080, mutex refer: 1 <unlock>@<SysUtil.cpp:378>
+[DBG]>11:21:27<[1288] shm mutex unlock success <unlock>@<SysUtil.cpp:387>
+[DBG]>11:21:27<[1288] updateDNS return : 0 <resvDNSAnswer>@<DNSResolver.cpp:282>
+[DBG]>11:21:27<[1288] disable [515] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>11:21:27<[1288] unregister Socket [515] <unregisterChannel>@<EventsLoop.cpp:45>
+[INF]>11:21:27<[1288] socket [515] close now <Close>@<SocketUtil.cpp:156>
+[DBG]>11:21:27<[1288] Connect to server: 103.7.30.123:80 <serverConnectTo>@<HttpProxy.cpp:198>
+[DBG]>11:21:27<[1288] connect return: 0 <Connect>@<SocketUtil.cpp:136>
+[DBG]>11:21:27<[1288] Add socket [515] event <addChannel>@<EventsLoop.cpp:198>
+[DBG]>11:21:27<[1288] enable [515] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:27<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:27<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:27<[1288] socket [515]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:27<[1288] Write request to server <serverFirstWriteHandle>@<HttpProxy.cpp:247>
+[DBG]>11:21:27<[1288] socket connected! <TestConnect>@<SocketUtil.cpp:331>
+[DBG]>11:21:27<[1288] server write 121 bytes <serverFirstWriteHandle>@<HttpProxy.cpp:266>
+[DBG]>11:21:27<[1288] server write completed <serverFirstWriteHandle>@<HttpProxy.cpp:271>
+[DBG]>11:21:27<[1288] disable [515] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:27<[1288] enable [515] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] Http Parser get complete header:
+HTTP/1.1 200 OK
+Server: squid/3.5.20
+Date: Mon, 11 Dec 2017 03:21:27 GMT
+Content-Type: text/html; charset=GB2312
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+Expires: Mon, 11 Dec 2017 03:22:27 GMT
+Cache-Control: max-age=60
+X-Cache: HIT from xianggang.qq.com
+ <on_headers_complete>@<HttpParser.cpp:114>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 4380 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 4380 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 4380 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 4380 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 4380 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 4576 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 772 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 2840 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:30<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:30<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:30<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:30<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:30<[1288] Server read 3456 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:30<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:31<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:31<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:31<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:31<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:31<[1288] Server read 3464 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:31<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:31<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:31<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:31<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:31<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:31<[1288] Server read 2296 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:31<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:31<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:31<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:31<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:31<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:31<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:31<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:31<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:31<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:31<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:31<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:31<[1288] Server read 3456 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:31<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:31<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:31<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:31<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:31<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:31<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:31<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:31<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:31<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:31<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:31<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:31<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:31<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:31<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:31<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:31<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:31<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:31<[1288] Server read 4608 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:31<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:31<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:31<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:31<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:31<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:31<[1288] Server read 3464 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:31<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:31<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:31<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:31<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:31<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:31<[1288] Server read 1144 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:31<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:31<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:31<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:31<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:31<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:31<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:31<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:32<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:32<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:32<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:32<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:32<[1288] Server read 4608 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:32<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:32<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:32<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:32<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:32<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:32<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:32<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:32<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:32<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:32<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:32<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:32<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:32<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:32<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:32<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:32<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:32<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:32<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:32<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:32<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:32<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:32<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:32<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:32<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:32<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:32<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:32<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:32<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:32<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:32<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:32<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:32<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:32<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:32<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:32<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:32<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:32<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:32<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:32<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:32<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:32<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:32<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:32<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:32<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:32<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:32<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:32<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:32<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:32<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:32<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:32<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:32<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:32<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:32<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:32<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:32<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:32<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:32<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:32<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:32<[1288] Server read 2232 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:32<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:33<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:33<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:33<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:33<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:33<[1288] Server read 1144 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:33<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:33<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:33<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:33<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:33<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:33<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:33<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:33<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:33<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:33<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:33<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:33<[1288] Server read 1688 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:33<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:33<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:33<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:33<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:33<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:33<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:33<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:33<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:33<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:33<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:33<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:33<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:33<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:33<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:33<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:33<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:33<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:33<[1288] Server read 1996 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:33<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:33<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:33<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:33<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:33<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:33<[1288] Server read 3456 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:33<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:34<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:34<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:34<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:34<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:34<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:34<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:34<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:34<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:34<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:34<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:34<[1288] Server read 3456 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:34<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:34<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:34<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:34<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:34<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:34<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:34<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:34<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:34<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:34<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:34<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:34<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:34<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:34<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:34<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:34<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:34<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:34<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:34<[1288] client write 86880 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:34<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:34<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:34<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:34<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:34<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:34<[1288] Server read 3456 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:34<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:34<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:34<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:34<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:34<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:34<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:34<[1288] client write 51360 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:34<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:34<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:34<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:34<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:34<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:34<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:34<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:34<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:34<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:34<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:34<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:34<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:34<[1288] Server read 1160 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:34<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:34<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:34<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:34<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:34<[1288] client write 3464 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:34<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:35<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:35<[1288] Server read 2296 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:35<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:35<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:35<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:35<[1288] client write 2296 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:35<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:35<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:35<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:35<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:35<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:35<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:35<[1288] client write 1152 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:35<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:35<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:35<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:35<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:35<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:35<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:35<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:35<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:35<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:35<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:35<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:35<[1288] client write 4608 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:35<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:35<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:35<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:35<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:35<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:35<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:35<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:35<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:35<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:35<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:35<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:35<[1288] client write 3456 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:35<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:35<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:35<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:35<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:35<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:35<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:35<[1288] client write 1152 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:35<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:35<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:35<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:35<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:35<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:35<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:35<[1288] client write 2304 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:35<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:35<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:35<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:35<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:35<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:35<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:35<[1288] client write 2920 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:35<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:35<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:35<[1288] Server read 1688 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:35<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:35<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:35<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:35<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:35<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:35<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:35<[1288] client write 1688 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:35<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:36<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:36<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:36<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:36<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:36<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:36<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:36<[1288] client write 1152 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:36<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:36<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:36<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:36<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:36<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:36<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:36<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:36<[1288] client write 1152 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:36<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:36<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:36<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:36<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:36<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:36<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:36<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:36<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:36<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:36<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:36<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:36<[1288] client write 4608 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:36<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:36<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:36<[1288] Server read 3456 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:36<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:36<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:36<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:36<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:36<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:36<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:36<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:36<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:36<[1288] client write 5760 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:36<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:36<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:36<[1288] Server read 4608 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:36<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:36<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:36<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:36<[1288] client write 4608 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:36<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:36<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:36<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:36<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:36<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:36<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:36<[1288] client write 2920 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:36<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:36<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:36<[1288] Server read 2840 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:36<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:36<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:36<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:36<[1288] client write 2840 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:36<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:36<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:36<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:36<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:36<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:36<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:36<[1288] client write 1152 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:36<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:36<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:36<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:36<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:36<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:36<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:36<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:36<[1288] client write 1152 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:36<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:36<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:36<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:36<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:36<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:36<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:36<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:36<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:36<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:36<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:36<[1288] client write 2304 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:36<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:37<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:37<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:37<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:37<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:37<[1288] Server read 2304 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:37<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:37<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:37<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:37<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:37<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:37<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:37<[1288] client write 2304 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:37<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:37<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:37<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:37<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:37<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:37<[1288] Server read 1152 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:37<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:37<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:37<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:37<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:37<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:37<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:37<[1288] client write 1152 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:37<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 1460 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 4380 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 4380 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 5840 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 2920 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 2920 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 1460 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 1460 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 4380 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 5840 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 5840 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 1460 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 1460 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 1460 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 4380 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 4380 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 2920 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 2 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 1460 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client only write response <clientOnlyWriteHandle>@<HttpProxy.cpp:339>
+[DBG]>11:21:38<[1288] client write 2920 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:346>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:21:38<[1288] Server read 1028 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:21:38<[1288] enable [513] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:21:38<[1288] server response parsed completed <serverReadHandle>@<HttpProxy.cpp:328>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:21:38<[1288] Client write response <clientWriteHandle>@<HttpProxy.cpp:352>
+[DBG]>11:21:38<[1288] client write 1028 bytes <clientWriteHandle>@<HttpProxy.cpp:359>
+[DBG]>11:21:38<[1288] client write response completed <clientWriteHandle>@<HttpProxy.cpp:364>
+[DBG]>11:21:38<[1288] disable [513] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:21:38<[1288] enable [513] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>11:21:38<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:38<[1288] Detected socket [513] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:21:38<[1288] socket [513]: RDHUP event <waitChannel>@<EventsLoop.cpp:107>
+[DBG]>11:21:38<[1288] socket [513]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:21:38<[1288] client read request <clientReadHandle>@<HttpProxy.cpp:376>
+[DBG]>11:21:48<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:21:58<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:22:08<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:22:18<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:22:28<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:22:38<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:22:48<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:22:58<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:23:08<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:23:18<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:23:28<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:23:38<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:23:48<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:23:58<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:24:08<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:24:18<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:24:28<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:24:38<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:24:48<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:24:58<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:25:08<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:25:18<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:25:28<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:25:38<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:25:48<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:25:58<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:26:08<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:26:18<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:26:28<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:26:39<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:26:49<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:26:59<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:06<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:06<[1288] Detected socket [515] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:06<[1288] socket [515]: RDHUP event <waitChannel>@<EventsLoop.cpp:107>
+[DBG]>11:27:06<[1288] socket [515]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:27:06<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:27:16<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [512] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:27:25<[1288] ----- Connection socket fd [516], Accepted from client 10.64.75.135:36654 <acceptHttpClientConnection>@<HttpProxy.cpp:677>
+[DBG]>11:27:25<[1288] ----- Current connection number: 3 <acceptHttpClientConnection>@<HttpProxy.cpp:678>
+[DBG]>11:27:25<[1288] Add socket [516] event <addChannel>@<EventsLoop.cpp:198>
+[DBG]>11:27:25<[1288] enable [516] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [516] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [516]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:27:25<[1288] Start read client first request <clientFirstReadHandle>@<HttpProxy.cpp:107>
+[DBG]>11:27:25<[1288] Client read 125 bytes <clientFirstReadHandle>@<HttpProxy.cpp:125>
+[DBG]>11:27:25<[1288] Http Parser get complete header:
+GET http://www.sina.com/ HTTP/1.1
+Host: www.sina.com
+User-Agent: curl/7.47.0
+Accept: */*
+Proxy-Connection: Keep-Alive
+ <on_headers_complete>@<HttpParser.cpp:114>
+[DBG]>11:27:25<[1288] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:154>
+[DBG]>11:27:25<[1288] disable [516] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>11:27:25<[1288] query host: www.sina.com, hash key: 53855 <queryIP>@<DNSCache.cpp:62>
+[DBG]>11:27:25<[1288] mutex try lock, mutex_ptr: 500654080, mutex refer: 1 <try_lock>@<SysUtil.cpp:361>
+[DBG]>11:27:25<[1288] mutex unlock, mutex_ptr: 500654080, mutex refer: 1 <unlock>@<SysUtil.cpp:378>
+[DBG]>11:27:25<[1288] shm mutex unlock success <unlock>@<SysUtil.cpp:387>
+[DBG]>11:27:25<[1288] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:178>
+[DBG]>11:27:25<[1288] connect return: 0 <Connect>@<SocketUtil.cpp:136>
+[DBG]>11:27:25<[1288] Add socket [518] event <addChannel>@<EventsLoop.cpp:198>
+[DBG]>11:27:25<[1288] enable [518] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [518] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [518]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:27:25<[1288] enable [518] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>11:27:25<[1288] disable [518] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [518] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [518]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:27:25<[1288] DNS Resolver get record. [Host: www.sina.com, IP: 66.102.251.33, ttl: 46] <resvDNSAnswer>@<DNSResolver.cpp:280>
+[DBG]>11:27:25<[1288] mutex try lock, mutex_ptr: 500654080, mutex refer: 1 <try_lock>@<SysUtil.cpp:361>
+[DBG]>11:27:25<[1288] update DNS cache <DNS2Shared>@<DNSCache.cpp:188>
+[DBG]>11:27:25<[1288] mutex unlock, mutex_ptr: 500654080, mutex refer: 1 <unlock>@<SysUtil.cpp:378>
+[DBG]>11:27:25<[1288] shm mutex unlock success <unlock>@<SysUtil.cpp:387>
+[DBG]>11:27:25<[1288] updateDNS return : 0 <resvDNSAnswer>@<DNSResolver.cpp:282>
+[DBG]>11:27:25<[1288] disable [518] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>11:27:25<[1288] unregister Socket [518] <unregisterChannel>@<EventsLoop.cpp:45>
+[INF]>11:27:25<[1288] socket [518] close now <Close>@<SocketUtil.cpp:156>
+[DBG]>11:27:25<[1288] Connect to server: 66.102.251.33:80 <serverConnectTo>@<HttpProxy.cpp:198>
+[DBG]>11:27:25<[1288] connect return: 0 <Connect>@<SocketUtil.cpp:136>
+[DBG]>11:27:25<[1288] Add socket [518] event <addChannel>@<EventsLoop.cpp:198>
+[DBG]>11:27:25<[1288] enable [518] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [518] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [518]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:27:25<[1288] Write request to server <serverFirstWriteHandle>@<HttpProxy.cpp:247>
+[DBG]>11:27:25<[1288] socket connected! <TestConnect>@<SocketUtil.cpp:331>
+[DBG]>11:27:25<[1288] server write 125 bytes <serverFirstWriteHandle>@<HttpProxy.cpp:266>
+[DBG]>11:27:25<[1288] server write completed <serverFirstWriteHandle>@<HttpProxy.cpp:271>
+[DBG]>11:27:25<[1288] disable [518] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:27:25<[1288] enable [518] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [518] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [518]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:27:25<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:27:25<[1288] Server read 4380 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:27:25<[1288] Http Parser get complete header:
+HTTP/1.1 200 OK
+Date: Mon, 11 Dec 2017 03:27:25 GMT
+Content-Type: text/html
+Content-Length: 21719
+Last-Modified: Mon, 11 Dec 2017 03:25:45 GMT
+Connection: keep-alive
+ETag: "5a2dfab9-54d7"
+Expires: Mon, 11 Dec 2017 03:32:25 GMT
+Cache-Control: max-age=300
+Accept-Ranges: bytes
+Set-Cookie: TS01303525=01e9cf269cbff3eafd5d592c3ed0e388dddb3b1f14e86b0b494037cc288050b3db4a882d9ce078950889aa3d06c7c560b7adbdb89c; Path=/; Domain=.sina.com
+ <on_headers_complete>@<HttpParser.cpp:114>
+[DBG]>11:27:25<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [518] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [518]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:27:25<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:27:25<[1288] Server read 4380 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:27:25<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [518] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [518]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:27:25<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:27:25<[1288] Server read 5840 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:27:25<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [518] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [518]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:27:25<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:27:25<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:27:25<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [518] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [518]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:27:25<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:27:25<[1288] Server read 2920 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:27:25<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [518] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [518]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:27:25<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:27:25<[1288] Server read 1460 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:27:25<[1288] server need read more data <serverReadHandle>@<HttpProxy.cpp:324>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [518] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [518]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:27:25<[1288] Read server response <serverReadHandle>@<HttpProxy.cpp:282>
+[DBG]>11:27:25<[1288] Server read 263 bytes <serverReadHandle>@<HttpProxy.cpp:303>
+[DBG]>11:27:25<[1288] server response parsed completed <serverReadHandle>@<HttpProxy.cpp:328>
+[DBG]>11:27:25<[1288] enable [516] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [516] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [516]: WRITE event <waitChannel>@<EventsLoop.cpp:139>
+[DBG]>11:27:25<[1288] Client write response <clientWriteHandle>@<HttpProxy.cpp:352>
+[DBG]>11:27:25<[1288] client write 22163 bytes <clientWriteHandle>@<HttpProxy.cpp:359>
+[DBG]>11:27:25<[1288] client write response completed <clientWriteHandle>@<HttpProxy.cpp:364>
+[DBG]>11:27:25<[1288] disable [516] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>11:27:25<[1288] enable [516] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>11:27:25<[1288] Epoll detected 1 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:25<[1288] Detected socket [516] Events <waitChannel>@<EventsLoop.cpp:99>
+[DBG]>11:27:25<[1288] socket [516]: RDHUP event <waitChannel>@<EventsLoop.cpp:107>
+[DBG]>11:27:25<[1288] socket [516]: READ event <waitChannel>@<EventsLoop.cpp:131>
+[DBG]>11:27:25<[1288] client read request <clientReadHandle>@<HttpProxy.cpp:376>
+[DBG]>11:27:35<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:45<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>
+[DBG]>11:27:55<[1288] Epoll detected 0 sockets <waitChannel>@<EventsLoop.cpp:76>

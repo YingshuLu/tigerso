@@ -19,9 +19,9 @@
 #include "core/BaseClass.h"
 #include "dns/DNSCache.h"
 
-namespace tigerso::dns {
+namespace tigerso {
 
-using namespace tigerso::net;
+
 /*
  * Marco definitions refer to DNS RFC 1035:
  * https://tools.ietf.org/html/rfc1035  

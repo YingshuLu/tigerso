@@ -10,6 +10,12 @@ BIND_EVENTHANDLE	backup/http_proxy.cpp	42;"	d	file:
 BUILDDIR	Makefile	/^BUILDDIR := $(OUTPUT)\/Build\/objs$/;"	m
 CC	Makefile	/^CC := g++$/;"	m
 CPPFLAGS	Makefile	/^CPPFLAGS := -fPIC -shared$/;"	m
+ChannelSet	TimedEvent.h	/^    std::set<Channel*> ChannelSet;$/;"	m	struct:TimeNode
+ChunkState	HttpFile/HttpBodyFile.h	/^    } ChunkState;$/;"	t	class:HttpBodyFile	typeref:enum:HttpBodyFile::_chunk_send_state
+DBG_LOG	HttpFile/sendcontent.cc	20;"	d	file:
+DBG_LOG	HttpFile/sendcontent.cc	22;"	d	file:
+DBG_LOG	HttpFile/sendfile.cc	20;"	d	file:
+DBG_LOG	HttpFile/sendfile.cc	22;"	d	file:
 DBG_LOG	backup/http_proxy.cpp	29;"	d	file:
 DBG_LOG	sendfile/sendfile.cc	20;"	d	file:
 DBG_LOG	sendfile/sendfile.cc	22;"	d	file:
@@ -19,89 +25,269 @@ DNS_SERVER_ADDR	test_ares.cpp	8;"	d	file:
 DNS_SERVER_PORT	test_ares.cpp	9;"	d	file:
 DaemonBase	Daemon.h	/^class DaemonBase {$/;"	c
 ERR_HANDLE	backup/http_proxy.cpp	25;"	d	file:
+FILE_ACTION_OK	HttpFile/File.h	24;"	d
 FILE_ACTION_OK	sendfile/File.h	21;"	d
+FILE_ARGS_INVALID	HttpFile/File.h	29;"	d
 FILE_ARGS_INVALID	sendfile/File.h	26;"	d
+FILE_FD_INVALID	HttpFile/File.h	28;"	d
 FILE_FD_INVALID	sendfile/File.h	25;"	d
+FILE_NAME_MAX_LENGTH	HttpFile/File.h	23;"	d
 FILE_NAME_MAX_LENGTH	sendfile/File.h	20;"	d
+FILE_OPEN_ERROR	HttpFile/File.h	25;"	d
 FILE_OPEN_ERROR	sendfile/File.h	22;"	d
+FILE_READ_ACCESS_DENY	HttpFile/File.h	27;"	d
 FILE_READ_ACCESS_DENY	sendfile/File.h	24;"	d
+FILE_SENDFILE_DONE	HttpFile/File.h	33;"	d
 FILE_SENDFILE_DONE	sendfile/File.h	30;"	d
+FILE_SENDFILE_ERROR	HttpFile/File.h	31;"	d
 FILE_SENDFILE_ERROR	sendfile/File.h	28;"	d
+FILE_SENDFILE_RECALL	HttpFile/File.h	32;"	d
 FILE_SENDFILE_RECALL	sendfile/File.h	29;"	d
+FILE_WRITE_ACCESS_DENY	HttpFile/File.h	26;"	d
 FILE_WRITE_ACCESS_DENY	sendfile/File.h	23;"	d
+File	HttpFile/File.cpp	/^File::File(const char* filename) {$/;"	f	class:File
+File	HttpFile/File.h	/^class File {$/;"	c
 File	sendfile/File.cpp	/^File::File(const char* filename) {$/;"	f	class:File
 File	sendfile/File.h	/^class File {$/;"	c
+GLOBAL	https_lib/Https.h	6;"	d
+HEX2CHAR	inter2hex.c	12;"	d	file:
+HEXCHAR2DEC	inter2hex.c	11;"	d	file:
+HEX_DIV	inter2hex.c	10;"	d	file:
+HEX_MOD	inter2hex.c	9;"	d	file:
 HTTPCONNECTIONPTR	http_server.cpp	/^typedef std::shared_ptr<HttpConnection> HTTPCONNECTIONPTR;$/;"	t	file:
 HTTPPROXYCONNECTIONPTR	backup/http_proxy.cpp	/^typedef std::shared_ptr<HttpProxyConnection> HTTPPROXYCONNECTIONPTR;$/;"	t	file:
+HTTPSErrorType	SSLContext.h	/^} HTTPSErrorType;$/;"	t	typeref:enum:__anon1
+HTTPS_CERT_VERIFY_MAX_DEPTH	SSLContext.h	15;"	d
+HTTPS_ERROR_ERR	SSLContext.h	/^    HTTPS_ERROR_ERR = -100,$/;"	e	enum:__anon1
+HTTPS_ERROR_OK	SSLContext.h	/^    HTTPS_ERROR_OK = 0$/;"	e	enum:__anon1
+HTTPS_IO_ERROR	SSLContext.h	/^    HTTPS_IO_ERROR = -1,$/;"	e	enum:HTTPS_IO_STATE
+HTTPS_IO_OK	SSLContext.h	/^    HTTPS_IO_OK,$/;"	e	enum:HTTPS_IO_STATE
+HTTPS_IO_RECALL	SSLContext.h	/^    HTTPS_IO_RECALL,$/;"	e	enum:HTTPS_IO_STATE
+HTTPS_IO_STATE	SSLContext.h	/^typedef enum HTTPS_IO_STATE {$/;"	g
+HTTPS_MODE_PROXY	SSLContext.h	/^    HTTPS_MODE_PROXY;$/;"	e	enum:__anon2
+HTTPS_MODE_SERVICE	SSLContext.h	/^    HTTPS_MODE_SERVICE;$/;"	e	enum:__anon2
+HTTPS_MODE_UNKNOWN	SSLContext.h	/^    HTTPS_MODE_UNKNOWN;$/;"	e	enum:__anon2
+HTTPS_ROLE_CLIENT	SSLContext.h	/^    HTTPS_ROLE_CLIENT,$/;"	e	enum:_SSL_ROLE_
+HTTPS_ROLE_SERVER	SSLContext.h	/^    HTTPS_ROLE_SERVER$/;"	e	enum:_SSL_ROLE_
+HTTPS_ROLE_UNKNOWN	SSLContext.h	/^    HTTPS_ROLE_UNKNOWN = -1,$/;"	e	enum:_SSL_ROLE_
+HashTable	hashtable/HashTable.h	/^class HashTable {$/;"	c
+HexCharSet	inter2hex.c	/^char HexCharSet[] = {$/;"	v
+HttpBodyFile	HttpFile/HttpBodyFile.h	/^    HttpBodyFile(const char* filename):_ringbuf(4096), _file(filename) {}$/;"	f	class:HttpBodyFile
+HttpBodyFile	HttpFile/HttpBodyFile.h	/^class HttpBodyFile {$/;"	c
+HttpBodyFile	sendfile/HttpBodyFile.h	/^class HttpBodyFile {$/;"	c
 HttpConnection	http_server.cpp	/^    HttpConnection(): sockptr(std::make_shared<Socket>()) {}$/;"	f	class:HttpConnection
 HttpConnection	http_server.cpp	/^class HttpConnection {$/;"	c	file:
+HttpMode	SSLContext.h	/^} HttpMode;$/;"	t	typeref:enum:__anon2
 HttpProxyConnection	backup/http_proxy.cpp	/^    HttpProxyConnection(): ID_(HttpProxyConnection::uuid()), $/;"	f	class:HttpProxyConnection
 HttpProxyConnection	backup/http_proxy.cpp	/^class HttpProxyConnection {$/;"	c	file:
 HttpProxyLoop	backup/http_proxy.cpp	/^    HttpProxyLoop(const std::string& ipaddr, const std::string& port):$/;"	f	class:HttpProxyLoop
 HttpProxyLoop	backup/http_proxy.cpp	/^class HttpProxyLoop {   $/;"	c	file:
 HttpServer	http_server.cpp	/^class HttpServer {$/;"	c	file:
 HttpTransaction	backup/http_proxy.cpp	/^struct HttpTransaction {$/;"	s	class:HttpProxyConnection	file:
+HttpsContext	SSLContex.h	/^    HttpsContext():  {}$/;"	f	class:HttpsContext
+HttpsContext	SSLContex.h	/^class HttpsContext {$/;"	c
+HttpsContext	https_lib/SSLContext.cpp	/^    HttpsContext():  {}$/;"	f	class:SSLContext::HttpsContext
+HttpsContext	https_lib/SSLContext.cpp	/^class HttpsContext {$/;"	c	namespace:SSLContext	file:
+HtttsRole	SSLContext.h	/^} HtttsRole;$/;"	t	typeref:enum:_SSL_ROLE_
 IDTYPE	backup/http_proxy.cpp	/^typedef unsigned long IDTYPE;  $/;"	t	file:
 ID_	backup/http_proxy.cpp	/^    const IDTYPE  ID_;$/;"	m	class:HttpProxyConnection	file:
 INCFLAGS	Makefile	/^INCFLAGS := -I $(WORKPATH)$/;"	m
 INCS	Makefile	/^INCS := $(foreach dir, $(ALLDIRS), $(wildcard $(dir)\/*.h))$/;"	m
 LIBFLAGS	Makefile	/^LIBFLAGS := -L$(LIBPATH) -l$(DEPY) $(PTHREAD_FLAG) $(SHM_FLAG)$/;"	m
 LOOP_CALLBACK	backup/http_proxy.cpp	/^typedef std::function<int(HttpProxyConnection&)> LOOP_CALLBACK ;$/;"	t	class:HttpProxyConnection	file:
-MCBUFFER_DEBUG_	buffer_test.cc	14;"	d	file:
 MCBUFFER_DEBUG_	test_buffer.cpp	16;"	d	file:
 OBJS	Makefile	/^OBJS := $(foreach obj, $(OBJSLIST), $(BUILDDIR)\/$(obj))$/;"	m
 OBJSLIST	Makefile	/^OBJSLIST := $(notdir $(OLDOBJS))$/;"	m
 OLDOBJS	Makefile	/^OLDOBJS := $(patsubst %.cpp, %.o, $(SRCS))$/;"	m
 OUTPUT	Makefile	/^OUTPUT := $(WORKPATH)\/output$/;"	m
+POINTER	HttpFile/RingBuffer.h	35;"	d
+POINTER	RingBuffer.h	32;"	d
+POINTER	sendfile/RingBuffer.h	28;"	d
 PROJECT	Makefile	/^PROJECT := httpd$/;"	m
 PROXY_LOG	backup/http_proxy.cpp	43;"	d	file:
 PTHREAD_FLAG	Makefile	/^PTHREAD_FLAG := -lpthread$/;"	m
+PUSH2HEXBUF	inter2hex.c	13;"	d	file:
 ProxyConnection	test_http.cpp	/^    explicit ProxyConnection(SocketPtr& clientptr, SocketPtr& serverptr): sockfd_(clientptr->getSocket()) {$/;"	f	class:ProxyConnection
 ProxyConnection	test_http.cpp	/^    explicit ProxyConnection(SocketPtr& sockptr): sockfd_(sockptr->getSocket()) {$/;"	f	class:ProxyConnection
 ProxyConnection	test_http.cpp	/^class ProxyConnection {$/;"	c	file:
+QQindexAd	HttpFile/index.html	/^	function QQindexAd(obj){$/;"	f
+QQindexAdShut	HttpFile/index.html	/^	function QQindexAdShut(){$/;"	f
+REVERSESTRING	inter2hex.c	14;"	d	file:
+RINGBUFFER_DEFAULT_LENGTH	HttpFile/RingBuffer.h	47;"	d
+RINGBUFFER_DEFAULT_LENGTH	RingBuffer.h	44;"	d
+RINGBUFFER_MAX_LENGTH	HttpFile/RingBuffer.h	45;"	d
+RINGBUFFER_MAX_LENGTH	RingBuffer.h	42;"	d
+RINGBUFFER_MAX_LENGTH	sendfile/RingBuffer.h	35;"	d
+RINGBUFFER_MIN_LENGTH	HttpFile/RingBuffer.h	46;"	d
+RINGBUFFER_MIN_LENGTH	RingBuffer.h	43;"	d
+RINGBUFFER_MIN_LENGTH	sendfile/RingBuffer.h	36;"	d
+RINGBUFFER_NO_DATA	HttpFile/RingBuffer.h	24;"	d
+RINGBUFFER_NO_DATA	RingBuffer.h	21;"	d
+RINGBUFFER_NO_DATA	sendfile/RingBuffer.h	17;"	d
+RINGBUFFER_NO_SPACE	HttpFile/RingBuffer.h	23;"	d
+RINGBUFFER_NO_SPACE	RingBuffer.h	20;"	d
+RINGBUFFER_NO_SPACE	sendfile/RingBuffer.h	16;"	d
+RingBuffer	HttpFile/RingBuffer.h	/^    RingBuffer(const size_t len = RINGBUFFER_DEFAULT_LENGTH) {$/;"	f	class:RingBuffer
+RingBuffer	HttpFile/RingBuffer.h	/^class RingBuffer {$/;"	c
+RingBuffer	RingBuffer.h	/^    RingBuffer(const size_t len = RINGBUFFER_DEFAULT_LENGTH) {$/;"	f	class:RingBuffer
+RingBuffer	RingBuffer.h	/^class RingBuffer {$/;"	c
+RingBuffer	sendfile/RingBuffer.h	/^    RingBuffer(const size_t& len) {$/;"	f	class:RingBuffer
+RingBuffer	sendfile/RingBuffer.h	/^class RingBuffer {$/;"	c
+SEND_DEBUG	HttpFile/sendcontent.cc	18;"	d	file:
+SEND_DEBUG	HttpFile/sendfile.cc	18;"	d	file:
 SEND_DEBUG	sendfile/sendfile.cc	18;"	d	file:
 SHELL	Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHM_FLAG	Makefile	/^SHM_FLAG := -lrt$/;"	m
 SOCKETPTR	backup/http_proxy.cpp	/^typedef std::shared_ptr<Socket> SOCKETPTR;$/;"	t	file:
 SRCS	Makefile	/^SRCS := $(foreach dir, $(ALLDIRS), $(wildcard $(dir)\/*.cpp))$/;"	m
+SSLContext	SSLContex.h	/^namespace SSLContext {$/;"	n
+SSLContext	SSLContext.h	/^class SSLContext {$/;"	c
+SSLContext	https_lib/SSLContext.cpp	/^namespace SSLContext {$/;"	n	file:
+SSLContextFactory	https_lib/Https.h	/^class SSLContextFactory {$/;"	c
+SSLStrerror	SSLContext.h	14;"	d
+SSLVersion	https_lib/Https.h	/^} SSLVersion;$/;"	t	typeref:enum:_SSL_version
+SSL_VERSION_ALL	https_lib/Https.h	/^    SSL_VERSION_ALL,$/;"	e	enum:_SSL_version
+SSL_VERSION_SSLV3	https_lib/Https.h	/^    SSL_VERSION_SSLV3,$/;"	e	enum:_SSL_version
+SSL_VERSION_TLS10	https_lib/Https.h	/^    SSL_VERSION_TLS10,$/;"	e	enum:_SSL_version
+SSL_VERSION_TLS11	https_lib/Https.h	/^    SSL_VERSION_TLS11,$/;"	e	enum:_SSL_version
+SSL_VERSION_TLS12	https_lib/Https.h	/^    SSL_VERSION_TLS12,$/;"	e	enum:_SSL_version
+SSL_VERSION_UNKNOW	https_lib/Https.h	/^    SSL_VERSION_UNKNOW$/;"	e	enum:_SSL_version
+ServerCertVerifyCallback	SSLContex.h	/^typedef int(*ServerCertVerifyCallback)(int, X509_STORE_CTX*);$/;"	t
+ServerCertVerifyCallback	SSLContext.h	/^typedef int(*ServerCertVerifyCallback)(int, X509_STORE_CTX*);$/;"	t
+ServerCertVerifyCallback	https_lib/SSLContext.cpp	/^typedef int(*ServerCertVerifyCallback)(int, X509_STORE_CTX*);$/;"	t	namespace:SSLContext	file:
 TARGET	Makefile	/^TARGET := $(OUTPUT)\/$(PROJECT)$/;"	m
+TEST_FILEACCESS	HttpFile/File.h	21;"	d
 TEST_FILEACCESS	sendfile/File.h	18;"	d
+TS_CORE_FILE_H_	HttpFile/File.h	2;"	d
+TS_CORE_RINGBUFFER_H_	HttpFile/RingBuffer.h	2;"	d
+TS_SSL_SSLCONTEXT_H_	SSLContext.h	2;"	d
 TcpConnection	test_http.cpp	/^class TcpConnection {$/;"	c	file:
+TimeEvent	TimedEvent.h	/^    TimeEvent(const int nodenum = 4): _nodeNum(nodenum) {$/;"	f	class:TimedEvent
+TimeNode	TimedEvent.h	/^struct TimeNode{$/;"	s
+TimedEvent	TimedEvent.h	/^class TimedEvent {$/;"	c
 UUID_T	http_server.cpp	/^typedef unsigned int UUID_T; $/;"	t	file:
 WORKPATH	Makefile	/^WORKPATH := $(shell cd .. && pwd)$/;"	m
+_SSL_ROLE_	SSLContext.h	/^typedef enum _SSL_ROLE_{$/;"	g
+_SSL_version	https_lib/Https.h	/^typedef enum _SSL_version {$/;"	g
+__del__	HttpFile/client.py	/^    def __del__(self):$/;"	m	class:client	file:
+__init__	HttpFile/client.py	/^    def __init__(self, addr, port):$/;"	m	class:client
 _baseID	http_server.cpp	/^    static UUID_T _baseID;$/;"	m	class:HttpConnection	file:
 _baseID	http_server.cpp	/^UUID_T HttpConnection::_baseID = 0;$/;"	m	class:HttpConnection	file:
+_buffer	HttpFile/RingBuffer.h	/^    char* _buffer;$/;"	m	class:RingBuffer
+_buffer	RingBuffer.h	/^    char* _buffer;$/;"	m	class:RingBuffer
+_buffer	sendfile/RingBuffer.h	/^    char* _buffer;$/;"	m	class:RingBuffer
+_chunkNulldone	HttpFile/HttpBodyFile.h	/^        _chunkNulldone$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunkNullon	HttpFile/HttpBodyFile.h	/^        _chunkNullon,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunk_send_state	HttpFile/HttpBodyFile.h	/^typedef  enum _chunk_send_state{$/;"	g	class:HttpBodyFile
+_chunkedatadone	HttpFile/HttpBodyFile.h	/^        _chunkedatadone,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunkedataon	HttpFile/HttpBodyFile.h	/^        _chunkedataon,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunkeofdone	HttpFile/HttpBodyFile.h	/^        _chunkeofdone,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunkeofon	HttpFile/HttpBodyFile.h	/^        _chunkeofon,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunkfiledone	HttpFile/HttpBodyFile.h	/^        _chunkfiledone,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunksize	HttpFile/HttpBodyFile.h	/^    int _chunksize = 4096;$/;"	m	class:HttpBodyFile
+_chunksizedone	HttpFile/HttpBodyFile.h	/^        _chunksizedone,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunksizeon	HttpFile/HttpBodyFile.h	/^        _chunksizeon,$/;"	e	enum:HttpBodyFile::_chunk_send_state
+_chunkstate	HttpFile/HttpBodyFile.h	/^    ChunkState _chunkstate = _chunkuinit;$/;"	m	class:HttpBodyFile
+_chunkuinit	HttpFile/HttpBodyFile.h	/^        _chunkuinit,$/;"	e	enum:HttpBodyFile::_chunk_send_state
 _clientSocket	backup/http_proxy.cpp	38;"	d	file:
+_clientVerifyServerCertCallback	SSLContex.h	/^    int _clientVerifyServerCertCallback(int ok, X509_STORE_CTX* xstore) {$/;"	f	namespace:SSLContext
+_clientVerifyServerCertCallback	https_lib/SSLContext.cpp	/^    int _clientVerifyServerCertCallback(int ok, X509_STORE_CTX* xstore) {$/;"	f	namespace:SSLContext
 _connections	http_server.cpp	/^    std::map<UUID_T, HTTPCONNECTIONPTR> _connections;$/;"	m	class:HttpServer	file:
 _countConnections	http_server.cpp	/^    int _countConnections() { return _connections.size(); }$/;"	f	class:HttpServer	file:
 _createListenMaster	http_server.cpp	/^    int _createListenMaster(const char* ipaddr, int port) {$/;"	f	class:HttpServer	file:
+_current	TimedEvent.h	/^    TimeNode* _current= nullptr;$/;"	m	class:TimedEvent
 _dnsSocket	backup/http_proxy.cpp	40;"	d	file:
 _eloop	http_server.cpp	/^    EventsLoop _eloop;$/;"	m	class:HttpServer	file:
+_file	HttpFile/HttpBodyFile.h	/^    File _file;$/;"	m	class:HttpBodyFile
+_file	sendfile/HttpBodyFile.h	/^    File _file;$/;"	m	class:HttpBodyFile
+_head	TimedEvent.h	/^    TimeNode* _head = nullptr;$/;"	m	class:TimedEvent
 _host	http_server.cpp	/^    const std::string _host;$/;"	m	class:HttpServer	file:
+_initClientContext	SSLContex.h	/^    int _initClientContext(const char* trustCAPath, const char* crlPath) {$/;"	f	namespace:SSLContext
+_initClientContext	https_lib/SSLContext.cpp	/^    int _initClientContext(const char* trustCAPath, const char* crlPath) {$/;"	f	namespace:SSLContext
+_initServerContext	SSLContex.h	/^    int _initServerContext(const char* servercert, const char* privatekey) {$/;"	f	namespace:SSLContext
+_initServerContext	https_lib/SSLContext.cpp	/^    int _initServerContext(const char* servercert, const char* privatekey) {$/;"	f	namespace:SSLContext
 _masterSock	http_server.cpp	/^    SocketPtr _masterSock;$/;"	m	class:HttpServer	file:
 _newConnection	http_server.cpp	/^    HTTPCONNECTIONPTR _newConnection() {$/;"	f	class:HttpServer	file:
+_nodeNum	TimedEvent.h	/^    int _nodeNum = 2;$/;"	m	class:TimedEvent
+_ownCert	SSLContex.h	/^    X509* _ownCert = nullptr;$/;"	m	class:HttpsContext
+_ownCert	SSLContext.h	/^    X509* _ownCert = nullptr;$/;"	m	class:SSLContext
+_ownCert	https_lib/SSLContext.cpp	/^    X509* _ownCert = nullptr;$/;"	m	class:SSLContext::HttpsContext	file:
 _parser	http_server.cpp	/^    HttpParser        _parser;$/;"	m	class:HttpConnection	file:
+_peerCert	SSLContex.h	/^    X509* _peerCert = nullptr;$/;"	m	class:HttpsContext
+_peerCert	SSLContext.h	/^    X509* _peerCert = nullptr;$/;"	m	class:SSLContext
+_peerCert	https_lib/SSLContext.cpp	/^    X509* _peerCert = nullptr;$/;"	m	class:SSLContext::HttpsContext	file:
+_readoffset	HttpFile/HttpBodyFile.h	/^    off_t _readoffset = 0;$/;"	m	class:HttpBodyFile
+_readptr	HttpFile/RingBuffer.h	/^    char* _readptr;$/;"	m	class:RingBuffer
+_readptr	RingBuffer.h	/^    char* _readptr;$/;"	m	class:RingBuffer
+_readptr	sendfile/RingBuffer.h	/^    char* _readptr;$/;"	m	class:RingBuffer
 _request	http_server.cpp	/^    HttpRquest        _request;$/;"	m	class:HttpConnection	file:
 _response	http_server.cpp	/^    HttpResponse      _response;$/;"	m	class:HttpConnection	file:
+_ringbuf	HttpFile/HttpBodyFile.h	/^    RingBuffer _ringbuf; \/\/ Cache for file$/;"	m	class:HttpBodyFile
+_ringbuf	sendfile/HttpBodyFile.h	/^    RingBuffer _ringbuf;$/;"	m	class:HttpBodyFile
+_role	SSLContex.h	/^    HttpsRole _role = HTTPS_ROLE_UNKNOWN;$/;"	m	class:HttpsContext
+_role	SSLContext.h	/^    HttpsRole _role = SCTX_ROLE_UNKNOWN;$/;"	m	class:SSLContext
+_role	https_lib/SSLContext.cpp	/^    HttpsRole _role = HTTPS_ROLE_UNKNOWN;$/;"	m	class:SSLContext::HttpsContext	file:
+_senddone	HttpFile/HttpBodyFile.h	/^    bool _senddone = false;$/;"	m	class:HttpBodyFile
 _serverSocket	backup/http_proxy.cpp	39;"	d	file:
+_size	HttpFile/RingBuffer.h	/^    size_t _size;$/;"	m	class:RingBuffer
+_size	RingBuffer.h	/^    size_t _size;$/;"	m	class:RingBuffer
+_size	sendfile/RingBuffer.h	/^    size_t _size;$/;"	m	class:RingBuffer
+_ssl	SSLContex.h	/^    SSL* _ssl = nullptr;$/;"	m	class:HttpsContext
+_ssl	SSLContext.h	/^    SSL* _ssl = nullptr;$/;"	m	class:SSLContext
+_ssl	https_lib/SSLContext.cpp	/^    SSL* _ssl = nullptr;$/;"	m	class:SSLContext::HttpsContext	file:
+_sslctx	SSLContex.h	/^    SSL_CTX* _sslctx = nullptr;$/;"	m	class:HttpsContext
+_sslctx	SSLContext.h	/^    SSL_CTX* _sslctx = nullptr;$/;"	m	class:SSLContext
+_sslctx	https_lib/SSLContext.cpp	/^    SSL_CTX* _sslctx = nullptr;$/;"	m	class:SSLContext::HttpsContext	file:
+_timerfd	TimedEvent.h	/^    int _timerfd = -1;$/;"	m	class:TimedEvent
+_uinitClientContext	SSLContex.h	/^    void _uinitClientContext() {$/;"	f	namespace:SSLContext
+_uinitClientContext	https_lib/SSLContext.cpp	/^    void _uinitClientContext() {$/;"	f	namespace:SSLContext
+_uinitServerContext	SSLContex.h	/^    void _uinitServerContext() {$/;"	f	namespace:SSLContext
+_uinitServerContext	https_lib/SSLContext.cpp	/^    void _uinitServerContext() {$/;"	f	namespace:SSLContext
 _updateUID	http_server.cpp	/^UUID_T HttpConnection::_updateUID() {$/;"	f	class:HttpConnection
 _uuid	http_server.cpp	/^    UUID_T _uuid = 0;$/;"	m	class:HttpConnection	file:
+_writeptr	HttpFile/RingBuffer.h	/^    char* _writeptr;$/;"	m	class:RingBuffer
+_writeptr	RingBuffer.h	/^    char* _writeptr;$/;"	m	class:RingBuffer
+_writeptr	sendfile/RingBuffer.h	/^    char* _writeptr;$/;"	m	class:RingBuffer
 aa	test_thread.cpp	/^int aa = 0;$/;"	v
+accept	SSLContex.h	/^    int accept() {$/;"	f	class:HttpsContext
+accept	https_lib/SSLContext.cpp	/^    int accept() {$/;"	f	class:SSLContext::HttpsContext
 acceptConnections	http_server.cpp	/^    int acceptConnections(Socket& master) {$/;"	f	class:HttpServer
 acceptHttpClientConnection	backup/http_proxy.cpp	/^     int acceptHttpClientConnection(Socket& master) {$/;"	f	class:HttpProxyLoop
 acceptMasterSocket	test_http.cpp	/^int acceptMasterSocket(SocketPtr& master) {$/;"	f
+active	SSLContex.h	/^    bool active() {$/;"	f	class:HttpsContext
+active	https_lib/SSLContext.cpp	/^    bool active() {$/;"	f	class:SSLContext::HttpsContext
 afterCallback	test_http.cpp	/^int afterCallback(SocketPtr& sockptr) {$/;"	f
+appendWriteIn	HttpFile/File.cpp	/^ssize_t File::appendWriteIn(const char* buf, size_t len) {$/;"	f	class:File
 appendWriteIn	sendfile/File.cpp	/^ssize_t File::appendWriteIn(const char* buf, size_t len) {$/;"	f	class:File
 base_	backup/http_proxy.cpp	/^    static IDTYPE base_;$/;"	m	class:HttpProxyConnection	file:
 base_	backup/http_proxy.cpp	/^IDTYPE HttpProxyConnection::base_ = 0;$/;"	m	class:HttpProxyConnection	file:
 beforeCallback	test_http.cpp	/^int beforeCallback(SocketPtr& sockptr) {$/;"	f
+bindSocket	SSLContex.h	/^    int bindSocket(int sockfd) {$/;"	f	class:HttpsContext
+bindSocket	https_lib/SSLContext.cpp	/^    int bindSocket(int sockfd) {$/;"	f	class:SSLContext::HttpsContext
+blocking	HttpFile/File.h	18;"	d
 blocking	sendfile/File.h	15;"	d
+bossZoneHandler	HttpFile/index.html	/^	function bossZoneHandler(){$/;"	f
+buf	HttpFile/client.py	/^        buf = cli.recv()$/;"	v
+buffer	test_ringbuffer.cpp	/^char buffer[] = "I am testing RingBuffer cache!";$/;"	v
+buffer2	test_ringbuffer.cpp	/^char buffer2[] = "padding to fulfill the cache! hahaha";$/;"	v
 c_ptr	test_mutex.cpp	/^share_count* c_ptr = nullptr;$/;"	v
+checkImgErr	HttpFile/index.html	/^			function checkImgErr(n) {$/;"	f
 child_start	test_mutex.cpp	/^int child_start() {$/;"	f
+chunked	HttpFile/HttpBodyFile.h	/^    bool chunked = false; $/;"	m	class:HttpBodyFile
+chunked	sendfile/HttpBodyFile.h	/^    bool chunked = false; $/;"	m	class:HttpBodyFile
+cleanup_openssl	HttpsServer.cpp	/^void cleanup_openssl()$/;"	f
 cleanup_openssl	https_client.cpp	/^void cleanup_openssl()$/;"	f
+cleanup_openssl	https_lib/https_client.cpp	/^void cleanup_openssl()$/;"	f
+cleanup_openssl	https_lib/https_server.cpp	/^void cleanup_openssl()$/;"	f
+cleanup_openssl	https_server.cpp	/^void cleanup_openssl()$/;"	f
+clear	HttpFile/RingBuffer.h	/^    void clear() {$/;"	f	class:RingBuffer
 clear	backup/http_proxy.cpp	/^    void clear() {$/;"	f	class:HttpProxyLoop	file:
+clearCurrentTimeNode	TimedEvent.h	/^    int clearCurrentTimeNode() {$/;"	f	class:TimedEvent
+cli	HttpFile/client.py	/^    cli = client(ip, port)$/;"	v
+client	HttpFile/client.py	/^class client:$/;"	c
 client2close_	backup/http_proxy.cpp	/^    bool client2close_ = false;$/;"	m	class:HttpProxyConnection	file:
 clientCloseHandle	backup/http_proxy.cpp	/^  int clientCloseHandle(Socket& client) {$/;"	f	class:HttpProxyConnection
+clientContexts	https_lib/Https.h	/^    SSL_CTX* clientContexts[SSL_VERSION_UNKNOW];$/;"	m	class:SSLContextFactory
 clientErrorHandle	backup/http_proxy.cpp	/^    int clientErrorHandle(Socket& client) {  return clientRDHUPHandle(client); }$/;"	f	class:HttpProxyConnection
 clientFinalWriteHandle	backup/http_proxy.cpp	/^    int clientFinalWriteHandle(Socket& client) {$/;"	f	class:HttpProxyConnection
 clientFirstReadHandle	backup/http_proxy.cpp	/^    int clientFirstReadHandle(Socket& client) {$/;"	f	class:HttpProxyConnection
@@ -113,23 +299,52 @@ clientTunnelReadHandle	backup/http_proxy.cpp	/^    int clientTunnelReadHandle(So
 clientTunnelWriteHandle	backup/http_proxy.cpp	/^    int clientTunnelWriteHandle(Socket& client) {$/;"	f	class:HttpProxyConnection
 clientWriteHandle	backup/http_proxy.cpp	/^    int clientWriteHandle(Socket& client) {$/;"	f	class:HttpProxyConnection
 clientptr_	test_http.cpp	/^    SocketPtr clientptr_ = nullptr;$/;"	m	class:ProxyConnection	file:
+clockJump	TimedEvent.h	/^    void clockJump() {$/;"	f	class:TimedEvent
+close	SSLContex.h	/^    int close() {$/;"	f	class:HttpsContext
+close	https_lib/SSLContext.cpp	/^    int close() {$/;"	f	class:SSLContext::HttpsContext
 closeProxy	test_http.cpp	/^    void closeProxy() {$/;"	f	class:ProxyConnection
 closeProxyConnection	backup/http_proxy.cpp	/^    void closeProxyConnection() {$/;"	f	class:HttpProxyConnection
+cnt	HttpFile/client.py	/^                cnt = cnt + 1$/;"	v
+cnt	HttpFile/client.py	/^    cnt = 0;$/;"	v
 cnt	test_dns.cpp	/^static int cnt = 0;$/;"	v	file:
+config	HttpsServer.cpp	/^void config() {$/;"	f
 configure_context	https_client.cpp	/^void configure_context(SSL_CTX *ctx)$/;"	f
+configure_context	https_lib/https_client.cpp	/^void configure_context(SSL_CTX *ctx)$/;"	f
+configure_context	https_lib/https_server.cpp	/^void configure_context(SSL_CTX *ctx)$/;"	f
+configure_context	https_server.cpp	/^void configure_context(SSL_CTX *ctx)$/;"	f
+connect	HttpFile/client.py	/^    def connect(self):$/;"	m	class:client
+connect	SSLContex.h	/^    int connect() {$/;"	f	class:HttpsContext
+connect	https_lib/SSLContext.cpp	/^    int connect() {$/;"	f	class:SSLContext::HttpsContext
 connections_	backup/http_proxy.cpp	/^    std::map<IDTYPE, HTTPPROXYCONNECTIONPTR> connections_; $/;"	m	class:HttpProxyLoop	file:
+containsInCurrentTimeNode	TimedEvent.h	/^    bool containsInCurrentTimeNode(Channel* cnptr) {$/;"	f	class:TimedEvent
+content_encoding	HttpFile/HttpBodyFile.h	/^    char content_encoding[1024];$/;"	m	class:HttpBodyFile
+content_type	HttpFile/HttpBodyFile.h	/^    char content_type [1024];$/;"	m	class:HttpBodyFile
+content_type	sendfile/HttpBodyFile.h	/^    char content_type [1024];$/;"	m	class:HttpBodyFile
 count	test_mutex.cpp	/^    int count;$/;"	m	struct:share_count	file:
 countHttpConnections	backup/http_proxy.cpp	/^    int countHttpConnections() {$/;"	f	class:HttpProxyLoop
 cparser_	backup/http_proxy.cpp	/^    HttpParser cparser_;$/;"	m	class:HttpProxyConnection	file:
 createQuery	test_ares.cpp	/^    int createQuery(const char* host, unsigned char* buf, size_t len) {$/;"	f	class:AsyncDNSResolver	file:
 create_context	https_client.cpp	/^SSL_CTX *create_context()$/;"	f
-create_socket	https_client.cpp	/^int create_socket(int port)$/;"	f
+create_context	https_lib/https_client.cpp	/^SSL_CTX *create_context()$/;"	f
+create_context	https_lib/https_server.cpp	/^SSL_CTX *create_context()$/;"	f
+create_context	https_server.cpp	/^SSL_CTX *create_context()$/;"	f
+create_socket	HttpsServer.cpp	/^int create_socket(int port)$/;"	f
+create_socket	https_client.cpp	/^int create_socket(Socket& server, const char* host)$/;"	f
+create_socket	https_lib/https_client.cpp	/^int create_socket(Socket& server, const char* host)$/;"	f
+create_socket	https_lib/https_server.cpp	/^int create_socket(int port)$/;"	f
+create_socket	https_server.cpp	/^int create_socket(int port)$/;"	f
 csockptr	backup/http_proxy.cpp	/^    const SOCKETPTR csockptr;$/;"	m	class:HttpProxyConnection	file:
 ctransaction_	backup/http_proxy.cpp	/^    HttpTransaction ctransaction_;$/;"	m	class:HttpProxyConnection	file:
+cur_	HttpFile/File.h	/^    off_t cur_;$/;"	m	class:File
 cur_	sendfile/File.h	/^    off_t cur_;$/;"	m	class:File
+dec2hex	inter2hex.c	/^const char* dec2hex(unsigned int num) {$/;"	f
+deleteChannel	TimedEvent.h	/^    int deleteChannel(Channel* cnptr) {$/;"	f	class:TimedEvent
+deleteChannelFromTimeNode	TimedEvent.h	/^    int deleteChannelFromTimeNode(TimeNode* node, Channel* cnptr) {$/;"	f	class:TimedEvent
 deleteConnection	http_server.cpp	/^    int deleteConnection(HTTPCONNECTIONPTR& hcptr) {$/;"	f	class:HttpServer	file:
 deleteProxyConnection	test_http.cpp	/^bool deleteProxyConnection(SocketPtr& clientptr) {$/;"	f
-deleteself	deleteself.cc	/^   int  deleteself() {$/;"	f	class:mytest
+deleteself	backup/deleteself.cc	/^   int  deleteself() {$/;"	f	class:mytest
+destory	TimedEvent.h	/^    void destory() {$/;"	f	class:TimedEvent
+destory	https_lib/Https.h	/^    void destory() {$/;"	f	class:SSLContextFactory
 destoryHttpProxyPool	backup/http_proxy.cpp	/^int destoryHttpProxyPool() {$/;"	f
 destoryProxy	http_proxy.cpp	/^int destoryProxy() {$/;"	f
 discardIDs_	backup/http_proxy.cpp	/^    std::set<IDTYPE> discardIDs_;$/;"	m	class:HttpProxyLoop	file:
@@ -138,102 +353,191 @@ dsockptr	backup/http_proxy.cpp	/^    const SOCKETPTR dsockptr;$/;"	m	class:HttpP
 eloop	test_http.cpp	/^EventsLoop eloop;$/;"	v
 eloop_	backup/http_proxy.cpp	/^    EventsLoop eloop_;$/;"	m	class:HttpProxyLoop	file:
 elooptr_	backup/http_proxy.cpp	/^    EventsLoop* elooptr_ = nullptr;$/;"	m	class:HttpProxyConnection	file:
+empty	HttpFile/client.py	/^    empty = False;$/;"	v
+endFile	HttpFile/HttpBodyFile.h	/^    void endFile() {$/;"	f	class:HttpBodyFile
+endFile	sendfile/HttpBodyFile.h	/^    void endFile() {$/;"	f	class:HttpBodyFile
 eraseHttpProxyConnection	backup/http_proxy.cpp	/^    int eraseHttpProxyConnection(HttpProxyConnection& hpl) {$/;"	f	class:HttpProxyLoop	file:
 erase_func_	backup/http_proxy.cpp	/^    LOOP_CALLBACK erase_func_ = nullptr;$/;"	m	class:HttpProxyConnection	file:
 errorCallback	test_http.cpp	/^int errorCallback(SocketPtr& sockptr) {$/;"	f
+fd_	HttpFile/File.h	/^    int fd_;$/;"	m	class:File
 fd_	sendfile/File.h	/^    int fd_;$/;"	m	class:File
+file	HttpFile/client.py	/^    file = open(filename, 'w')$/;"	v
+filename	HttpFile/HttpBodyFile.h	/^    char filename[1024];$/;"	m	class:HttpBodyFile
+filename	HttpFile/client.py	/^    filename = sys.argv[2]$/;"	v
+filename	sendfile/HttpBodyFile.h	/^    char filename[1024];$/;"	m	class:HttpBodyFile
+filename_	HttpFile/File.h	/^    char filename_[FILE_NAME_MAX_LENGTH] = {0};$/;"	m	class:File
 filename_	sendfile/File.h	/^    char filename_[FILE_NAME_MAX_LENGTH];$/;"	m	class:File
 finalize	backup/http_proxy.cpp	/^    void finalize() {$/;"	f	class:HttpProxyConnection	file:
 forceCloseProxyConnection	backup/http_proxy.cpp	/^    void forceCloseProxyConnection() {$/;"	f	class:HttpProxyConnection
-g_configini	http_proxy.cpp	/^tigerso::core::ConfigParser* g_configini = nullptr;$/;"	v
-g_httpproxy	http_proxy.cpp	/^tigerso::http::HttpProxyLoop* g_httpproxy = nullptr;$/;"	v
+g_client_ssl_ctx	SSLContex.h	/^    static SSL_CTX* g_client_ssl_ctx = NULL;$/;"	m	namespace:SSLContext
+g_client_ssl_ctx	https_lib/SSLContext.cpp	/^    static SSL_CTX* g_client_ssl_ctx = NULL;$/;"	m	namespace:SSLContext	file:
+g_config	HttpsServer.cpp	/^static ConfigParser* g_config = ConfigParser::getInstance();$/;"	v	file:
+g_config	SSLContex.h	/^    ConfigParser* g_config = ConfigParser::getInstance(); $/;"	m	namespace:SSLContext
+g_config	https_lib/SSLContext.cpp	/^    ConfigParser* g_config = ConfigParser::getInstance(); $/;"	m	namespace:SSLContext	file:
+g_configini	http_proxy.cpp	/^tigerso::ConfigParser* g_configini = nullptr;$/;"	v
+g_httpproxy	http_proxy.cpp	/^tigerso::HttpProxyLoop* g_httpproxy = nullptr;$/;"	v
 g_httpproxypoolptr	backup/http_proxy.cpp	/^HttpProxyLoop* g_httpproxypoolptr = nullptr;$/;"	v
-g_logging	http_proxy.cpp	/^tigerso::core::Logging* g_logging = nullptr;$/;"	v
+g_log	HttpsServer.cpp	/^static Logging* g_log = Logging::getInstance();$/;"	v	file:
+g_logging	http_proxy.cpp	/^tigerso::Logging* g_logging = nullptr;$/;"	v
+g_server_cert_verify_cb	SSLContex.h	/^    static serverCertVerifyCallback g_server_cert_verify_cb = NULL;$/;"	m	namespace:SSLContext
+g_server_cert_verify_cb	https_lib/SSLContext.cpp	/^    static serverCertVerifyCallback g_server_cert_verify_cb = NULL;$/;"	m	namespace:SSLContext	file:
+g_server_ssl_ctx	SSLContex.h	/^    static SSL_CTX* g_server_ssl_ctx = NULL;$/;"	m	namespace:SSLContext
+g_server_ssl_ctx	https_lib/SSLContext.cpp	/^    static SSL_CTX* g_server_ssl_ctx = NULL;$/;"	m	namespace:SSLContext	file:
+getClientSSLCTX	SSLContex.h	/^    SSL_CTX* getClientSSLCTX() {$/;"	f	namespace:SSLContext
+getClientSSLCTX	https_lib/SSLContext.cpp	/^    SSL_CTX* getClientSSLCTX() {$/;"	f	namespace:SSLContext
 getClientSocketPtr	test_http.cpp	/^SocketPtr getClientSocketPtr(SocketPtr& serverptr) {$/;"	f
+getFileLength	HttpFile/sendcontent.cc	/^ssize_t getFileLength(int fd) {$/;"	f
+getFileLength	HttpFile/sendfile.cc	/^ssize_t getFileLength(int fd) {$/;"	f
 getFileLength	sendfile/sendfile.cc	/^ssize_t getFileLength(int fd) {$/;"	f
+getFileSize	HttpFile/File.cpp	/^ssize_t File::getFileSize() {$/;"	f	class:File
 getFileSize	sendfile/File.cpp	/^ssize_t File::getFileSize() {$/;"	f	class:File
 getID	backup/http_proxy.cpp	/^    const IDTYPE& getID() { return ID_; }$/;"	f	class:HttpProxyConnection
 getID	test_bind.cpp	/^    int& getID() {return id;}$/;"	f	class:nocopy
+getIPPort	HttpFile/client.py	/^def getIPPort(param):$/;"	f
 getKey	test_http.cpp	/^    int getKey() { return sockfd_; }$/;"	f	class:ProxyConnection
 getProxyConnection	test_http.cpp	/^ProxyConnection& getProxyConnection(SocketPtr& clientptr) {$/;"	f
+getServerSSLCTX	SSLContex.h	/^    SSL_CTX* getServerSSLCTX() {$/;"	f	namespace:SSLContext
+getServerSSLCTX	https_lib/SSLContext.cpp	/^    SSL_CTX* getServerSSLCTX() {$/;"	f	namespace:SSLContext
 getServerSocketPtr	test_http.cpp	/^SocketPtr getServerSocketPtr(SocketPtr& clientptr) {$/;"	f
 getUid	http_server.cpp	/^    UUID_T getUid() { return _uuid; }$/;"	f	class:HttpConnection
+hex2dec	inter2hex.c	/^unsigned int hex2dec(const char* hex) {$/;"	f
+hexstrbuf	inter2hex.c	/^static char hexstrbuf[9] = {0};$/;"	v	file:
 host_	test_http.cpp	/^    string host_;$/;"	m	class:ProxyConnection	file:
 httpproxypool	test_http.cpp	/^vector<ProxyConnection> httpproxypool;$/;"	v
 id	test_bind.cpp	/^  int id = 0;  $/;"	m	class:nocopy	file:
-info	deleteself.cc	/^    int info() { cout << "haha, not see me" << endl;}$/;"	f	class:mytest
+info	backup/deleteself.cc	/^    int info() { cout << "haha, not see me" << endl;}$/;"	f	class:mytest
+init	SSLContex.h	/^    int init(int role) {$/;"	f	class:HttpsContext
+init	TimedEvent.h	/^    void init() {$/;"	f	class:TimedEvent
+init	https_lib/SSLContext.cpp	/^    int init(int role) {$/;"	f	class:SSLContext::HttpsContext
 initHttpProxyPool	backup/http_proxy.cpp	/^int initHttpProxyPool(const char* ipaddr, const int port) {$/;"	f
 initListenConnection	backup/http_proxy.cpp	/^    int initListenConnection() {$/;"	f	class:HttpProxyLoop
 initProxy	http_proxy.cpp	/^int initProxy() {$/;"	f
+init_openssl	HttpsServer.cpp	/^void init_openssl()$/;"	f
 init_openssl	https_client.cpp	/^void init_openssl()$/;"	f
+init_openssl	https_lib/https_client.cpp	/^void init_openssl()$/;"	f
+init_openssl	https_lib/https_server.cpp	/^void init_openssl()$/;"	f
+init_openssl	https_server.cpp	/^void init_openssl()$/;"	f
+initilize	https_lib/Https.h	/^    void initilize() {$/;"	f	class:SSLContextFactory
 insertHttpProxyConnectionPtr	backup/http_proxy.cpp	/^    int insertHttpProxyConnectionPtr(HTTPPROXYCONNECTIONPTR& hcptr) {$/;"	f	class:HttpProxyLoop	file:
+inter2HexString	HttpFile/HttpBodyFile.h	/^    std::string inter2HexString(int num) {$/;"	f	class:HttpBodyFile
 ipaddr_	backup/http_proxy.cpp	/^    const std::string ipaddr_;$/;"	m	class:HttpProxyLoop	file:
 isClientAlive	backup/http_proxy.cpp	/^    bool isClientAlive() { return _clientSocket.exist(); }$/;"	f	class:HttpProxyConnection	file:
+isEmpty	HttpFile/RingBuffer.h	/^    bool isEmpty() { return  (_readptr == _writeptr); }$/;"	f	class:RingBuffer
+isEmpty	RingBuffer.h	/^    bool isEmpty() { return  (_readptr == _writeptr); }$/;"	f	class:RingBuffer
+isEmpty	sendfile/RingBuffer.h	/^    bool isEmpty() { return  (_readptr == _writeptr); }$/;"	f	class:RingBuffer
+isFull	HttpFile/RingBuffer.h	/^    bool isFull() { return (space() == 0); }$/;"	f	class:RingBuffer
+isFull	RingBuffer.h	/^    bool isFull() { return (space() == 0); }$/;"	f	class:RingBuffer
+isFull	sendfile/RingBuffer.h	/^    bool isFull() { return (space() == 0); }$/;"	f	class:RingBuffer
 isServerAlive	backup/http_proxy.cpp	/^    bool isServerAlive() { return _serverSocket.exist(); }$/;"	f	class:HttpProxyConnection	file:
 keepalive_	backup/http_proxy.cpp	/^    bool keepalive_ = true;$/;"	m	class:HttpProxyConnection	file:
 linkServer	test_http.cpp	/^    bool linkServer(SocketPtr& sockptr) {$/;"	f	class:ProxyConnection
 linkServerSocketPtr	test_http.cpp	/^bool linkServerSocketPtr(SocketPtr& clientptr, SocketPtr& serverptr) {$/;"	f
 listenHttpClientConnection	backup/http_proxy.cpp	/^    int listenHttpClientConnection() {$/;"	f	class:HttpProxyLoop	file:
-listen_sock	buffer_test.cc	/^McSocket listen_sock;$/;"	v
 listen_sock	test_buffer.cpp	/^McSocket listen_sock;$/;"	v
+listenfd	HttpFile/sendcontent.cc	/^int listenfd = socket(AF_INET, SOCK_STREAM, 0);$/;"	v
+listenfd	HttpFile/sendfile.cc	/^int listenfd = socket(AF_INET, SOCK_STREAM, 0);$/;"	v
 listenfd	sendfile/sendfile.cc	/^int listenfd = socket(AF_INET, SOCK_STREAM, 0);$/;"	v
+listeningOnLocal	HttpFile/sendcontent.cc	/^int listeningOnLocal() {$/;"	f
+listeningOnLocal	HttpFile/sendfile.cc	/^int listeningOnLocal() {$/;"	f
 listeningOnLocal	sendfile/sendfile.cc	/^int listeningOnLocal() {$/;"	f
 log_ptr	test_mutex.cpp	/^Logging* log_ptr = nullptr;$/;"	v
+main	HttpFile/sendcontent.cc	/^int main(int argc, char* argv[]) {$/;"	f
+main	HttpFile/sendfile.cc	/^int main(int argc, char* argv[]) {$/;"	f
+main	HttpsServer.cpp	/^int main(int argc, char **argv)$/;"	f
+main	backup/deleteself.cc	/^int main() {$/;"	f
 main	backup/http_proxy.cpp	/^int main() {$/;"	f
-main	buffer_test.cc	/^int main(){$/;"	f
-main	deleteself.cc	/^int main() {$/;"	f
 main	http_proxy.cpp	/^int main() {$/;"	f
 main	https_client.cpp	/^int main(int argc, char **argv)$/;"	f
-main	main.cpp	/^int main() {$/;"	f
+main	https_lib/https_client.cpp	/^int main(int argc, char **argv)$/;"	f
+main	https_lib/https_server.cpp	/^int main(int argc, char **argv)$/;"	f
+main	https_server.cpp	/^int main(int argc, char **argv)$/;"	f
+main	inter2hex.c	/^int main(int argc, char* argv[]) {$/;"	f
 main	sendfile/sendfile.cc	/^int main(int argc, char* argv[]) {$/;"	f
 main	test_bind.cpp	/^int main() {$/;"	f
 main	test_buffer.cpp	/^int main(){$/;"	f
 main	test_dns.cpp	/^int main(int argc, char* argv[]) {$/;"	f
 main	test_http.cpp	/^int main() {$/;"	f
 main	test_mutex.cpp	/^int main(int argc, char* argv[]) {$/;"	f
+main	test_ringbuffer.cpp	/^int main() {$/;"	f
 main	test_thread.cpp	/^int main() {$/;"	f
 makeHttpProxyConnection	backup/http_proxy.cpp	/^   HTTPPROXYCONNECTIONPTR makeHttpProxyConnection() {$/;"	f	class:HttpProxyLoop	file:
 masterAfterHandle	backup/http_proxy.cpp	/^     int masterAfterHandle(Socket& master) {$/;"	f	class:HttpProxyLoop
 masterErrorHandle	backup/http_proxy.cpp	/^     int masterErrorHandle(Socket& master) {$/;"	f	class:HttpProxyLoop
+mine_type	HttpFile/HttpBodyFile.h	/^    char mine_type[1024];$/;"	m	class:HttpBodyFile
 msockptr_	backup/http_proxy.cpp	/^    const SOCKETPTR msockptr_;$/;"	m	class:HttpProxyLoop	file:
-mytest	deleteself.cc	/^    mytest(){}$/;"	f	class:mytest
-mytest	deleteself.cc	/^class mytest {$/;"	c	file:
+mytest	backup/deleteself.cc	/^    mytest(){}$/;"	f	class:mytest
+mytest	backup/deleteself.cc	/^class mytest {$/;"	c	file:
+next	TimedEvent.h	/^    TimeNodeSet* next = nullptr;$/;"	m	struct:TimeNode
 nocopy	test_bind.cpp	/^    nocopy(){}$/;"	f	class:nocopy
 nocopy	test_bind.cpp	/^class nocopy {$/;"	c	file:
 nocopy_func	test_bind.cpp	/^typedef std::function<int(nocopy&)> nocopy_func;$/;"	t	file:
+nonBlocking	HttpFile/File.h	17;"	d
+nonBlocking	HttpFile/sendcontent.cc	16;"	d	file:
+nonBlocking	HttpFile/sendfile.cc	16;"	d	file:
 nonBlocking	sendfile/File.h	14;"	d
 nonBlocking	sendfile/sendfile.cc	16;"	d	file:
 parser	test_http.cpp	/^HttpParser parser;$/;"	v
-pe	deleteself.cc	/^    peer* pe;$/;"	m	class:mytest	file:
-peer	deleteself.cc	/^    peer() {}$/;"	f	class:peer
-peer	deleteself.cc	/^class peer {$/;"	c	file:
+pe	backup/deleteself.cc	/^    peer* pe;$/;"	m	class:mytest	file:
+peer	backup/deleteself.cc	/^    peer() {}$/;"	f	class:peer
+peer	backup/deleteself.cc	/^class peer {$/;"	c	file:
 peerIPstr_	test_http.cpp	/^    string peerIPstr_;$/;"	m	class:TcpConnection	file:
 pid	test_mutex.cpp	/^    pid_t pid;$/;"	m	struct:share_count	file:
-plog	main.cpp	/^Logging* plog = Logging::getInstance();$/;"	v
 port_	backup/http_proxy.cpp	/^    std::string port_;$/;"	m	class:HttpProxyLoop	file:
 port_	test_http.cpp	/^    string port_;$/;"	m	class:ProxyConnection	file:
 port_	test_http.cpp	/^    string port_;$/;"	m	class:TcpConnection	file:
-printInfo	buffer_test.cc	/^void printInfo() {$/;"	f
 printInfo	test_buffer.cpp	/^void printInfo() {$/;"	f
 print_class	test_bind.cpp	/^int print_class(nocopy_func func, nocopy& copy) {$/;"	f
 print_share_count	test_mutex.cpp	/^void print_share_count() {$/;"	f
+printchar	HttpFile/RingBuffer.h	/^void printchar(char* buf, size_t len) {$/;"	f
+printchar	RingBuffer.h	/^void printchar(char* buf, size_t len) {$/;"	f
+printchar	sendfile/RingBuffer.h	/^void printchar(char* buf, size_t len) {$/;"	f
+ptlogin2_onClose	HttpFile/index.html	/^	function ptlogin2_onClose(){$/;"	f
+ptlogin2_onResize	HttpFile/index.html	/^	function ptlogin2_onResize(width, height) {$/;"	f
 queryIP	test_dns.cpp	/^int queryIP(const char* host) {$/;"	f
 readCallback	test_http.cpp	/^int readCallback(SocketPtr& sockptr) {$/;"	f
+readOut	HttpFile/File.cpp	/^ssize_t File::readOut(char* buf, size_t len, off_t& offset) {$/;"	f	class:File
+readOut	HttpFile/RingBuffer.h	/^    int readOut(char* buf, size_t len) {$/;"	f	class:RingBuffer
+readOut	HttpFile/RingBuffer.h	/^    int readOut(int fd) {$/;"	f	class:RingBuffer
+readOut	RingBuffer.h	/^    int readOut(char* buf, size_t len) {$/;"	f	class:RingBuffer
+readOut	RingBuffer.h	/^    int readOut(int fd) {$/;"	f	class:RingBuffer
 readOut	sendfile/File.cpp	/^ssize_t File::readOut(char* buf, size_t len) {$/;"	f	class:File
+readOut	sendfile/RingBuffer.h	/^    int readOut(char* buf, size_t len) {$/;"	f	class:RingBuffer
+readOut2File	HttpFile/RingBuffer.h	/^    int readOut2File(File& file) {$/;"	f	class:RingBuffer
+readOut2File	RingBuffer.h	/^    int readOut2File(File& file) {$/;"	f	class:RingBuffer
+recv	HttpFile/client.py	/^    def recv(self):$/;"	m	class:client
+recv	SSLContex.h	/^    int recv(void* buf, size_t len, size_t* readn) {$/;"	f	class:HttpsContext
+recv	https_lib/SSLContext.cpp	/^    int recv(void* buf, size_t len, size_t* readn) {$/;"	f	class:SSLContext::HttpsContext
 registerFunctionsForHttpProxyConnection	backup/http_proxy.cpp	/^    void registerFunctionsForHttpProxyConnection(HttpProxyConnection& hpc) {$/;"	f	class:HttpProxyLoop	file:
 registerSocket	backup/http_proxy.cpp	/^    int registerSocket(Socket& sock) {$/;"	f	class:HttpProxyLoop
 registerSocket	http_server.cpp	/^    int registerSocket(Socket& socket) {$/;"	f	class:HttpServer	file:
 register_func_	backup/http_proxy.cpp	/^    EventFunc register_func_ = nullptr;$/;"	m	class:HttpProxyConnection	file:
 request	backup/http_proxy.cpp	/^    HttpRequest request;$/;"	m	struct:HttpProxyConnection::HttpTransaction	file:
+reset	HttpFile/File.h	/^    inline void reset() { ::close(fd_); fd_ = -1; size_ = 0; cur_ = 0; }$/;"	f	class:File
+reset	HttpFile/HttpBodyFile.h	/^    void reset() {$/;"	f	class:HttpBodyFile
+reset	RingBuffer.h	/^    void reset() {$/;"	f	class:RingBuffer
 reset	sendfile/File.h	/^    inline void reset() { fd_ = -1; size_ = 0; cur_ = 0; bzero(filename_, FILE_NAME_MAX_LENGTH); }$/;"	f	class:File
+reset	sendfile/RingBuffer.h	/^    void reset() {$/;"	f	class:RingBuffer
 resolver_	backup/http_proxy.cpp	/^    DNSResolver resolver_;$/;"	m	class:HttpProxyConnection	file:
 response	backup/http_proxy.cpp	/^    HttpResponse response;$/;"	m	struct:HttpProxyConnection::HttpTransaction	file:
 sem	test_mutex.cpp	/^FileLock* sem = nullptr;$/;"	v
+send	HttpFile/client.py	/^    def send(self, message):$/;"	m	class:client
+send	SSLContex.h	/^    int send(void* buf, size_t len, size_t* written) {$/;"	f	class:HttpsContext
+send	https_lib/SSLContext.cpp	/^    int send(void* buf, size_t len, size_t* written) {$/;"	f	class:SSLContext::HttpsContext
+send2Socket	HttpFile/File.cpp	/^int File::send2Socket(int sockfd, size_t& sendn) {$/;"	f	class:File
+send2Socket	HttpFile/File.cpp	/^int File::send2Socket(int sockfd, size_t& sendn, off_t& offset, size_t count) {$/;"	f	class:File
+send2Socket	HttpFile/RingBuffer.h	/^    int send2Socket(int sockfd) {$/;"	f	class:RingBuffer
+send2Socket	RingBuffer.h	/^    int send2Socket(int sockfd) {$/;"	f	class:RingBuffer
 send2Socket	sendfile/File.cpp	/^int File::send2Socket(int sockfd, size_t& sendn) {$/;"	f	class:File
+sendChunk2Socket	HttpFile/HttpBodyFile.h	/^    int sendChunk2Socket(int sockfd) {$/;"	f	class:HttpBodyFile
+sendContent2Socket	HttpFile/HttpBodyFile.h	/^    int sendContent2Socket(int sockfd) {$/;"	f	class:HttpBodyFile
+sendFile	HttpFile/sendcontent.cc	/^ssize_t sendFile(int out_fd, int in_fd, ssize_t len) {$/;"	f
+sendFile	HttpFile/sendfile.cc	/^ssize_t sendFile(int out_fd, int in_fd, ssize_t len) {$/;"	f
 sendFile	sendfile/sendfile.cc	/^ssize_t sendFile(int out_fd, int in_fd, ssize_t len) {$/;"	f
 server2close_	backup/http_proxy.cpp	/^    bool server2close_ = false;$/;"	m	class:HttpProxyConnection	file:
+serverCertfile	https_lib/Https.h	/^    std::string serverCertfile;$/;"	m	class:SSLContextFactory
 serverCloseHandle	backup/http_proxy.cpp	/^  int serverCloseHandle(Socket& server) {$/;"	f	class:HttpProxyConnection
 serverConnectTo	backup/http_proxy.cpp	/^    int serverConnectTo(const char* ip, time_t ttl) {$/;"	f	class:HttpProxyConnection
+serverContexts	https_lib/Https.h	/^    SSL_CTX* serverContexts[SSL_VERSION_UNKNOW];$/;"	m	class:SSLContextFactory
 serverDecideSkipBody	backup/http_proxy.cpp	/^    void serverDecideSkipBody() {$/;"	f	class:HttpProxyConnection	file:
 serverErrorHandle	backup/http_proxy.cpp	/^    int serverErrorHandle(Socket& server) {  return serverRDHUPHandle(server); }$/;"	f	class:HttpProxyConnection
 serverFirstWriteHandle	backup/http_proxy.cpp	/^    int serverFirstWriteHandle(Socket& server) {$/;"	f	class:HttpProxyConnection
@@ -245,16 +549,31 @@ serverTunnelReadHandle	backup/http_proxy.cpp	/^    int serverTunnelReadHandle(So
 serverTunnelWriteHandle	backup/http_proxy.cpp	/^    int serverTunnelWriteHandle(Socket& server) {$/;"	f	class:HttpProxyConnection
 serverWriteHandle	backup/http_proxy.cpp	/^    int serverWriteHandle(Socket& server) {$/;"	f	class:HttpProxyConnection
 serverptr_	test_http.cpp	/^    SocketPtr serverptr_ = nullptr;$/;"	m	class:ProxyConnection	file:
+setBlockingIO	HttpFile/File.h	/^    inline int setBlockingIO(int block) { if(validFd(fd_)) { return block != 1? nonBlocking(fd_): blocking(fd_); } return -1; }$/;"	f	class:File
 setBlockingIO	sendfile/File.h	/^    inline int setBlockingIO(int block) { if(validFd(fd_)) { return block != 1? nonBlocking(fd_): blocking(fd_); } return -1; }$/;"	f	class:File
 setEraseFunc	backup/http_proxy.cpp	/^    void setEraseFunc(LOOP_CALLBACK cb) { erase_func_ = cb; }$/;"	f	class:HttpProxyConnection
 setEventsLoopPtr	backup/http_proxy.cpp	/^    void setEventsLoopPtr(EventsLoop* loop) {$/;"	f	class:HttpProxyConnection
+setFile	HttpFile/HttpBodyFile.h	/^    void setFile(const char* filename) {$/;"	f	class:HttpBodyFile
+setFilename	HttpFile/File.cpp	/^void File::setFilename(const char* filename) {$/;"	f	class:File
 setFilename	sendfile/File.cpp	/^void File::setFilename(const char* filename) {$/;"	f	class:File
 setSocketRegisterFunc	backup/http_proxy.cpp	/^    void setSocketRegisterFunc(EventFunc f) {register_func_ = f;}$/;"	f	class:HttpProxyConnection
+setupCertKey	SSLContex.h	/^    int setupCertKey(X509* cert, EVP_PKEY* pkey) {$/;"	f	class:HttpsContext
+setupCertKey	https_lib/SSLContext.cpp	/^    int setupCertKey(X509* cert, EVP_PKEY* pkey) {$/;"	f	class:SSLContext::HttpsContext
 share_count	test_mutex.cpp	/^    share_count():count(0), pid(-1) {}$/;"	f	struct:share_count
 share_count	test_mutex.cpp	/^struct share_count {$/;"	s	file:
+showComplete	HttpFile/sendcontent.cc	25;"	d	file:
+showComplete	HttpFile/sendfile.cc	25;"	d	file:
 showComplete	sendfile/sendfile.cc	25;"	d	file:
 showIPAddress	test_dns.cpp	/^int showIPAddress(const char* ipaddr, time_t rttl) {$/;"	f
+showProcess	HttpFile/sendcontent.cc	/^void showProcess(long now, long total) {$/;"	f
+showProcess	HttpFile/sendfile.cc	/^void showProcess(long now, long total) {$/;"	f
 showProcess	sendfile/sendfile.cc	/^void showProcess(long now, long total) {$/;"	f
+size	HttpFile/HttpBodyFile.h	/^    size_t size() { return _file.getFileSize() + _ringbuf.size(); }$/;"	f	class:HttpBodyFile
+size	HttpFile/RingBuffer.h	/^    size_t size() { return (_size - space() - 1); }$/;"	f	class:RingBuffer
+size	RingBuffer.h	/^    size_t size() { return (_size - space() - 1); }$/;"	f	class:RingBuffer
+size	sendfile/HttpBodyFile.h	/^    size_t size() { return _file.getFileSize() + _ringbuf.size(); }$/;"	f	class:HttpBodyFile
+size	sendfile/RingBuffer.h	/^    size_t size() { return (_size - space() -1); }$/;"	f	class:RingBuffer
+size_	HttpFile/File.h	/^    off_t size_;$/;"	m	class:File
 size_	sendfile/File.h	/^    off_t size_;$/;"	m	class:File
 socketDisableReadEvent	backup/http_proxy.cpp	/^    bool socketDisableReadEvent(Socket& sock) {$/;"	f	class:HttpProxyConnection	file:
 socketDisableWriteEvent	backup/http_proxy.cpp	/^    bool socketDisableWriteEvent(Socket& sock) {$/;"	f	class:HttpProxyConnection	file:
@@ -264,6 +583,11 @@ socketNullHandle	backup/http_proxy.cpp	/^    int socketNullHandle(Socket& sock) 
 socketSetEventHandle	backup/http_proxy.cpp	/^    bool socketSetEventHandle(Socket& sock, EventFunc func, unsigned short flag) {$/;"	f	class:HttpProxyConnection	file:
 sockfd_	test_http.cpp	/^    socket_t sockfd_  = -1;$/;"	m	class:ProxyConnection	file:
 sockptr	http_server.cpp	/^    const SocketPtr sockptr;$/;"	m	class:HttpConnection	file:
+sogouShow	HttpFile/index.html	/^		function sogouShow(){}$/;"	f
+sosoShow	HttpFile/index.html	/^		function sosoShow(){}$/;"	f
+space	HttpFile/RingBuffer.h	/^    size_t space() {$/;"	f	class:RingBuffer
+space	RingBuffer.h	/^    size_t space() {$/;"	f	class:RingBuffer
+space	sendfile/RingBuffer.h	/^    size_t space() {$/;"	f	class:RingBuffer
 sparser_	backup/http_proxy.cpp	/^    HttpParser sparser_;$/;"	m	class:HttpProxyConnection	file:
 ssockptr	backup/http_proxy.cpp	/^    const SOCKETPTR ssockptr;$/;"	m	class:HttpProxyConnection	file:
 startLoop	backup/http_proxy.cpp	/^    int startLoop() {$/;"	f	class:HttpProxyLoop
@@ -272,29 +596,49 @@ staticWebCGI	http_server.cpp	/^    staticWebCGI(HttpRquest& request, HttpRespons
 staticWebCGI	http_server.cpp	/^class staticWebCGI {$/;"	c	file:
 stransaction_	backup/http_proxy.cpp	/^    HttpTransaction stransaction_;$/;"	m	class:HttpProxyConnection	file:
 tcpServer	test_http.cpp	/^int tcpServer(SocketPtr& master) {$/;"	f
-test	deleteself.cc	/^    mytest* test;$/;"	m	class:peer	file:
+test	backup/deleteself.cc	/^    mytest* test;$/;"	m	class:peer	file:
 test	test_bind.cpp	/^    int test(nocopy& np) {$/;"	f	class:testbind
 test	test_thread.cpp	/^void test() {$/;"	f
+testExist	HttpFile/File.h	/^    inline bool testExist() { return TEST_FILEACCESS(filename_, F_OK); }$/;"	f	class:File
 testExist	sendfile/File.h	/^    inline bool testExist() { return TEST_FILEACCESS(filename_, F_OK); }$/;"	f	class:File
+testRead	HttpFile/File.h	/^    inline bool testRead()  { return TEST_FILEACCESS(filename_, R_OK); }$/;"	f	class:File
 testRead	sendfile/File.h	/^    inline bool testRead()  { return TEST_FILEACCESS(filename_, R_OK); }$/;"	f	class:File
+testWrite	HttpFile/File.h	/^    inline bool testWrite() { return TEST_FILEACCESS(filename_, W_OK); }$/;"	f	class:File
 testWrite	sendfile/File.h	/^    inline bool testWrite() { return TEST_FILEACCESS(filename_, W_OK); }$/;"	f	class:File
 testbind	test_bind.cpp	/^    testbind() {}$/;"	f	class:testbind
 testbind	test_bind.cpp	/^class testbind {$/;"	c	file:
-testdata	deleteself.cc	/^    static int testdata;$/;"	m	class:mytest	file:
-testdata2	deleteself.cc	/^    static int testdata2;$/;"	m	class:mytest	file:
+testdata	backup/deleteself.cc	/^    static int testdata;$/;"	m	class:mytest	file:
+testdata2	backup/deleteself.cc	/^    static int testdata2;$/;"	m	class:mytest	file:
 testf	test_bind.cpp	/^int testf(function<int()> func) {$/;"	f
+topFixed	HttpFile/index.html	/^	function topFixed(){$/;"	f
 transferProxyBuffer	backup/http_proxy.cpp	/^    void transferProxyBuffer() {$/;"	f	class:HttpProxyConnection	file:
 tunnelReadClientCallback	test_http.cpp	/^int tunnelReadClientCallback(SocketPtr& clientptr) {$/;"	f
 tunnelReadServerCallback	test_http.cpp	/^int tunnelReadServerCallback(SocketPtr& serverptr) {$/;"	f
 tunnelWriteClientCallback	test_http.cpp	/^int tunnelWriteClientCallback(SocketPtr& clientptr) {$/;"	f
 tunnelWriteServerCallback	test_http.cpp	/^int tunnelWriteServerCallback(SocketPtr& serverptr) {$/;"	f
 udpsock	test_dns.cpp	/^Socket udpsock;$/;"	v
+unlink	HttpFile/File.h	/^    inline int unlink() { return ::unlink(filename_); }$/;"	f	class:File
 unlink	sendfile/File.h	/^    inline int unlink() { return ::unlink(filename_); }$/;"	f	class:File
 unlinkServer	test_http.cpp	/^    bool unlinkServer(SocketPtr& sockptr) {$/;"	f	class:ProxyConnection
+updateChannel	TimedEvent.h	/^    int updateChannel(Channel* cnptr) {$/;"	f	class:TimedEvent
+userLogin	HttpFile/index.html	/^	function userLogin(){$/;"	f
 uuid	backup/http_proxy.cpp	/^    static IDTYPE uuid() {$/;"	f	class:HttpProxyConnection	file:
+validFd	HttpFile/File.h	19;"	d
 validFd	sendfile/File.h	16;"	d
 writeCallback	test_http.cpp	/^int writeCallback(SocketPtr& sockptr) {$/;"	f
+writeIn	HttpFile/File.cpp	/^ssize_t File::writeIn(const char* buf, size_t len) {$/;"	f	class:File
+writeIn	HttpFile/RingBuffer.h	/^    int writeIn(const char* buf, size_t length) {$/;"	f	class:RingBuffer
+writeIn	RingBuffer.h	/^    int writeIn(const char* buf, size_t length) {$/;"	f	class:RingBuffer
 writeIn	sendfile/File.cpp	/^ssize_t File::writeIn(const char* buf, size_t len) {$/;"	f	class:File
+writeIn	sendfile/RingBuffer.h	/^    int writeIn(const char* buf, size_t length) {$/;"	f	class:RingBuffer
+~File	HttpFile/File.cpp	/^File::~File() {$/;"	f	class:File
 ~File	sendfile/File.cpp	/^File::~File() {$/;"	f	class:File
 ~HttpProxyConnection	backup/http_proxy.cpp	/^    ~HttpProxyConnection() {$/;"	f	class:HttpProxyConnection
-~mytest	deleteself.cc	/^   ~mytest() {$/;"	f	class:mytest
+~HttpsContext	SSLContex.h	/^    ~HttpsContext() {$/;"	f	class:HttpsContext
+~HttpsContext	https_lib/SSLContext.cpp	/^    ~HttpsContext() {$/;"	f	class:SSLContext::HttpsContext
+~RingBuffer	HttpFile/RingBuffer.h	/^    ~RingBuffer() {$/;"	f	class:RingBuffer
+~RingBuffer	RingBuffer.h	/^    ~RingBuffer() {$/;"	f	class:RingBuffer
+~RingBuffer	sendfile/RingBuffer.h	/^    ~RingBuffer() {$/;"	f	class:RingBuffer
+~SSLContextFactory	https_lib/Https.h	/^    ~SSLContextFactory() {$/;"	f	class:SSLContextFactory
+~TimeEvent	TimedEvent.h	/^    ~TimeEvent() { destory(); }$/;"	f	class:TimedEvent
+~mytest	backup/deleteself.cc	/^   ~mytest() {$/;"	f	class:mytest

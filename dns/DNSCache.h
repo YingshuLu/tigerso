@@ -10,7 +10,7 @@
 #include "core/SysUtil.h"
 #include "ssl/SSLHelper.h"
 
-namespace tigerso::dns {
+namespace tigerso {
 
 #define CACHE_FILE_NAME "dnscache.dat"
 #define MD5_KEYSIZE 16
@@ -60,8 +60,8 @@ private:
        
 private:
     static DNSCache* pInstance_;
-    core::SharedMemory shm_;
-    core::ShmMutex  mutex_; //process-shared mutex
+    SharedMemory shm_;
+    ShmMutex  mutex_; //process-shared mutex
     std::map<std::string, std::vector<std::string>> stickDNSData_;
     std::map<std::string, std::pair<std::string, time_t>> shmCache_;
     static std::string cachefile_; 

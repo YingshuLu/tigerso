@@ -10,7 +10,7 @@
 #include "core/CurrentThread.h"
 #include "core/BaseClass.h"
 
-namespace tigerso::core {
+namespace tigerso {
 
 class Thread: public nocopyable {
 public:

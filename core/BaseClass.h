@@ -3,7 +3,7 @@
 
 //Base class
 
-namespace tigerso::core {
+namespace tigerso {
 
 class nocopyable {
 public:
@@ -26,5 +26,5 @@ protected:
 };
 
 
-} //namespace tscore
+} //namespace ts
 #endif // TS_CORE_BASECLASS_H_

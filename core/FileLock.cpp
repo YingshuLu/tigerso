@@ -1,7 +1,7 @@
 #include "core/tigerso.h"
 #include "core/FileLock.h"
 
-namespace tigerso::core {
+namespace tigerso {
     
 FileLock::FileLock(const std::string& filename, const std::string& content): filename_(filename), content_(content) {
     init();

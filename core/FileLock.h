@@ -9,7 +9,7 @@
 #define LOCK_SUCCESS 0
 #define LOCK_FAILURE -1
 
-namespace tigerso::core {
+namespace tigerso {
 
 
 class FileLock: public Lock {

@@ -1,0 +1,64 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+GLOBAL	Https.h	6;"	d
+HttpsContext	SSLContext.cpp	/^    HttpsContext():  {}$/;"	f	class:SSLContext::HttpsContext
+HttpsContext	SSLContext.cpp	/^class HttpsContext {$/;"	c	namespace:SSLContext	file:
+SSLContext	SSLContext.cpp	/^namespace SSLContext {$/;"	n	file:
+SSLContextFactory	Https.h	/^class SSLContextFactory {$/;"	c
+SSLVersion	Https.h	/^} SSLVersion;$/;"	t	typeref:enum:_SSL_version
+SSL_VERSION_ALL	Https.h	/^    SSL_VERSION_ALL,$/;"	e	enum:_SSL_version
+SSL_VERSION_SSLV3	Https.h	/^    SSL_VERSION_SSLV3,$/;"	e	enum:_SSL_version
+SSL_VERSION_TLS10	Https.h	/^    SSL_VERSION_TLS10,$/;"	e	enum:_SSL_version
+SSL_VERSION_TLS11	Https.h	/^    SSL_VERSION_TLS11,$/;"	e	enum:_SSL_version
+SSL_VERSION_TLS12	Https.h	/^    SSL_VERSION_TLS12,$/;"	e	enum:_SSL_version
+SSL_VERSION_UNKNOW	Https.h	/^    SSL_VERSION_UNKNOW$/;"	e	enum:_SSL_version
+ServerCertVerifyCallback	SSLContext.cpp	/^typedef int(*ServerCertVerifyCallback)(int, X509_STORE_CTX*);$/;"	t	namespace:SSLContext	file:
+_SSL_version	Https.h	/^typedef enum _SSL_version {$/;"	g
+_clientVerifyServerCertCallback	SSLContext.cpp	/^    int _clientVerifyServerCertCallback(int ok, X509_STORE_CTX* xstore) {$/;"	f	namespace:SSLContext
+_initClientContext	SSLContext.cpp	/^    int _initClientContext(const char* trustCAPath, const char* crlPath) {$/;"	f	namespace:SSLContext
+_initServerContext	SSLContext.cpp	/^    int _initServerContext(const char* servercert, const char* privatekey) {$/;"	f	namespace:SSLContext
+_ownCert	SSLContext.cpp	/^    X509* _ownCert = nullptr;$/;"	m	class:SSLContext::HttpsContext	file:
+_peerCert	SSLContext.cpp	/^    X509* _peerCert = nullptr;$/;"	m	class:SSLContext::HttpsContext	file:
+_role	SSLContext.cpp	/^    HttpsRole _role = HTTPS_ROLE_UNKNOWN;$/;"	m	class:SSLContext::HttpsContext	file:
+_ssl	SSLContext.cpp	/^    SSL* _ssl = nullptr;$/;"	m	class:SSLContext::HttpsContext	file:
+_sslctx	SSLContext.cpp	/^    SSL_CTX* _sslctx = nullptr;$/;"	m	class:SSLContext::HttpsContext	file:
+_uinitClientContext	SSLContext.cpp	/^    void _uinitClientContext() {$/;"	f	namespace:SSLContext
+_uinitServerContext	SSLContext.cpp	/^    void _uinitServerContext() {$/;"	f	namespace:SSLContext
+accept	SSLContext.cpp	/^    int accept() {$/;"	f	class:SSLContext::HttpsContext
+active	SSLContext.cpp	/^    bool active() {$/;"	f	class:SSLContext::HttpsContext
+bindSocket	SSLContext.cpp	/^    int bindSocket(int sockfd) {$/;"	f	class:SSLContext::HttpsContext
+cleanup_openssl	https_client.cpp	/^void cleanup_openssl()$/;"	f
+cleanup_openssl	https_server.cpp	/^void cleanup_openssl()$/;"	f
+clientContexts	Https.h	/^    SSL_CTX* clientContexts[SSL_VERSION_UNKNOW];$/;"	m	class:SSLContextFactory
+close	SSLContext.cpp	/^    int close() {$/;"	f	class:SSLContext::HttpsContext
+configure_context	https_client.cpp	/^void configure_context(SSL_CTX *ctx)$/;"	f
+configure_context	https_server.cpp	/^void configure_context(SSL_CTX *ctx)$/;"	f
+connect	SSLContext.cpp	/^    int connect() {$/;"	f	class:SSLContext::HttpsContext
+create_context	https_client.cpp	/^SSL_CTX *create_context()$/;"	f
+create_context	https_server.cpp	/^SSL_CTX *create_context()$/;"	f
+create_socket	https_client.cpp	/^int create_socket(Socket& server, const char* host)$/;"	f
+create_socket	https_server.cpp	/^int create_socket(int port)$/;"	f
+destory	Https.h	/^    void destory() {$/;"	f	class:SSLContextFactory
+g_client_ssl_ctx	SSLContext.cpp	/^    static SSL_CTX* g_client_ssl_ctx = NULL;$/;"	m	namespace:SSLContext	file:
+g_config	SSLContext.cpp	/^    ConfigParser* g_config = ConfigParser::getInstance(); $/;"	m	namespace:SSLContext	file:
+g_server_cert_verify_cb	SSLContext.cpp	/^    static serverCertVerifyCallback g_server_cert_verify_cb = NULL;$/;"	m	namespace:SSLContext	file:
+g_server_ssl_ctx	SSLContext.cpp	/^    static SSL_CTX* g_server_ssl_ctx = NULL;$/;"	m	namespace:SSLContext	file:
+getClientSSLCTX	SSLContext.cpp	/^    SSL_CTX* getClientSSLCTX() {$/;"	f	namespace:SSLContext
+getServerSSLCTX	SSLContext.cpp	/^    SSL_CTX* getServerSSLCTX() {$/;"	f	namespace:SSLContext
+init	SSLContext.cpp	/^    int init(int role) {$/;"	f	class:SSLContext::HttpsContext
+init_openssl	https_client.cpp	/^void init_openssl()$/;"	f
+init_openssl	https_server.cpp	/^void init_openssl()$/;"	f
+initilize	Https.h	/^    void initilize() {$/;"	f	class:SSLContextFactory
+main	https_client.cpp	/^int main(int argc, char **argv)$/;"	f
+main	https_server.cpp	/^int main(int argc, char **argv)$/;"	f
+recv	SSLContext.cpp	/^    int recv(void* buf, size_t len, size_t* readn) {$/;"	f	class:SSLContext::HttpsContext
+send	SSLContext.cpp	/^    int send(void* buf, size_t len, size_t* written) {$/;"	f	class:SSLContext::HttpsContext
+serverCertfile	Https.h	/^    std::string serverCertfile;$/;"	m	class:SSLContextFactory
+serverContexts	Https.h	/^    SSL_CTX* serverContexts[SSL_VERSION_UNKNOW];$/;"	m	class:SSLContextFactory
+setupCertKey	SSLContext.cpp	/^    int setupCertKey(X509* cert, EVP_PKEY* pkey) {$/;"	f	class:SSLContext::HttpsContext
+~HttpsContext	SSLContext.cpp	/^    ~HttpsContext() {$/;"	f	class:SSLContext::HttpsContext
+~SSLContextFactory	Https.h	/^    ~SSLContextFactory() {$/;"	f	class:SSLContextFactory

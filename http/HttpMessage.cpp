@@ -1,6 +1,6 @@
 #include "http/HttpMessage.h"
 
-namespace tigerso::http {
+namespace tigerso {
 
 typedef std::map<int, std::string>::value_type  status_pair_t;
 static const status_pair_t response_status_array [] = {

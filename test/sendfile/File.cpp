@@ -30,6 +30,7 @@ ssize_t File::writeIn(const char* buf, size_t len) {
     //override write
     if(lseek(wfd, 0, SEEK_SET) == -1) { return FILE_FD_INVALID; }
     ssize_t writen = ::write(wfd, buf, len);
+    if(writen < len) { ::syncfs(wfd); }
     ::close(wfd);
     return writen;
 }

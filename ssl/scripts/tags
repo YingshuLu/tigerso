@@ -1,0 +1,16 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+_TMP_CA_PEM_DIR	ca_converter.py	/^_TMP_CA_PEM_DIR=".\/tmp_capem\/"$/;"	v
+clear_oldPEM	build_castore.sh	/^clear_oldPEM () {$/;"	f
+fetchUrl	ca_converter.py	/^def fetchUrl(url):$/;"	f
+getLicense	ca_converter.py	/^def getLicense(lines, num):$/;"	f
+hash_caPEM	build_castore.sh	/^hash_caPEM() {$/;"	f
+isCertTrusted	ca_converter.py	/^def isCertTrusted(cert, trusts, explicitTrustOnly, trustServerAuth,$/;"	f
+main	ca_converter.py	/^def main(explicitTrustOnly = True, trustServerAuth = True,$/;"	f
+parseMultlineOctal	ca_converter.py	/^def parseMultlineOctal(lines, num):$/;"	f
+parseNSSFile	ca_converter.py	/^def parseNSSFile(explicitTrustOnly = True, trustServerAuth = True,$/;"	f
+wrapB64	ca_converter.py	/^def wrapB64(str, width = 70):$/;"	f

@@ -1,0 +1,41 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+FileTypeDetector	FileTypeDetector.h	/^    FileTypeDetector() {}$/;"	f	class:tigerso::FileTypeDetector
+FileTypeDetector	FileTypeDetector.h	/^class FileTypeDetector: public nocopyable {$/;"	c	namespace:tigerso
+FileTypeDetector	FileTypes/FileTypeDetector.h	/^    FileTypeDetector() {}$/;"	f	class:tigerso::util::FileTypeDetector
+FileTypeDetector	FileTypes/FileTypeDetector.h	/^class FileTypeDetector: public core::nocopyable {$/;"	c	namespace:tigerso::util
+ScanFileType	FileTypeDetector.h	/^struct ScanFileType {$/;"	s	namespace:tigerso
+ScanFileType	FileTypes/FileTypeDetector.h	/^struct ScanFileType {$/;"	s	namespace:tigerso::util
+TS_UTIL_FILETYPEDETECTOR_H_	FileTypeDetector.h	2;"	d
+TS_UTIL_FILETYPEDETECTOR_H_	FileTypes/FileTypeDetector.h	2;"	d
+cookie_	FileTypeDetector.h	/^    magic_t cookie_ = NULL;$/;"	m	class:tigerso::FileTypeDetector
+cookie_	FileTypes/FileTypeDetector.h	/^    magic_t cookie_ = NULL;$/;"	m	class:tigerso::util::FileTypeDetector
+detectBuffer	FileTypeDetector.h	/^    const char* detectBuffer(const char* buffer, size_t len) {$/;"	f	class:tigerso::FileTypeDetector
+detectBuffer	FileTypes/FileTypeDetector.h	/^    const char* detectBuffer(const char* buffer, size_t len) {$/;"	f	class:tigerso::util::FileTypeDetector
+detectFd	FileTypeDetector.h	/^    const char* detectFd(const int fd) {$/;"	f	class:tigerso::FileTypeDetector
+detectFd	FileTypes/FileTypeDetector.h	/^    const char* detectFd(const int fd) {$/;"	f	class:tigerso::util::FileTypeDetector
+detectFile	FileTypeDetector.h	/^    const char* detectFile(const char* filename) {$/;"	f	class:tigerso::FileTypeDetector
+detectFile	FileTypeDetector.h	/^    const char* detectFile(const std::string& file) { return detectFile(file.c_str()); }$/;"	f	class:tigerso::FileTypeDetector
+detectFile	FileTypes/FileTypeDetector.h	/^    const char* detectFile(const char* filename) {$/;"	f	class:tigerso::util::FileTypeDetector
+detectFile	FileTypes/FileTypeDetector.h	/^    const char* detectFile(const std::string& file) { return detectFile(file.c_str()); }$/;"	f	class:tigerso::util::FileTypeDetector
+ext_list	FileTypeDetector.h	/^    const char* ext_list;$/;"	m	struct:tigerso::ScanFileType
+ext_list	FileTypes/FileTypeDetector.h	/^    const char* ext_list;$/;"	m	struct:tigerso::util::ScanFileType
+group	FileTypeDetector.h	/^    const char* group;$/;"	m	struct:tigerso::ScanFileType
+group	FileTypes/FileTypeDetector.h	/^    const char* group;$/;"	m	struct:tigerso::util::ScanFileType
+init	FileTypeDetector.h	/^    int init(int flags = MAGIC_MIME_TYPE) {$/;"	f	class:tigerso::FileTypeDetector
+init	FileTypes/FileTypeDetector.h	/^    int init(int flags = MAGIC_MIME_TYPE) {$/;"	f	class:tigerso::util::FileTypeDetector
+main	main.cc	/^int main(int argc, char* argv[]) {$/;"	f
+mime	FileTypeDetector.h	/^    const char* mime;$/;"	m	struct:tigerso::ScanFileType
+mime	FileTypes/FileTypeDetector.h	/^    const char* mime;$/;"	m	struct:tigerso::util::ScanFileType
+name	FileTypeDetector.h	/^    const char* name;$/;"	m	struct:tigerso::ScanFileType
+name	FileTypes/FileTypeDetector.h	/^    const char* name;$/;"	m	struct:tigerso::util::ScanFileType
+tigerso	FileTypeDetector.h	/^namespace tigerso {$/;"	n
+typenum	FileTypeDetector.h	/^    int typenum;$/;"	m	struct:tigerso::ScanFileType
+typenum	FileTypes/FileTypeDetector.h	/^    int typenum;$/;"	m	struct:tigerso::util::ScanFileType
+util	FileTypes/FileTypeDetector.h	/^namespace tigerso::util {$/;"	n	class:tigerso
+~FileTypeDetector	FileTypeDetector.h	/^    ~FileTypeDetector() {$/;"	f	class:tigerso::FileTypeDetector
+~FileTypeDetector	FileTypes/FileTypeDetector.h	/^    ~FileTypeDetector() {$/;"	f	class:tigerso::util::FileTypeDetector

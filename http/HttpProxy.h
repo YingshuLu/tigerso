@@ -20,11 +20,7 @@
 #include "dns/DNSResolver.h"
 #include "core/Logging.h"
 
-namespace tigerso::http {
-
-using namespace tigerso::net;
-using namespace tigerso::dns;
-using namespace tigerso::core;
+namespace tigerso {
 
 typedef unsigned long IDTYPE;  
 
@@ -179,7 +175,7 @@ private:
 
 private:
     const SocketPtr msockptr_;
-    net::EventsLoop eloop_;
+    EventsLoop eloop_;
     const std::string ipaddr_;
     const std::string port_;
 };

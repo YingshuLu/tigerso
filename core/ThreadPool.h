@@ -14,7 +14,7 @@
 #include "core/ThreadMutex.h"
 #include "core/Thread.h"
 
-namespace tigerso::core {
+namespace tigerso {
 
 class ThreadPool: public nocopyable {
 public:

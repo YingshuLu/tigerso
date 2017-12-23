@@ -9,7 +9,7 @@
 #include <string>
 #include "core/BaseClass.h"
 
-namespace tigerso::util {
+namespace tigerso {
 
 struct ScanFileType {
     const char* name;
@@ -23,7 +23,7 @@ struct ScanFileType {
 //By default, only detect MIME-TYPE
 //Using libmagic to perform this
 
-class FileTypeDetector: public core::nocopyable {
+class FileTypeDetector: public nocopyable {
 public:
     FileTypeDetector() {}
 

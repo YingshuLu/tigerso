@@ -10,7 +10,7 @@
 #include "core/tigerso.h"
 #include "core/BaseClass.h"
 
-namespace tigerso::core {
+namespace tigerso {
 
 using std::string;
 using std::shared_ptr;

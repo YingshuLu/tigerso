@@ -5,7 +5,7 @@
 #include "net/SocketUtil.h"
 #include "net/Channel.h"
 
-namespace tigerso::net {
+namespace tigerso {
 
 bool Socket::operator==(const Socket& sock) const {
     return sockfd_ == sock.getSocket();
@@ -24,7 +24,7 @@ bool Socket::operator>(const Socket& sock) const {
 }
 
 bool Socket::exist() const {
-    return sockfd_ > 0;
+    return sockfd_ >= 0;
 }
 
 socket_t Socket::getSocket() const {
@@ -90,7 +90,7 @@ void Socket::setNIO(bool unblock) {
         return;
     }
 
-    flags = unblock? (flags | O_NONBLOCK): (flags ^ O_NONBLOCK);
+    flags = unblock? (flags | O_NONBLOCK): (flags & (~O_NONBLOCK));
     if( fcntl(sockfd_, F_SETFL, flags) < 0 ) {
         DBG_LOG("fctnl set flag failed");
         return;
@@ -108,13 +108,30 @@ void Socket::setTcpNoDelay(bool on) {
     SocketUtil::SetTcpNoDelay(*this, on);
 }
 
+void Socket::setCloseExec(bool on) {
+   int flags = fcntl(sockfd_, F_GETFL, 0);
+    if(flags < 0) {
+        DBG_LOG("fcntl get flag failed");
+        return;
+    }
+
+    flags = on? (flags | FD_CLOEXEC): (flags ^ FD_CLOEXEC);
+    if( fcntl(sockfd_, F_SETFL, flags) < 0 ) {
+        DBG_LOG("fctnl set flag failed");
+        return;
+    }
+    return;
+}
+
 ssize_t Socket::recvNIO() {
     setNIO(true);
     auto ptr = bufPtr_.in_.lock();
     if( !ptr || !this->exist() ) {
+        DBG_LOG("socket is closed");
         return -1;
     }
-    return ptr->recvNIO(sockfd_);
+    //return ptr->recvNIO(sockfd_);
+    return ptr->recvFromSocket(*this);
 }
 
 ssize_t Socket::recvBIO() {
@@ -130,9 +147,11 @@ ssize_t Socket::sendNIO() {
     setNIO(true);
     auto ptr = bufPtr_.out_.lock();
     if( !ptr || !this->exist() ) {
+        DBG_LOG("socket is closed");
         return -1;
     }
-    return ptr->sendNIO(sockfd_);
+    //return ptr->sendNIO(sockfd_);
+    return ptr->sendToSocket(*this);
 }
 
 ssize_t Socket::sendBIO() {
@@ -206,6 +225,19 @@ ssize_t Socket::sendNIO(std::string& data) {
     }
     return retcode; 
 }
+int Socket::perpareSSLContext() {
+    int ret = 0;
+    if(SOCKET_ROLE_CLIENT == role_) {
+        ret = sctx.init(SCTX_ROLE_SERVER);
+    }
+    else if(SOCKET_ROLE_SERVER == role_) {
+        ret =  sctx.init(SCTX_ROLE_CLIENT);
+    }
+
+    if(ret < 0) { return -1; }
+    
+    return sctx.bindSocket(sockfd_);
+}
 
 int Socket::close() {
     Channel* cnptr = this->channelptr;
@@ -214,12 +246,15 @@ int Socket::close() {
     }
     //clear channelptr
     channelptr = nullptr;
+    if(isSSL()) { sctx.close(); }
+ 
     return SocketUtil::Close(*this);
 }
 
 void Socket::reset() {
     channelptr = nullptr;
     blockIO_ = false;
+    listening = false;
     role_ = SOCKET_ROLE_UINIT;
     stage_ = SOCKET_STAGE_UINIT;
     addr_ = "";

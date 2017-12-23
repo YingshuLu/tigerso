@@ -6,7 +6,7 @@
 #include "core/ConfigParser.h"
 #include <string.h>
 
-namespace tigerso::core {
+namespace tigerso {
 
 ConfigParser* ConfigParser::pInstance = NULL;
 

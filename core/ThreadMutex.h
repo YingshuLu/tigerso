@@ -8,7 +8,7 @@
 #include "core/BaseClass.h"
 #include "core/CurrentThread.h"
 
-namespace tigerso::core {
+namespace tigerso {
 
 class ThreadMutex: public Lock {
 public:

@@ -7,9 +7,9 @@
 #include "net/SocketUtil.h"
 #include "core/Logging.h"
 #include "core/tigerso.h"
+#include "ssl/SSLContext.h"
 
-namespace tigerso::net {
-using tigerso::core::Logging;
+namespace tigerso {
 
 int SocketUtil::InitSocket(const int domain, const int type, Socket& mcsock) {
 	socket_t sockfd = ::socket(domain, type, 0);
@@ -71,6 +71,7 @@ int SocketUtil::Listen(Socket& mcsock, const int backlog) {
 		return -1;
 	}
 
+    mcsock.listening = true;
 	// set socket type and stage 
 	mcsock.setRole(SOCKET_ROLE_SERVER);
 	mcsock.setStage(SOCKET_STAGE_LISTEN);
@@ -87,6 +88,7 @@ int SocketUtil::Accept(Socket& listen_mcsock, Socket& accept_mcsock) {
 	client_socket = ::accept(server_socket, (sockaddr*) &client_addr, &addr_len);
 	
 	if(client_socket < 0) {
+        DBG_LOG("accept error: %d, reason: %s", errno, strerror(errno));
 		return -1;
 	}
 
@@ -107,6 +109,7 @@ int SocketUtil::Accept(Socket& listen_mcsock, Socket& accept_mcsock) {
     //set tcp connect attribute
     SetKeepAlive(accept_mcsock, true);
     SetTcpNoDelay(accept_mcsock, true);
+    SetCloseOnExec(accept_mcsock);
 	return 0;
 }
 
@@ -132,19 +135,22 @@ int SocketUtil::Connect(Socket& mcsock, const std::string& s_addr, const std::st
     mcsock.setStrPort(port);
 	mcsock.setRole(SOCKET_ROLE_SERVER); 
 
-	int ret = ::connect(sockfd, (sockaddr*) &server_addr, addr_len);
-    DBG_LOG("connect return: %d", ret);
-
     mcsock.setSocket(sockfd);
     mcsock.setNIO(true);
-    if( ret < 0 ) {
+	int ret = ::connect(sockfd, (sockaddr*) &server_addr, addr_len);
+    if(ret < 0) {
+        //Need recall Connect to establish connection
         if(errno == EINPROGRESS || errno == EALREADY) {
+            DBG_LOG("connect need recall: %d, reason: %s", errno, strerror(errno));
 	        mcsock.setStage(SOCKET_STAGE_CONNECT);
-            return 0;
+            return 1;
         }
-        return ret;
+        DBG_LOG("connect error, errno: %d, reason: %s", errno, strerror(errno));
+        return -1;
     }
 
+    DBG_LOG("connection establised immediately");
+    SetCloseOnExec(mcsock);
 	mcsock.setStage(SOCKET_STAGE_CONNECT);
 	return 0;
 }
@@ -326,11 +332,12 @@ bool SocketUtil::TestConnect(Socket& sock) {
                 return false;
             }
 
-	        ::connect(sock.getSocket(), (sockaddr*) &server_addr, addr_len);
-            if(errno == EISCONN) {
-                DBG_LOG("socket connected!");
+	        int ret = ::connect(sock.getSocket(), (sockaddr*) &server_addr, addr_len);
+            if(ret == 0 || errno == EISCONN) {
+                DBG_LOG("connection established!");
                 return true;
             }
+            DBG_LOG("test connection result: %d, %s", errno, strerror(errno));
         }
         else if(sock.getStage() == SOCKET_STAGE_RECV || sock.getStage() == SOCKET_STAGE_SEND) {
             return true;
@@ -415,36 +422,27 @@ int SocketUtil::CreateUDPConnect(
     // set addr reuse
     if(!SocketUtil::SetAddrReuseable(mcsock, true)) {
         DBG_LOG("error: can not set master socket addr reuseable");
-		return 1;
+		return -1;
     }
 
     // set port reuse
     if(!SocketUtil::SetPortReuseable(mcsock, true)) {
         DBG_LOG("error: can not set master socket port reuseable");
-		return 2;
+		return -1;
     }
 
-    //set noblocking
     mcsock.setNIO(unblock);
-
-    // bind()
-    /*
-	if(SocketUtil::Bind(mcsock, "10.64.75.131", "3553", -1) != 0) {
-		DBG_LOG("socket: master socket Bind failed");
-		return 4;
-	}
-    INFO_LOG("UDP socket[%d] connect to  %s:%s", mcsock.getSocket(), ip.c_str(), pt.c_str());
-    */
-
+	DBG_LOG("create UDP socket [%d],  connect to remote server: %s:%s", mcsock.getSocket(), ip.c_str(), port.c_str());
     //connect()
-    if(SocketUtil::Connect(mcsock, ip, port, SOCK_DGRAM) != 0)
+    int retcode = 0;
+    if((retcode = SocketUtil::Connect(mcsock, ip, port, SOCK_DGRAM)) < 0)
     {
-		DBG_LOG("socket: UDP socket connect failed");
-		return 5;
+		DBG_LOG("socket: UDP socket connect failed!");
+		return -1;
     }
 
     mcsock.setNIO(unblock);
-    return 0;
+    return retcode;
 }
 
 int SocketUtil::RelocateFileDescriptor(int oldfd, int leastfd) {
@@ -458,6 +456,84 @@ int SocketUtil::RelocateFileDescriptor(int oldfd, int leastfd) {
     }
     ::close(oldfd);
     return newfd;
+}
+
+int SocketUtil::Recv(Socket& mcsock, void* buf, size_t len, size_t* recvn) {
+    int ret = 0;
+    /*original socket*/
+    if(!mcsock.isSSL()) {
+        ret = ::recv(mcsock.getSocket(), buf, len, MSG_DONTWAIT);
+        if(0 >= ret) {
+           if( EAGAIN == errno || EWOULDBLOCK) { 
+                if(recvn != NULL) {
+                    *recvn = ret;
+                }
+               return TIGERSO_IO_RECALL;
+           }
+           INFO_LOG("Socket recv error: %d, %s", errno, strerror(errno));
+           return TIGERSO_IO_ERROR;
+        }
+        if(recvn != NULL) {
+            *recvn = ret;
+        }
+        return TIGERSO_IO_OK;
+    }
+
+    size_t rn = 0;
+    ret = mcsock.sctx.recv(buf, len, &rn);
+    if(SCTX_IO_ERROR == ret) {
+       return TIGERSO_IO_ERROR;
+    }
+    else if(SCTX_IO_RECALL == ret) {
+        if(recvn != NULL) {
+            *recvn = rn;
+        }
+        return TIGERSO_IO_RECALL;
+    }
+
+    if(recvn != NULL) {
+        *recvn = rn;
+    }
+    return TIGERSO_IO_OK;
+}
+
+int SocketUtil::Send(Socket& mcsock, const void* buf, size_t len, size_t* sendn) {
+    int ret = 0;
+    /*original socket*/
+    if(!mcsock.isSSL()) {
+        ret = ::send(mcsock.getSocket(), buf, len, MSG_DONTWAIT|MSG_NOSIGNAL);
+        if(0 > ret) {
+           if( EAGAIN == errno || EWOULDBLOCK) { 
+                if(sendn != NULL) {
+                    *sendn = ret;
+                }
+               return TIGERSO_IO_RECALL;
+           }
+           INFO_LOG("Socket send error: %d, %s", errno, strerror(errno));
+           return TIGERSO_IO_ERROR;
+        }
+        if(sendn != NULL) {
+            *sendn = ret;
+        }
+        return TIGERSO_IO_OK;
+    }
+
+    size_t sn = 0;
+    ret = mcsock.sctx.send(buf, len, &sn);
+    if(SCTX_IO_ERROR == ret) {
+       return TIGERSO_IO_ERROR;
+    }
+    else if(SCTX_IO_RECALL == ret) {
+        if(sendn != NULL) {
+            *sendn = sn;
+        }
+        return TIGERSO_IO_RECALL;
+    }
+
+    if(sendn != NULL) {
+        *sendn = sn;
+    }
+    return TIGERSO_IO_OK;
 }
 
 } //namespace tigerso::net

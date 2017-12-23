@@ -12,7 +12,7 @@
 #include "core/tigerso.h"
 #include "http/HttpMessage.h"
 
-namespace tigerso::http {
+namespace tigerso {
 /*Http parser
  *NEVER change to be parserd buf
  *Parser would store values on HTTPMessage
@@ -38,7 +38,7 @@ typedef enum{
 #define HP_PARSE_COMPLETE 0
 #define HP_PARSE_NEED_MOREDATA 1
 
-class HttpParser: public core::nocopyable {
+class HttpParser: public nocopyable {
 public:
     HttpParser(): buffer_(nullptr), length_(0), parsedn_(0), state_(PARSE_UNINIT), message_(nullptr) {}
     int parse(const char*, size_t, HttpMessage&);
