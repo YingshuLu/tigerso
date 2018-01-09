@@ -1,10 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <fcntl.h>
 #include "net/RingBuffer.h"
 #include "net/SocketUtil.h"
 #include "core/tigerso.h"
@@ -12,17 +5,17 @@
 namespace tigerso {
 
 RingBuffer::RingBuffer(const size_t len) {
-    if(len > RINGBUFFER_MAX_LENGTH) { _size = RINGBUFFER_MAX_LENGTH; }
-    else if( len < RINGBUFFER_MAX_LENGTH) { _size = RINGBUFFER_MIN_LENGTH; }
-    else { _size = len; }
+    if(len > RINGBUFFER_MAX_LENGTH) { _capacity = RINGBUFFER_MAX_LENGTH; }
+    else if( len < RINGBUFFER_MIN_LENGTH) { _capacity = RINGBUFFER_MIN_LENGTH; }
+    else { _capacity = len; }
 
     /*reserve one slot to decide if buffer is empty or full.*/
-    _size += 1;
-    _buffer = (char*) malloc(_size);
+    _capacity += 1;
+    _buffer = (char*) malloc(_capacity);
     clear();
 }
 
-size_t RingBuffer::size() { return (_size - space() - 1); }
+size_t RingBuffer::size() { return (_capacity - space() - 1); }
 bool RingBuffer::isFull() { return (space() == 0); }
 bool RingBuffer::isEmpty() { return  (_readptr == _writeptr); }
 
@@ -33,8 +26,9 @@ int RingBuffer::writeIn(const char* buf, size_t length) {
     size_t len = length;
     if(space() < len) { len = space(); }
 
-    if(_writeptr > _readptr) {
-        size_t right = _size - (_writeptr - _buffer);
+    DBG_LOG("before write in: readptr: %d, writeptr: %d", _readptr - _buffer, _writeptr - _buffer);
+    if(_writeptr >= _readptr) {
+        size_t right = _capacity - (_writeptr - _buffer);
         if(len <= right) { 
             memcpy(_writeptr, buf, len);
             _writeptr += len;
@@ -49,6 +43,8 @@ int RingBuffer::writeIn(const char* buf, size_t length) {
         memcpy(_writeptr, buf, len);
         _writeptr += len;
     }
+
+    DBG_LOG("after write in: readptr: %d, writeptr: %d", _readptr - _buffer, _writeptr - _buffer);
     DBG_LOG("RingBuffer write in %ld bytes\n", len);
     return len;
 }
@@ -61,8 +57,8 @@ int RingBuffer::writeInFromFile(File& file) {
 
     size_t len = space();
     ssize_t readn = 0;
-    if(_writeptr > _readptr) {
-        size_t right = _size - (_writeptr - _buffer);
+    if(_writeptr >= _readptr) {
+        size_t right = _capacity - (_writeptr - _buffer);
         readn = file.continuousReadOut(_writeptr, right);
         if(-1 == readn) {
             return TIGERSO_IO_ERROR;
@@ -111,7 +107,7 @@ int RingBuffer::readOut(char* buf, size_t len) {
         _readptr += readn;
     }
     else {
-        size_t right = _size - (_readptr - _buffer);
+        size_t right = _capacity - (_readptr - _buffer);
         if(readn <= right) {
             memcpy(buf, _readptr, readn);
             _readptr += readn;
@@ -141,12 +137,12 @@ int RingBuffer::readOut(int fd) {
     size_t readn = 0;
     int ret = 0;
     while(size()) {
-        readn = (_writeptr > _readptr)? size() : (_size - (_readptr - _buffer));
+        readn = (_writeptr > _readptr)? size() : (_capacity - (_readptr - _buffer));
         ret = ::write(fd, _readptr, readn);
         if(ret < 0) { return ret; }
         else if( ret < readn) { ::syncfs(fd); } //Flush to filesystem
         _readptr += ret;
-        _readptr = _buffer + ((_readptr - _buffer) % _size);
+        _readptr = _buffer + ((_readptr - _buffer) % _capacity);
     }
 
     fcntl(fd, F_SETFL, old_flags);
@@ -160,11 +156,15 @@ int RingBuffer::readOut2File(File& file) {
     size_t readn = 0;
     int ret = 0;
     while(size()) {
-        readn = (_writeptr > _readptr)? size() : (_size - (_readptr - _buffer));
+        DBG_LOG("1. readptr: %d, writeptr: %d", _readptr - _buffer, _writeptr - _buffer);
+        DBG_LOG("1. RingBuffer size: %d", size());
+        readn = (_writeptr > _readptr)? size() : (_capacity - (_readptr - _buffer));
         ret = file.appendWriteIn(_readptr, readn);
         if(ret < 0) { return TIGERSO_IO_ERROR; }
         _readptr += ret;
-        _readptr = _buffer + ((_readptr - _buffer) % _size);
+        _readptr = _buffer + ((_readptr - _buffer) % _capacity);
+        DBG_LOG("2. RingBuffer size: %d", size());
+        DBG_LOG("readptr: %d, writeptr: %d", _readptr - _buffer, _writeptr - _buffer);
     }
 
     DBG_LOG("RingBuffer read out %ld bytes to file\n", datasize);
@@ -184,14 +184,14 @@ int RingBuffer::send2Socket(int sockfd) {
     size_t readn = 0;
     int ret = 0;
     while(size()) {
-        readn = (_writeptr > _readptr)? size() : (_size - (_readptr - _buffer));
+        readn = (_writeptr > _readptr)? size() : (_capacity - (_readptr - _buffer));
         ret = ::send(sockfd, _readptr, readn, MSG_DONTWAIT|MSG_NOSIGNAL);
         if(ret < 0) { 
             if(errno == EAGAIN || errno == EWOULDBLOCK) { return datasize - size();}
             return ret;
         }
         _readptr += ret;
-        _readptr = _buffer + ((_readptr - _buffer) % _size);
+        _readptr = _buffer + ((_readptr - _buffer) % _capacity);
     }
 
     DBG_LOG("RingBuffer send %ld bytes to socket [%d]\n", datasize, sockfd);
@@ -206,12 +206,12 @@ int RingBuffer::send2Socket(Socket& mcsock) {
     size_t rn;
     int ret = 0;
     while(size()) {
-        readn = (_writeptr > _readptr)? size() : (_size - (_readptr - _buffer));
+        readn = (_writeptr > _readptr)? size() : (_capacity - (_readptr - _buffer));
         ret = SocketUtil::Send(mcsock, _readptr, readn, &rn);
         if(TIGERSO_IO_ERROR == ret) { return ret; }
         if(TIGERSO_IO_RECALL == ret) { return datasize - size(); }
         _readptr += rn;
-        _readptr = _buffer + ((_readptr - _buffer) % _size);
+        _readptr = _buffer + ((_readptr - _buffer) % _capacity);
     }
     return datasize;
 }
@@ -226,7 +226,7 @@ RingBuffer::~RingBuffer() {
 }
 
 size_t RingBuffer::space() {
-    if(_writeptr >= _readptr) { return (_size - (_writeptr - _readptr) - 1); }
+    if(_writeptr >= _readptr) { return (_capacity - (_writeptr - _readptr) - 1); }
     else { return (_readptr - _writeptr - 1); }
     //Never be here
     return 0;

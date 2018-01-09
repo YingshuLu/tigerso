@@ -14,7 +14,7 @@ void printchar(char* buf, size_t len) {
 }
 */
 int main() {
-    RingBuffer rbuf(64);
+    RingBuffer rbuf(32);
     int ret = rbuf.writeIn(buffer, sizeof(buffer)-1);
     printf("RingBuffer size(): %ld, return %d\n", rbuf.size(), ret);
     if(rbuf.isFull()) { 
@@ -30,22 +30,6 @@ int main() {
     ret = rbuf.writeIn(exten, 12);
     printf("RingBuffer size(): %ld, return %d\n", rbuf.size(), ret);
 
-    ret = rbuf.readOut(exten, 12);
-    printf("RingBuffer size(): %ld, return %d\n", rbuf.size(), ret);
-    
-    printchar(exten, 12);
-
-    ret = rbuf.readOut(exten, 12);
-    printf("RingBuffer size(): %ld, return %d\n", rbuf.size(), ret);
-
-    printchar(exten, 12);
-
-    ret = rbuf.readOut(exten, 12);
-
-    printf("RingBuffer size(): %ld, return %d\n", rbuf.size(), ret);
-
-    printchar(exten, 12);
-
     char buf[] = "haha eee asdasdas asdfsdfsdfsda asdasdasd";
     ret = rbuf.writeIn(buf, sizeof(buf)-1);
     printf("RingBuffer size(): %ld, return %d\n", rbuf.size(), ret);
@@ -56,7 +40,12 @@ int main() {
     char readbuf[64] = {0};
     ret = rbuf.readOut(readbuf, 64);
  
+    printf("RingBuffer size(): %ld, return %d, readbuf: %s\n", rbuf.size(), ret, readbuf);
+    if(rbuf.isEmpty()) {
+        printf("RingBuffer is Empty\n");
+    }
 
+    ret = rbuf.readOut(readbuf, 64);
     printf("RingBuffer size(): %ld, return %d\n", rbuf.size(), ret);
     if(rbuf.isEmpty()) {
         printf("RingBuffer is Empty\n");

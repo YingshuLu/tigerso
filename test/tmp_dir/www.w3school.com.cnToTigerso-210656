@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="gbk" />
+<meta name="robots" content="all" />
+<meta name="author" content="w3school.com.cn" />
+<link rel="stylesheet" type="text/css" href="/c5_20171220.css" />
+<link rel=icon type="image/png" sizes="16x16" href="/ui2017/logo-16.png">
+<link rel=icon type="image/png" sizes="32x32" href="/ui2017/logo-32.png">
+<link rel=icon type="image/png" sizes="48x48" href="/ui2017/logo-48.png">
+<link rel=icon type="image/png" sizes="96x96" href="/ui2017/logo-96.png">
+<link rel="apple-touch-icon-precomposed" sizes="96x96" href="/ui2017/logo-96.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/ui2017/logo-144.png">
+
+
+<title>JavaScript eval() 函数</title>
+
+</head>
+
+<body class="browserscripting" id="jsref">
+
+<div id="wrapper">
+
+<div id="header">
+<a href="/index.html" title="w3school 在线教程" style="float:left;">w3school 在线教程</a>
+<div id="ad_head">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3381531532877742";
+/* 728x90, 创建于 08-12-1 */
+google_ad_slot = "7423315034";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+</div>
+
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="/h.asp" title="HTML 系列教程">HTML 系列教程</a></li>
+<li id="b"><a href="/b.asp" title="浏览器脚本教程">浏览器脚本</a></li>
+<li id="s"><a href="/s.asp" title="服务器脚本教程">服务器脚本</a></li>
+<li id="d"><a href="/d.asp" title="ASP.NET 教程">ASP.NET 教程</a></li>
+<li id="x"><a href="/x.asp" title="XML 系列教程">XML 系列教程</a></li>
+<li id="ws"><a href="/ws.asp" title="Web Services 系列教程">Web Services 系列教程</a></li>
+<li id="w"><a href="/w.asp" title="建站手册">建站手册</a></li>
+</ul>
+</div>
+
+<div id="navsecond">
+
+<div id="course"><h2>JS & DOM 参考手册</h2>
+<ul>
+<li><a href="/jsref/index.asp" title="JavaScript 和 HTML DOM 参考手册">参考手册目录</a></li>
+</ul>
+<h2>JavaScript 对象</h2>
+<ul>
+<li><a href="/jsref/jsref_obj_array.asp" title="JavaScript Array 对象参考手册">JS Array</a></li>
+<li><a href="/jsref/jsref_obj_boolean.asp" title="JavaScript Boolean 对象参考手册">JS Boolean</a></li>
+<li><a href="/jsref/jsref_obj_date.asp" title="JavaScript Date 对象参考手册">JS Date</a></li>
+<li><a href="/jsref/jsref_obj_math.asp" title="JavaScript Math 对象的参考手册">JS Math</a></li>
+<li><a href="/jsref/jsref_obj_number.asp" title="JavaScript Number 对象参考手册">JS Number</a></li>
+<li><a href="/jsref/jsref_obj_string.asp" title="JavaScript String 对象参考手册">JS String</a></li>
+<li><a href="/jsref/jsref_obj_regexp.asp" title="JavaScript RegExp 对象参考手册">JS RegExp</a></li>
+<li><a href="/jsref/jsref_obj_global.asp" title="JavaScript 全局对象参考手册">JS Functions</a></li>
+<li><a href="/jsref/jsref_events.asp" title="JavaScript 事件参考手册">JS Events</a></li>
+</ul>
+<h2>Browser 对象</h2>
+<ul>
+<li><a href="/jsref/dom_obj_window.asp" title="HTML DOM Window 对象">Window</a></li>
+<li><a href="/jsref/dom_obj_navigator.asp" title="HTML DOM Navigator 对象">Navigator</a></li>
+<li><a href="/jsref/dom_obj_screen.asp" title="HTML DOM Screen 对象">Screen</a></li>
+<li><a href="/jsref/dom_obj_history.asp" title="HTML DOM History 对象">History</a></li>
+<li><a href="/jsref/dom_obj_location.asp" title="HTML DOM Location 对象">Location</a></li>
+</ul>
+<h2>HTML DOM 对象</h2>
+<ul>
+<li><a href="/jsref/dom_obj_document.asp" title="HTML DOM Document 对象">DOM Document</a></li>
+<li><a href="/jsref/dom_obj_all.asp" title="HTML DOM Element 对象">DOM Element</a></li>
+<li><a href="/jsref/dom_obj_attributes.asp" title="HTML DOM Attribute 对象">DOM Attribute</a></li>
+<li><a href="/jsref/dom_obj_event.asp" title="HTML DOM Event 对象">DOM Event</a></li>
+</ul>
+<h2>HTML 对象</h2>
+<ul>
+<li><a href="/jsref/dom_obj_anchor.asp" title="HTML DOM Anchor 对象">&lt;a&gt;</a></li>
+<li><a href="/jsref/dom_obj_area.asp" title="HTML DOM Area 对象">&lt;area&gt;</a></li>
+<li><a href="/jsref/dom_obj_audio.asp" title="HTML DOM Audio 对象">&lt;audio&gt;</a></li>
+<li><a href="/jsref/dom_obj_base.asp" title="HTML DOM Base 对象">&lt;base&gt;</a></li>
+<li><a href="/jsref/dom_obj_body.asp" title="HTML DOM Body 对象">&lt;body&gt;</a></li>
+<li><a href="/jsref/dom_obj_blockquote.asp" title="HTML DOM Blockquote 对象">&lt;blockquote&gt;</a></li>
+<li><a href="/jsref/dom_obj_pushbutton.asp" title="HTML DOM Button 对象">&lt;button&gt;</a></li>
+<li><a href="/jsref/dom_obj_canvas.asp" title="HTML DOM Canvas 对象">&lt;canvas&gt;</a></li>
+<li><a href="/jsref/dom_obj_col.asp" title="HTML DOM Column 对象">&lt;col&gt;</a></li>
+<li><a href="/jsref/dom_obj_colgroup.asp" title="HTML DOM ColumnGroup 对象">&lt;colgroup&gt;</a></li>
+<li><a href="/jsref/dom_obj_datalist.asp" title="HTML DOM Datalist 对象">&lt;datalist&gt;</a></li>
+<li><a href="/jsref/dom_obj_del.asp" title="HTML DOM Del 对象">&lt;del&gt;</a></li>
+<li><a href="/jsref/dom_obj_details.asp" title="HTML DOM Details 对象">&lt;details&gt;</a></li>
+<li><a href="/jsref/dom_obj_dialog.asp" title="HTML DOM Dialog 对象">&lt;dialog&gt;</a></li>
+<li><a href="/jsref/dom_obj_embed.asp" title="HTML DOM Embed 对象">&lt;embed&gt;</a></li>
+<li><a href="/jsref/dom_obj_fieldset.asp" title="HTML DOM Fieldset 对象">&lt;fieldset&gt;</a></li>
+<li><a href="/jsref/dom_obj_form.asp" title="HTML DOM Form 对象">&lt;form&gt;</a></li>
+<li><a href="/jsref/dom_obj_frame.asp" title="HTML DOM Frame 对象">&lt;frame&gt;</a></li>
+<li><a href="/jsref/dom_obj_frameset.asp" title="HTML DOM Frameset 对象">&lt;frameset&gt;</a></li>
+<li><a href="/jsref/dom_obj_iframe.asp" title="HTML DOM IFrame 对象">&lt;iframe&gt;</a></li>
+<li><a href="/jsref/dom_obj_image.asp" title="HTML DOM Image 对象">&lt;img&gt;</a></li>
+<li><a href="/jsref/dom_obj_ins.asp" title="HTML DOM Ins 对象">&lt;ins&gt;</a></li>
+<li><a href="/jsref/dom_obj_button.asp" title="HTML DOM Button 对象">&lt;input&gt; button</a></li>
+<li><a href="/jsref/dom_obj_checkbox.asp" title="HTML DOM Checkbox 对象">&lt;input&gt; checkbox</a></li>
+<li><a href="/jsref/dom_obj_color.asp" title="HTML DOM Color 对象">&lt;input&gt; color</a></li>
+<li><a href="/jsref/dom_obj_date.asp" title="HTML DOM Input Date 对象">&lt;input&gt; date</a></li>
+<li><a href="/jsref/dom_obj_datetime.asp" title="HTML DOM Datetime 对象">&lt;input&gt; datetime</a></li>
+<li><a href="/jsref/dom_obj_datetime-local.asp" title="HTML DOM Datetime Local 对象">&lt;input&gt; datetime-local</a></li>
+<li><a href="/jsref/dom_obj_email.asp" title="HTML DOM Email 对象">&lt;input&gt; email</a></li>
+<li><a href="/jsref/dom_obj_fileupload.asp" title="HTML DOM FileUpload 对象">&lt;input&gt; file</a></li>
+<li><a href="/jsref/dom_obj_hidden.asp" title="HTML DOM Hidden 对象">&lt;input&gt; hidden</a></li>
+<li><a href="/jsref/dom_obj_input_image.asp" title="HTML DOM Input Image 对象">&lt;input&gt; image</a></li>
+<li><a href="/jsref/dom_obj_month.asp" title="HTML DOM Month 对象">&lt;input&gt; month</a></li>
+<li><a href="/jsref/dom_obj_number.asp" title="HTML DOM Number 对象">&lt;input&gt; number</a></li>
+<li><a href="/jsref/dom_obj_password.asp" title="HTML DOM Password 对象">&lt;input&gt; password</a></li>
+<li><a href="/jsref/dom_obj_range.asp" title="HTML DOM Input Range 对象">&lt;input&gt; range</a></li>
+<li><a href="/jsref/dom_obj_radio.asp" title="HTML DOM Radio 对象">&lt;input&gt; radio</a></li>
+<li><a href="/jsref/dom_obj_reset.asp" title="HTML DOM Reset 对象">&lt;input&gt; reset</a></li>
+<li><a href="/jsref/dom_obj_search.asp" title="HTML DOM Input Search 对象">&lt;input&gt; search</a></li>
+<li><a href="/jsref/dom_obj_submit.asp" title="HTML DOM Submit 对象">&lt;input&gt; submit</a></li>
+<li><a href="/jsref/dom_obj_text.asp" title="HTML DOM Text 对象">&lt;input&gt; text</a></li>
+<li><a href="/jsref/dom_obj_input_time.asp" title="HTML DOM Input Time 对象">&lt;input&gt; time</a></li>
+<li><a href="/jsref/dom_obj_url.asp" title="HTML DOM Input URL 对象">&lt;input&gt; url</a></li>
+<li><a href="/jsref/dom_obj_week.asp" title="HTML DOM Week 对象">&lt;input&gt; week</a></li>
+<li><a href="/jsref/dom_obj_keygen.asp" title="HTML DOM Keygen 对象">&lt;keygen&gt;</a></li>
+<li><a href="/jsref/dom_obj_label.asp" title="HTML DOM Label 对象">&lt;label&gt;</a></li>
+<li><a href="/jsref/dom_obj_legend.asp" title="HTML DOM Legend 对象">&lt;legend&gt;</a></li>
+<li><a href="/jsref/dom_obj_li.asp" title="HTML DOM Li 对象">&lt;li&gt;</a></li>
+<li><a href="/jsref/dom_obj_link.asp" title="HTML DOM Link 对象">&lt;link&gt;</a></li>
+<li><a href="/jsref/dom_obj_map.asp" title="HTML DOM Map 对象">&lt;map&gt;</a></li>
+<li><a href="/jsref/dom_obj_menu.asp" title="HTML DOM Menu 对象">&lt;menu&gt;</a></li>
+<li><a href="/jsref/dom_obj_menuitem.asp" title="HTML DOM MenuItem 对象">&lt;menuitem&gt;</a></li>
+<li><a href="/jsref/dom_obj_meta.asp" title="HTML DOM Meta 对象">&lt;meta&gt;</a></li>
+<li><a href="/jsref/dom_obj_meter.asp" title="HTML DOM Meter 对象">&lt;meter&gt;</a></li>
+<li><a href="/jsref/dom_obj_object.asp" title="HTML DOM Object 对象">&lt;object&gt;</a></li>
+<li><a href="/jsref/dom_obj_ol.asp" title="HTML DOM Ol 对象">&lt;ol&gt;</a></li>
+<li><a href="/jsref/dom_obj_optgroup.asp" title="HTML DOM OptionGroup 对象">&lt;optgroup&gt;</a></li>
+<li><a href="/jsref/dom_obj_option.asp" title="HTML DOM Option 对象">&lt;option&gt;</a></li>
+<li><a href="/jsref/dom_obj_param.asp" title="HTML DOM Parameter 对象">&lt;param&gt;</a></li>
+<li><a href="/jsref/dom_obj_progress.asp" title="HTML DOM Progress 对象">&lt;progress&gt;</a></li>
+<li><a href="/jsref/dom_obj_quote.asp" title="HTML DOM Quote 对象">&lt;q&gt;</a></li>
+<li><a href="/jsref/dom_obj_script.asp" title="HTML DOM Script 对象">&lt;script&gt;</a></li>
+<li><a href="/jsref/dom_obj_select.asp" title="HTML DOM Select 对象">&lt;select&gt;</a></li>
+<li><a href="/jsref/dom_obj_source.asp" title="HTML DOM Source 对象">&lt;source&gt;</a></li>
+<li><a href="/jsref/dom_obj_style.asp" title="HTML DOM Style 对象">&lt;style&gt;</a></li>
+<li><a href="/jsref/dom_obj_table.asp" title="HTML DOM Table 对象">&lt;table&gt;</a></li>
+<li><a href="/jsref/dom_obj_tabledata.asp" title="HTML DOM TableCell 对象">&lt;td&gt;</a></li>
+<li><a href="/jsref/dom_obj_tablehead.asp" title="HTML DOM TableHeader 对象">&lt;th&gt;</a></li>
+<li><a href="/jsref/dom_obj_tablerow.asp" title="HTML DOM TableRow 对象">&lt;tr&gt;</a></li>
+<li><a href="/jsref/dom_obj_textarea.asp" title="HTML DOM Textarea 对象">&lt;textarea&gt;</a></li>
+<li><a href="/jsref/dom_obj_time.asp" title="HTML DOM Time 对象">&lt;time&gt;</a></li>
+<li><a href="/jsref/dom_obj_title.asp" title="HTML DOM Title 对象">&lt;title&gt;</a></li>
+<li><a href="/jsref/dom_obj_track.asp" title="HTML DOM Track 对象">&lt;track&gt;</a></li>
+<li><a href="/jsref/dom_obj_video.asp" title="HTML DOM Video 对象">&lt;video&gt;</a></li>
+</ul>
+</div><div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="/site/index.asp" title="网站构建">网站构建</a></li>
+<li><a href="/w3c/index.asp" title="万维网联盟 (W3C)">万维网联盟 (W3C)</a></li>
+<li><a href="/browsers/index.asp" title="浏览器信息">浏览器信息</a></li>
+<li><a href="/quality/index.asp" title="网站品质">网站品质</a></li>
+<li><a href="/semweb/index.asp" title="语义网">语义网</a></li>
+<li><a href="/careers/index.asp" title="职业规划">职业规划</a></li>
+<li><a href="/hosting/index.asp" title="网站主机">网站主机</a></li>
+</ul>
+
+<h2><a href="/about/index.asp" title="关于 W3School" id="link_about">关于 W3School</a></h2>
+<h2><a href="/about/about_helping.asp" title="帮助 W3School" id="link_help">帮助 W3School</a></h2>
+
+</div>
+
+</div>
+
+<div id="maincontent">
+
+<h1>JavaScript eval() 函数</h1>
+
+<div class="backtoreference">
+<p><a href="/jsref/jsref_obj_global.asp" title="JavaScript 全局对象">JavaScript 全局对象</a></p>
+</div>
+
+
+<div>
+<h2>定义和用法</h2>
+
+<p>eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码。</p>
+
+<h3>语法</h3>
+
+<pre>eval(string)</pre>
+
+<table class="dataintable"> 
+  <tr>
+    <th>参数</th>
+    <th>描述</th>
+  </tr>  
+  <tr>
+    <td>string</td>
+    <td>必需。要计算的字符串，其中含有要计算的 JavaScript 表达式或要执行的语句。</td>
+  </tr>
+</table>
+
+<h3>返回值</h3>
+
+<p>通过计算 string 得到的值（如果有的话）。</p>
+
+<h3>说明</h3>
+
+<p>该方法只接受原始字符串作为参数，如果 string 参数不是原始字符串，那么该方法将不作任何改变地返回。因此请不要为 eval() 函数传递 String 对象来作为参数。</p>
+
+<p>如果试图覆盖 eval 属性或把 eval() 方法赋予另一个属性，并通过该属性调用它，则 ECMAScript 实现允许抛出一个 EvalError 异常。</p>
+
+<h3>抛出</h3>
+
+<p>如果参数中没有合法的表达式和语句，则抛出 SyntaxError 异常。</p>
+
+<p>如果非法调用 eval()，则抛出 EvalError 异常。</p>
+
+<p>如果传递给 eval() 的 Javascript 代码生成了一个异常，eval() 将把该异常传递给调用者。</p>
+</div>
+
+
+<div>
+<h2>提示和注释</h2>
+
+<p class="tip"><span>提示：</span>虽然 eval() 的功能非常强大，但在实际使用中用到它的情况并不多。</p>
+</div>
+
+
+<div>
+<h2>实例</h2>
+
+<h3>例子 1</h3>
+
+<p>在本例中，我们将在几个字符串上运用 eval()，并看看返回的结果：</p>
+
+<pre>
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+eval(&quot;x=10;y=20;document.write(x*y)&quot;)
+
+document.write(eval(&quot;2+2&quot;))
+
+var x=10
+document.write(eval(x+17))
+
+&lt;/script&gt;
+</pre>
+
+<p>输出：</p>
+
+<pre>
+200
+4
+27
+</pre>
+
+
+<h3>例子 2</h3>
+
+<p>看一下在其他情况中，eval() 返回的结果：</p>
+
+<pre>
+eval(&quot;2+3&quot;)	// 返回 5
+var myeval = eval;	// 可能会抛出 EvalError 异常
+myeval(&quot;2+3&quot;);	// 可能会抛出 EvalError 异常
+</pre>
+
+<p>可以使用下面这段代码来检测 eval() 的参数是否合法：</p>
+
+<pre>
+try  {
+     alert(&quot;Result:&quot; + eval(prompt(&quot;Enter an expression:&quot;,&quot;&quot;)));
+     }
+
+catch(exception) {
+     alert(exception);
+     }
+</pre>
+</div>
+
+
+<div class="example">
+<h2>TIY</h2>
+
+<dl>
+<dt><a target="_blank" href="/tiy/t.asp?f=jseg_eval">eval()</a></dt>
+<dd>如何使用 eval()。</dd>
+</dl>
+</div>
+
+
+<div class="backtoreference">
+<p><a href="/jsref/jsref_obj_global.asp" title="JavaScript 全局对象">JavaScript 全局对象</a></p>
+</div><div style="background-color:#fcfdf8; padding:0;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- W3School 正文底部广告位 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:800px;height:250px"
+     data-ad-client="ca-pub-3381531532877742"
+     data-ad-slot="9384069314"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+</div>
+<!-- maincontent end -->
+
+<div id="sidebar">
+
+<div id="tools">
+<h5 id="tools_reference"><a href="/jsref/index.asp">JavaScript 参考手册</a></h5>
+<h5 id="tools_example"><a href="/example/jseg_examples.asp">JavaScript 实例</a></h5>
+<h5 id="tools_quiz"><a href="/js/js_quiz.asp">JavaScript 测验</a></h5>
+</div>
+
+<div id="ad">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3381531532877742";
+/* sidebar-160x600 */
+google_ad_slot = "3772569310";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+</div>
+
+<div id="footer">
+<p id="p1">
+W3School 简体中文版提供的内容仅用于培训和测试，不保证内容的正确性。通过使用本站内容随之而来的风险与本站无关。
+</p>
+
+<p id="p2">
+使用条款和隐私条款。版权所有，保留一切权利。
+赞助商：<a href="">上海赢科投资有限公司</a>。
+蒙ICP备06004630号
+</p>
+</div>
+
+
+</div>
+<!-- wrapper end -->
+
+</body>
+
+</html>

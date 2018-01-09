@@ -54,6 +54,8 @@ public:
     EventFunc setRdhupCallback(EventFunc);
     EventFunc setTimeoutCallback(EventFunc);
 
+    EventFunc getTimeoutCallback();
+
     //Mark this channel
     int sockfd = -1;
 private:

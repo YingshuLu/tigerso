@@ -2462,6 +2462,14 @@ http_body_is_final(const struct http_parser *parser) {
     return parser->state == s_message_done;
 }
 
+int
+http_parser_is_chunked(const struct http_parser *parser) {
+    if (parser->flags & F_CHUNKED) {
+        return 1;
+    }
+    return 0;
+}
+
 unsigned long
 http_parser_version(void) {
   return HTTP_PARSER_VERSION_MAJOR * 0x10000 |

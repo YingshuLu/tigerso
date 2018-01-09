@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RDF:RDF
+  xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+  xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <RDF:Description about="urn:mozilla:extension:tabtweak@mozillaonline.com">
+    <em:signature>MIGTMA0GCSqGSIb3DQEBDQUAA4GBAE114A2AZC04QXNc6iZDHgql/Nts4km9Eq65YodAPG9OEScn6RH0rq4U2GfSiz25WiOnypvkfd9KvLCZ7dq8/XRENChWZWfM/rKRJTD3JLojOpfZHLacUL2aeV2vXAStEZ9/MxfDHAe2b3FtIbyr/UQ4R19sKRtTYfZo1D2/mV3h</em:signature>
+    <em:updates>
+      <RDF:Seq>
+        <RDF:li>
+          <RDF:Description>
+            <em:targetApplication>
+              <RDF:Description>
+                <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+                <em:maxVersion>56.*</em:maxVersion>
+                <em:minVersion>35.0</em:minVersion>
+                <em:updateHash>sha256:9f8f5221590878058d2fb2991776605c176cffd25a250d73baf958a49087f5b5</em:updateHash>
+                <em:updateLink>http://g-fox.cn/chinaedition/addons/tabtweak/tabtweak-4.56-fx.xpi</em:updateLink>
+              </RDF:Description>
+            </em:targetApplication>
+            <em:version>4.56</em:version>
+          </RDF:Description>
+        </RDF:li>
+        <RDF:li>
+          <RDF:Description>
+            <em:targetApplication>
+              <RDF:Description>
+                <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+                <em:maxVersion>57.*</em:maxVersion>
+                <em:minVersion>57.0</em:minVersion>
+                <em:updateHash>sha256:0ac3e2b006f0658688aa0f43898da4813346c47d928b8f35e11820e74a4ba5f0</em:updateHash>
+                <em:updateLink>http://g-fox.cn/chinaedition/addons/tabtweak/tabtweak-4.57-fx.xpi</em:updateLink>
+              </RDF:Description>
+            </em:targetApplication>
+            <em:version>4.57</em:version>
+          </RDF:Description>
+        </RDF:li>
+      </RDF:Seq>
+    </em:updates>
+  </RDF:Description>
+</RDF:RDF>

@@ -3,6 +3,7 @@
 #include "core/tigerso.h"
 #include "core/Logging.h"
 #include "net/SocketUtil.h"
+#include "http/HttpMessage.h"
 
 namespace tigerso {
 
@@ -37,7 +38,7 @@ const char* Buffer::getReadPtr() const {
 ssize_t Buffer::getReadableBytes() const {
     return readableBytes();
 }
-
+/*
 ssize_t Buffer::recvBIO(const socket_t fd) {
     if (fd < 0) {
         return -1;
@@ -164,6 +165,7 @@ ssize_t Buffer::sendNIO(const socket_t sockfd) {
     }
     return len;
 }
+*/
 
 int Buffer::sendToSocket(Socket& mcsock) {
     size_t n = 0;
@@ -175,7 +177,18 @@ int Buffer::sendToSocket(Socket& mcsock) {
     }
 
     //no data now, reset the buffer
-    if(writeIdx_ == readIdx_) { clear(); }
+    if(writeIdx_ == readIdx_) { 
+        if(msgptr_) {
+            int ret = msgptr_->getBody()->send2Socket(mcsock);
+            if(FILE_SENDFILE_ERROR == ret) { return TIGERSO_IO_ERROR; }
+            else if(FILE_SENDFILE_DONE) {
+                senddone_ = true;
+                msgptr_ = nullptr;
+            }
+            return TIGERSO_IO_OK;
+        }
+        clear();
+    }
     else if(writeIdx_ < readIdx_ + gain_gap) { align(); } // align, save space
 
     if(ret != TIGERSO_IO_ERROR) { return len; }
@@ -252,6 +265,19 @@ size_t Buffer::clear() {
     readIdx_ = writeIdx_ = prefix_;
     return bufsize_;
 }
+
+int Buffer::attachHttpMessage(HttpMessage* msg) {
+    if(nullptr == msg) {
+        return -1;
+    }
+
+    this->clear();
+    msgptr_ = msg;
+    senddone_ = false;
+    //Add header string to buffer
+    return addData(msg->getHeader());    
+}
+
 
 size_t Buffer::readableBytes() const {
     size_t readableBytes_len = writeIdx_ - readIdx_;

@@ -15,11 +15,12 @@
 namespace tigerso {
 #define SOCKET_EVENT_NONE  0x0000
 #define SOCKET_EVENT_READ  0x0001
-#define SOCKET_EVENT_WRITE  (SOCKET_EVENT_READ << 1)
-#define SOCKET_EVENT_BEFORE (SOCKET_EVENT_READ << 2)
-#define SOCKET_EVENT_AFTER  (SOCKET_EVENT_READ << 3)
-#define SOCKET_EVENT_ERROR  (SOCKET_EVENT_READ << 4)
-#define SOCKET_EVENT_RDHUP  (SOCKET_EVENT_READ << 5)
+#define SOCKET_EVENT_WRITE   (SOCKET_EVENT_READ << 1)
+#define SOCKET_EVENT_BEFORE  (SOCKET_EVENT_READ << 2)
+#define SOCKET_EVENT_AFTER   (SOCKET_EVENT_READ << 3)
+#define SOCKET_EVENT_ERROR   (SOCKET_EVENT_READ << 4)
+#define SOCKET_EVENT_RDHUP   (SOCKET_EVENT_READ << 5)
+#define SOCKET_EVENT_TIMEOUT (SOCKET_EVENT_READ << 6)
 #define SOCKET_EVENT_ALL (SOCKET_EVENT_READ | SOCKET_EVENT_WRITE | SOCKET_EVENT_BEFORE |SOCKET_EVENT_AFTER |SOCKET_EVENT_ERROR | SOCKET_EVENT_RDHUP)
 
 typedef int socket_t;
@@ -114,12 +115,11 @@ public:
     Channel* channelptr = nullptr;
     /*SSL support*/
     bool isSSL() { return sctx.active(); }
-    bool SSLWantReadMore() { return sctx.serrno == SSL_ERROR_WANT_READ; }
-    bool SSLWantWriteMore() { return sctx.serrno == SSL_ERROR_WANT_WRITE; }
+    bool SSLWantReadMore() { return isSSL() && sctx.serrno == SSL_ERROR_WANT_READ; }
+    bool SSLWantWriteMore() { return isSSL() && sctx.serrno == SSL_ERROR_WANT_WRITE; }
     int SSLErrno() { return sctx.serrno; }
 
 private:
-
     void setStrAddr(const std::string&);
     void setStrPort(const std::string&);
     void setRole(const socket_role_t&);

@@ -217,10 +217,7 @@ bool SSLHelper::signCert(X509* ca_cert, EVP_PKEY* ca_pkey, int key_length, X509*
 }
 
 bool SSLHelper::validSSL(SSL* ssl) {
-    if(NULL == ssl || SSL_get_fd(ssl) < 0) { 
-        INFO_LOG("ssl is not a valid SSL");
-        return false;
-    }
+    if(NULL == ssl || SSL_get_fd(ssl) < 0) { return false; }
     return true;
 }
 

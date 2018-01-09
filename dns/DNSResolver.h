@@ -140,6 +140,7 @@ public:
     int sendQuery(Socket& udpsock);
     int recvAnswer(Socket& udpsock);
     int errorHandle(Socket& udpsock);
+    int timeoutHandle(Socket& udpsock);
 
     ~DNSResolver();
 private:

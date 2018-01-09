@@ -3,6 +3,8 @@
 
 //Base class
 
+#include <memory>
+
 namespace tigerso {
 
 class nocopyable {
@@ -25,6 +27,23 @@ protected:
     singleton& operator=(const singleton&);
 };
 
+template <typename T> class Singleton {
+public:
+    static T* getInstance() {
+        if(!pInstance_.get()) { pInstance_ = std::unique_ptr<T>(new T()); }
+        return pInstance_.get();
+    }
+
+    virtual ~Singleton() {}
+protected:
+    Singleton() {}
+
+private:
+    static std::unique_ptr<T> pInstance_;
+};
+
+template <typename T>
+std::unique_ptr<T> Singleton<T>::pInstance_;
 
 } //namespace ts
 #endif // TS_CORE_BASECLASS_H_

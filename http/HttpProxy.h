@@ -56,6 +56,8 @@ public:
     int serverRDHUPHandle(Socket& server);
     int clientErrorHandle(Socket& client);
     int serverErrorHandle(Socket& server);
+    int clientTimeoutHandle(Socket& client);
+    int serverTimeoutHandle(Socket& server);
     int clientFinalWriteHandle(Socket& client);
 
 public:
@@ -143,6 +145,7 @@ public:
     int initListenConnection();
     //Child call
     int startLoop();
+    int stopLoop() { eloop_.stop(); }
     /*Get current client connection number*/
     int countHttpConnections();
     

@@ -21,7 +21,8 @@ using namespace tigerso::core;
 class staticWebCGI {
     
 public:
-    staticWebCGI(HttpRquest& request, HttpResponse) {
+    int operator(HttpRquest& request, HttpResponse& response) {
+
     }
 
 
@@ -40,6 +41,11 @@ public:
     UUID_T getUid() { return _uuid; }
     int readRequestHandle(Socket& sock);
     int writeResponseHandle(Socket& sock);
+
+    int filter(HttpRequest& request) {
+        
+    }
+
 
 public:
     const SocketPtr sockptr;
@@ -141,7 +147,7 @@ private:
         return 0;
     }
 
-    int _countConnections() { return _connections.size(); }
+    int _countConnections() { return _connections.size() - discardIDs_.size(); }
 
     int registerSocket(Socket& socket) {
         _eloop.registerChannel(socket);
@@ -152,10 +158,12 @@ private:
 private:
     const std::string _host;
     
+    
 private:
     EventsLoop _eloop;
     SocketPtr _masterSock;
     std::map<UUID_T, HTTPCONNECTIONPTR> _connections;
+    std::set<UUID_T> discardIDs_;
 };
 
 

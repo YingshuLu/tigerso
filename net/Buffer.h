@@ -24,10 +24,12 @@ const int SOCKET_IOSTATE_CONTINUE = 0;
 const int SOCKET_IOSTATE_ERROR    = -2;
 
 //256KB
+//Relloc the memory as STL does
 #define BUFFER_LEAST_LENGTH (256*1024)
-#define BUFFER_GAP_LENGTH (8*1024)
+#define BUFFER_GAP_LENGTH BUFFER_LEAST_LENGTH
 
 class Socket;
+class HttpMessage;
 
 class Buffer: public nocopyable {
 
@@ -49,6 +51,11 @@ public:
     size_t addData(const std::string&);
     size_t removeData(std::string&, const size_t);
     size_t clear();
+    int attachHttpMessage(HttpMessage* msg);
+    bool isSendDone() { 
+        if(msgptr_) { return senddone_; }
+        return (getReadableBytes() == 0);
+    }
 
 private:
     size_t readableBytes() const;
@@ -66,6 +73,9 @@ private:
     size_t writeIdx_;
     char* buffer_;
     size_t bufsize_;
+
+    HttpMessage* msgptr_ = nullptr;
+    bool senddone_ = false;
 
     static const size_t pregap = 8;
     //initilize 256KB size

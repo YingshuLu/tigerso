@@ -73,15 +73,25 @@ int HttpProxyConnection::socketNullHandle(Socket& sock) {
 int HttpProxyConnection::clientRDHUPHandle(Socket& client) {
     //socketDisableReadEvent(client);
     client.close();
-    clientSafeClose(client);
+    //clientSafeClose(client);
+    clientCloseHandle(client);
     return EVENT_CALLBACK_CONTINUE;
 }
 
 int HttpProxyConnection::serverRDHUPHandle(Socket& server) {
     //socketDisableReadEvent(server);
     server.close();
-    serverSafeClose(server);
+    //serverSafeClose(server);
+    serverCloseHandle(server);
     return EVENT_CALLBACK_CONTINUE;
+}
+
+int HttpProxyConnection::clientTimeoutHandle(Socket& client) {
+    return clientRDHUPHandle(client);
+}
+
+int HttpProxyConnection::serverTimeoutHandle(Socket& server) {
+    return serverTimeoutHandle(server);
 }
 
 int HttpProxyConnection::clientErrorHandle(Socket& client) {  return clientRDHUPHandle(client); }
@@ -164,6 +174,10 @@ int HttpProxyConnection::clientFirstReadHandle(Socket& client) {
      */
     std::string host = request.getHost();
     std::string port = request.getHostPort();
+    
+    HttpResponse& response =  stransaction_.response;
+    DBG_LOG("temp file name: %s", request.getBodyFileName().c_str());
+    response.setBodyFileName(request.getBodyFileName());
 
     std::string ipv4;
     //Host is IPv4 addr
@@ -226,7 +240,7 @@ int HttpProxyConnection::serverConnectTo(const char* ip, time_t ttl) {
     //Register to event loop
     register_func_(_serverSocket);
 
-    socketSetEventHandle(_serverSocket, BIND_EVENTHANDLE(HttpProxyConnection::serverErrorHandle), SOCKET_EVENT_ERROR | SOCKET_EVENT_RDHUP);
+    socketSetEventHandle(_serverSocket, BIND_EVENTHANDLE(HttpProxyConnection::serverErrorHandle), SOCKET_EVENT_ERROR | SOCKET_EVENT_RDHUP | SOCKET_EVENT_TIMEOUT);
     //HTTPS connection
     const char* smethod = ctransaction_.request.getMethod().c_str();
     if(strcasecmp(smethod, "connect") == 0) {
@@ -319,6 +333,7 @@ int HttpProxyConnection::serverReadHandle(Socket& server) {
     size_t lastn = sparser_.getLastParsedSize();
     const char* readptr = server.getInBufferPtr()->getReadPtr(); 
     const char* parseptr = readptr + server.getInBufferPtr()->getReadableBytes() - recvn;
+
 
     int parsedn = sparser_.parse(parseptr, recvn, response);
     if(recvn != parsedn) {
@@ -439,6 +454,10 @@ int HttpProxyConnection::clientReadHandle(Socket& client) {
     socketDisableReadEvent(client);
     socketSetEventHandle(_serverSocket, BIND_EVENTHANDLE(HttpProxyConnection::serverWriteHandle), SOCKET_EVENT_WRITE);
     socketEnableWriteEvent(_serverSocket);
+    
+    HttpResponse& response = stransaction_.response;
+    DBG_LOG("temp file name: %s", request.getBodyFileName().c_str());
+    response.setBodyFileName(request.getBodyFileName());
 
     return EVENT_CALLBACK_CONTINUE;
 }
@@ -626,6 +645,10 @@ bool HttpProxyConnection::socketSetEventHandle(Socket& sock, EventFunc func, uns
         cnptr->setRdhupCallback(func);
     }
 
+    if (flag & SOCKET_EVENT_TIMEOUT) {
+        cnptr->setTimeoutCallback(func);
+    }
+
     return true;
 }
 
@@ -689,6 +712,7 @@ int HttpProxyLoop::acceptHttpClientConnection(Socket& master) {
         cnptr->setReadCallback(std::bind(&HttpProxyConnection::clientFirstReadHandle, &(*hcptr), std::placeholders::_1));
         cnptr->setErrorCallback(std::bind(&HttpProxyConnection::clientErrorHandle, &(*hcptr), std::placeholders::_1));
         cnptr->setRdhupCallback(std::bind(&HttpProxyConnection::clientRDHUPHandle, &(*hcptr), std::placeholders::_1));
+        cnptr->setTimeoutCallback(std::bind(&HttpProxyConnection::clientTimeoutHandle, &(*hcptr), std::placeholders::_1));
         cnptr->enableReadEvent();
     }
 
@@ -698,7 +722,9 @@ int HttpProxyLoop::acceptHttpClientConnection(Socket& master) {
 
 // callback for HttpProxyConnection to relaese itself
 int HttpProxyLoop::discardThisHttpProxyConnection(HttpProxyConnection& hpl) {
+    DBG_LOG("discard HttpProxyConnection: %d", hpl.getID());
     discardIDs_.insert(hpl.getID());
+    DBG_LOG("discard set size: %u", discardIDs_.size());
     return 0;
 }
 

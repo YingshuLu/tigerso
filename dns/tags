@@ -160,6 +160,7 @@ tigerso	DNSCache.cpp	/^namespace tigerso {$/;"	n	file:
 tigerso	DNSCache.h	/^namespace tigerso {$/;"	n
 tigerso	DNSResolver.cpp	/^namespace tigerso {$/;"	n	file:
 tigerso	DNSResolver.h	/^namespace tigerso {$/;"	n
+timeoutHandle	DNSResolver.cpp	/^int DNSResolver::timeoutHandle(Socket& udpsock) {$/;"	f	class:tigerso::DNSResolver
 updateDNS	DNSCache.cpp	/^int DNSCache::updateDNS(const char* host, const char* ip, int& ttl) {$/;"	f	class:tigerso::DNSCache
 updateNode	DNSCache.cpp	/^int DNSCache::updateNode(DNSNode& dst, const char* host, unsigned char* key, const char* ip, int& ttl) {$/;"	f	class:tigerso::DNSCache
 ~DNSCache	DNSCache.cpp	/^DNSCache::~DNSCache() {$/;"	f	class:tigerso::DNSCache

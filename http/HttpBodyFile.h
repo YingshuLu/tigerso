@@ -5,6 +5,7 @@
 #include <iomanip>
 #include "core/File.h"
 #include "net/RingBuffer.h"
+#include "net/Socket.h"
 
 namespace tigerso {
 
@@ -14,7 +15,7 @@ typedef enum _HTTP_BODY_MODE_ {
     HTTP_BODY_FILE
 } HttpBodyMode;
 
-class HttpBodyFile {
+class HttpBodyFile: public nocopyable {
 
 #define HTTP_FILE_CACHE_SIZE 8192
 typedef  enum _CHUNK_SEND_STATE{
@@ -36,6 +37,7 @@ public:
     HttpBodyMode mode();
     void setFile(const char* filename);   
     int writeIn(const char* buf, size_t len);
+    int closeFile();
     int send2Socket(Socket&);
 
     size_t size();
@@ -67,8 +69,6 @@ private:
     ChunkState _chunkstate = _CHUNKUINIT;
 
 };
-
-bool HttpBodyFile::sendfile = true;
 
 }//namespace tigerso::http
 

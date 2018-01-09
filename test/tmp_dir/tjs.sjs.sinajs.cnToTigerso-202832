@@ -1,0 +1,1 @@
+var url="http://service.weibo.com/staticjs/weiboshare.html"+location.search;url=url+"&refer="+encodeURIComponent(document.referrer)+"&dpc=1";window.location.href=url;

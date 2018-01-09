@@ -74,6 +74,8 @@ int HttpParser::on_message_begin(http_parser* parser) {
 
 int HttpParser::on_message_complete(http_parser* parser) {
     HttpParser* hp = static_cast<HttpParser*>(parser->data);
+    HttpMessage* pmessage = PARSER_TO_MESSAGE(parser);
+    pmessage->getBody()->closeFile();
     hp->setParseState(PARSE_COMPLETE);
     return 0;
 }
@@ -105,12 +107,17 @@ int HttpParser::on_header_value(http_parser* parser, const char* at, size_t len)
 int HttpParser::on_headers_complete(http_parser* parser) {
     using namespace tigerso::core;
     HttpMessage* pmessage = PARSER_TO_MESSAGE(parser);
-    if(pmessage->getRole() == HTTP_ROLE_REQUEST) { pmessage->setMethod(http_method_str((http_method)parser->method)); }
+    HttpParser* hptr = static_cast<HttpParser*>(parser->data);
+
+    if(pmessage->getRole() == HTTP_ROLE_REQUEST) {
+        pmessage->setMethod(http_method_str((http_method)parser->method));
+        pmessage->getBodyFileName();
+    }
     else { pmessage->setStatuscode(parser->status_code); }
     
+    //set http version
     if( !(parser->http_major > 0 && parser->http_minor > 0 ) ) { pmessage->setVersion("HTTP/1.0"); }
-    HttpParser* hptr = static_cast<HttpParser*>(parser->data);
-    hptr->setParseState(PARSE_HEADER_COMPLETE);
+        hptr->setParseState(PARSE_HEADER_COMPLETE);
     DBG_LOG("Http Parser get complete header:\n%s", pmessage->getHeader().c_str());
 
     //HEAD method request, so null body in response
@@ -118,12 +125,35 @@ int HttpParser::on_headers_complete(http_parser* parser) {
 
     int content_length = 0;
     std::string cntlen = pmessage->getValueByHeader("content-length");
+    //Content length has higher priority
     if(!cntlen.empty()) {
         content_length = ::atoi(cntlen.c_str());
+        if(content_length >= FILE_BIG_CONTENT || pmessage->getRole() == HTTP_ROLE_REQUEST) {
+            hptr->labelBigFile();
+        }
+        return 0;
     }
 
-    if(content_length >= FILE_BIG_CONTENT) {
+    std::string mime_type = pmessage->getValueByHeader("content-type");
+    if(mime_type.empty()) {
+        mime_type = pmessage->getValueByHeader("mime-type");
+        if(!mime_type.empty()) {
+            std::size_t found = mime_type.find_first_of("/");
+            if(found != std::string::npos) {
+                mime_type = mime_type.substr(0, found -1);
+            }
+        }
+    }
+
+    //only interest on text & image file
+    if(strcasecmp(mime_type.c_str(), "text") || strcasecmp(mime_type.c_str(), "image")) {
         hptr->labelBigFile();
+        return 0;
+    }
+
+    if(http_parser_is_chunked(parser)) {
+        DBG_LOG("Detect chunked transfer-encoding");
+        pmessage->getBody()->chunked = true;
     }
     return 0;
 }
@@ -135,12 +165,11 @@ int HttpParser::on_body(http_parser* parser, const char* at, size_t len) {
 
     //big file: truched transfer-encoding, not copy to response, need tunnel
     if(!hptr->isBigFile()) { 
-        if(pmessage->getBody().size() >= FILE_BIG_CONTENT) { hptr->labelBigFile(); }
-        if(!hptr->isBigFile()) { pmessage->setBody(std::string(at, len)); }
+        if(pmessage->getBody()->size() >= FILE_BIG_CONTENT) { hptr->labelBigFile(); }
+        if(!hptr->isBigFile()) { pmessage->appendBody(at, len); }
     }
 
     hptr->setParseState(PARSE_BODY_NEED_MORE_DATA);
-
     return 0;
 }
 

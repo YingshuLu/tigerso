@@ -13,7 +13,8 @@ namespace tigerso {
 
 int SocketUtil::InitSocket(const int domain, const int type, Socket& mcsock) {
 	socket_t sockfd = ::socket(domain, type, 0);
-    if(sockfd > 0) {
+    DBG_LOG("socket return: %d", sockfd);
+    if(validFd(sockfd)) {
         sockfd = RelocateFileDescriptor(sockfd, MIN_SOCKET_FD);
 	    mcsock.setSocket(sockfd);
         return 0;
@@ -129,7 +130,7 @@ int SocketUtil::Connect(Socket& mcsock, const std::string& s_addr, const std::st
     }
 
     socket_t sockfd = ::socket(AF_INET, type, 0);
-    sockfd = RelocateFileDescriptor(sockfd, MIN_SOCKET_FD);
+    sockfd = RelocateFileDescriptor(sockfd, 552);
 
     mcsock.setStrAddr(s_addr);
     mcsock.setStrPort(port);
@@ -146,6 +147,7 @@ int SocketUtil::Connect(Socket& mcsock, const std::string& s_addr, const std::st
             return 1;
         }
         DBG_LOG("connect error, errno: %d, reason: %s", errno, strerror(errno));
+        ::close(sockfd);
         return -1;
     }
 
@@ -413,6 +415,7 @@ int SocketUtil::CreateUDPConnect(
 
     std::string pt = port;
 	
+    /*
     // socket()
     if (SocketUtil::InitSocket(AF_INET, SOCK_DGRAM, mcsock) != 0) {
 		DBG_LOG("socket: UDP socket initilizaion failed");
@@ -433,6 +436,8 @@ int SocketUtil::CreateUDPConnect(
 
     mcsock.setNIO(unblock);
 	DBG_LOG("create UDP socket [%d],  connect to remote server: %s:%s", mcsock.getSocket(), ip.c_str(), port.c_str());
+    */
+
     //connect()
     int retcode = 0;
     if((retcode = SocketUtil::Connect(mcsock, ip, port, SOCK_DGRAM)) < 0)
@@ -441,7 +446,21 @@ int SocketUtil::CreateUDPConnect(
 		return -1;
     }
 
+    // set addr reuse
+    if(!SocketUtil::SetAddrReuseable(mcsock, true)) {
+        DBG_LOG("error: can not set master socket addr reuseable");
+		return -1;
+    }
+
+    // set port reuse
+    if(!SocketUtil::SetPortReuseable(mcsock, true)) {
+        DBG_LOG("error: can not set master socket port reuseable");
+		return -1;
+    }
+
     mcsock.setNIO(unblock);
+	DBG_LOG("create UDP socket [%d],  connect to remote server: %s:%s", mcsock.getSocket(), ip.c_str(), port.c_str());
+
     return retcode;
 }
 

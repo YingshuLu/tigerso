@@ -43,7 +43,7 @@ int SysUtil::remove_file(const string& file)
     return 0;
 }
 
-void* SysUtil::create_process_shared_memory(const string& shm_name, size_t len)
+void* SysUtil::create_process_shared_memory(const string& shm_name, size_t len, bool clear)
 {
     
     if(shm_name == "" || shm_name.length() == 0 || len <= 0)
@@ -54,10 +54,10 @@ void* SysUtil::create_process_shared_memory(const string& shm_name, size_t len)
 
     //if /dev/shm/$(shm_name) existed, remove it
     string shm_path = shm_name;
-    if(access(shm_path.c_str(), F_OK) == 0)
+    if(access(shm_path.c_str(), F_OK) == 0 && clear)
     {
         DBG_LOG("2. create error: %s", strerror(errno));
-        if(unlink(shm_path.c_str())!=0)
+        if( unlink(shm_path.c_str())!=0)
         {
             DBG_LOG("2.1. create error: %s", strerror(errno));
             return NULL;
@@ -69,8 +69,8 @@ void* SysUtil::create_process_shared_memory(const string& shm_name, size_t len)
 
     int fd = shm_open(shm_file.c_str(), O_RDWR|O_CREAT|O_EXCL, 0755);
      DBG_LOG("3. create error: %s, shm_file: %s, fd: %d", strerror(errno), shm_file.c_str(), fd);
-    if ( fd < 0)
-    {
+    if ( fd < 0 ){ 
+        INFO_LOG("shm_open failed, errno: %d, %s", errno, strerror(errno));
         return NULL;
     }
     
@@ -78,7 +78,7 @@ void* SysUtil::create_process_shared_memory(const string& shm_name, size_t len)
 
     void* ptr = mmap(NULL, len, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
 
-    bzero(ptr, len);
+    if(clear) { ::bzero(ptr, len); }
     ::close(fd);
 
     DBG_LOG("4. create error: %s", strerror(errno));
@@ -89,21 +89,13 @@ int SysUtil::destroy_process_shared_memory(const string& shm_name, void* ptr, si
 {
     if(shm_name == "" || shm_name.length() == 0 || ptr == NULL || len <= 0)
     {
+         INFO_LOG("params error");
          return -1;
     }
 
     DBG_LOG("destroy process shared memory: %s", shm_name.c_str());
-    if(!munmap(ptr, len))
-    {
-        //return shm_unlink(shm_name.c_str()); 
-        if( shm_unlink(shm_name.c_str()) != 0) {
-            std::cout << "munmap failed" << errno << std::endl;
-        }
-        return 0;
-    }
-
-
-    return -1;
+    munmap(ptr, len);
+    return shm_unlink(shm_name.c_str());
 }
 
 bool SysUtil::validate_filename(const string& filename)
@@ -191,14 +183,7 @@ int SharedMemory::destroy() {
     }
 
     DBG_LOG("destroy process shared memory: %s", shm_name);
-
     SysUtil::destroy_process_shared_memory(shm_name, shm_ptr, shm_len);
-    /*
-    if(munmap(shm_ptr, shm_len) == 0)
-    {
-        return shm_unlink(shm_name.c_str()); 
-    }
-    */
     return -1;
 }
 
@@ -263,7 +248,7 @@ ShmMutex::~ShmMutex()
     }
 
     //if(pid == shm_pid && mutex_ptr != NULL && mutex_ptr->refer_num == 0)
-    std::cout << "current pid = " << pid << ", parent pid = " << shm_pid << std::endl;
+    DBG_LOG("current pid = %d, parent pid = %d", getpid(), shm_pid);
     if(pid == shm_pid)
     {
         //DBG_LOG("shm mutex destroy mutex_ptr: %d", mutex_ptr);
@@ -342,7 +327,7 @@ int ShmMutex::init()
 int ShmMutex::lock()
 {
     if (mutex_ptr != NULL) {
-        DBG_LOG("mutex lock, mutex_ptr: %d", mutex_ptr);
+        //DBG_LOG("mutex lock, mutex_ptr: %d", mutex_ptr);
         int ret = pthread_mutex_lock(&(mutex_ptr->mutex));
         if(ret != 0) {
             DBG_LOG("mutex lock failed, return code [%d] : %s", ret, strerror(errno));
@@ -358,7 +343,7 @@ int ShmMutex::lock()
 int ShmMutex::try_lock()
 {
     if (mutex_ptr != NULL) {
-        DBG_LOG("mutex try lock, mutex_ptr: %d, mutex refer: %d", mutex_ptr, mutex_ptr->refer_num);
+        //DBG_LOG("mutex try lock, mutex_ptr: %d, mutex refer: %d", mutex_ptr, mutex_ptr->refer_num);
         int ret =  pthread_mutex_trylock(&(mutex_ptr->mutex));
         if(ret != 0) {
             DBG_LOG("mutex try lock failed, return code [%d] : %s", ret, strerror(errno));
@@ -375,7 +360,7 @@ int ShmMutex::unlock()
 {
     if(mutex_ptr != NULL)
     {
-        DBG_LOG("mutex unlock, mutex_ptr: %d, mutex refer: %d", mutex_ptr, mutex_ptr->refer_num);
+        //DBG_LOG("mutex unlock, mutex_ptr: %d, mutex refer: %d", mutex_ptr, mutex_ptr->refer_num);
         int ret = pthread_mutex_unlock(&(mutex_ptr->mutex));
         if(ret != 0) {
              std::cout<< "shm mutex unlock failed:"<<strerror(errno) << std::endl;
@@ -395,7 +380,7 @@ int ShmMutex::destroy()
 {
     if(mutex_ptr != NULL)
     {
-        DBG_LOG("shm mutex destroy, destroy mutex_ptr: %d", mutex_ptr);
+        //DBG_LOG("shm mutex destroy, destroy mutex_ptr: %d", mutex_ptr);
         int ret = pthread_mutex_destroy(&(mutex_ptr->mutex));
         if(ret != 0) {
             DBG_LOG("mutex destroy failed, return code [%d] : %s", ret, strerror(errno));

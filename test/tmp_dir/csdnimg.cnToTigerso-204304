@@ -1,0 +1,91 @@
+// popHide
+define(function() {
+    var hide = function(obj){
+        $(obj).hide();
+        $("#dlMask").hide();
+    };
+    return {
+        hide:hide
+    };
+});
+
+
+
+
+// popShow
+define(function() {
+    var show = function(obj){
+        $(obj).show();
+        //$(obj).css('top',$(obj).height()/2);
+        $("#dlMask").show();
+    };
+    return {
+        show:show
+    };
+});
+
+
+
+// securityHide  验证证码隐藏
+define(['apps/hide'],function(hide) {
+    var securityHide = function(){
+        $("#pop_validate_code_error").hide();
+        hide.hide("#dl_security");
+        $('input[name="validate_code"]').val('');
+        $("#da").val('');
+    };
+    return {
+        securityHide:securityHide
+    };
+});
+
+
+
+// _getCookieValue
+define(function() {
+    var _getCookieValue = function (a, b) {
+        b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+        return b ? b.pop() : '';
+        //return '11';  //测试  ''未登录跳转，其他登陆成功
+    };
+    return {
+        _getCookieValue:_getCookieValue
+    };
+});
+
+
+
+// uploadImg
+define(['apps/PreviewImage'],function(PreviewImage) {
+    var uploadImg = function(){
+        $( '#albumform' ).ajaxForm();
+        $( 'input[name=imagesrc]' ).bind( 'change', function(){
+            PreviewImage.PreviewImage( this, '#imgView', '#albumform' );
+        });
+    };
+    return {
+        uploadImg:uploadImg
+    };
+});
+
+
+
+// _verificaUser
+define(['apps/_getCookieValue'],function(_getCookieValue) {
+    var _verificaUser = function(){
+        if(!(_getCookieValue._getCookieValue('UserName')))
+        {
+            var _url = "https://passport.csdn.net/account/login?from=" + encodeURI(location.href);
+            window.location = _url;
+            return false;
+        }else{
+            return true;
+        }
+    };
+    return {
+        _verificaUser:_verificaUser
+    };
+});
+
+
+

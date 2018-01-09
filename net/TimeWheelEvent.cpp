@@ -60,7 +60,7 @@ int TimeWheelEvent::clockErrorHandle(TimerFd& tfd) {
 int TimeWheelEvent::updateChannel(Channel* cnptr) {
     if(isSkipChannel(cnptr)) { return 0; }
     /*erase this channel from node list, and inset it into previous node*/
-    DBG_LOG("update timeout channel: %ld", cnptr);
+    //DBG_LOG("update timeout channel: %ld", cnptr);
     eraseChannel(cnptr);
     _current->ChannelSet.insert(cnptr);
     return 0;
@@ -99,8 +99,11 @@ int TimeWheelEvent::clearCurrentTimeNode() {
        Channel* cnptr = *it;
        if(nullptr != cnptr && cnptr->sockfd != -1 && nullptr != cnptr->getSocketPtr()){ 
             Socket* sockptr = cnptr->getSocketPtr();
-            DBG_LOG("Time Wheel close socket [%d]", sockptr->getSocket());    
-            sockptr->close();
+            DBG_LOG("Time Wheel close timeout socket [%d]", sockptr->getSocket());    
+            if(cnptr->getTimeoutCallback() == nullptr) { sockptr->close(); }
+            else {
+                cnptr->getTimeoutCallback()(*sockptr);
+            }
        }
         _current->ChannelSet.erase(cnptr);
     }

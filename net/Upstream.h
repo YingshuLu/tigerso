@@ -31,6 +31,7 @@ struct UpstreamNode{
 public:
     Upstream() {}
 
+    /*return node id*/
     int fetch(const char* ip, unsigned int& port) {
         int ret = 0;
         switch(_mode) {
@@ -47,12 +48,12 @@ public:
         return ret;
     }
 
-    void inactve(unsigned int loc) {
-        activeNode(loc, false);
+    bool inactve(unsigned int loc) {
+        return activeNode(loc, false);
     }
 
-    void active(unsigned int loc) {
-        activeNode(loc, true);
+    bool active(unsigned int loc) {
+        return activeNode(loc, true);
     }
 
     ~Upstream() { destory(); }
@@ -148,14 +149,14 @@ private:
         return nullptr;
     }
 
-    void activeNode(unsigned int loc, bool on) {
+    bool activeNode(unsigned int loc, bool on) {
         UpstreamNode* node = locate(loc);
         if(nullptr == node) {
             DBG_LOG("can not found the %d node", (int)loc);
-            return nullptr;
+            return false;
         }
         node->active = on? true: false;
-        return;
+        return true;
     }
 
     void destory() {

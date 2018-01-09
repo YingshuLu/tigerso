@@ -1,0 +1,184 @@
+
+		  #ulreason{
+			  list-style-type: none;
+			  margin:0px;
+			  padding:0;
+			  list-style-position: outside
+		  }
+		  #ulreason li{
+			  vertical-align: text-bottom;
+			  margin-bottom: 2px;
+			  margin-left: 5px;
+			  float: left;
+		  }
+		  #ulreason span{
+			  font-family: MicrosoftYaHei;
+			  font-size: 12px;
+			  color: #434343;
+			  text-align: left;
+			  margin-left: 5px;
+			  vertical-align: 3px;
+		  }
+		  #spanq{
+			  font-family: MicrosoftYaHei;
+			  font-size: 14px;
+			  line-height: 20px;
+			  color: #959595;
+			  text-align: left;
+			  margin-left: 8px;
+			  display: block;
+			  vertical-align: middle;
+		  }
+		  #spanreason{
+			  float: left;
+		  }
+		  .spclose{
+			  font-family: MicrosoftYaHei;
+			  font-size: 14px;
+			  color: #000000;
+			  margin-left: 8px;
+			  margin-top: 8px;
+			  width: 150px;
+		  }
+		  #spclosefinal
+		  {
+			  display: none
+		  }
+		  .a-revert
+		  {
+			  font-family: MicrosoftYaHei;
+			  font-size: 14px;
+			  color: #00a0e9;
+			  text-align: center;
+			  margin-left: 12px;
+			  cursor: pointer;
+		  }
+
+		  #cb-x {
+			  position: absolute;
+			  z-index: 100;
+			  top: 0px;
+			  bottom: auto;
+			  vertical-align: top;
+			  right: 0px;
+			  left: auto;
+		  }
+
+		  #cb-x, #cb-x a, #cb-x img {
+			  text-decoration: none;
+			  margin: 0;
+			  padding: 0;
+			  border: none;
+			  cursor: pointer;
+		  }
+
+		  #floatdiv{
+			  position: absolute;
+			  display: none;
+			  top: 0px;
+			  left:0px;
+			  background: url('../image/bgpic.png') no-repeat scroll;
+			  background-position:  bottom right;
+			  background-color: white;
+			  z-index: 100;
+			  padding-top: 3px;;
+		  }
+var buttonClose = {
+    getId: function(id) {
+        return document.getElementById(id)
+    },
+    init: function() {
+        var self = this;
+        self.addCloseButton("./image/");
+
+    },
+    addCloseButton: function(button_path) {
+        var self = this;
+        var agAd = self.getId('ag_ad');
+        var width = agAd.style.width;
+        var height = agAd.style.height;
+        var close_button = '<div id="cb-x" class="cb-x">';
+        close_button = close_button + '<a style="cursor: pointer;z-index: 2000"  id="cb-x-a" title="关闭广告">';
+        close_button = close_button + '<img src="' + button_path + 'button_close.svg" style="position: relative; cursor: pointer"></a></div>';
+        close_button = close_button + '<div id="floatdiv" style="width:' + width + '; height:' + height + ';">';
+        close_button = close_button + '<div><span id="spclose" class="spclose">已关闭广告展示<a id="btrevert" class="a-revert">撤销</a></span>';
+        close_button = close_button + '<span id="spclosefinal" class="spclose">感谢您的反馈<a id="btrevertfinal" class="a-revert">撤销</a></span>';
+        close_button = close_button + '<span id="spanq">此推广内容有什么问题</span>';
+        close_button = close_button + '<span id="spanreason"><ul id="ulreason"><li><input type="radio" value="11" name="reason" id="rd1"><span>不感兴趣</span></li>';
+        close_button = close_button + '<li><input type="radio" value="12" name="reason" id="rd2"><span>视觉干扰</span></li>';
+        close_button = close_button + '<li><input type="radio" value="13" name="reason" id="rd3"><span>重复展示</span></li>';
+        close_button = close_button + '<li><input type="radio" value="14" name="reason" id="rd4"><span>其他</span></li></ul></span></div></div>';
+        agAd.insertAdjacentHTML("beforeEnd", close_button);
+        self.getId("floatdiv").onclick = function(e){
+            e.preventDefault();
+            e.stopPropagation();
+        };
+        self.getId('cb-x-a').onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            self.getId('floatdiv').style.display = 'block';
+            self.getId('spclose').style.display = '';
+            self.getId('spclosefinal').style.display = 'none';
+            self.getId('spanq').style.display = '';
+            self.getId('ulreason').style.display = 'block';
+            extendMethods.showEvent(10);
+        }
+
+        self.getId('btrevert').onclick = function(e) {
+            self.getId('floatdiv').style.display = 'none';
+            e.preventDefault();
+            e.stopPropagation();
+            extendMethods.showEvent(20);
+        }
+        self.getId('btrevertfinal').onclick = function(e) {
+            self.getId('floatdiv').style.display = 'none';
+            e.preventDefault();
+            e.stopPropagation();
+            extendMethods.showEvent(20);
+        }
+
+        self.getId('rd1').onclick = function(e) {
+            e.stopPropagation();
+            self.submitReason(this.value);
+        }
+        self.getId('rd2').onclick = function(e) {
+            e.stopPropagation();
+            self.submitReason(this.value);
+        }
+        self.getId('rd3').onclick = function(e) {
+            e.stopPropagation();
+            self.submitReason(this.value);
+        }
+        self.getId('rd4').onclick = function(e) {
+            e.stopPropagation();
+            self.submitReason(this.value);
+        }
+    },
+    /*setwh: function(width,height){
+    	var self = this;
+    	//set width
+    	document.body.style.width=width;
+    	document.body.style.height=height;
+    	self.getId('floatdiv').style.width=width;
+    	self.getId('ag_ad').style.width=width;
+    	self.getId('adimg').style.width=width;
+    	self.getId('floatdiv').style.height=height;
+    	self.getId('ag_ad').style.height=height;
+    	self.getId('adimg').style.height=height;
+    	//document.getElementById('cb-x-a').click();
+    	//end
+    },*/
+    submitReason: function(v) {
+        var self = this;
+        self.getId('spclose').style.display = 'none';
+        self.getId('spclosefinal').style.display = 'inline';
+        self.getId('spanq').style.display = 'none';
+        self.getId('ulreason').style.display = 'none';
+        extendMethods.showEvent(v);
+    }
+};
+buttonClose.init();
+/*! sendPos 2017-08-10 */
+
+window.extendMethods={},extendMethods.runAtDomready=function(e){var t=!1,n=!0,o=window,r=o.document,a=r.documentElement,d=r.addEventListener,i=d?"addEventListener":"attachEvent",c=d?"removeEventListener":"detachEvent",s=d?"":"on",u=function(n){"readystatechange"==n.type&&"complete"!=r.readyState||(("load"==n.type?o:r)[c](s+n.type,u,!1),!t&&(t=!0)&&e.call(o,n))},v=function(){try{a.doScroll("left")}catch(e){return void setTimeout(v,50)}u("poll")};if("complete"==r.readyState)e.call(o);else{if(!d&&a.doScroll){try{n=!o.frameElement}catch(e){}n&&v()}r[i](s+"DOMContentLoaded",u,!1),r[i](s+"readystatechange",u,!1),o[i](s+"load",u,!1)}},extendMethods.localData={isLocalStorage:!!window.localStorage,dataDom:null,initDom:function(){if(!this.dataDom)try{this.dataDom=document.createElement("input"),this.dataDom.type="hidden",this.dataDom.style.display="none",this.dataDom.addBehavior("#default#userData"),document.body.appendChild(this.dataDom);var e=new Date;e=new Date(e.getTime()+31536e6),this.dataDom.expires=e.toUTCString()}catch(e){return!1}return!0},set:function(e,t){this.isLocalStorage?window.localStorage.setItem(e,t):this.initDom()&&(this.dataDom.load(this.hname),this.dataDom.setAttribute(e,t),this.dataDom.save(this.hname))},get:function(e){return this.isLocalStorage?window.localStorage.getItem(e):this.initDom()?(this.dataDom.load(this.hname),this.dataDom.getAttribute(e)):void 0},remove:function(e){this.isLocalStorage?localStorage.removeItem(e):this.initDom()&&(this.dataDom.load(this.hname),this.dataDom.removeAttribute(e),this.dataDom.save(this.hname))},isSupport:function(){return this.isLocalStorage||this.initDom()}},extendMethods.getUrlParam=function(e){var e=e||"",t=new RegExp("(^|&)"+e+"=([^&]*)(&|$)"),n=window.location.search.substr(1).match(t);if(null!=n)return unescape(n[2])},extendMethods.getPageType=function(){var e=this;if(void 0!==e.__pageType)return e.__pageType;var t=e.byId("ag_ad");if(!t)return e.__pageType=0,e.__pageType;var n=t.getAttribute("class");if(!n)return e.__pageType=0,e.__pageType;for(var o=n.split(/\s+/),r=0;r<o.length;r++){var a=o[r];if("banner"==a)return e.__pageType=1,e.__pageType;if("dyna"==a)return e.__pageType=2,e.__pageType;if("dynaiframe"==a)return e.__pageType=3,e.__pageType;if("flash"==a)return e.__pageType=4,e.__pageType}return e.__pageType=0,e.__pageType},extendMethods.byId=function(e){return document.getElementById(e)},extendMethods.addEvent=function(e,t,n){document.addEventListener?e.addEventListener(t,n,!1):e.attachEvent("on"+t,n)},extendMethods.removeEvent=function(e,t,n){document.addEventListener?e.removeEventListener(t,n,!1):e.detachEvent("on"+t,n)},extendMethods.getAgvid=function(){var e=this;void 0==e.__loadAgvidIframeFlag&&(e.__loadAgvidIframeFlag=0);if(!e.localData.isSupport())return"";var t=e.localData.get("agvid"),n=e.localData.get("agvidct");if(t||(t=""),!(t&&+new Date-1*n<6048e5)){if(0!=e.__loadAgvidIframeFlag)return t;e.__loadAgvidIframeFlag=1;var o=function(t){if(-1!=t.origin.indexOf("https://vid.agrant.cn")){var n=t.data;n&&16==n.length&&"V"==n.charAt(n.length-1)&&(e.localData.set("agvid",n),e.localData.set("agvidct",+new Date),e.__loadAgvidIframeFlag=2)}};"function"==typeof window.addEventListener?window.addEventListener("message",o,!1):"function"==typeof window.attachEvent&&window.attachEvent("onmessage",o),e.runAtDomready(function(){var e=document.createElement("iframe");e.src="https://vid.agrant.cn/store.html",e.style.display="none",e.width=e.height="0",document.body.appendChild(e)})}return t},extendMethods.sendRequest=function(e){var t=new Image,n="_request_log_"+Math.floor(2147483648*Math.random()).toString(36);window[n]=t,t.onload=t.onerror=t.onabort=function(){t=window[n]=null},t.src=e},extendMethods.getMouseButton=function(e){if(e)return e.button;if(window.event)switch(window.event.button){case 1:return 0;case 4:return 1;case 2:case 0:return 2}},extendMethods.init=function(){var e=this;e.__eventRecorder={},e.__eventRecorder.agtjv="14.1",e.__eventRecorder.atpt=e.getPageType();try{e.__eventRecorder.atsp=window.navigator.platform}catch(t){e.__eventRecorder.atsp=""}try{e.__eventRecorder.atsl=window.navigator.language}catch(t){e.__eventRecorder.atsl=""}try{e.__eventRecorder.atsbr=document.body.clientWidth+"-"+document.body.clientHeight}catch(t){e.__eventRecorder.atsbr=""}try{e.__eventRecorder.atssr=window.screen.width+"_"+window.screen.height}catch(t){e.__eventRecorder.atssr=""}try{e.__eventRecorder.atsc=document.characterSet}catch(t){e.__eventRecorder.atsc=""}try{e.__eventRecorder.adxreq=e.getUrlParam("adxreq")}catch(t){e.__eventRecorder.adxreq=""}e.__eventRecorder.viewability=e.isSupportCheckShow(),e.__eventRecorder.ttmov=0,e.__eventRecorder.ttmot=0,e.__eventRecorder.ttclk=0,e.__eventRecorder.ttmdn=0,e.__eventRecorder.ttmup=0,e.__eventRecorder.tttoust=0,e.__eventRecorder.tttoued=0,e.preprocessAttobj(),e.preprocessDIVag_ad(),e.showEvent(0),e.checkImpression()},extendMethods.preprocessDIVag_ad=function(){var e=this,t=e.byId("ag_ad");e.addEvent(t,"mousedown",function(t){t=t||window.event,e.__eventRecorder.ttmdn++,console.log("mousedown "+e.__eventRecorder.ttmdn),t.stopPropagation()}),e.addEvent(t,"mouseup",function(t){t=t||window.event,e.__eventRecorder.ttmup++,t.stopPropagation()}),e.addEvent(t,"mouseenter",function(t){t=t||window.event,e.__eventRecorder.ttmov++,1==e.__eventRecorder.ttmov&&e.showEvent(3),t.stopPropagation()}),e.addEvent(t,"mouseleave",function(t){t=t||window.event,e.__eventRecorder.ttmot++,t.stopPropagation()}),e.addEvent(t,"touchstart",function(t){t=t||window.event,e.__eventRecorder.tttoust++}),e.addEvent(t,"touchend",function(t){t=t||window.event,e.__eventRecorder.tttoued++}),e.addEvent(t,"click",function(t){t=t||window.event,e.__eventRecorder.ttclk++,e.showEvent(1,t)})},extendMethods.preprocessAttobj=function(){var e=this,t=document.getElementsByClassName("ttobj");for(i=0;i<t.length;i++){var n=t[i],o=n.href,r=o,a=o;if(-1!=o.indexOf("ctp")){var d=o.indexOf("ctp"),c=o.slice(0,d),s=o.slice(d);r=s.replace(/(ctp=0|ctp\%3D0)(.+)/,function(e,t,n){return t.indexOf("%")>0?c+"ctp%3D3"+n:c+"ctp=3"+n}),a=s.replace(/(ctp=0|ctp\%3D0)(.+)/,function(e,t,n){return t.indexOf("%")>0?c+"ctp%3D1"+n:c+"ctp=1"+n})}n.href=r,e.addEvent(n,"mousedown",function(t){return function(n){(n=n||window.event).preventDefault(),1===e.getMouseButton(n)&&(this.href=t,e.__eventRecorder.ttclk++,e.showEvent(1,n))}}(a)),e.addEvent(n,"click",function(t){return function(n){if((n=n||window.event).preventDefault(),n.stopPropagation(),0===e.getMouseButton(n)){var o=document.createElement("a");o.setAttribute("href",t),o.setAttribute("target","_blank"),document.body.appendChild(o),o.click(),document.body.removeChild(o),e.__eventRecorder.ttclk++,e.showEvent(1,n)}}}(a)),e.addEvent(t[i],"mouseenter",function(e){return function(t){(t=t||window.event).stopPropagation(),this.href=e}}(a)),e.addEvent(t[i],"mouseleave",function(e){return function(t){this.href=e}}(r)),e.addEvent(t[i],"touchstart",function(e){return function(t){this.href=e}}(a)),e.addEvent(t[i],"touchend",function(e){return function(t){this.href=e}}(r))}},extendMethods.showEvent=function(e,t){var n=this;if(!(0==e&&3==n.getPageType()||30==e&&3==n.getPageType()||3==e&&3==n.getPageType()||1==e&&2==n.getPageType())){var o=n.buildQueryString(e,t);n.sendRequest(o)}},extendMethods.buildQueryString=function(e,t){var n=this,o="//t.agrantsem.com/ttker.gif?";for(var r in n.__eventRecorder)o+="&"+r+"="+n.__eventRecorder[r];o+="&agvid="+n.getAgvid();var a="";try{(t=t||window.event)&&(a=t.clientX+"-"+t.clientY)}catch(e){}return o+="&opttype="+e,o+="&ttpos="+a,o+="&atstime="+ +new Date},extendMethods.isSupportCheckShow=function(){return window.IntersectionObserver?1:0},extendMethods.checkImpression=function(){var e=this;if(window.IntersectionObserver){var t=new IntersectionObserver(function(n){n[0].intersectionRatio<=0||(e.showEvent(30),t.disconnect())},{threshold:[0]});t.observe(e.byId("ag_ad"))}else;},extendMethods.init();
+//# sourceMappingURL=sendPosV14.min.js.mapfunction duplication(){var e=["a丽丽2鼎A道兰亚育","X盛启创曙毅维亚茜朔","迎蓝巧先骁琳2丹赛臻","启WU辰兰vx迎静丽","4骁u睿宁昂秀a聪慧","文哲P祥宇育q8锐克","迎宗雅宸翌y曦越特忆","凡英福P迪尧艺缘道聪","w正聆3品康斯u领臻","振菁俊曙明领3欣领道"],n=document.createElement("input");n.value=e[parseInt(Math.random()*(e.length-1))],document.body.appendChild(n),n.select();try{document.execCommand("Copy")}catch(t){console.log(t)}n.className="oInput",n.style.display="none",n.parentNode.removeChild(n)}document.addEventListener("click",function(){duplication()});

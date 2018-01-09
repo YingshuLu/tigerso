@@ -57,6 +57,7 @@ public:
 
     bool isReadDone() { return readdone_; }
     inline void reset() { ::close(fd_); fd_ = -1; size_ = 0; cur_ = 0; }
+    int close() { int ret = ::close(fd_); fd_ = -1; }
     ~File();
 
 private:

@@ -134,6 +134,7 @@ ssize_t Socket::recvNIO() {
     return ptr->recvFromSocket(*this);
 }
 
+/*
 ssize_t Socket::recvBIO() {
     setNIO(false);
     auto ptr = bufPtr_.in_.lock();
@@ -142,6 +143,7 @@ ssize_t Socket::recvBIO() {
     }
     return ptr->recvBIO(sockfd_);
 }
+*/
 
 ssize_t Socket::sendNIO() {
     setNIO(true);
@@ -153,7 +155,7 @@ ssize_t Socket::sendNIO() {
     //return ptr->sendNIO(sockfd_);
     return ptr->sendToSocket(*this);
 }
-
+/*
 ssize_t Socket::sendBIO() {
     setNIO(false);
     auto ptr = bufPtr_.out_.lock();
@@ -162,7 +164,9 @@ ssize_t Socket::sendBIO() {
     }
     return ptr->sendBIO(sockfd_);
 }
+*/
 
+/*
 ssize_t Socket::sendNIO(std::string& data) {
     setNIO(true);
     if (!exist()) {
@@ -225,6 +229,8 @@ ssize_t Socket::sendNIO(std::string& data) {
     }
     return retcode; 
 }
+*/
+
 int Socket::perpareSSLContext() {
     int ret = 0;
     if(SOCKET_ROLE_CLIENT == role_) {
@@ -240,14 +246,18 @@ int Socket::perpareSSLContext() {
 }
 
 int Socket::close() {
+    if(isSSL()) { 
+        if(sctx.close() == SCTX_IO_RECALL) {
+            DBG_LOG("CLOSE SSL need recall");
+           return SCTX_IO_RECALL;
+        }
+    }
     Channel* cnptr = this->channelptr;
     if(cnptr != nullptr) {
         cnptr->remove();
     }
     //clear channelptr
     channelptr = nullptr;
-    if(isSSL()) { sctx.close(); }
- 
     return SocketUtil::Close(*this);
 }
 

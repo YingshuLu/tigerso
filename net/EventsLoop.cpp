@@ -92,12 +92,12 @@ int EventsLoop::waitChannel() {
             assert(sockptr);
             if(!sockptr->exist()) {
                 DBG_LOG("socket is closed in registered list");
-                unregisterChannel(*sockptr);
+                //unregisterChannel(*sockptr);
                 continue;
             }
 
            // cnptr = sockptr->channelptr;
-           //DBG_LOG("Detected socket [%d] Events", fd);
+           //DBG_LOG("Detected socket [%d] Events", *sockptr);
 
             if(cnptr->before_cb && validChannel(cnptr)) {
                 DBG_LOG("socket [%d]: BEFORE event", fd);

@@ -13,7 +13,7 @@ Condition	Condition.h	/^    Condition(ThreadMutex& mutex)$/;"	f	class:tigerso::C
 Condition	Condition.h	/^class Condition: public nocopyable {$/;"	c	namespace:tigerso
 ConfigParser	ConfigParser.h	/^	ConfigParser() :isFileExisted(false), isRefreshed(false){}$/;"	f	class:tigerso::ConfigParser
 ConfigParser	ConfigParser.h	/^class ConfigParser$/;"	c	namespace:tigerso
-CurrentThread	CurrentThread.h	/^namespace CurrentThread {$/;"	n	namespace:tigerso::core
+CurrentThread	CurrentThread.h	/^namespace CurrentThread {$/;"	n	namespace:tigerso
 CurrentThread	Thread.cpp	/^namespace CurrentThread {$/;"	n	namespace:tigerso	file:
 DBG_LOG	Logging.h	24;"	d
 DEBUG	Logging.h	/^	DEBUG = 2,$/;"	e	enum:tigerso::LOGLEVEL
@@ -31,17 +31,18 @@ FILE_SENDFILE_DONE	File.h	35;"	d
 FILE_SENDFILE_ERROR	File.h	33;"	d
 FILE_SENDFILE_RECALL	File.h	34;"	d
 FILE_WRITE_ACCESS_DENY	File.h	28;"	d
+File	File.cpp	/^File::File() {}$/;"	f	class:tigerso::File
 File	File.cpp	/^File::File(const char* filename) {$/;"	f	class:tigerso::File
 File	File.h	/^class File {$/;"	c	namespace:tigerso
 FileLock	FileLock.cpp	/^FileLock::FileLock(const std::string& filename, const std::string& content): filename_(filename), content_(content) {$/;"	f	class:tigerso::FileLock
 FileLock	FileLock.h	/^class FileLock: public Lock {$/;"	c	namespace:tigerso
 GLOBAL	tigerso.h	36;"	d
-HEX2CHAR	Dechex.h	17;"	d
-HEXCHAR2DEC	Dechex.h	16;"	d
-HEX_DIV	Dechex.h	15;"	d
-HEX_MOD	Dechex.h	14;"	d
+HEX2CHAR	Dechex.cpp	14;"	d	file:
+HEXCHAR2DEC	Dechex.cpp	13;"	d	file:
+HEX_DIV	Dechex.cpp	12;"	d	file:
+HEX_MOD	Dechex.cpp	11;"	d	file:
 HOST_MAXLENGTH	tigerso.h	38;"	d
-HexCharSet	Dechex.h	/^static const char HexCharSet[] = {$/;"	m	namespace:tigerso
+HexCharSet	Dechex.cpp	/^static const char HexCharSet[] = {$/;"	m	namespace:tigerso	file:
 INFO	Logging.h	/^	INFO = 1,$/;"	e	enum:tigerso::LOGLEVEL
 INFO_LOG	Logging.h	25;"	d
 IPV4_ADDRSIZE	tigerso.h	37;"	d
@@ -65,8 +66,8 @@ MC_LOCK_PRIVATE	SysUtil.h	/^const int MC_LOCK_PRIVATE = 0;$/;"	m	namespace:tiger
 MC_LOCK_SHARE_PROCESS	SysUtil.h	/^const int MC_LOCK_SHARE_PROCESS = 1;$/;"	m	namespace:tigerso
 NOLOG	Logging.h	/^	NOLOG = 0,$/;"	e	enum:tigerso::LOGLEVEL
 PROJECT	tigerso.h	/^const std::string  PROJECT     =  "tigerso";$/;"	m	namespace:tigerso::core
-PUSH2HEXBUF	Dechex.h	18;"	d
-REVERSESTRING	Dechex.h	19;"	d
+PUSH2HEXBUF	Dechex.cpp	15;"	d	file:
+REVERSESTRING	Dechex.cpp	16;"	d	file:
 REVERSE_STRING	Dechex.cpp	/^void REVERSE_STRING(char* beg, char* end) {$/;"	f	namespace:tigerso
 SECTB	ConfigParser.h	14;"	d
 SECTE	ConfigParser.h	15;"	d
@@ -123,12 +124,13 @@ appendWriteIn	File.cpp	/^ssize_t File::appendWriteIn(const char* buf, size_t len
 assignHolder	ThreadMutex.h	/^    void assignHolder() {$/;"	f	class:tigerso::ThreadMutex
 blocking	tigerso.h	59;"	d
 cacheTid_	Thread.cpp	/^   __thread int cacheTid_ = 0;$/;"	m	namespace:tigerso::CurrentThread	file:
+close	File.h	/^    int close() { int ret = ::close(fd_); fd_ = -1; }$/;"	f	class:tigerso::File
 cond_	Condition.h	/^    pthread_cond_t cond_;$/;"	m	class:tigerso::Condition
 configMap	ConfigParser.h	/^	std::map<std::string, std::map<std::string, std::string> > configMap;$/;"	m	class:tigerso::ConfigParser
 content_	FileLock.h	/^    std::string content_;$/;"	m	class:tigerso::FileLock
-core	CurrentThread.h	/^namespace tigerso::core {$/;"	n	class:tigerso
+continuousReadOut	File.cpp	/^ssize_t File::continuousReadOut(char* buf, size_t len) {$/;"	f	class:tigerso::File
 core	tigerso.h	/^namespace core {$/;"	n	namespace:tigerso
-create_process_shared_memory	SysUtil.cpp	/^void* SysUtil::create_process_shared_memory(const string& shm_name, size_t len)$/;"	f	class:tigerso::SysUtil
+create_process_shared_memory	SysUtil.cpp	/^void* SysUtil::create_process_shared_memory(const string& shm_name, size_t len, bool clear)$/;"	f	class:tigerso::SysUtil
 cur_	File.h	/^    off_t cur_;$/;"	m	class:tigerso::File
 dbgLog	Logging.cpp	/^int Logging::dbgLog(const char* fmt, ...)$/;"	f	class:tigerso::Logging
 dec2hex	Dechex.cpp	/^const char* dec2hex(unsigned int num) {$/;"	f	namespace:tigerso
@@ -174,7 +176,8 @@ isFull	ThreadPool.h	/^    bool isFull() const {$/;"	f	class:tigerso::ThreadPool
 isLocked	SysUtil.h	/^    bool isLocked() const {$/;"	f	class:tigerso::LockTryGuard
 isLocked	SysUtil.h	/^    bool isLocked() { return locked_ ; }$/;"	f	class:tigerso::ShmMutex
 isLockedByCurrentThread	ThreadMutex.h	/^    bool isLockedByCurrentThread() const {$/;"	f	class:tigerso::ThreadMutex
-isMainThread	CurrentThread.h	/^   inline bool isMainThread() { return CurrentThread::tid() == getpid(); }$/;"	f	namespace:tigerso::core::CurrentThread
+isMainThread	CurrentThread.h	/^   inline bool isMainThread() { return CurrentThread::tid() == getpid(); }$/;"	f	namespace:tigerso::CurrentThread
+isReadDone	File.h	/^    bool isReadDone() { return readdone_; }$/;"	f	class:tigerso::File
 isRefreshed	ConfigParser.h	/^	bool isRefreshed;$/;"	m	class:tigerso::ConfigParser
 join	Thread.cpp	/^int Thread::join() {$/;"	f	class:tigerso::Thread
 joined_	Thread.h	/^    bool joined_ = false;$/;"	m	class:tigerso::Thread
@@ -198,7 +201,7 @@ mutex_	ThreadMutex.h	/^    pthread_mutex_t  mutex_;$/;"	m	class:tigerso::ThreadM
 mutex_	ThreadPool.h	/^    mutable ThreadMutex mutex_;$/;"	m	class:tigerso::ThreadPool
 mutex_ptr	SysUtil.h	/^    shm_mutex_t* mutex_ptr;$/;"	m	class:tigerso::ShmMutex
 mutexattr	SysUtil.h	/^    pthread_mutexattr_t mutexattr;$/;"	m	struct:tigerso::shm_mutex_t
-name	CurrentThread.h	/^   inline const char* name() { return threadName_; }$/;"	f	namespace:tigerso::core::CurrentThread
+name	CurrentThread.h	/^   inline const char* name() { return threadName_; }$/;"	f	namespace:tigerso::CurrentThread
 name	Thread.h	/^    const std::string& name() { return name_; }$/;"	f	class:tigerso::Thread
 name_	Thread.cpp	/^    std::string name_;$/;"	m	class:tigerso::ThreadData	file:
 name_	Thread.h	/^    std::string name_="";$/;"	m	class:tigerso::Thread
@@ -222,6 +225,7 @@ pInstance	ConfigParser.h	/^	static ConfigParser* pInstance;$/;"	m	class:tigerso:
 pInstance	Logging.cpp	/^Logging* Logging::pInstance = NULL;$/;"	m	class:tigerso::Logging	file:
 pInstance	Logging.h	/^	static Logging* pInstance;$/;"	m	class:tigerso::Logging
 readOut	File.cpp	/^ssize_t File::readOut(char* buf, size_t len, off_t& offset) {$/;"	f	class:tigerso::File
+readdone_	File.h	/^    bool readdone_ = false;$/;"	m	class:tigerso::File
 refer_num	SysUtil.h	/^    int refer_num;$/;"	m	struct:tigerso::shm_mutex_t
 reload	ConfigParser.cpp	/^int ConfigParser::reload() {$/;"	f	class:tigerso::ConfigParser
 remove_file	SysUtil.cpp	/^int SysUtil::remove_file(const string& file)$/;"	f	class:tigerso::SysUtil
@@ -270,13 +274,14 @@ threads_	ThreadPool.h	/^    std::vector<ThreadPtr> threads_;$/;"	m	class:tigerso
 tid	Thread.cpp	/^   pid_t tid() {$/;"	f	namespace:tigerso::CurrentThread
 tid	Thread.h	/^    pid_t tid() const { return *tid_; }$/;"	f	class:tigerso::Thread
 tidStrLength	Thread.cpp	/^   __thread size_t tidStrLength = 0;$/;"	m	namespace:tigerso::CurrentThread	file:
-tidString	CurrentThread.h	/^   inline const char* tidString() { return tidString_; }$/;"	f	namespace:tigerso::core::CurrentThread
+tidString	CurrentThread.h	/^   inline const char* tidString() { return tidString_; }$/;"	f	namespace:tigerso::CurrentThread
 tidString_	Thread.cpp	/^   __thread char tidString_[32] = {0};$/;"	m	namespace:tigerso::CurrentThread	file:
 tid_	Thread.h	/^    std::shared_ptr<pid_t> tid_;$/;"	m	class:tigerso::Thread
 tigerso	BaseClass.h	/^namespace tigerso {$/;"	n
 tigerso	Condition.h	/^namespace tigerso{$/;"	n
 tigerso	ConfigParser.cpp	/^namespace tigerso {$/;"	n	file:
 tigerso	ConfigParser.h	/^namespace tigerso {$/;"	n
+tigerso	CurrentThread.h	/^namespace tigerso {$/;"	n
 tigerso	Dechex.cpp	/^namespace tigerso {$/;"	n	file:
 tigerso	Dechex.h	/^namespace tigerso {$/;"	n
 tigerso	File.cpp	/^namespace tigerso {$/;"	n	file:

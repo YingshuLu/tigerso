@@ -26,7 +26,7 @@ public:
     static string getFormatTime(const string&);
     static int make_dirtree(const string& );
     static int remove_file(const string& );
-    static void* create_process_shared_memory(const string&, size_t);
+    static void* create_process_shared_memory(const string&, size_t, bool clear = true);
     static int destroy_process_shared_memory(const string&, void*, size_t);
     static bool validate_filename(const string&);
     //signal process

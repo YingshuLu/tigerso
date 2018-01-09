@@ -1,9 +1,12 @@
 #include "core/Dechex.h"
 #include "http/HttpBodyFile.h"
 #include "net/Socket.h"
+#include "core/ConfigParser.h"
 
 namespace tigerso {
-    
+
+bool HttpBodyFile::sendfile = true;
+
 HttpBodyFile::HttpBodyFile():_ringbuf(HTTP_FILE_CACHE_SIZE){}
 
 HttpBodyMode HttpBodyFile::mode() {
@@ -19,19 +22,24 @@ HttpBodyMode HttpBodyFile::mode() {
 
 void HttpBodyFile::setFile(const char* filename) {
     reset();
-    _file.setFilename(filename);
+    std::string HTTP_BODY_TEMP_PATH = ConfigParser::getInstance()->getValueByKey("http", "tmp_dir");
+    _file.setFilename((HTTP_BODY_TEMP_PATH + "/" + filename).c_str());
 }
 
 int HttpBodyFile::writeIn(const char* buf, size_t len) {
-    if(len < _ringbuf.size()) {
-        _ringbuf.writeIn(buf, len);
-        return len;
+    if(len < _ringbuf.space()) {
+        return _ringbuf.writeIn(buf, len);
+    }
+    else if(len >= RINGBUFFER_DEFAULT_LENGTH) {
+        flushFile();
+        return _file.appendWriteIn(buf, len);
     }
     
     size_t left = len;
     const char* bufbeg = buf;
     int writen = 0;
     while (1) {
+        DBG_LOG("left: %u", left);
         if((writen = _ringbuf.writeIn(bufbeg, left)) > 0) {
             bufbeg += writen;
             left -= writen;
@@ -44,8 +52,15 @@ int HttpBodyFile::writeIn(const char* buf, size_t len) {
     return len;
 }
 
+int HttpBodyFile::closeFile() {
+    flushFile();
+    return _file.close();
+}
 
 int HttpBodyFile::send2Socket(Socket& mcsock) {
+    if(!_file.testExist()) {
+        return FILE_SENDFILE_DONE;
+    }
     if(!mcsock.isSSL() && HttpBodyFile::sendfile) {
         if(chunked) { return sendFileChunk(mcsock); }
         return sendFileContent(mcsock);
@@ -308,7 +323,8 @@ size_t HttpBodyFile::size() { return _file.getFileSize() + _ringbuf.size(); }
 
 void HttpBodyFile::flushFile() {
     if(_ringbuf.size()) {
-        _ringbuf.readOut2File(_file);
+        int ret = _ringbuf.readOut2File(_file);
+        DBG_LOG("flush file: %d", ret);
     }
     return;
 }

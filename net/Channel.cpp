@@ -87,6 +87,15 @@ EventFunc Channel::setRdhupCallback(EventFunc func) {
     return func;
 }
 
+EventFunc Channel::setTimeoutCallback(EventFunc func) {
+    timeout_cb = func;
+    return func;
+}
+
+EventFunc Channel::getTimeoutCallback() {
+    return timeout_cb;
+}
+
 bool Channel::disableAllEvent() {
     disableReadEvent();
     disableWriteEvent();

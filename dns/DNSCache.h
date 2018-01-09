@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <memory>
 #include "core/SysUtil.h"
 #include "ssl/SSLHelper.h"
 
@@ -59,7 +60,7 @@ private:
     int DNS2Shared(const char* host, const char* ip, int ttl);
        
 private:
-    static DNSCache* pInstance_;
+    static std::unique_ptr<DNSCache> pInstance_;
     SharedMemory shm_;
     ShmMutex  mutex_; //process-shared mutex
     std::map<std::string, std::vector<std::string>> stickDNSData_;

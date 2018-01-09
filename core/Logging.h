@@ -6,12 +6,13 @@
 #ifndef TS_CORE_LOGGING_H_
 #define TS_CORE_LOGGING_H_
 
-#include <iostream>
-#include <string>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
 #include <errno.h>
+#include <iostream>
+#include <string>
+#include <memory>
 
 #define SPLIT '/'
 
@@ -42,9 +43,10 @@ public:
 	int dbgLog(const char* fmt, ...);
 	int infoLog(const char* fmt, ...);
 	int setLevel(const std::string& le);
+    ~Logging() {}
 
 private:
-	static Logging* pInstance;
+	static std::unique_ptr<Logging> pInstance;
 	Logging():endFmt("<__FUNC__>@__FILE__"), level(NOLOG){}
 	int genLogging(int choice, const char* fmt, ...);
 	std::string getTime();

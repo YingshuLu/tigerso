@@ -3,6 +3,7 @@
 #include <errno.h>
 #include "core/File.h"
 #include "core/Logging.h"
+#include "net/SocketUtil.h"
 
 namespace tigerso {
 
@@ -76,15 +77,27 @@ ssize_t File::appendWriteIn(const char* buf, size_t len) {
     if(NULL == buf || len <= 0 || strlen(filename_) == 0) { 
         return FILE_ARGS_INVALID;
     }
-
+    /*
     if(!validFd(fd_)) {
         fd_ = ::open(filename_, O_WRONLY|O_CREAT|O_APPEND);
+        if(fd_ < 0) {  
+            INFO_LOG("failed to open file: %s, errno: %d - %s", filename_,  errno, strerror(errno));
+            return -1; 
+        }
+        fd_ = SocketUtil::RelocateFileDescriptor(fd_, 32);
     }
-    ssize_t writen = ::write(fd_, buf, len);
-    if(writen != -1 && writen < len) { ::fsync(fd_); }
+    */
+    int wfd = ::open(filename_, O_WRONLY|O_CREAT|O_APPEND);
+    wfd = SocketUtil::RelocateFileDescriptor(wfd, 65);
+    ssize_t writen = ::write(wfd, buf, len);
+    if(writen != -1 && writen < len) { ::fsync(wfd); }
     if(-1 == writen) {
-        INFO_LOG("continuousReadOut error: %d, %s", errno, strerror(errno));
+        INFO_LOG("appendWriteIn error: %d, %s", errno, strerror(errno));
+        INFO_LOG("appendWriteIn more error info, filename: %s, fd: [%d]", filename_, wfd);
     }
+
+    DBG_LOG("File write in %d bytes", (int)len);
+    ::close(wfd);
     return writen;
 }
 
@@ -237,22 +250,23 @@ void File::setFilename(const char* filename) {
     this->reset();
     if(nullptr == filename) { return; }
     bzero(filename_, sizeof(filename_));
+    DBG_LOG("temp file: %s", filename);
     memcpy(filename_, filename, strlen(filename));
 }
 
 File::~File() {
     if(validFd(fd_)) {
-        ::close(fd_);
+        this->close();
     }
 }
 
 ssize_t File::getFileSize() {
-    if(strlen(filename_) == 0) { return 0; }
+    if(strlen(filename_) == 0 || !testExist()) { return 0; }
     struct stat st;
     if(::stat(filename_,  &st) != 0) {
-    
-        printf("get file: %s size failed, errno: %d, %s", filename_, errno, strerror(errno));
-        return -1; }
+        INFO_LOG("get file: %s size failed, errno: %d, %s", filename_, errno, strerror(errno));
+        return -1;
+    }
     return st.st_size;
 }
 

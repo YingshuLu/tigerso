@@ -16,7 +16,7 @@ class TimeWheelEvent: public nocopyable {
 
 #define TIMERFD_READ_SIZE 8
 #define TIMERFD_FD_BASE 123
-#define TIMEWHEEL_INTERVAL_SECOND 2
+#define TIMEWHEEL_INTERVAL_SECOND 1
 #define TimerFd Socket
 
 typedef struct _TimeNode_st{
@@ -27,7 +27,7 @@ typedef struct _TimeNode_st{
 } TimeNode;
 
 public:
-    TimeWheelEvent(const int nodenum = 5);
+    TimeWheelEvent(const int nodenum = 30);
     ~TimeWheelEvent();
 
     int register2EventsLoop(EventsLoop& loop);

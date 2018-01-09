@@ -10,15 +10,15 @@
 
 namespace tigerso {
 
-Logging* Logging::pInstance = NULL;
+std::unique_ptr<Logging> Logging::pInstance;
 
 Logging* Logging::getInstance()
 {
-	if (pInstance == NULL)
+	if (pInstance.get() == nullptr)
 	{
-		pInstance = new Logging();
+		pInstance = std::unique_ptr<Logging>(new Logging());
 	}
-	return pInstance;
+	return pInstance.get();
 }
 
 int Logging::setLogFile(const std::string& file)

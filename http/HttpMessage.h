@@ -9,9 +9,11 @@
 #include <map>
 #include <vector>
 #include <memory>
+#include "http/HttpBodyFile.h"
 #include "core/BaseClass.h"
 #include "core/tigerso.h"
 #include "core/File.h"
+#include "core/SysUtil.h"
 
 namespace tigerso {
 
@@ -72,7 +74,7 @@ public:
         return ""; 
     }
     virtual std::string& getHeader() { return headstr_; }
-    virtual std::string& getBody() { return body_; }
+    virtual HttpBodyFile* getBody() { return &body_; }
 
     virtual int getContentLength() {
         std::string content_length = getValueByHeader("content-length");
@@ -97,8 +99,8 @@ public:
         return;
     }
 
-    virtual void setBody(const std::string& body) { body_.append(body); }
-    virtual void appendBody(const char* buf, size_t len) { body_.append(buf, len); }
+    virtual void setBody(const std::string& body) { body_.writeIn(body.c_str(), body.size()); }
+    virtual void appendBody(const char* buf, size_t len) { body_.writeIn(buf, len); }
 
     virtual void removeHeader(const std::string& header) {
         for ( auto iter = headers_.begin(); ; iter++ ) {
@@ -143,18 +145,27 @@ public:
         version_ = "HTTP/1.1";
         headers_.clear();
         headstr_.clear();
-        body_.clear();
+        body_.reset();
+        bodyname_.clear();
     }
     
     // Temp variant for http parser
     std::string header_field;
+
+    virtual std::string& getBodyFileName() { return bodyname_; }
+    virtual int setBodyFileName(const std::string& fn) {
+        if(fn.empty()) { return -1; }
+        body_.setFile(fn.c_str());
+        return 0;
+    }
 
 protected:
     http_role_t role_ = HTTP_ROLE_UINIT;
     std::string version_ = "HTTP/1.1";
     headers_t headers_;
     std::string headstr_;
-    std::string body_;
+    HttpBodyFile body_;
+    std::string bodyname_;
 };
 
 //Http request
@@ -194,9 +205,11 @@ public:
         }
         
         request.append("\r\n");
+        /*
         if(!body_.empty()) {
             request.append(body_ + "\r\n");
         }
+        */
         return request;
     }
 
@@ -254,6 +267,27 @@ public:
         return port_;
     }
 
+    std::string& getBodyFileName() {
+        if(bodyname_.size()) {
+            return bodyname_;
+        }
+        
+        std::string filename = getValueByHeader("host");
+        /*
+        std::size_t found = url_.find_last_of("/");
+        if(found != std::string::npos) {
+            filename = url_.substr(found+1);
+        }
+        */
+        if(filename.empty()) {
+            filename = host_;
+        }
+
+        DBG_LOG("filename :%s", filename.c_str());
+        bodyname_ = filename + "ToTigerso-" + SysUtil::getFormatTime("%H%M%S");
+        return bodyname_;
+    }
+
 private:
     std::string method_;
     std::string url_;
@@ -302,9 +336,11 @@ public:
             ++iter;
         }
         response.append("\r\n");
+        /*
         if(!body_.empty()) {
             response.append( body_ + "\r\n");
         }
+        */
         return response;
     }
 

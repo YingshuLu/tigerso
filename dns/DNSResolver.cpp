@@ -55,6 +55,7 @@ int DNSResolver::asyncQueryStart(EventsLoop& loop, Socket& udpsock) {
     cnptr->setReadCallback(std::bind(&DNSResolver::recvAnswer, this, std::placeholders::_1));
     cnptr->setWriteCallback(std::bind(&DNSResolver::sendQuery, this, std::placeholders::_1));
     cnptr->setErrorCallback(std::bind(&DNSResolver::errorHandle, this, std::placeholders::_1));
+    cnptr->setTimeoutCallback(std::bind(&DNSResolver::timeoutHandle, this, std::placeholders::_1));
     cnptr->enableWriteEvent();
     return DNS_OK;
 }
@@ -117,6 +118,10 @@ int DNSResolver::errorHandle(Socket& udpsock) {
     }
     udpsock.close();
     return EVENT_CALLBACK_BREAK;
+}
+
+int DNSResolver::timeoutHandle(Socket& udpsock) {
+    return errorHandle(udpsock);
 }
 
 int DNSResolver::packDNSQuery(const char* query_name, size_t len) {

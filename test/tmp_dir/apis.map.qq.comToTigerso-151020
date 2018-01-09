@@ -1,0 +1,17 @@
+jQuery1120031289755386903884_1514963416459&&jQuery1120031289755386903884_1514963416459({
+    "status": 0,
+    "message": "query ok",
+    "result": {
+        "location": {
+            "lat": 31.9757,
+            "lng": 118.789
+        },
+        "ad_info": {
+            "nation": "中国",
+            "province": "江苏省",
+            "city": "南京市",
+            "district": "雨花台区",
+            "adcode": 320114
+        }
+    }
+})

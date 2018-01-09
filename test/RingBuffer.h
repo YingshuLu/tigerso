@@ -40,7 +40,7 @@ class RingBuffer {
  * DEFAULT SIZE 8KB
  */
 #define RINGBUFFER_MAX_LENGTH 65536
-#define RINGBUFFER_MIN_LENGTH 1024
+#define RINGBUFFER_MIN_LENGTH 32
 #define RINGBUFFER_DEFAULT_LENGTH 8192
 
 public:
@@ -202,7 +202,7 @@ private:
     RingBuffer(const RingBuffer&);
     RingBuffer& operator=(const RingBuffer&);
 
-private:
+public:
     size_t space() {
         if(_writeptr >= _readptr) { return (_size - (_writeptr - _readptr) - 1); }
         else { return (_readptr - _writeptr - 1); }

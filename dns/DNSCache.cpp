@@ -17,22 +17,18 @@ static int calcMd5(const char* buf, unsigned char* key, int keylen) {
 }
 
 /** DNSCache Definition  **/
-DNSCache* DNSCache::pInstance_ = nullptr;
+std::unique_ptr<DNSCache> DNSCache::pInstance_;
 
 std::string DNSCache::cachefile_ = CACHE_FILE_NAME;
 
 DNSCache* DNSCache::getInstance() {
-    if(pInstance_ == nullptr) {
-        pInstance_ = new DNSCache();
+    if(pInstance_.get() ==  nullptr) {
+        pInstance_ = std::unique_ptr<DNSCache>(new DNSCache());
     }
-    return pInstance_;
+    return pInstance_.get();
 }
 
-DNSCache::~DNSCache() {
-    if(pInstance_ != nullptr) {
-        delete pInstance_;
-    }
-}
+DNSCache::~DNSCache() {}
 
 DNSCache::DNSCache():
     shm_(cachefile_, sizeof(DNSCacheData)),
@@ -249,7 +245,11 @@ int DNSCache::updateNode(DNSNode& dst, const char* host, unsigned char* key, con
 
     time_t expriedAt = time(NULL) + time_t(ttl);
     // no need to update
-    if(memcmp(dst.host_, host, sizeof(host)) == 0 && expriedAt < dst.expriedAt_) { return -1; }
+    if(memcmp(dst.host_, host, sizeof(host)) == 0 && expriedAt < dst.expriedAt_) { 
+        DBG_LOG("no need update : newer record in DNS cache");
+        return 0;
+    }
+
     dst.expriedAt_ = expriedAt;
     memcpy(dst.host_, host, strlen(host));
     memcpy(dst.key_, key, MD5_KEYSIZE);

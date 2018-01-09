@@ -8,17 +8,17 @@
 
 namespace tigerso {
 
-ConfigParser* ConfigParser::pInstance = NULL;
+std::unique_ptr<ConfigParser> ConfigParser::pInstance;
 
 ConfigParser* ConfigParser::getInstance()
 {
 
-	if (pInstance == NULL)
+	if (pInstance.get() == nullptr)
 	{
-		pInstance = new ConfigParser();
+		pInstance = std::unique_ptr<ConfigParser>(new ConfigParser());
 	}
 
-	return pInstance;
+	return pInstance.get();
 }
 
 void ConfigParser::setConfigPath(const std::string& file)

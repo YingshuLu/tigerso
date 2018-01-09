@@ -6,7 +6,7 @@
 #include <sys/syscall.h>
 #include <sys/types.h>
 
-namespace tigerso::core {
+namespace tigerso {
 
 namespace CurrentThread {
 

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <memory>
 
 namespace tigerso {
 
@@ -39,7 +40,7 @@ public:
 
     int reload();
 
-    ~ConfigParser() { delete pInstance; }
+    ~ConfigParser() {}
 
 private:
 
@@ -66,7 +67,7 @@ private:
 
 	int decideLineType(const std::string& line, std::string& content);
 
-	static ConfigParser* pInstance;
+	static std::unique_ptr<ConfigParser> pInstance;
 
 };
 

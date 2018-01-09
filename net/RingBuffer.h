@@ -63,7 +63,7 @@ private:
     char* _buffer;
     char* _readptr;
     char* _writeptr;
-    size_t _size;
+    size_t _capacity;
 };
 
 }//namespace tigerso::core
