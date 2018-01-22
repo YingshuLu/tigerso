@@ -132,6 +132,7 @@ public:
     int setCallback(DNS_CALLBACK cb) {callback_ = cb;}
 
     int asyncQueryStart(EventsLoop& loop, Socket& udpsock);
+    int asyncQueryStart(Socket& udpsock);
 
     int getAnswer(std::string& name, time_t& ttl);
     static void setPrimaryAddr(const std::string& paddr) { primary_addr_ = paddr; }
@@ -201,9 +202,9 @@ private:
 
 private:
     std::string assigned_addr_ = "";
+    DNSCache* g_DNSCachePtr = nullptr; 
     static std::string primary_addr_;
     static std::string second_addr_;
-    static DNSCache* g_DNSCachePtr; 
 };
 
 } //namespace tigerso::dns

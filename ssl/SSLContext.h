@@ -49,6 +49,7 @@ public:
     int setupCertKey(X509* cert, EVP_PKEY* pkey);
     int close();
     bool active();
+    void destory();
     ~SSLContext();
 
     int serrno = SSL_ERROR_NONE;
@@ -61,6 +62,11 @@ private:
 };
 
 typedef int(*ServerCertVerifyCallback)(int, X509_STORE_CTX*);
+
+namespace _OPENSSL_{
+    void init();
+    void destory();
+}//namespace _OPENSSL_
 
 }
 #endif

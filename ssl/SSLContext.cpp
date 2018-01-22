@@ -4,14 +4,13 @@
 #include <openssl/err.h>
 #include <string>
 #include "core/ConfigParser.h"
+#include "core/Logging.h"
 #include "core/tigerso.h"
 #include "ssl/SSLHelper.h"
 #include "ssl/SSLContext.h"
 
 namespace tigerso {
 
-#define DBG_LOG printf
-#define INFO_LOG printf
 #define SSLStrerror() ::ERR_error_string(ERR_get_error(), NULL) 
 
 namespace _OPENSSL_ {
@@ -22,21 +21,24 @@ static SSL_CTX* g_client_ssl_ctx = NULL;
 static SSL_CTX* g_server_ssl_ctx = NULL;
 static ServerCertVerifyCallback g_server_cert_verify_cb = NULL;
 ConfigParser* g_config = ConfigParser::getInstance(); 
-  
+
     void _initOpenssl() {
         if(!OPENSSL_INITIZED) {
             ::SSL_load_error_strings();
             ::OpenSSL_add_ssl_algorithms();
             OPENSSL_INITIZED = true;
         }
+        return;
     }
 
     void _uinitClientContext() {
-        SSL_CTX_free(g_client_ssl_ctx);
+        if(g_client_ssl_ctx) { SSL_CTX_free(g_client_ssl_ctx); }
+        return;
     }
 
     void _uinitServerContext() {
-        SSL_CTX_free(g_server_ssl_ctx);
+        if(g_server_ssl_ctx) { SSL_CTX_free(g_server_ssl_ctx); }
+        return;
     }  
 
     void _destoryOpenssl() {
@@ -44,11 +46,11 @@ ConfigParser* g_config = ConfigParser::getInstance();
         _uinitServerContext();
         EVP_cleanup();
         OPENSSL_INITIZED = false;
+        return;
     }
 
     /* 0: error, 1: pass verification*/
     int _clientVerifyServerCertCallback(int ok, X509_STORE_CTX* xstore) {
-
         return 1;
     }
 
@@ -156,6 +158,16 @@ ConfigParser* g_config = ConfigParser::getInstance();
         return g_server_ssl_ctx;
     }
 
+    void init() {
+        _initOpenssl();
+        return;
+    }
+
+    void destory() {
+        _destoryOpenssl();
+        return;
+    }
+
 }//namespace _OPENSSL_
 
 
@@ -180,6 +192,7 @@ int SSLContext::bindSocket(int sockfd) {
     }
     if(::SSL_set_fd(_ssl, sockfd) != 1) {
         DBG_LOG("SSL set socket failed: %s", SSLStrerror());
+        destory();
         return SCTX_ERROR_ERR;
     }
     return SCTX_ERROR_OK;
@@ -206,9 +219,12 @@ int SSLContext::recv(void* buf, size_t len, size_t* readn) {
     }
     else {
         if(SSL_ERROR_WANT_READ == serrno || SSL_ERROR_WANT_WRITE == serrno) {
+            INFO_LOG("SSL need more IO process");
             return SCTX_IO_RECALL;
         }
     }
+    destory();
+    INFO_LOG("SSL recv failed: %s", SSLStrerror());
     return SCTX_IO_ERROR;
 }
 
@@ -216,6 +232,7 @@ int SSLContext::send(const void* buf, size_t len, size_t* written) {
     int sockfd = ::SSL_get_fd(_ssl);
     if(!validFd(sockfd)) {
         INFO_LOG("SSL get socket failed: %s", SSLStrerror());
+        destory();
         return SCTX_IO_ERROR;
     }
     
@@ -232,9 +249,13 @@ int SSLContext::send(const void* buf, size_t len, size_t* written) {
     }
     else {
         if(SSL_ERROR_WANT_READ == serrno || SSL_ERROR_WANT_WRITE == serrno) {
+            *written = 0;
+            INFO_LOG("SSL need more IO process");
             return SCTX_IO_RECALL;
         }
     }
+    destory();
+    INFO_LOG("SSL send failed: %d, :%s", errno, strerror(errno));
     return SCTX_IO_ERROR;
 }
 
@@ -244,13 +265,16 @@ int SSLContext::accept() {
     if(ret != 1) {
         if(0 == ret) {
             INFO_LOG("SSL accept client failed: %s", SSLStrerror());
+            destory();
             return SCTX_IO_ERROR;
         }
         else {
             if(SSL_ERROR_WANT_WRITE == serrno || SSL_ERROR_WANT_READ == serrno) {
+                INFO_LOG("SSL need more IO process");
                 return SCTX_IO_RECALL;
             }
             INFO_LOG("SSL accept client failed: %s", SSLStrerror());
+            destory();
             return SCTX_IO_ERROR;
         }
     }
@@ -263,13 +287,16 @@ int SSLContext::connect() {
    if(ret != 1) {
         if(0 == ret) {
             INFO_LOG("SSL connect failed: %s", SSLStrerror());
+            destory();
             return SCTX_IO_ERROR;
         }
         else {
             if(SSL_ERROR_WANT_WRITE == serrno || SSL_ERROR_WANT_READ == serrno) {
+                INFO_LOG("SSL need more IO process");
                 return SCTX_IO_RECALL;
             }
             INFO_LOG("SSL connect failed: %s", SSLStrerror());
+            destory();
             return SCTX_IO_ERROR;
         }
     }
@@ -282,6 +309,7 @@ int SSLContext::setupCertKey(X509* cert, EVP_PKEY* pkey) {
     serrno = ::SSL_get_error(_ssl, ret);
     if(1 != ret) {
         INFO_LOG("setup certificate failed: %s", SSLStrerror());
+        destory();
         return SCTX_ERROR_ERR;
     }
 
@@ -289,6 +317,7 @@ int SSLContext::setupCertKey(X509* cert, EVP_PKEY* pkey) {
     serrno = ::SSL_get_error(_ssl, ret);
     if(1 != ret) {
         INFO_LOG("setup private key failed: %s", SSLStrerror());
+        destory();
         return SCTX_ERROR_ERR;
     }
 
@@ -296,21 +325,33 @@ int SSLContext::setupCertKey(X509* cert, EVP_PKEY* pkey) {
 }
 
 int SSLContext::close() {
-    int ret = SSL_shutdown(_ssl);
-    serrno = ::SSL_get_error(_ssl, ret);
-    if(1 != ret) {
-        if(SSL_ERROR_WANT_READ == serrno || SSL_ERROR_WANT_WRITE == serrno) {
-            return SCTX_IO_RECALL;
+    if(active()) { 
+        int ret = SSL_shutdown(_ssl);
+        serrno = ::SSL_get_error(_ssl, ret);
+        if(1 != ret) {
+            if(SSL_ERROR_WANT_READ == serrno || SSL_ERROR_WANT_WRITE == serrno) {
+                return SCTX_IO_RECALL;
+            }
+            destory();
+            return SCTX_IO_ERROR;
         }
-        return SCTX_IO_ERROR;
     }
     SSL_free(_ssl);
     _ssl = nullptr;
     return SCTX_IO_OK;
 }
 
+void SSLContext::destory() {
+    if(active()) {
+        int ret = SSL_shutdown(_ssl);
+        serrno = ::SSL_get_error(_ssl, ret);
+    }
+     SSL_free(_ssl);
+    _ssl = nullptr;
+}
+
 SSLContext::~SSLContext() {
-    this->close();
+    destory();
 }
 
 bool SSLContext::active() {

@@ -181,7 +181,7 @@ int Buffer::sendToSocket(Socket& mcsock) {
         if(msgptr_) {
             int ret = msgptr_->getBody()->send2Socket(mcsock);
             if(FILE_SENDFILE_ERROR == ret) { return TIGERSO_IO_ERROR; }
-            else if(FILE_SENDFILE_DONE) {
+            else if(FILE_SENDFILE_DONE == ret) {
                 senddone_ = true;
                 msgptr_ = nullptr;
             }

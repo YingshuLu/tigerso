@@ -89,6 +89,7 @@ int SocketUtil::Accept(Socket& listen_mcsock, Socket& accept_mcsock) {
 	client_socket = ::accept(server_socket, (sockaddr*) &client_addr, &addr_len);
 	
 	if(client_socket < 0) {
+        if(errno == EAGAIN || errno == EWOULDBLOCK) { return 1; }
         DBG_LOG("accept error: %d, reason: %s", errno, strerror(errno));
 		return -1;
 	}
@@ -414,29 +415,6 @@ int SocketUtil::CreateUDPConnect(
     }
 
     std::string pt = port;
-	
-    /*
-    // socket()
-    if (SocketUtil::InitSocket(AF_INET, SOCK_DGRAM, mcsock) != 0) {
-		DBG_LOG("socket: UDP socket initilizaion failed");
-		return -1;
-	}
-
-    // set addr reuse
-    if(!SocketUtil::SetAddrReuseable(mcsock, true)) {
-        DBG_LOG("error: can not set master socket addr reuseable");
-		return -1;
-    }
-
-    // set port reuse
-    if(!SocketUtil::SetPortReuseable(mcsock, true)) {
-        DBG_LOG("error: can not set master socket port reuseable");
-		return -1;
-    }
-
-    mcsock.setNIO(unblock);
-	DBG_LOG("create UDP socket [%d],  connect to remote server: %s:%s", mcsock.getSocket(), ip.c_str(), port.c_str());
-    */
 
     //connect()
     int retcode = 0;
@@ -459,7 +437,7 @@ int SocketUtil::CreateUDPConnect(
     }
 
     mcsock.setNIO(unblock);
-	DBG_LOG("create UDP socket [%d],  connect to remote server: %s:%s", mcsock.getSocket(), ip.c_str(), port.c_str());
+	DBG_LOG("UDP socket [%d],  connect to remote server: %s:%s", mcsock.getSocket(), ip.c_str(), port.c_str());
 
     return retcode;
 }
@@ -483,7 +461,7 @@ int SocketUtil::Recv(Socket& mcsock, void* buf, size_t len, size_t* recvn) {
     if(!mcsock.isSSL()) {
         ret = ::recv(mcsock.getSocket(), buf, len, MSG_DONTWAIT);
         if(0 >= ret) {
-           if( EAGAIN == errno || EWOULDBLOCK) { 
+           if( EAGAIN == errno || EWOULDBLOCK == errno) { 
                 if(recvn != NULL) {
                     *recvn = ret;
                 }
@@ -492,9 +470,7 @@ int SocketUtil::Recv(Socket& mcsock, void* buf, size_t len, size_t* recvn) {
            INFO_LOG("Socket recv error: %d, %s", errno, strerror(errno));
            return TIGERSO_IO_ERROR;
         }
-        if(recvn != NULL) {
-            *recvn = ret;
-        }
+        if(recvn != NULL) { *recvn = ret; }
         return TIGERSO_IO_OK;
     }
 
@@ -510,9 +486,7 @@ int SocketUtil::Recv(Socket& mcsock, void* buf, size_t len, size_t* recvn) {
         return TIGERSO_IO_RECALL;
     }
 
-    if(recvn != NULL) {
-        *recvn = rn;
-    }
+    if(recvn != NULL) { *recvn = rn; }
     return TIGERSO_IO_OK;
 }
 
@@ -524,7 +498,8 @@ int SocketUtil::Send(Socket& mcsock, const void* buf, size_t len, size_t* sendn)
         if(0 > ret) {
            if( EAGAIN == errno || EWOULDBLOCK) { 
                 if(sendn != NULL) {
-                    *sendn = ret;
+                    //*sendn = ret;
+                    *sendn = 0;
                 }
                return TIGERSO_IO_RECALL;
            }

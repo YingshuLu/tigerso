@@ -18,6 +18,8 @@ int main() {
     tpool.start(4);
     tpool.run(&test);
     tpool.run(&test);
+    tpool.run(&test);
+    tpool.run(&test);
     std::cout << "stop all thread, need get mutex" << std::endl;
     tpool.stop();
     return 0;

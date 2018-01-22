@@ -1,0 +1,23 @@
+/tmp/cclHL3Tq.o: In function `tigerso::HttpProxyConnection::~HttpProxyConnection()':
+/home/kam/workspace/tigerso/http/HttpProxy.cpp:14: multiple definition of `tigerso::HttpProxyConnection::~HttpProxyConnection()'
+/tmp/ccMYbZdJ.o:/home/kam/workspace/tigerso/http/HttpProxyConnection.cpp:174: first defined here
+/tmp/cclHL3Tq.o: In function `tigerso::HttpProxyConnection::~HttpProxyConnection()':
+/home/kam/workspace/tigerso/http/HttpProxy.cpp:14: multiple definition of `tigerso::HttpProxyConnection::~HttpProxyConnection()'
+/tmp/ccMYbZdJ.o:/home/kam/workspace/tigerso/http/HttpProxyConnection.cpp:174: first defined here
+/tmp/ccZbrAyX.o:(.data.rel.ro._ZTVN7tigerso14HttpConnectionE[_ZTVN7tigerso14HttpConnectionE]+0x58): undefined reference to `tigerso::HttpConnection::doPost(tigerso::HttpRequest&, tigerso::HttpResponse&)'
+/tmp/cc5cvrfz.o: In function `tigerso::HttpMessage::HttpMessage()':
+/home/kam/workspace/tigerso/http/HttpMessage.h:55: undefined reference to `vtable for tigerso::HttpMessage'
+/tmp/cc5cvrfz.o:(.data.rel.ro._ZTVN7tigerso12HttpResponseE[_ZTVN7tigerso12HttpResponseE]+0x10): undefined reference to `tigerso::HttpMessage::getMethod[abi:cxx11]()'
+/tmp/cc5cvrfz.o:(.data.rel.ro._ZTVN7tigerso12HttpResponseE[_ZTVN7tigerso12HttpResponseE]+0x18): undefined reference to `tigerso::HttpMessage::getUrl[abi:cxx11]()'
+/tmp/cc5cvrfz.o:(.data.rel.ro._ZTVN7tigerso12HttpResponseE[_ZTVN7tigerso12HttpResponseE]+0x38): undefined reference to `tigerso::HttpMessage::setMethod(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'
+/tmp/cc5cvrfz.o:(.data.rel.ro._ZTVN7tigerso12HttpResponseE[_ZTVN7tigerso12HttpResponseE]+0x40): undefined reference to `tigerso::HttpMessage::setUrl(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'
+/tmp/cc5cvrfz.o:(.data.rel.ro._ZTIN7tigerso12HttpResponseE[_ZTIN7tigerso12HttpResponseE]+0x10): undefined reference to `typeinfo for tigerso::HttpMessage'
+/tmp/ccRdYpHW.o:(.data.rel.ro._ZTVN7tigerso11HttpRequestE[_ZTVN7tigerso11HttpRequestE]+0x20): undefined reference to `tigerso::HttpMessage::getStatuscode()'
+/tmp/ccRdYpHW.o:(.data.rel.ro._ZTVN7tigerso11HttpRequestE[_ZTVN7tigerso11HttpRequestE]+0x28): undefined reference to `tigerso::HttpMessage::getDesc[abi:cxx11]()'
+/tmp/ccRdYpHW.o:(.data.rel.ro._ZTVN7tigerso11HttpRequestE[_ZTVN7tigerso11HttpRequestE]+0x48): undefined reference to `tigerso::HttpMessage::setStatuscode(int)'
+/tmp/ccRdYpHW.o:(.data.rel.ro._ZTVN7tigerso11HttpRequestE[_ZTVN7tigerso11HttpRequestE]+0x50): undefined reference to `tigerso::HttpMessage::setDesc(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'
+/tmp/ccRdYpHW.o:(.data.rel.ro._ZTIN7tigerso11HttpRequestE[_ZTIN7tigerso11HttpRequestE]+0x10): undefined reference to `typeinfo for tigerso::HttpMessage'
+/tmp/ccuZuYn0.o: In function `tigerso::HttpMessage::~HttpMessage()':
+/home/kam/workspace/tigerso/http/HttpMessage.cpp:252: undefined reference to `vtable for tigerso::HttpMessage'
+collect2: error: ld returned 1 exit status
+make: *** [/home/kam/workspace/tigerso/output/Daemon] Error 1

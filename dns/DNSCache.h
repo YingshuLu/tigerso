@@ -37,6 +37,7 @@ struct DNSCacheData {
 
 class DNSCache {
 public:
+    static void init();
     static DNSCache* getInstance();
     int queryIP(const char*,  char*, size_t);
     int updateDNS(const char* host, const char* ip, int& ttl);

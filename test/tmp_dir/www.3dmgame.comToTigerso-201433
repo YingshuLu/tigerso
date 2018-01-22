@@ -1,5 +1,0 @@
-.clear{clear:both;width:0px;height:0px;font:0px/0px;overflow:hidden;}/* 清除浮动、宽、高、字样式、溢出隐藏 */
-#bottom{background:#fff;height:130px;margin-top:10px;padding-top:1px;}
-.lanline{background:#2fb6ea;height:2px;margin-bottom:1px;overflow:hidden;}
-.huiline{background:#e5e5e5;height:1px;overflow:hidden;}
-#Abfooter{width:100%;text-align:center;padding-top:20px;}

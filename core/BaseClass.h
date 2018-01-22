@@ -10,7 +10,7 @@ namespace tigerso {
 class nocopyable {
 public:
     nocopyable(){}
-    ~nocopyable(){}
+    virtual ~nocopyable(){}
 private:
     nocopyable(const nocopyable&);
     nocopyable& operator=(const nocopyable&);

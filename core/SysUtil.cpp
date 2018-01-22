@@ -56,32 +56,26 @@ void* SysUtil::create_process_shared_memory(const string& shm_name, size_t len, 
     string shm_path = shm_name;
     if(access(shm_path.c_str(), F_OK) == 0 && clear)
     {
-        DBG_LOG("2. create error: %s", strerror(errno));
         if( unlink(shm_path.c_str())!=0)
         {
-            DBG_LOG("2.1. create error: %s", strerror(errno));
+            DBG_LOG("unlink shm file: %s first", shm_path.c_str());
             return NULL;
         }
     }
-    DBG_LOG("2.2 create error: %s", strerror(errno));
     
     string shm_file =  shm_name;
 
     int fd = shm_open(shm_file.c_str(), O_RDWR|O_CREAT|O_EXCL, 0755);
-     DBG_LOG("3. create error: %s, shm_file: %s, fd: %d", strerror(errno), shm_file.c_str(), fd);
+    DBG_LOG("shm_file: %s, fd: %d", shm_file.c_str(), fd);
     if ( fd < 0 ){ 
         INFO_LOG("shm_open failed, errno: %d, %s", errno, strerror(errno));
         return NULL;
     }
     
     ftruncate(fd, len);
-
     void* ptr = mmap(NULL, len, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
-
     if(clear) { ::bzero(ptr, len); }
     ::close(fd);
-
-    DBG_LOG("4. create error: %s", strerror(errno));
     return ptr;
 }
 
@@ -108,6 +102,9 @@ signal_func* SysUtil::set_signal_handler(int signo, signal_func* func) {
 
     struct sigaction act, oact;
     
+    memset(&act, 0, sizeof(struct sigaction));
+    memset(&oact, 0, sizeof(struct sigaction));
+
     act.sa_handler = func;
     sigemptyset(&act.sa_mask);
     act.sa_flags = 0;
@@ -129,7 +126,7 @@ int SharedMemory::init() {
     shm_pid = getpid();
     if(shm_len <= 0)
     {
-        DBG_LOG("1. create error: %s", strerror(errno));
+        DBG_LOG("create error: %s", strerror(errno));
          return -1;
     }
 
@@ -138,40 +135,11 @@ int SharedMemory::init() {
         shm_name = DEFAULT_SHM_MUTEX_FILENAME+SysUtil::getFormatTime("%H%M%S");
     }
 
-    /*
-    //if /dev/shm/$(shm_name) existed, remove it
-    if(access(shm_name.c_str(), F_OK) == 0)
-    {
-      //  DBG_LOG("2. create error: %s", strerror(errno));
-        if(unlink(shm_name.c_str())!=0)
-        {
-        //    DBG_LOG("2.1. create error: %s", strerror(errno));
-            return -1;
-        }
-    }
-   // DBG_LOG("2.2 create error: %s", strerror(errno));
-    
-    int fd = shm_open(shm_name.c_str(), O_RDWR|O_CREAT, 0755);
-    // DBG_LOG("3. create error: %s, shm_file: %s, fd: %d", strerror(errno), shm_file.c_str(), fd);
-    if ( fd < 0)
-    {
-        cout << "fd shm_open failed: "<< strerror(errno) << endl;
-        return -1;
-    }
-    
-    ftruncate(fd, shm_len);
-
-    shm_ptr = mmap(NULL, shm_len, PROT_READ|PROT_WRITE, shm_prot, fd, 0);
-    */
-
     //this->shm_name += SysUtil::getFormatTime("-%G%b%d%H%M%S");
     shm_unlink(shm_name.c_str()); 
     shm_ptr = SysUtil::create_process_shared_memory(shm_name, shm_len);
     DBG_LOG("shm_t shm name: %s, shm ptr: %ld", shm_name.c_str(), shm_ptr);
 
-    //::close(fd);
-
-    // DBG_LOG("4. create error: %s", strerror(errno));
     return 0;
 }
 
@@ -289,7 +257,6 @@ int ShmMutex::init()
     size_t len = sizeof(shm_mutex_t);
     void* ptr = SysUtil::create_process_shared_memory(shm_name, len);
 
-    DBG_LOG("Create mutex. errno: %d, init error: %s", errno, strerror(errno));
     if(ptr == NULL)
     {
         DBG_LOG("ptr == NULL, init error: %s", strerror(errno));

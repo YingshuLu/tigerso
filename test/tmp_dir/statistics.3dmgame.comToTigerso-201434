@@ -1,4 +1,0 @@
-/**
- * Created by Administrator on 2016/11/11.
- */
-$(function(){var sendData={};sendData.referrer=document.referrer;$.ajax({url:"http://statistics.3dmgame.com/collection",type:"post",dataType:"json",data:sendData,success:function(data){}})});

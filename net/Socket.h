@@ -7,6 +7,7 @@
 #include <arpa/inet.h>
 #include <string>
 #include <memory>
+#include <functional>
 #include <openssl/ssl.h>
 #include "core/BaseClass.h"
 #include "net/Buffer.h"
@@ -61,6 +62,8 @@ class Channel;
 
 class Socket: public nocopyable {
 friend class SocketUtil;
+typedef std::function<int(Socket&)> EventHandle;
+
 public:
     Socket(): bufPtr_(inBuffer_, outBuffer_) {
     }
@@ -100,9 +103,10 @@ public:
 
     void setInBufferPtr(std::shared_ptr<Buffer> inptr) { bufPtr_.in_ = inptr; }
     void setOutBufferPtr(std::shared_ptr<Buffer> outptr) { bufPtr_.out_ = outptr; }
-    int perpareSSLContext();
+    int prepareSSLContext();
     //connect
     int close();
+    int tcpClose();
 
     void reset();
     ~Socket() { this->close(); }
@@ -110,10 +114,16 @@ public:
 public:
     bool enableEvent(unsigned short);
     bool disableEvent(unsigned short);
+    bool enableReadEvent();
+    bool enableWriteEvent();
+    bool disableReadEvent();
+    bool disableWriteEvent();
+    bool setEventHandle(EventHandle, unsigned short);
 
 public:
     Channel* channelptr = nullptr;
     /*SSL support*/
+    int  SSLAccept() { return sctx.accept(); }
     bool isSSL() { return sctx.active(); }
     bool SSLWantReadMore() { return isSSL() && sctx.serrno == SSL_ERROR_WANT_READ; }
     bool SSLWantWriteMore() { return isSSL() && sctx.serrno == SSL_ERROR_WANT_WRITE; }

@@ -1,4 +1,5 @@
 #include "http/HttpMessage.h"
+#include "http/HttpResponse.h"
 
 namespace tigerso {
 
@@ -155,17 +156,153 @@ std::string HttpHelper::getResponseStatusDesc(const int code) {
     return iter->second;
 }
 
+//HttpMessage
+std::string HttpMessage::getVersion() { return version_; };
+std::string HttpMessage::getValueByHeader(const std::string& header) {
+    for ( auto iter = headers_.begin(); iter != headers_.end(); iter++ ) {
+        if( strcasecmp(header.c_str(), iter->first.c_str()) == 0) {
+            return iter->second;
+        }
+    }
+    return ""; 
+}
 
-const std::string HttpMessage::METHOD = "METHOD";
-const std::string HttpMessage::URL = "URL";
-const std::string HttpMessage::VERSION = "VERSION";
-const std::string HttpMessage::STATUSCODE = "STATUSCODE";
-const std::string HttpMessage::DESC = "DESC";
+HttpBodyFile* HttpMessage::getBody() { return &body_; }
 
-const std::string HttpResponse::OK = "HTTP/1.1 200 OK\r\nserver: tigerso/" + core::VERSION + "\r\n\r\n";
-const std::string HttpResponse::BAD_REQUEST = "HTTP/1.1 400 Bad Request\r\nserver: tigerso/" + core::VERSION + "\r\n\r\n";
-const std::string HttpResponse::NOT_FOUND = "HTTP/1.1 404 Not Found\r\nserver: tigerso/" + core::VERSION + "\r\n\r\n";
-const std::string HttpResponse::FORBIDDEN = "HTTP/1.1 403 Forbidden\r\nserver: tigerso/" + core::VERSION + "\r\n\r\n";
+int HttpMessage::getContentLength() {
+    std::string content_length = getValueByHeader("content-length");
+    //Not found
+    if(content_length.empty()) { return -1; }
+    return ::atoi(content_length.c_str());
+}
+    
+void HttpMessage::setVersion(const std::string& verison) { version_ = verison; }
+void HttpMessage::setValueByHeader(const std::string& header, const std::string& value) {
+    for ( auto iter = headers_.begin(); iter != headers_.end(); iter++ ) {
+        if( strcasecmp(header.c_str(), iter->first.c_str()) == 0) {
+            iter->second = value;
+            return;
+        }
+    }
+    headers_.push_back(std::make_pair(header,value));
+    return;
+}
+
+void HttpMessage::setContentLength(const unsigned int length) {
+    char buf[16] = {0};
+    snprintf(buf, sizeof(buf), "%u", length);
+    setValueByHeader("Content-Length", buf);
+    return;
+}
+
+void HttpMessage::setContentType(const std::string& type) {
+    setValueByHeader("Content-Type", type);
+    return;
+}
+
+void HttpMessage::setCookie(const std::string& cookie) {
+    for(auto iter = headers_.begin(); iter != headers_.end(); iter++) {
+        if(strcasecmp("Set-Cookie", iter->first.c_str()) == 0) {
+            iter->second.append(std::string(";") + cookie);
+            return;
+        }
+    }
+    headers_.push_back(std::make_pair(std::string("Set-Cookie"), cookie));
+    return;
+}
+
+void HttpMessage::setKeepAlive(bool bin) {
+    std::string keepalive = bin? "keep-alive" : "close";
+    setValueByHeader("Connection", keepalive);
+    return;
+}
+
+void HttpMessage::setChunkedTransfer(bool bin) {
+    if(bin) { 
+        removeHeader("Content-Length");
+        setValueByHeader("Transfer-Encoding", "chunked");
+        body_.chunked = true;
+    }else {
+        removeHeader("Transfer-Encoding");
+    }
+    return;
+}
+
+void HttpMessage::setBody(const std::string& body) { body_.writeIn(body.c_str(), body.size()); }
+void HttpMessage::appendBody(const char* buf, size_t len) { body_.writeIn(buf, len); }
+
+void HttpMessage::removeHeader(const std::string& header) {
+    for ( auto iter = headers_.begin(); ; iter++ ) {
+        if( iter != headers_.end() && strcasecmp(header.c_str(), iter->first.c_str()) == 0) {
+            iter = headers_.erase(iter);
+        }
+
+        if(iter == headers_.end()) {
+            break;
+        }
+    }
+    return;
+}
+
+void HttpMessage::markTrade() {
+    std::string val = getValueByHeader("Via");
+    if (!val.empty()) { val.append(", "); }
+    val.append("tigerso/");
+    val.append(core::VERSION);
+    setValueByHeader("Via", val);
+}
+
+void HttpMessage::appendHeader(std::string header, std::string value) {
+    for ( auto iter = headers_.begin(); iter != headers_.end(); iter++ ) {
+        if( strcasecmp(header.c_str(), iter->first.c_str()) == 0) {
+            if (!iter->second.empty()) { iter->second.append(", "); }
+            iter->second.append(value);
+            return;
+        }
+    }
+    headers_.push_back(std::make_pair(header,value));
+    return;
+}
+
+bool HttpMessage::keepalive() { 
+    std::string value = getValueByHeader("connection");
+    if(value.empty()) { 
+        if(strcasecmp(version_.c_str(), "HTTP/1.1") == 0) {return true; }
+        return false;
+    }
+    if(strcasecmp(value.c_str(),"keep-alive") == 0) { return true; }
+    return false;
+}
+
+http_role_t HttpMessage::getRole() { return role_; }
+void HttpMessage::clear() {
+    version_ = "HTTP/1.1";
+    headers_.clear();
+    headstr_.clear();
+    body_.reset();
+    bodyname_.clear();
+}
+    
+std::string& HttpMessage::getBodyFileName() { return bodyname_; }
+int HttpMessage::setBodyFileName(const std::string& fn) {
+    if(fn.empty()) { return -1; }
+    body_.setFile(fn.c_str());
+    bodyname_ = fn;
+    setContentLength(File(fn).getFileSize());
+    const char* mimetype = detectMIMEType(fn);
+    if(mimetype) { setContentType(mimetype); }
+    return 0;
+}
+
+HttpMessage::~HttpMessage() {}
+
+const char* HttpMessage::detectMIMEType(const std::string& filename) {
+    if(!File(filename).testExist()) {
+        return nullptr;
+    }
+
+    return MIMETyper_.detectFile(filename);
+}
 
 //Http rule inspection
 int HttpInSpection::Inspect(const std::string& header,  const std::weak_ptr<HttpMessage>& wptr) {
@@ -206,4 +343,5 @@ void HttpInSpection::Unregister(const std::string& header, http_role_t role) {
     }
     return;
 }
-} //namespace mcutil
+
+} //namespace tigerso

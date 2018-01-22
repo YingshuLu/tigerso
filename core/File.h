@@ -37,7 +37,7 @@ namespace tigerso {
 class File {
 
 public:
-    explicit File(const char* filename);
+    explicit File(const std::string& filename);
     explicit File();
    
     inline bool testExist() { return TEST_FILEACCESS(filename_, F_OK); }
@@ -56,7 +56,7 @@ public:
     ssize_t getFileSize();
 
     bool isReadDone() { return readdone_; }
-    inline void reset() { ::close(fd_); fd_ = -1; size_ = 0; cur_ = 0; }
+    inline void reset() { ::close(fd_); fd_ = -1; size_ = 0; cur_ = 0; readdone_= false; }
     int close() { int ret = ::close(fd_); fd_ = -1; }
     ~File();
 

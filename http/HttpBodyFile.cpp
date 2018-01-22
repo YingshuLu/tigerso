@@ -7,7 +7,7 @@ namespace tigerso {
 
 bool HttpBodyFile::sendfile = true;
 
-HttpBodyFile::HttpBodyFile():_ringbuf(HTTP_FILE_CACHE_SIZE){}
+HttpBodyFile::HttpBodyFile(const unsigned int bufsize):_ringbuf(bufsize){}
 
 HttpBodyMode HttpBodyFile::mode() {
     if(_file.getFileSize()) {
@@ -22,8 +22,11 @@ HttpBodyMode HttpBodyFile::mode() {
 
 void HttpBodyFile::setFile(const char* filename) {
     reset();
+    /*
     std::string HTTP_BODY_TEMP_PATH = ConfigParser::getInstance()->getValueByKey("http", "tmp_dir");
     _file.setFilename((HTTP_BODY_TEMP_PATH + "/" + filename).c_str());
+    */
+    _file.setFilename(filename);
 }
 
 int HttpBodyFile::writeIn(const char* buf, size_t len) {

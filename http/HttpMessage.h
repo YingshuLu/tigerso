@@ -14,6 +14,7 @@
 #include "core/tigerso.h"
 #include "core/File.h"
 #include "core/SysUtil.h"
+#include "util/FileTypeDetector.h"
 
 namespace tigerso {
 
@@ -29,6 +30,7 @@ const int HTTP_INSPECTION_BLOCK = -1;
 const int HTTP_INSPECTION_MODIFIED = 1;
 
 class HttpResponse;
+class HttpRequest;
 class HttpHelper {
 public:
     HttpHelper(){}
@@ -53,111 +55,46 @@ private:
 //Abstract http base message
 class HttpMessage {
 public:
-    //Request & Response line iterms
-    static const std::string METHOD;
-    static const std::string URL;
-    static const std::string VERSION;
-    static const std::string STATUSCODE;
-    static const std::string DESC;
+    virtual std::string getMethod() { return ""; }
+    virtual std::string getUrl() { return ""; }
+    virtual int         getStatuscode() { return -1; }
+    virtual std::string getDesc() { return ""; }
+    virtual void setMethod(const std::string& method) {}
+    virtual void setUrl(const std::string& Url){}
+    virtual void setStatuscode(int) {}
+    virtual void setDesc(const std::string&) {}
 
-    virtual std::string getMethod(){ return ""; };
-    virtual std::string getUrl(){ return ""; };
-    virtual int         getStatuscode(){ return 0; };
-    virtual std::string getDesc(){ return ""; };
-    virtual std::string getVersion() { return version_; };
-    virtual std::string getValueByHeader(const std::string& header) {
-        for ( auto iter = headers_.begin(); iter != headers_.end(); iter++ ) {
-            if( strcasecmp(header.c_str(), iter->first.c_str()) == 0) {
-                return iter->second;
-            }
-        }
-        return ""; 
-    }
-    virtual std::string& getHeader() { return headstr_; }
-    virtual HttpBodyFile* getBody() { return &body_; }
-
-    virtual int getContentLength() {
-        std::string content_length = getValueByHeader("content-length");
-        //Not found
-        if(content_length.empty()) { return -1; }
-        return ::atoi(content_length.c_str());
-    }
-    
-    virtual void setMethod(const std::string& method){};
-    virtual void setUrl(const std::string& Url){};
-    virtual void setStatuscode(int){};
-    virtual void setDesc(const std::string&){};
-    virtual void setVersion(const std::string& verison) { version_ = verison; }
-    virtual void setValueByHeader(const std::string& header, const std::string& value) {
-        for ( auto iter = headers_.begin(); iter != headers_.end(); iter++ ) {
-            if( strcasecmp(header.c_str(), iter->first.c_str()) == 0) {
-                iter->second = value;
-                return;
-            }
-        }
-        headers_.push_back(std::make_pair(header,value));
-        return;
-    }
-
-    virtual void setBody(const std::string& body) { body_.writeIn(body.c_str(), body.size()); }
-    virtual void appendBody(const char* buf, size_t len) { body_.writeIn(buf, len); }
-
-    virtual void removeHeader(const std::string& header) {
-        for ( auto iter = headers_.begin(); ; iter++ ) {
-            if( iter != headers_.end() && strcasecmp(header.c_str(), iter->first.c_str()) == 0) {
-                iter = headers_.erase(iter);
-            }
-
-            if(iter == headers_.end()) {
-                break;
-            }
-        }
-        return;
-    }
-
-    virtual void removeRepeatHeader() {
-        return;
-    }
-
-    virtual void markTrade() {
-        std::string val = getValueByHeader("Via");
-        if (!val.empty()) { val.append(", "); }
-        val.append("tigerso/");
-        val.append(core::VERSION);
-        headers_.push_back(std::make_pair("Via", val));
-    }
-
-    virtual void appendHeader(std::string header, std::string value) {
-        for ( auto iter = headers_.begin(); iter != headers_.end(); iter++ ) {
-            if( strcasecmp(header.c_str(), iter->first.c_str()) == 0) {
-                if (!iter->second.empty()) { iter->second.append(", "); }
-                iter->second.append(value);
-                return;
-            }
-        }
-        headers_.push_back(std::make_pair(header,value));
-        return;
-    }
-
+    virtual void clear();    
+    virtual std::string& getHeader() = 0;
     virtual std::string toString() = 0;
-    virtual http_role_t getRole() { return role_; }
-    virtual void clear() {
-        version_ = "HTTP/1.1";
-        headers_.clear();
-        headstr_.clear();
-        body_.reset();
-        bodyname_.clear();
-    }
-    
+
     // Temp variant for http parser
     std::string header_field;
+    int  getContentLength();    
+    HttpBodyFile* getBody();
+    std::string getVersion();
+    std::string getValueByHeader(const std::string& header);
+    void setVersion(const std::string& verison);
+    void setContentLength(const unsigned int);
+    void setContentType(const std::string&);
+    void setCookie(const std::string&);
+    void setKeepAlive(bool);
+    void setChunkedTransfer(bool);
+    void setValueByHeader(const std::string& header, const std::string& value);
+    void setBody(const std::string& body);
+    void appendBody(const char* buf, size_t len);
+    void removeHeader(const std::string& header);
+    void removeRepeatHeader();
+    void markTrade();
+    void appendHeader(std::string header, std::string value);
+    http_role_t getRole();
+    std::string& getBodyFileName();
+    int setBodyFileName(const std::string& fn);
+    bool    keepalive();
+    virtual ~HttpMessage();
 
-    virtual std::string& getBodyFileName() { return bodyname_; }
-    virtual int setBodyFileName(const std::string& fn) {
-        if(fn.empty()) { return -1; }
-        body_.setFile(fn.c_str());
-        return 0;
-    }
+protected:
+    const char* detectMIMEType(const std::string&);
 
 protected:
     http_role_t role_ = HTTP_ROLE_UINIT;
@@ -166,201 +103,11 @@ protected:
     std::string headstr_;
     HttpBodyFile body_;
     std::string bodyname_;
-};
-
-//Http request
-class HttpRequest: public HttpMessage {
-public:
-    HttpRequest() { role_ = HTTP_ROLE_REQUEST; }
-    
-    std::string getMethod() { return method_; }
-    std::string getUrl() { return url_; }
-    void setMethod(const std::string& method) { method_ = method; }
-    void setUrl(const std::string& url) { url_ = url; }
-
-    std::string& getHeader() {
-        if(method_.empty() || url_.empty()) {
-            headstr_ = "";
-            return headstr_;
-        }
-        headstr_ = method_ + " " + url_ + " " + version_ + "\r\n";
-        auto iter = headers_.begin();
-        while (iter != headers_.end()) {
-            headstr_.append(iter->first + ": " + iter->second + "\r\n");
-            ++iter;
-        }
-        return headstr_;
-    }
-
-    std::string toString() {
-        std::string request;
-        if(method_.empty() || url_.empty()) {
-            return std::string("");
-        }
-        request = method_ + " " + url_ + " " + version_ + "\r\n";
-        auto iter = headers_.begin();
-        while (iter != headers_.end()) {
-            request.append(iter->first + ": " + iter->second + "\r\n");
-            ++iter;
-        }
-        
-        request.append("\r\n");
-        /*
-        if(!body_.empty()) {
-            request.append(body_ + "\r\n");
-        }
-        */
-        return request;
-    }
-
-    void clear() {
-        method_.clear();
-        url_.clear();
-        port_.clear();
-        host_.clear();
-        HttpMessage::clear();
-    }
-
-    std::string getHost() {
-        if(!host_.empty()) {
-            return host_;
-        }
-        std::string host = getValueByHeader("host");
-        std::string::size_type pos = host.find(":");
-        if(pos != std::string::npos) {
-            host = host.substr(0, pos);
-        }
-
-        host_ = host;
-        return host_;
-    }
-
-    std::string getHostPort() {
-        if(!port_.empty()) { return port_; }
-
-        std::string url = url_;
-        std::string::size_type pos = url.find("http://");
-        if(pos != std::string::npos) { url = url.substr(pos+7); }
-        else {
-            pos = url.find("https://");
-            if(pos != std::string::npos) { url = url.substr(pos+8); }
-        }
-        
-        pos = url.find("/");
-        if (pos != std::string::npos) {
-            url = url.substr(0,pos);
-            std::string::size_type label = url.find(":");
-            if(label != std::string::npos) {
-                port_ = url.substr(label+1);
-                return port_;
-            }
-        }
-        
-        port_ = "80";
-        const std::string& host = getValueByHeader("host");
-        if(!host.empty()) {
-            pos = host.find(":");
-            if(pos != std::string::npos) {
-                port_ = host.substr(pos+1);
-            }
-        }
-        return port_;
-    }
-
-    std::string& getBodyFileName() {
-        if(bodyname_.size()) {
-            return bodyname_;
-        }
-        
-        std::string filename = getValueByHeader("host");
-        /*
-        std::size_t found = url_.find_last_of("/");
-        if(found != std::string::npos) {
-            filename = url_.substr(found+1);
-        }
-        */
-        if(filename.empty()) {
-            filename = host_;
-        }
-
-        DBG_LOG("filename :%s", filename.c_str());
-        bodyname_ = filename + "ToTigerso-" + SysUtil::getFormatTime("%H%M%S");
-        return bodyname_;
-    }
 
 private:
-    std::string method_;
-    std::string url_;
-    std::string host_;
-    std::string port_;
+    FileTypeDetector MIMETyper_;
 };
 
-//Http response
-class HttpResponse: public HttpMessage {
-public:
-    HttpResponse() { role_ = HTTP_ROLE_RESPONSE; }
-    
-    int         getStatuscode() { return statuscode_; }
-    std::string getDesc() { return desc_; }
-    void setStatuscode(int code) { 
-        statuscode_ = code;
-        std::string desc = HttpHelper::getResponseStatusDesc(code);
-        if (!desc.empty()) {
-            setDesc(desc);
-        }
-    }
-    void setDesc(const std::string& desc) { desc_ = desc; }
-
-    std::string& getHeader() { 
-        if(statuscode_ == 0 || desc_.empty() ) {
-            headstr_ = "";
-            return headstr_;
-        }
-        headstr_ = version_ + " " + std::to_string(statuscode_) + " " + desc_ + "\r\n";
-        auto iter = headers_.begin();
-        while (iter != headers_.end()) {
-            headstr_.append(iter->first + ": " + iter->second + "\r\n");
-            ++iter;
-        }
-        return headstr_;
-    }
-
-    std::string toString() {
-        if(statuscode_ == 0 || desc_.empty() ) {
-            return std::string("");
-        }
-        std::string response = version_ + " " + std::to_string(statuscode_) + " " + desc_ + "\r\n";
-        auto iter = headers_.begin();
-        while (iter != headers_.end()) {
-            response.append(iter->first + ": " + iter->second + "\r\n");
-            ++iter;
-        }
-        response.append("\r\n");
-        /*
-        if(!body_.empty()) {
-            response.append( body_ + "\r\n");
-        }
-        */
-        return response;
-    }
-
-    void clear() {
-      statuscode_ = 0;
-      desc_.clear();
-      HttpMessage::clear();
-    }
-
-    //Response string
-    static const std::string OK;
-    static const std::string BAD_REQUEST; 
-    static const std::string NOT_FOUND;
-    static const std::string FORBIDDEN;
-
-private:
-    int         statuscode_;
-    std::string desc_;
-
-};
 
 //Http Role inspection
 typedef int (*httpInspectCallback)(const std::weak_ptr<HttpMessage>&);
@@ -375,6 +122,6 @@ private:
     std::map<std::string, httpInspectCallback> responseCallbacks_;
 };
 
-} //namespace tigerso::http
+} //namespace tigerso
 
 #endif // TS_HTTP_HTTPMESSAGE_H_

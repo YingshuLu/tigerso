@@ -9,10 +9,10 @@ namespace tigerso {
 
 File::File() {}
 
-File::File(const char* filename) {
+File::File(const std::string& filename) {
     this->reset();
-    size_t len = strlen(filename) < FILE_NAME_MAX_LENGTH? strlen(filename): FILE_NAME_MAX_LENGTH;
-    memcpy(filename_, filename, len);
+    size_t len = filename.size() < FILE_NAME_MAX_LENGTH? filename.size(): FILE_NAME_MAX_LENGTH;
+    memcpy(filename_, filename.c_str(), filename.size());
 }
 
 ssize_t File::readOut(char* buf, size_t len, off_t& offset) {
@@ -46,7 +46,7 @@ ssize_t File::continuousReadOut(char* buf, size_t len) {
     ssize_t readn = ::read(fd_, buf, len);
     if(readn >=0 && readn < len) {
         readdone_ = true;
-        reset();
+        ::close(fd_);
     }
     if(-1 == readn) {
         INFO_LOG("continuousReadOut error: %d, %s", errno, strerror(errno));
@@ -67,7 +67,7 @@ ssize_t File::writeIn(const char* buf, size_t len) {
     if(writen < len && writen != -1) { ::fsync(wfd); }
 
     if(-1 == writen) {
-        INFO_LOG("continuousReadOut error: %d, %s", errno, strerror(errno));
+        INFO_LOG("write in error: %d, %s", errno, strerror(errno));
     }
     ::close(wfd);
     return writen;
@@ -121,6 +121,7 @@ int File::send2Socket(int sockfd, size_t& sendn, off_t& offset, size_t count) {
             if( n < 0 ) {
                 if(errno == EAGAIN) { 
                     sendn = offset - old_off;
+                    DBG_LOG("sendfile send %ld bytes", sendn);
                     return FILE_SENDFILE_RECALL;
                 }
                 else { return FILE_SENDFILE_ERROR; }
@@ -130,6 +131,7 @@ int File::send2Socket(int sockfd, size_t& sendn, off_t& offset, size_t count) {
         }
 
         sendn = offset - old_off;
+        DBG_LOG("sendfile send %ld bytes", sendn);
         //Send file done, need seek fd_ to beginning
         lseek(fd_, 0, SEEK_SET);
         reset();

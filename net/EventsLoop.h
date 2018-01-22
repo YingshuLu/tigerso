@@ -26,24 +26,17 @@ static const int DEFAULT_CHANNEL_NUM = 128;
 class EventsLoop: public nocopyable {
 
 public:
-    EventsLoop(const int channels = DEFAULT_CHANNEL_NUM) 
-        :channelNum_(channels) {
-        createEpollBase();
-    }
+    EventsLoop(const int channels = DEFAULT_CHANNEL_NUM);
 
     int registerChannel(Socket&);
     int unregisterChannel(Socket&);
-
     void setTimeout(const int time);
     int getEpollBase() const;
     int updateChannel(Channel*);
     int loop();
-    int stop() {loop_ = false;}
+    int stop(); 
 
-    ~EventsLoop() {
-        ::close(epfd_);
-        epfd_ = -1;
-    }
+    ~EventsLoop();
 
 private:
     int waitChannel();

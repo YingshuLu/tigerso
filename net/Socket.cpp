@@ -24,7 +24,7 @@ bool Socket::operator>(const Socket& sock) const {
 }
 
 bool Socket::exist() const {
-    return sockfd_ >= 0;
+    return validFd(sockfd_);
 }
 
 socket_t Socket::getSocket() const {
@@ -231,7 +231,7 @@ ssize_t Socket::sendNIO(std::string& data) {
 }
 */
 
-int Socket::perpareSSLContext() {
+int Socket::prepareSSLContext() {
     int ret = 0;
     if(SOCKET_ROLE_CLIENT == role_) {
         ret = sctx.init(SCTX_ROLE_SERVER);
@@ -249,9 +249,23 @@ int Socket::close() {
     if(isSSL()) { 
         if(sctx.close() == SCTX_IO_RECALL) {
             DBG_LOG("CLOSE SSL need recall");
-           return SCTX_IO_RECALL;
+           return TIGERSO_IO_ERROR;
         }
     }
+    /*
+    Channel* cnptr = this->channelptr;
+    if(cnptr != nullptr) {
+        cnptr->remove();
+    }
+    //clear channelptr
+    channelptr = nullptr;
+    return SocketUtil::Close(*this);
+    */
+    return tcpClose();
+}
+
+int Socket::tcpClose() {
+    sctx.destory();
     Channel* cnptr = this->channelptr;
     if(cnptr != nullptr) {
         cnptr->remove();
@@ -291,6 +305,22 @@ bool Socket::enableEvent(unsigned short flags) {
     return false;
 }
 
+bool Socket::enableReadEvent() {
+    return enableEvent(SOCKET_EVENT_READ);
+}
+
+bool Socket::enableWriteEvent() {
+    return enableEvent(SOCKET_EVENT_WRITE);
+}
+
+bool Socket::disableReadEvent() {
+    return disableEvent(SOCKET_EVENT_READ);
+}
+
+bool Socket::disableWriteEvent() {
+    return disableEvent(SOCKET_EVENT_WRITE);
+}
+
 bool Socket::disableEvent(unsigned short flags) {
     if(this->exist() && channelptr != nullptr) { 
         if(flags & SOCKET_EVENT_READ) {
@@ -304,5 +334,43 @@ bool Socket::disableEvent(unsigned short flags) {
     }
     return false;
 }
- 
+
+bool Socket::setEventHandle(EventHandle func, unsigned short flag) {
+    auto cnptr = this->channelptr;
+    if(cnptr == nullptr) {
+        INFO_LOG("channel is null");
+        return false;
+    }
+
+    if(flag & SOCKET_EVENT_READ) {
+        cnptr->setReadCallback(func);
+    }
+
+    if(flag & SOCKET_EVENT_WRITE) {
+        cnptr->setWriteCallback(func);
+    }
+
+    if (flag & SOCKET_EVENT_ERROR) {
+        cnptr->setErrorCallback(func);
+    }
+
+    if (flag & SOCKET_EVENT_BEFORE) {
+        cnptr->setBeforeCallback(func);
+    }
+
+    if (flag & SOCKET_EVENT_AFTER) {
+        cnptr->setAfterCallback(func);
+    }
+
+    if (flag & SOCKET_EVENT_RDHUP) {
+        cnptr->setRdhupCallback(func);
+    }
+
+    if (flag & SOCKET_EVENT_TIMEOUT) {
+        cnptr->setTimeoutCallback(func);
+    }
+
+    return true;
 }
+
+}//namespace tigerso

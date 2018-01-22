@@ -43,7 +43,7 @@ typedef enum _TIGERSO_IO_STATE_ {
     TIGERSO_IO_RECALL,
     TIGERSO_IO_OK
 };
-    
+
 namespace core {
 //Project Marcos
 const std::string  PROJECT     =  "tigerso";

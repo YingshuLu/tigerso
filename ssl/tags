@@ -34,6 +34,7 @@ ServerCertVerifyCallback	SSLContext.h	/^typedef int(*ServerCertVerifyCallback)(i
 TS_SSL_SSLCONTEXT_H_	SSLContext.h	2;"	d
 TS_SSL_SSLHELPER_H_	SSLHelper.h	2;"	d
 _OPENSSL_	SSLContext.cpp	/^namespace _OPENSSL_ {$/;"	n	namespace:tigerso	file:
+_OPENSSL_	SSLContext.h	/^namespace _OPENSSL_{$/;"	n	namespace:tigerso
 _SSL_ERROR_CODE	SSLContext.h	/^typedef enum _SSL_ERROR_CODE {$/;"	g	namespace:tigerso
 _SSL_IO_STATE	SSLContext.h	/^typedef enum _SSL_IO_STATE {$/;"	g	namespace:tigerso
 _SSL_MODE_	SSLContext.h	/^typedef enum _SSL_MODE_ {$/;"	g	namespace:tigerso
@@ -57,6 +58,8 @@ bindSocket	SSLContext.cpp	/^int SSLContext::bindSocket(int sockfd) {$/;"	f	class
 clear_oldPEM	scripts/build_castore.sh	/^clear_oldPEM () {$/;"	f
 close	SSLContext.cpp	/^int SSLContext::close() {$/;"	f	class:tigerso::SSLContext
 connect	SSLContext.cpp	/^int SSLContext::connect() {$/;"	f	class:tigerso::SSLContext
+destory	SSLContext.cpp	/^    void destory() {$/;"	f	namespace:tigerso::_OPENSSL_
+destory	SSLContext.cpp	/^void SSLContext::destory() {$/;"	f	class:tigerso::SSLContext
 fetchUrl	scripts/ca_converter.py	/^def fetchUrl(url):$/;"	f
 g_client_ssl_ctx	SSLContext.cpp	/^static SSL_CTX* g_client_ssl_ctx = NULL;$/;"	m	namespace:tigerso::_OPENSSL_	file:
 g_config	SSLContext.cpp	/^ConfigParser* g_config = ConfigParser::getInstance(); $/;"	m	namespace:tigerso::_OPENSSL_	file:
@@ -68,6 +71,7 @@ getClientSSLCTX	SSLContext.cpp	/^   SSL_CTX* getClientSSLCTX() {$/;"	f	namespace
 getLicense	scripts/ca_converter.py	/^def getLicense(lines, num):$/;"	f
 getServerSSLCTX	SSLContext.cpp	/^    SSL_CTX* getServerSSLCTX() {$/;"	f	namespace:tigerso::_OPENSSL_
 hash_caPEM	scripts/build_castore.sh	/^hash_caPEM() {$/;"	f
+init	SSLContext.cpp	/^    void init() {$/;"	f	namespace:tigerso::_OPENSSL_
 init	SSLContext.cpp	/^int SSLContext::init(SSLRole role) {$/;"	f	class:tigerso::SSLContext
 isCertTrusted	scripts/ca_converter.py	/^def isCertTrusted(cert, trusts, explicitTrustOnly, trustServerAuth,$/;"	f
 loadPrivateKeyFromFile	SSLHelper.cpp	/^EVP_PKEY* loadPrivateKeyFromFile(const char* keyfile, const char* passwd) {$/;"	f	namespace:tigerso

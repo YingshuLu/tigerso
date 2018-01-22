@@ -10,6 +10,7 @@ namespace tigerso {
 using namespace std;
 
 DNSResolver::DNSResolver() {
+    g_DNSCachePtr = DNSCache::getInstance();
 }
 
 DNSResolver::~DNSResolver() {
@@ -50,6 +51,17 @@ int DNSResolver::asyncQueryInit(const std::string& host, Socket& udpsock){
 
 int DNSResolver::asyncQueryStart(EventsLoop& loop, Socket& udpsock) {
     loop.registerChannel(udpsock);
+    auto cnptr = udpsock.channelptr;
+    if(cnptr == nullptr) { return DNS_INPUT_ERR; }
+    cnptr->setReadCallback(std::bind(&DNSResolver::recvAnswer, this, std::placeholders::_1));
+    cnptr->setWriteCallback(std::bind(&DNSResolver::sendQuery, this, std::placeholders::_1));
+    cnptr->setErrorCallback(std::bind(&DNSResolver::errorHandle, this, std::placeholders::_1));
+    cnptr->setTimeoutCallback(std::bind(&DNSResolver::timeoutHandle, this, std::placeholders::_1));
+    cnptr->enableWriteEvent();
+    return DNS_OK;
+}
+
+int DNSResolver::asyncQueryStart(Socket& udpsock) {
     auto cnptr = udpsock.channelptr;
     if(cnptr == nullptr) { return DNS_INPUT_ERR; }
     cnptr->setReadCallback(std::bind(&DNSResolver::recvAnswer, this, std::placeholders::_1));
@@ -423,5 +435,4 @@ int DNSResolver::resolveRRName(unsigned char* buf, size_t buf_len, unsigned char
 std::string DNSResolver::primary_addr_ = DNS_SERVER_ADDR;
 std::string DNSResolver::second_addr_ = "";
 
-DNSCache* DNSResolver::g_DNSCachePtr = DNSCache::getInstance(); 
 } //namespace tigerso::dns

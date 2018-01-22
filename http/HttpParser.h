@@ -10,7 +10,8 @@
 #include <memory>
 #include "core/BaseClass.h"
 #include "core/tigerso.h"
-#include "http/HttpMessage.h"
+#include "http/HttpRequest.h"
+#include "http/HttpResponse.h"
 
 namespace tigerso {
 /*Http parser

@@ -21,8 +21,12 @@ std::unique_ptr<DNSCache> DNSCache::pInstance_;
 
 std::string DNSCache::cachefile_ = CACHE_FILE_NAME;
 
+void DNSCache::init() {
+    getInstance();
+}
+
 DNSCache* DNSCache::getInstance() {
-    if(pInstance_.get() ==  nullptr) {
+    if(pInstance_.get() == nullptr) {
         pInstance_ = std::unique_ptr<DNSCache>(new DNSCache());
     }
     return pInstance_.get();

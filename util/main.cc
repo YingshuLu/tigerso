@@ -1,6 +1,6 @@
 #include "util/FileTypeDetector.h"
 
-using namespace tigerso::util;
+using namespace tigerso;
 
 int main(int argc, char* argv[]) {
     

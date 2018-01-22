@@ -17,6 +17,8 @@ namespace tigerso {
 
 #define validChannel(cnptr) (cnptr && cnptr->sockfd > 0)
 
+EventsLoop::EventsLoop(const int channels): channelNum_(channels) { createEpollBase(); }
+
 int EventsLoop::registerChannel(Socket& socket) {
     if (!socket.exist()) { return -1; }
 
@@ -47,13 +49,9 @@ int EventsLoop::unregisterChannel(Socket& socket) {
     return 0;
 }
 
-void EventsLoop::setTimeout(const int time) {
-    waitTime_ = time;
-}
+void EventsLoop::setTimeout(const int time) { waitTime_ = time; }
 
-int EventsLoop::getEpollBase() const {
-    return epfd_;
-}
+int EventsLoop::getEpollBase() const { return epfd_; }
 
 int EventsLoop::loop() {
     loop_ = true;
@@ -62,6 +60,13 @@ int EventsLoop::loop() {
         waitChannel();
     }
     return true;
+}
+
+int EventsLoop::stop() { loop_ = false; }
+
+EventsLoop::~EventsLoop() {
+    ::close(epfd_);
+    epfd_ = -1;
 }
 
 int EventsLoop::waitChannel() {
@@ -259,4 +264,4 @@ int EventsLoop::cleanNeedDeletedChannels() {
     return 0;
 }
 
-}
+} //namespace tigerso

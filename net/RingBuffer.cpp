@@ -45,7 +45,7 @@ int RingBuffer::writeIn(const char* buf, size_t length) {
     }
 
     DBG_LOG("after write in: readptr: %d, writeptr: %d", _readptr - _buffer, _writeptr - _buffer);
-    DBG_LOG("RingBuffer write in %ld bytes\n", len);
+    DBG_LOG("RingBuffer write in %ld bytes", len);
     return len;
 }
 
@@ -57,40 +57,80 @@ int RingBuffer::writeInFromFile(File& file) {
 
     size_t len = space();
     ssize_t readn = 0;
+    DBG_LOG("before write in: readptr: %d, writeptr: %d", _readptr - _buffer, _writeptr - _buffer);
     if(_writeptr >= _readptr) {
-        size_t right = _capacity - (_writeptr - _buffer);
+        ssize_t left = _readptr - _buffer - 1;
+        ssize_t right = ((left >= 0)? (_capacity - (_writeptr - _buffer)): (_capacity - (_writeptr - _buffer) - 1));
+        left = ((left >= 0)? left: 0);
+
+        DBG_LOG("right size: %d, left size: %ld", right, left);
         readn = file.continuousReadOut(_writeptr, right);
-        if(-1 == readn) {
-            return TIGERSO_IO_ERROR;
-        }
-        if(readn < right && readn >= 0) {
-            _writeptr += readn;
+        if(readn < 0) { return TIGERSO_IO_ERROR; }
+        else {
+             _writeptr += readn;
             //File done
-            return readn;
+            if(readn < right) { return readn; }
+        }
+        DBG_LOG("right write in: readptr: %d, writeptr: %d", _readptr - _buffer, _writeptr - _buffer);
+
+        if(left > 0) {
+            readn = file.continuousReadOut(_buffer, left);
+            if(readn < 0) { return TIGERSO_IO_ERROR; }
+            else {
+                _writeptr = _buffer + readn;
+                //File done
+                if(readn < left) { return right + readn; }
+            }
+            DBG_LOG("left write in: readptr: %d, writeptr: %d", _readptr - _buffer, _writeptr - _buffer);
+        }
+    }
+
+        /*
+        size_t right = _capacity - (_writeptr - _buffer) - 1;
+
+        //write right
+        if(right > 0) {
+            readn = file.continuousReadOut(_writeptr, right);
+
+            if(readn < 0) { return TIGERSO_IO_ERROR; }
+            else {
+                _writeptr += readn;
+                //File done or ringbuf is full
+                if(readn < right || isFull()) { return readn; }
+            }
+
+            DBG_LOG("1.after write in: readptr: %d, writeptr: %d", _readptr - _buffer, _writeptr - _buffer);
         }
 
-        readn = file.continuousReadOut(_buffer, len-right);
-        if(-1 == readn) {
-            return TIGERSO_IO_ERROR;
+        if(_readptr != _buffer) {
+            //write the last byte
+            readn = file.continuousReadOut(_writeptr, 1);
+            if(readn < 0) { return TIGERSO_IO_ERROR; }
+            else {
+                right += readn;
+                //Fine Done
+                if(readn == 0)  { return right; }
+            }
+
+            //write left
+            readn = file.continuousReadOut(_buffer, len-right);
+            if(readn < 0) { return TIGERSO_IO_ERROR; }
+            else {
+                _writeptr = _buffer + readn;
+                //File done
+                if(readn < len - right) { return right + readn; }
+            }
         }
-        if(readn < len - right && readn >= 0) {
-            _writeptr = _buffer + readn;
-            //File done
-            return right + readn;
-        }
-         _writeptr = _buffer + len - right;
-    }
+    */
     else {
         readn = file.continuousReadOut(_writeptr, len);
-        if(-1 == readn) {
-            return TIGERSO_IO_ERROR;
-        }
-        if(readn < len && readn >= 0) {
+        DBG_LOG("2. after write in: readptr: %d, writeptr: %d", _readptr - _buffer, _writeptr - _buffer);
+        if(readn < 0) { return TIGERSO_IO_ERROR; }
+        else {
             _writeptr += readn;
             //File done
-            return readn;
+            if(readn < len) { return readn; }
         }
-        _writeptr += len;
     }
     return len;
 }
@@ -195,6 +235,7 @@ int RingBuffer::send2Socket(int sockfd) {
     }
 
     DBG_LOG("RingBuffer send %ld bytes to socket [%d]\n", datasize, sockfd);
+    clear();
     return datasize;
 }
 
@@ -209,10 +250,18 @@ int RingBuffer::send2Socket(Socket& mcsock) {
         readn = (_writeptr > _readptr)? size() : (_capacity - (_readptr - _buffer));
         ret = SocketUtil::Send(mcsock, _readptr, readn, &rn);
         if(TIGERSO_IO_ERROR == ret) { return ret; }
-        if(TIGERSO_IO_RECALL == ret) { return datasize - size(); }
+
+        DBG_LOG("In loop RingBuffer send %ld bytes", rn);
+        if(TIGERSO_IO_RECALL == ret) {
+                DBG_LOG("RingBuffer send %ld bytes, need recall to send more", datasize - size());
+                return datasize - size();
+        }
+
         _readptr += rn;
         _readptr = _buffer + ((_readptr - _buffer) % _capacity);
     }
+    DBG_LOG("RingBuffer send %ld bytes, send completed", datasize);
+    clear();
     return datasize;
 }
 

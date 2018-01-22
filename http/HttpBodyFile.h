@@ -32,7 +32,7 @@ typedef  enum _CHUNK_SEND_STATE{
 } ChunkState;
 
 public:
-    HttpBodyFile();
+    HttpBodyFile(const unsigned int bufsize = HTTP_FILE_CACHE_SIZE);
 
     HttpBodyMode mode();
     void setFile(const char* filename);   
@@ -63,8 +63,10 @@ public:
 private:
     File _file;
     RingBuffer _ringbuf; // Cache for file IO
+    off_t offset_ = 0;
+    ssize_t end_ = -1;
     off_t _readoffset = 0;
-    int _chunksize = 4096;
+    int _chunksize = HTTP_FILE_CACHE_SIZE;
     bool _sendContentDone = false;
     ChunkState _chunkstate = _CHUNKUINIT;
 
