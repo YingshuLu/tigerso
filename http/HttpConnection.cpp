@@ -5,7 +5,7 @@
 
 namespace tigerso {
 
-#define m_sock (*sockptr__)
+#define m_sock (*sockptr_)
 #define BIND_EVENTHANDLE(xxx) (std::bind(&xxx, this, std::placeholders::_1))
 
 HttpConnection::HttpConnection(std::shared_ptr<Acceptor> acptptr, const IDType id): Connection(acptptr, id) {}
@@ -124,7 +124,7 @@ int HttpConnection::writeHandle(Socket& sock) {
     }
 
     state_ = SEND_RESPONSE_DONE;
-    if(response_.keepalive()) {
+    if(response_.isKeepAlive()) {
         resetResources();
         sock.disableWriteEvent();
         sock.setEventHandle(BIND_EVENTHANDLE(HttpConnection::readHandle), SOCKET_EVENT_READ);
@@ -185,7 +185,7 @@ void HttpConnection::doGet(HttpRequest& request, HttpResponse& response) {
     }
 
     response.setStatuscode(200);
-    bool keepalive = request.keepalive();
+    bool keepalive = request.isKeepAlive();
     response.setKeepAlive(keepalive);
     response.setBodyFileName(filepath);
     response.setValueByHeader("Server", "tigerso");
@@ -230,7 +230,7 @@ int HttpConnection::SSLHandShake(Socket& sock) {
 }
 
 void HttpConnection::recycle() {
-    sockptr__->reset();
+    sockptr_->reset();
     resetResources();
     state_ = TCP_INIT;
     Connection::recycle();

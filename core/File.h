@@ -44,6 +44,11 @@ public:
     inline bool testWrite() { return TEST_FILEACCESS(filename_, W_OK); }
     inline bool testRead()  { return TEST_FILEACCESS(filename_, R_OK); }
 
+    static bool exist(const std::string&);
+    static bool writeable(const std::string&);
+    static bool readable(const std::string&);
+    static int size(const std::string&);
+
     ssize_t readOut(char* buf, size_t len, off_t& offset);
     ssize_t continuousReadOut(char* buf, size_t len);
     ssize_t writeIn(const char* buf, size_t len);
@@ -51,12 +56,14 @@ public:
     int send2Socket(int sockfd, size_t& sendn);
     int send2Socket(int sockfd, size_t& sendn, off_t& offset, size_t count);
     
+    const char* getFilename() const { return (strlen(filename_) > 0? filename_ : NULL); }
     void setFilename(const char* filename);
     inline int unlink() { return ::unlink(filename_); }
     ssize_t getFileSize();
 
     bool isReadDone() { return readdone_; }
-    inline void reset() { ::close(fd_); fd_ = -1; size_ = 0; cur_ = 0; readdone_= false; }
+    inline void reset() { this->close(); size_ = 0; cur_ = 0; readdone_= false; }
+    void clear() { reset(); bzero(filename_, sizeof(filename_)); }
     int close() { int ret = ::close(fd_); fd_ = -1; }
     ~File();
 
@@ -78,6 +85,9 @@ private:
     char filename_[FILE_NAME_MAX_LENGTH] = {0};
 
 };
+
+
+
 }//namespace tigerso::core
 
 #endif

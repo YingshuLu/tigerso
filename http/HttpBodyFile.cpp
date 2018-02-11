@@ -322,7 +322,7 @@ int HttpBodyFile::sendChunk(Socket& mcsock) {
     return FILE_SENDFILE_DONE;
 }
 
-size_t HttpBodyFile::size() { return _file.getFileSize() + _ringbuf.size(); }
+size_t HttpBodyFile::size() { return _ringbuf.size() + (_file.testExist()? _file.getFileSize() : 0); }
 
 void HttpBodyFile::flushFile() {
     if(_ringbuf.size()) {
@@ -332,9 +332,16 @@ void HttpBodyFile::flushFile() {
     return;
 }
 
+const char* HttpBodyFile::getFilename() {
+    return _file.getFilename();
+}
+
+bool HttpBodyFile::unlinkAfterSend(bool unlink) { unlink_ = unlink; return unlink_; }
+
 void HttpBodyFile::reset() {
+    if(unlink_) { _file.unlink(); }
     _ringbuf.clear();
-    _file.reset();
+    _file.clear();
     _readoffset = 0;
     _chunksize = HTTP_FILE_CACHE_SIZE;
     _sendContentDone = false;
@@ -342,6 +349,7 @@ void HttpBodyFile::reset() {
     bzero(content_type, sizeof(content_type));
     bzero(content_encoding, sizeof(content_encoding));
     bzero(mime_type, sizeof(mime_type));
+    unlink_ = false;
 }
 
 std::string HttpBodyFile::inter2HexString(int num) {

@@ -30,6 +30,8 @@ void HttpResponse::setStatuscode(int code) {
 
 void HttpResponse::setDesc(const std::string& desc) { desc_ = desc; }
 
+void HttpResponse::shouldNoBody() { parser_.labelNoBody(); }
+
 std::string& HttpResponse::getHeader() { 
     if(statuscode_ == 0 || desc_.empty() ) {
         headstr_ = "";
@@ -72,6 +74,8 @@ void HttpResponse::clear() {
   desc_.clear();
   HttpMessage::clear();
 }
+
+bool HttpResponse::unlinkAfterWrite(bool unlink) { return body_.unlinkAfterSend(unlink); }
 
 //Response string
 const std::string HttpResponse::OK = "HTTP/1.1 200 OK\r\nserver: tigerso/" + core::VERSION + "\r\n\r\n";

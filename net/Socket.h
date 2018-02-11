@@ -124,10 +124,13 @@ public:
     Channel* channelptr = nullptr;
     /*SSL support*/
     int  SSLAccept() { return sctx.accept(); }
+    int  SSLConnect() { return sctx.connect(); }
     bool isSSL() { return sctx.active(); }
     bool SSLWantReadMore() { return isSSL() && sctx.serrno == SSL_ERROR_WANT_READ; }
     bool SSLWantWriteMore() { return isSSL() && sctx.serrno == SSL_ERROR_WANT_WRITE; }
+    bool SSLNoError() { return !isSSL() || sctx.serrno == SSL_ERROR_NONE; }
     int SSLErrno() { return sctx.serrno; }
+    SSLContext* getSSLContextPtr() { return &sctx; }
 
 private:
     void setStrAddr(const std::string&);

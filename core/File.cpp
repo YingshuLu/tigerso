@@ -6,6 +6,18 @@
 #include "net/SocketUtil.h"
 
 namespace tigerso {
+    
+bool File::exist(const std::string& filename) { return TEST_FILEACCESS(filename.c_str(), F_OK); }
+bool File::writeable(const std::string& filename) { return TEST_FILEACCESS(filename.c_str(), W_OK); }
+bool File::readable(const std::string& filename) { return TEST_FILEACCESS(filename.c_str(), R_OK); }
+int  File::size(const std::string& filename) {
+    if(strlen(filename.c_str()) == 0 || !File::exist(filename)) { return 0; }
+    struct stat st;
+    if(::stat(filename.c_str(),  &st) != 0) {
+        return 0;
+    }
+    return st.st_size;
+}
 
 File::File() {}
 

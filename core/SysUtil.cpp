@@ -249,10 +249,10 @@ int ShmMutex::init()
     }
     
     if (shm_name.empty()) {
-        this->shm_name = DEFAULT_SHM_MUTEX_FILENAME;
+        this->shm_name.append(DEFAULT_SHM_MUTEX_FILENAME);
+        this->shm_name.append(SysUtil::getFormatTime("-%G%b%d%H%M%S"));
     }
 
-    //this->shm_name += SysUtil::getFormatTime("-%G%b%d%H%M%S");
     shm_unlink(shm_name.c_str()); 
     size_t len = sizeof(shm_mutex_t);
     void* ptr = SysUtil::create_process_shared_memory(shm_name, len);

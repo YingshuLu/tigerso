@@ -10,6 +10,12 @@
 
 namespace tigerso {
 
+#define LOGGING_LEVEL_OFF   0
+#define LOGGING_LEVEL_INFO  1
+#define LOGGING_LEVEL_DBG  ((LOGGING_LEVEL_INFO << 1) | (LOGGING_LEVEL_INFO))
+#define LOGGING_LEVEL_ERR   LOGGING_LEVEL_INFO
+
+
 std::unique_ptr<Logging> Logging::pInstance;
 
 Logging* Logging::getInstance()

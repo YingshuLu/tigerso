@@ -39,9 +39,10 @@ public:
     int writeIn(const char* buf, size_t len);
     int closeFile();
     int send2Socket(Socket&);
-
     size_t size();
     void flushFile();
+    const char* getFilename();
+    bool unlinkAfterSend(bool);
     void reset();
 
 private:
@@ -52,6 +53,7 @@ private:
     int sendChunk(Socket&);
     int sendFileContent(int sockfd);
     int sendFileChunk(int sockfd);
+
 
 public:
     char content_type [1024] = {0};
@@ -69,6 +71,7 @@ private:
     int _chunksize = HTTP_FILE_CACHE_SIZE;
     bool _sendContentDone = false;
     ChunkState _chunkstate = _CHUNKUINIT;
+    bool unlink_ = false;
 
 };
 

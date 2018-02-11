@@ -396,6 +396,7 @@ connections_	TCPServerLoop.h	/^    std::map<unsigned int, ConnectionPtr> connect
 connections_	backup/http_proxy.cpp	/^    std::map<IDTYPE, HTTPPROXYCONNECTIONPTR> connections_; $/;"	m	class:HttpProxyLoop	file:
 connfact_	TCPServerLoop.h	/^    ConnectionFactory* connfact_ = nullptr;$/;"	m	class:tigerso::Connection
 connfact_	TCPServerLoop.h	/^    ConnectionFactoryPtr connfact_;$/;"	v
+connfactptr	test_proxy.cpp	/^std::shared_ptr<ConnectionFactory> connfactptr = std::shared_ptr<ConnectionFactory>(new ConnectionFactory(eloop));$/;"	v
 connfactptr	test_server.cpp	/^std::shared_ptr<ConnectionFactory> connfactptr = std::shared_ptr<ConnectionFactory>(new ConnectionFactory(eloop));$/;"	v
 connfactptr_	Acceptor.h	/^    std::shared_ptr<ConnectionFactory> connfactptr_ = nullptr;$/;"	m	class:tigerso::Acceptor
 connfactptr_	Connection.h	/^    std::shared_ptr<ConnectionFactory> connfactptr_ = nullptr;$/;"	m	class:tigerso::Connection
@@ -479,11 +480,13 @@ g_config	HttpsServer.cpp	/^static ConfigParser* g_config = ConfigParser::getInst
 g_config	backup/SSLContex.h	/^    ConfigParser* g_config = ConfigParser::getInstance(); $/;"	m	namespace:SSLContext
 g_config	https_lib/SSLContext.cpp	/^    ConfigParser* g_config = ConfigParser::getInstance(); $/;"	m	namespace:SSLContext	file:
 g_configini	http_proxy.cpp	/^tigerso::ConfigParser* g_configini = nullptr;$/;"	v
+g_configini	test_proxy.cpp	/^tigerso::ConfigParser* g_configini = nullptr;$/;"	v
 g_configini	test_server.cpp	/^tigerso::ConfigParser* g_configini = nullptr;$/;"	v
 g_httpproxy	http_proxy.cpp	/^tigerso::HttpProxyLoop* g_httpproxy = nullptr;$/;"	v
 g_httpproxypoolptr	backup/http_proxy.cpp	/^HttpProxyLoop* g_httpproxypoolptr = nullptr;$/;"	v
 g_log	HttpsServer.cpp	/^static Logging* g_log = Logging::getInstance();$/;"	v	file:
 g_logging	http_proxy.cpp	/^tigerso::Logging* g_logging = nullptr;$/;"	v
+g_logging	test_proxy.cpp	/^tigerso::Logging* g_logging = nullptr;$/;"	v
 g_logging	test_server.cpp	/^tigerso::Logging* g_logging = nullptr;$/;"	v
 g_server_cert_verify_cb	backup/SSLContex.h	/^    static serverCertVerifyCallback g_server_cert_verify_cb = NULL;$/;"	m	namespace:SSLContext
 g_server_cert_verify_cb	https_lib/SSLContext.cpp	/^    static serverCertVerifyCallback g_server_cert_verify_cb = NULL;$/;"	m	namespace:SSLContext	file:
@@ -590,6 +593,7 @@ main	test_class.cpp	/^int main() {$/;"	f
 main	test_dns.cpp	/^int main(int argc, char* argv[]) {$/;"	f
 main	test_http.cpp	/^int main() {$/;"	f
 main	test_mutex.cpp	/^int main(int argc, char* argv[]) {$/;"	f
+main	test_proxy.cpp	/^int main() {$/;"	f
 main	test_ringbuffer.cpp	/^int main() {$/;"	f
 main	test_server.cpp	/^int main() {$/;"	f
 main	test_thread.cpp	/^int main() {$/;"	f

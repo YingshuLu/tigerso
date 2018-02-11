@@ -42,7 +42,7 @@ typedef enum _TIGERSO_IO_STATE_ {
     TIGERSO_IO_ERROR = -1,
     TIGERSO_IO_RECALL,
     TIGERSO_IO_OK
-};
+} TIGER_IO_ERRORS;
 
 namespace core {
 //Project Marcos

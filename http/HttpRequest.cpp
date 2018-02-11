@@ -73,6 +73,25 @@ std::string HttpRequest::getHost() {
         host = host.substr(0, pos);
     }
 
+    if(host.empty()) {
+        std::string url = getUrl();
+        std::string::size_type beg = 0;
+        if(url.find("http://") == 0) { beg = 8; }
+        else if(url.find("https://") == 0) { beg = 9; }
+        else { beg = 0; }
+        url = url.substr(beg);
+
+        std::string::size_type end = url.size();
+        std::string::size_type tp = end;
+        std::string::size_type ap = end;
+
+        tp = url.find_first_of("/");
+        if(tp == std::string::npos) { tp = end; }
+        ap = url.substr(beg, tp).find_first_of(":");
+        if(tp == std::string::npos) { ap = tp; }
+        host = url.substr(beg, ap);
+    }
+
     host_ = host;
     return host_;
 }
@@ -109,18 +128,13 @@ std::string HttpRequest::getHostPort() {
     return port_;
 }
 
+/*
 std::string& HttpRequest::getBodyFileName() {
     if(bodyname_.size()) {
         return bodyname_;
     }
     
     std::string filename = getValueByHeader("host");
-    /*
-    std::size_t found = url_.find_last_of("/");
-    if(found != std::string::npos) {
-        filename = url_.substr(found+1);
-    }
-    */
     if(filename.empty()) {
         filename = host_;
     }
@@ -129,6 +143,7 @@ std::string& HttpRequest::getBodyFileName() {
     bodyname_ = filename + "ToTigerso-" + SysUtil::getFormatTime("%H%M%S");
     return bodyname_;
 }
+*/
 
 } //namespace tigerso::http
 

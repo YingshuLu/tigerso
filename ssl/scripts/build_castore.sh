@@ -35,7 +35,7 @@ hash_caPEM() {
 
 clear_oldPEM
 
-${_DOWNLOAD_SCRIPT}
+#${_DOWNLOAD_SCRIPT}
 
 for file in ${_TMP_PEM_FILE}/*.pem
 do

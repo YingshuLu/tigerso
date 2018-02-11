@@ -170,8 +170,9 @@ int DaemonBase::childStop() {
 
 int DaemonBase::childInit() {
     //init openssl
-    INFO_LOG("Initilize OPENSSL lib");
-    _OPENSSL_::init();
+    //INFO_LOG("Initilize OPENSSL lib");
+    //_OPENSSL_::init();
+    
     return processInit();
 }
 
@@ -202,7 +203,7 @@ int DaemonBase::initilize() {
 }
 
 int DaemonBase::destory() {
-    _OPENSSL_::destory();
+    //_OPENSSL_::destory();
     return 0;
 }
 

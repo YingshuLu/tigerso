@@ -17,6 +17,8 @@ struct ServiceContext {
     std::string host; //only for host services, i.e. Http Service 
     std::string rootDir = "./";
     int connectionLimit = 1024;
+    //for http server, it means https server
+    //for http proxy, it means https decryption
     bool sslEnabled = false;
 };
     

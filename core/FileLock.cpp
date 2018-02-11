@@ -7,6 +7,13 @@ FileLock::FileLock(const std::string& filename, const std::string& content): fil
     init();
 }
 
+int FileLock::read_lock() {
+    if(lock_cmd(F_RDLCK) < 0) {
+        return LOCK_FAILURE;
+    }
+    return LOCK_SUCCESS;
+}
+
 int FileLock::lock() {
     if(lock_cmd(F_WRLCK) < 0) {
         return LOCK_FAILURE;

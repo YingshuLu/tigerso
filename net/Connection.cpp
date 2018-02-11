@@ -9,7 +9,7 @@
 namespace tigerso {
 
 Connection::Connection(std::shared_ptr<Acceptor> acptptr, const IDType id): acptptr_ (acptptr), id_(id) {
-    sockptr__ = std::shared_ptr<Socket>(new Socket);
+    sockptr_ = std::shared_ptr<Socket>(new Socket);
 }
 
 IDType Connection::getID() { return id_; }
@@ -19,7 +19,7 @@ int Connection::writeHandleEnter(Socket& _l) { return writeHandle(_l); }
 int Connection::errorHandleEnter(Socket& _l) { return errorHandle(_l); }
 int Connection::rdhupHandleEnter(Socket& _l) { return rdhupHandle(_l); }
 int Connection::timeoutHandleEnter(Socket& _l) { return timeoutHandle(_l); }
-std::shared_ptr<Socket>& Connection::getSocketPtr() { return sockptr__; }
+std::shared_ptr<Socket>& Connection::getSocketPtr() { return sockptr_; }
 Connection::~Connection() {}
 
 ConnectionType Connection::getType() { return acptptr_->getType(); }  

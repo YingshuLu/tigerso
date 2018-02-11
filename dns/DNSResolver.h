@@ -70,6 +70,8 @@ namespace tigerso {
 #define DNS_CLASS_INTERNET              0x0001
 #define DNS_RRNAME_OFFSETFLAG           0xc0
 
+#define DNS_UINIT           2
+#define DNS_ON_PROCESS     1
 #define DNS_OK             0
 #define DNS_ERR           -1
 #define DNS_INPUT_ERR     -2
@@ -122,11 +124,17 @@ typedef struct DNSAnswer DNSAuthority;
 typedef struct DNSAnswer DNSAddition;
 typedef std::function<int(const char*, time_t)> DNS_CALLBACK;
 
+
 class DNSResolver {
+
+typedef std::function<int(Socket&)> EVENT_REGISTER_CALLBACK;
 
 public:
     DNSResolver();
+    static void setEventRegisterCallback(EVENT_REGISTER_CALLBACK);
 
+    int getResolveState();
+    int resolve(const std::string& host);
     int queryDNSCache(const std::string& host, std::string& ipaddr);
     int asyncQueryInit(const std::string& host, Socket& udpsock);
     int setCallback(DNS_CALLBACK cb) {callback_ = cb;}
@@ -143,11 +151,18 @@ public:
     int errorHandle(Socket& udpsock);
     int timeoutHandle(Socket& udpsock);
 
+    void reset() {
+        resolveState_ = DNS_UINIT;
+        sock_.close();
+        callback_ = nullptr;
+    }
+
     ~DNSResolver();
 private:
     /*nocopyable*/
     DNSResolver(const DNSResolver&){}
     DNSResolver& operator=(const DNSResolver&){}
+    int callHandle();
 
 private:
     int packDNSQuery(const char* query_name, size_t len);
@@ -187,13 +202,15 @@ private:
 private:
     unsigned char query_buf_ [DNS_MESSAGE_LIMIT] = {0};
     unsigned char response_buf_[DNS_MESSAGE_LIMIT] = {0};
-
+    Socket sock_;
+    
     unsigned short ID_ = 0x00;
     socket_t sockfd_ = -1;
     sockaddr_in server_addr_;
 
 private:
     DNS_CALLBACK callback_ = nullptr;
+    int resolveState_ = DNS_UINIT;
 
 private:
     std::string query_name_;
@@ -205,6 +222,7 @@ private:
     DNSCache* g_DNSCachePtr = nullptr; 
     static std::string primary_addr_;
     static std::string second_addr_;
+    static EVENT_REGISTER_CALLBACK register_callback_;
 };
 
 } //namespace tigerso::dns

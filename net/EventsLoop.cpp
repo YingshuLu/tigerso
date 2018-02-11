@@ -110,7 +110,8 @@ int EventsLoop::waitChannel() {
                 DECIDE_EVENTCALLBACK(ret);
             }
 
-            if((epevents_[i].events & EPOLLRDHUP) && (epevents_[i].events & EPOLLIN) && validChannel(cnptr)) {
+            //if((epevents_[i].events & EPOLLRDHUP) && (epevents_[i].events & EPOLLIN) && validChannel(cnptr)) {
+            if((epevents_[i].events & EPOLLRDHUP) && validChannel(cnptr)) {
                 DBG_LOG("socket [%d]: RDHUP event", fd);
                 if (cnptr->rdhup_cb) {
                     int ret = cnptr->rdhup_cb(*sockptr);

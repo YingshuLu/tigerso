@@ -22,7 +22,7 @@ public:
     void clear();
     std::string getHost();
     std::string getHostPort();
-    std::string& getBodyFileName();
+    //std::string& getBodyFileName();
 
 private:
     std::string method_;

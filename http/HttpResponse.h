@@ -17,9 +17,11 @@ public:
     std::string getDesc();
     void setStatuscode(int code);
     void setDesc(const std::string& desc);
+    void shouldNoBody();
     std::string& getHeader();
     std::string toString();
     void clear();
+    bool unlinkAfterWrite(bool);
 
 public:
     //Response string
@@ -31,6 +33,7 @@ public:
 private:
     int         statuscode_;
     std::string desc_;
+    bool unlink_ = false;
 };
 
 } //namespace tigerso::http

@@ -18,7 +18,7 @@ using std::shared_ptr;
 typedef void (signal_func)(int);
 const int MC_LOCK_PRIVATE = 0;
 const int MC_LOCK_SHARE_PROCESS = 1;
-const string DEFAULT_SHM_MUTEX_FILENAME = "TIGERSOSHMMUTEX";
+const string DEFAULT_SHM_MUTEX_FILENAME = "tigerso-mutex";
 
 class SysUtil {
 public:

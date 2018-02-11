@@ -15,7 +15,8 @@ namespace tigerso {
 class FileLock: public Lock {
 
 public:
-    FileLock(const std::string& filename, const std::string& conent = "");
+    FileLock(const std::string& filename, const std::string& conent = "FILELOCK, DO NOT DELETE OR MODIFIFY IT!");
+    int read_lock();
     int lock();
     int try_lock();
     int unlock();

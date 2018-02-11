@@ -84,7 +84,9 @@ SOCKET_STAGE_SEND	Socket.h	/^const socket_stage_t SOCKET_STAGE_SEND    =  6;$/;"
 SOCKET_STAGE_SOCKET	Socket.h	/^const socket_stage_t SOCKET_STAGE_SOCKET  =  0;$/;"	m	namespace:tigerso
 SOCKET_STAGE_UINIT	Socket.h	/^const socket_stage_t SOCKET_STAGE_UINIT   = -1;$/;"	m	namespace:tigerso
 SSLAccept	Socket.h	/^    int  SSLAccept() { return sctx.accept(); }$/;"	f	class:tigerso::Socket
+SSLConnect	Socket.h	/^    int  SSLConnect() { return sctx.connect(); }$/;"	f	class:tigerso::Socket
 SSLErrno	Socket.h	/^    int SSLErrno() { return sctx.serrno; }$/;"	f	class:tigerso::Socket
+SSLNoError	Socket.h	/^    bool SSLNoError() { return !isSSL() || sctx.serrno == SSL_ERROR_NONE; }$/;"	f	class:tigerso::Socket
 SSLProtocol	Acceptor.h	/^    inline bool SSLProtocol() { return service_.sslEnabled; }$/;"	f	class:tigerso::Acceptor
 SSLWantReadMore	Socket.h	/^    bool SSLWantReadMore() { return isSSL() && sctx.serrno == SSL_ERROR_WANT_READ; }$/;"	f	class:tigerso::Socket
 SSLWantWriteMore	Socket.h	/^    bool SSLWantWriteMore() { return isSSL() && sctx.serrno == SSL_ERROR_WANT_WRITE; }$/;"	f	class:tigerso::Socket
@@ -213,7 +215,7 @@ exist	Socket.cpp	/^bool Socket::exist() const {$/;"	f	class:tigerso::Socket
 fetch	Upstream.h	/^    int fetch(const char* ip, unsigned int& port) {$/;"	f	class:tigerso::Upstream
 gain_gap	Buffer.h	/^    static const size_t gain_gap = BUFFER_GAP_LENGTH;$/;"	m	class:tigerso::Buffer
 gc_	ConnectionFactory.h	/^    std::map<ConnectionType, std::queue<IDType>> gc_;$/;"	m	class:tigerso::ConnectionFactory
-getClientSocket	Connection.cpp	/^std::shared_ptr<Socket>& Connection::getClientSocket() { return sockptr__; }$/;"	f	class:tigerso::Connection
+generateConnectionTo	Acceptor.cpp	/^std::shared_ptr<Connection> Acceptor::generateConnectionTo(const std::string& ipaddr, const int& port) {$/;"	f	class:tigerso::Acceptor
 getEpollBase	EventsLoop.cpp	/^int EventsLoop::getEpollBase() const { return epfd_; }$/;"	f	class:tigerso::EventsLoop
 getID	Connection.cpp	/^IDType Connection::getID() { return id_; }$/;"	f	class:tigerso::Connection
 getInBufferPtr	Socket.h	/^    std::shared_ptr<Buffer> getInBufferPtr() const { return bufPtr_.in_.lock(); }$/;"	f	class:tigerso::Socket
@@ -222,11 +224,13 @@ getReadIdx	Buffer.cpp	/^size_t Buffer::getReadIdx() const {$/;"	f	class:tigerso:
 getReadPtr	Buffer.cpp	/^const char* Buffer::getReadPtr() const {$/;"	f	class:tigerso::Buffer
 getReadableBytes	Buffer.cpp	/^ssize_t Buffer::getReadableBytes() const {$/;"	f	class:tigerso::Buffer
 getRole	Socket.cpp	/^socket_role_t Socket::getRole() const {$/;"	f	class:tigerso::Socket
+getSSLContextPtr	Socket.h	/^    SSLContext* getSSLContextPtr() { return &sctx; }$/;"	f	class:tigerso::Socket
 getServiceHost	Acceptor.h	/^    const std::string& getServiceHost() { return service_.host; }$/;"	f	class:tigerso::Acceptor
 getServiceRoot	Acceptor.h	/^    const std::string& getServiceRoot() { return service_.rootDir;  }$/;"	f	class:tigerso::Acceptor
 getSockAddr	Socket.cpp	/^int Socket::getSockAddr(sockaddr_in& inaddr) {$/;"	f	class:tigerso::Socket
 getSocket	Socket.cpp	/^socket_t Socket::getSocket() const {$/;"	f	class:tigerso::Socket
 getSocketPtr	Channel.cpp	/^Socket* Channel::getSocketPtr() const {$/;"	f	class:tigerso::Channel
+getSocketPtr	Connection.cpp	/^std::shared_ptr<Socket>& Connection::getSocketPtr() { return sockptr__; }$/;"	f	class:tigerso::Connection
 getStage	Socket.cpp	/^socket_stage_t Socket::getStage() const {$/;"	f	class:tigerso::Socket
 getStrAddr	Socket.cpp	/^std::string Socket::getStrAddr() const {$/;"	f	class:tigerso::Socket
 getStrPort	Socket.cpp	/^std::string Socket::getStrPort() const {$/;"	f	class:tigerso::Socket

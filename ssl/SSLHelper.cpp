@@ -1,9 +1,13 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "ssl/SSLHelper.h"
+#include "ssl/SSLContext.h"
+#include "ssl/CertCache.h"
 #include "core/Logging.h"
 
 namespace tigerso {
+
+#define CERT_KEY_LENGTH 2048
 
 X509* loadX509FromFile(const char* filename) {
     
@@ -185,7 +189,7 @@ bool SSLHelper::signCert(X509* ca_cert, EVP_PKEY* ca_pkey, int key_length, X509*
     }
 
     if(X509_set_pubkey(*cert, *pkey) <= 0 ||
-        X509_set_subject_name(*cert, X509_get_subject_name(org_cert)) <=0 ||
+        X509_set_subject_name(*cert, X509_get_subject_name(org_cert)) <= 0 ||
         X509_set_version(*cert, X509_get_version(ca_cert)) <= 0 ||
         X509_set_issuer_name(*cert, X509_get_subject_name(ca_cert)) <= 0 ||
         X509_set_notBefore(*cert, X509_get_notBefore(ca_cert)) <= 0 ||
@@ -248,4 +252,45 @@ int SSLHelper::MD5(const char*  input, char* output, int len) {
 	return 0;
 }
 
+int SSLHelper::resignContextCert(SSLContext& client, SSLContext& server) {
+    X509* org_cert = client._peerCert;
+    if(!org_cert) {
+       client._peerCert = SSL_get_peer_certificate(client._ssl);
+       org_cert = client._peerCert;
+       if(!org_cert) {
+            INFO_LOG("no peer certificate presented in SSL");
+            return -1;
+        }
+    }
+
+    CertCache* pcache = CertCache::getInstance();
+    X509* cert = NULL;
+    EVP_PKEY* pkey = NULL;
+    int ret = pcache->query(org_cert, &cert, &pkey);
+
+    //resign certificate and store in certcache
+    if(ret != 0) {
+        DBG_LOG("no resigned cert in CertCache, resign it");
+        X509* cacert = NULL;
+        EVP_PKEY* capkey = NULL;
+        ret = SSLContext::getCAEntity(&cacert, &capkey); 
+        if(ret < 0) { return -1; }
+        if(!signCert(cacert, capkey, CERT_KEY_LENGTH, org_cert, &cert, &pkey)) {
+            INFO_LOG("failed to resign certificate");
+            return -1;
+        }
+
+        ret = pcache->store(org_cert, cert, pkey);
+        if(ret != 0) {
+            INFO_LOG("failed to store certificate into certcache");
+            return -1;
+        }
+    }
+
+    server._ownCert = cert;
+    server._ownPkey= pkey;
+    INFO_LOG("Https Decryption: Success");
+    return 0;
 }
+
+}//namespace tigerso

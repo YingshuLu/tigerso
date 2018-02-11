@@ -16,6 +16,8 @@
 #include "net/Channel.h"
 #include "http/HttpMessage.h"
 #include "http/HttpParser.h"
+#include "http/HttpRequest.h"
+#include "http/HttpResponse.h"
 #include "util/FileTypeDetector.h"
 #include "dns/DNSResolver.h"
 #include "core/Logging.h"

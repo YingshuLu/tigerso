@@ -15,6 +15,7 @@
 #include "core/File.h"
 #include "core/SysUtil.h"
 #include "util/FileTypeDetector.h"
+#include "http/HttpParser.h"
 
 namespace tigerso {
 
@@ -63,6 +64,8 @@ public:
     virtual void setUrl(const std::string& Url){}
     virtual void setStatuscode(int) {}
     virtual void setDesc(const std::string&) {}
+    virtual std::string getHost() { return std::string(""); }
+    virtual std::string getHostPort() { return std::string(""); } 
 
     virtual void clear();    
     virtual std::string& getHeader() = 0;
@@ -88,10 +91,21 @@ public:
     void markTrade();
     void appendHeader(std::string header, std::string value);
     http_role_t getRole();
-    std::string& getBodyFileName();
+    std::string getBodyFileName();
     int setBodyFileName(const std::string& fn);
-    bool    keepalive();
+    bool    isKeepAlive();
+    bool    isChunked();
     virtual ~HttpMessage();
+
+public:
+    int parse(const char*, const size_t&, int*);
+    HttpParser* getParserPtr();
+    void setHeaderCompletedHandle(HttpParserCallback);
+    void setBodyCompletedHandle(HttpParserCallback);
+    void tunnelBody();
+    bool isTunnelBody();
+    bool needMoreData();
+    bool isHeaderCompleted();
 
 protected:
     const char* detectMIMEType(const std::string&);
@@ -103,6 +117,7 @@ protected:
     std::string headstr_;
     HttpBodyFile body_;
     std::string bodyname_;
+    HttpParser parser_;
 
 private:
     FileTypeDetector MIMETyper_;

@@ -8,8 +8,8 @@ ARRAY_SIZE	lib/http_parser.c	41;"	d	file:
 BAD_REQUEST	HttpResponse.cpp	/^const std::string HttpResponse::BAD_REQUEST = "HTTP\/1.1 400 Bad Request\\r\\nserver: tigerso\/" + core::VERSION + "\\r\\n\\r\\n";$/;"	m	class:tigerso::HttpResponse	file:
 BAD_REQUEST	HttpResponse.h	/^    static const std::string BAD_REQUEST; $/;"	m	class:tigerso::HttpResponse
 BIND_EVENTHANDLE	HttpConnection.cpp	9;"	d	file:
-BIND_EVENTHANDLE	HttpProxy.h	33;"	d
-BIND_EVENTHANDLE	HttpProxyConnection.cpp	8;"	d	file:
+BIND_EVENTHANDLE	HttpProxy.h	35;"	d
+BIND_EVENTHANDLE	HttpProxyConnection.cpp	18;"	d	file:
 BIT_AT	lib/http_parser.c	45;"	d	file:
 Base64decode	lib/base64.c	/^int Base64decode(char *bufplain, const char *bufcoded)$/;"	f
 Base64decode_len	lib/base64.c	/^int Base64decode_len(const char *bufcoded)$/;"	f
@@ -22,14 +22,16 @@ CALLBACK_NOTIFY	lib/http_parser.c	99;"	d	file:
 CALLBACK_NOTIFY_	lib/http_parser.c	80;"	d	file:
 CALLBACK_NOTIFY_NOADVANCE	lib/http_parser.c	102;"	d	file:
 CHUNKED	lib/http_parser.c	169;"	d	file:
-CLIENT_CLOSE	HttpProxyConnection.h	/^    CLIENT_CLOSE,$/;"	e	enum:tigerso::__anon5
-CLIENT_CLOSE_DONE	HttpProxyConnection.h	/^    CLIENT_CLOSE_DONE,$/;"	e	enum:tigerso::__anon5
-CLIENT_HANDSHAKE	HttpProxyConnection.h	/^    CLIENT_HANDSHAKE,$/;"	e	enum:tigerso::__anon5
-CLIENT_HANDSHAKE_DONE	HttpProxyConnection.h	/^    CLIENT_HANDSHAKE_DONE,$/;"	e	enum:tigerso::__anon5
-CLIENT_RECV_REQUEST	HttpProxyConnection.h	/^    CLIENT_RECV_REQUEST,$/;"	e	enum:tigerso::__anon5
-CLIENT_RECV_REQUEST_DONE	HttpProxyConnection.h	/^    CLIENT_RECV_REQUEST_DONE,$/;"	e	enum:tigerso::__anon5
-CLIENT_SEND_RESPONSE	HttpProxyConnection.h	/^    CLIENT_SEND_RESPONSE,$/;"	e	enum:tigerso::__anon5
-CLIENT_SEND_RESPONSE_DONE	HttpProxyConnection.h	/^    CLIENT_SEND_RESPONSE_DONE,$/;"	e	enum:tigerso::__anon5
+CLIENT_CLOSE	HttpProxyConnection.h	/^    CLIENT_CLOSE,$/;"	e	enum:tigerso::__anon6
+CLIENT_CLOSE_DONE	HttpProxyConnection.h	/^    CLIENT_CLOSE_DONE,$/;"	e	enum:tigerso::__anon6
+CLIENT_HANDSHAKE	HttpProxyConnection.h	/^    CLIENT_HANDSHAKE,$/;"	e	enum:tigerso::__anon6
+CLIENT_HANDSHAKE_DONE	HttpProxyConnection.h	/^    CLIENT_HANDSHAKE_DONE,$/;"	e	enum:tigerso::__anon6
+CLIENT_RECV_REQUEST	HttpProxyConnection.h	/^    CLIENT_RECV_REQUEST,$/;"	e	enum:tigerso::__anon6
+CLIENT_RECV_REQUEST_DONE	HttpProxyConnection.h	/^    CLIENT_RECV_REQUEST_DONE,$/;"	e	enum:tigerso::__anon6
+CLIENT_SEND_200OK	HttpProxyConnection.h	/^    CLIENT_SEND_200OK,$/;"	e	enum:tigerso::__anon6
+CLIENT_SEND_200OK_DONE	HttpProxyConnection.h	/^    CLIENT_SEND_200OK_DONE,$/;"	e	enum:tigerso::__anon6
+CLIENT_SEND_RESPONSE	HttpProxyConnection.h	/^    CLIENT_SEND_RESPONSE,$/;"	e	enum:tigerso::__anon6
+CLIENT_SEND_RESPONSE_DONE	HttpProxyConnection.h	/^    CLIENT_SEND_RESPONSE_DONE,$/;"	e	enum:tigerso::__anon6
 CLOSE	lib/http_parser.c	171;"	d	file:
 CONNECTION	lib/http_parser.c	165;"	d	file:
 CONTENT_LENGTH	lib/http_parser.c	166;"	d	file:
@@ -37,6 +39,7 @@ COUNT_HEADER_SIZE	lib/http_parser.c	154;"	d	file:
 CR	lib/http_parser.c	410;"	d	file:
 CURRENT_STATE	lib/http_parser.c	59;"	d	file:
 ChunkState	HttpBodyFile.h	/^} ChunkState;$/;"	t	class:tigerso::HttpBodyFile	typeref:enum:tigerso::HttpBodyFile::_CHUNK_SEND_STATE
+Cookie	Cookie.h	/^class Cookie {$/;"	c	namespace:tigerso
 ELEM_AT	lib/http_parser.c	51;"	d	file:
 FORBIDDEN	HttpResponse.cpp	/^const std::string HttpResponse::FORBIDDEN = "HTTP\/1.1 403 Forbidden\\r\\nserver: tigerso\/" + core::VERSION + "\\r\\n\\r\\n";$/;"	m	class:tigerso::HttpResponse	file:
 FORBIDDEN	HttpResponse.h	/^    static const std::string FORBIDDEN;$/;"	m	class:tigerso::HttpResponse
@@ -48,21 +51,22 @@ F_CONTENTLENGTH	lib/http_parser.h	/^  , F_CONTENTLENGTH         = 1 << 7$/;"	e	e
 F_SKIPBODY	lib/http_parser.h	/^  , F_SKIPBODY              = 1 << 6$/;"	e	enum:flags
 F_TRAILING	lib/http_parser.h	/^  , F_TRAILING              = 1 << 4$/;"	e	enum:flags
 F_UPGRADE	lib/http_parser.h	/^  , F_UPGRADE               = 1 << 5$/;"	e	enum:flags
-HP_PARSE_BAD_REQUEST	HttpParser.h	37;"	d
-HP_PARSE_BAD_RESPONSE	HttpParser.h	38;"	d
-HP_PARSE_COMPLETE	HttpParser.h	39;"	d
-HP_PARSE_ERROR	HttpParser.h	36;"	d
-HP_PARSE_NEED_MOREDATA	HttpParser.h	40;"	d
+HP_PARSE_BAD_REQUEST	HttpParser.h	35;"	d
+HP_PARSE_BAD_RESPONSE	HttpParser.h	36;"	d
+HP_PARSE_COMPLETE	HttpParser.h	37;"	d
+HP_PARSE_ERROR	HttpParser.h	34;"	d
+HP_PARSE_NEED_MOREDATA	HttpParser.h	38;"	d
+HP_PARSE_PIPELINE	HttpParser.h	39;"	d
 HTTPPROXYCONNECTIONPTR	HttpProxy.h	/^typedef std::shared_ptr<HttpProxyConnection> HTTPPROXYCONNECTIONPTR;$/;"	t	namespace:tigerso
-HTTPS_CLOSE	HttpConnection.h	/^    HTTPS_CLOSE,$/;"	e	enum:tigerso::__anon4
-HTTPS_CLOSE_DONE	HttpConnection.h	/^    HTTPS_CLOSE_DONE,$/;"	e	enum:tigerso::__anon4
-HTTPS_HANDSHAKE	HttpConnection.h	/^    HTTPS_HANDSHAKE,$/;"	e	enum:tigerso::__anon4
-HTTPS_HANDSHAKE_DONE	HttpConnection.h	/^    HTTPS_HANDSHAKE_DONE,$/;"	e	enum:tigerso::__anon4
+HTTPS_CLOSE	HttpConnection.h	/^    HTTPS_CLOSE,$/;"	e	enum:tigerso::__anon5
+HTTPS_CLOSE_DONE	HttpConnection.h	/^    HTTPS_CLOSE_DONE,$/;"	e	enum:tigerso::__anon5
+HTTPS_HANDSHAKE	HttpConnection.h	/^    HTTPS_HANDSHAKE,$/;"	e	enum:tigerso::__anon5
+HTTPS_HANDSHAKE_DONE	HttpConnection.h	/^    HTTPS_HANDSHAKE_DONE,$/;"	e	enum:tigerso::__anon5
 HTTP_BODY_FILE	HttpBodyFile.h	/^    HTTP_BODY_FILE$/;"	e	enum:tigerso::_HTTP_BODY_MODE_
 HTTP_BODY_NULL	HttpBodyFile.h	/^    HTTP_BODY_NULL,$/;"	e	enum:tigerso::_HTTP_BODY_MODE_
 HTTP_BODY_RINGBUFFER	HttpBodyFile.h	/^    HTTP_BODY_RINGBUFFER,$/;"	e	enum:tigerso::_HTTP_BODY_MODE_
 HTTP_BOTH	lib/http_parser.h	/^enum http_parser_type { HTTP_REQUEST, HTTP_RESPONSE, HTTP_BOTH };$/;"	e	enum:http_parser_type
-HTTP_DAEMON_NAME	HttpService.h	13;"	d
+HTTP_DAEMON_NAME	HttpService.h	21;"	d
 HTTP_ERRNO_GEN	lib/http_parser.h	281;"	d
 HTTP_ERRNO_GEN	lib/http_parser.h	285;"	d
 HTTP_ERRNO_MAP	lib/http_parser.h	/^  HTTP_ERRNO_MAP(HTTP_ERRNO_GEN)$/;"	e	enum:http_errno
@@ -74,6 +78,7 @@ HTTP_INSPECTION_MODIFIED	HttpMessage.h	/^const int HTTP_INSPECTION_MODIFIED = 1;
 HTTP_MAX_HEADER_SIZE	lib/http_parser.h	64;"	d
 HTTP_METHOD_MAP	lib/http_parser.h	/^  HTTP_METHOD_MAP(XX)$/;"	e	enum:http_method
 HTTP_METHOD_MAP	lib/http_parser.h	164;"	d
+HTTP_PARSER	HttpParser.cpp	11;"	d	file:
 HTTP_PARSER_ERRNO	lib/http_parser.h	289;"	d
 HTTP_PARSER_STRICT	lib/http_parser.h	53;"	d
 HTTP_PARSER_VERSION_MAJOR	lib/http_parser.h	28;"	d
@@ -100,32 +105,35 @@ HttpInSpection	HttpMessage.h	/^class HttpInSpection {$/;"	c	namespace:tigerso
 HttpMessage	HttpMessage.h	/^class HttpMessage {$/;"	c	namespace:tigerso
 HttpParser	HttpParser.h	/^    HttpParser(): buffer_(nullptr), length_(0), parsedn_(0), state_(PARSE_UNINIT), message_(nullptr) {}$/;"	f	class:tigerso::HttpParser
 HttpParser	HttpParser.h	/^class HttpParser: public nocopyable {$/;"	c	namespace:tigerso
+HttpParserCallback	HttpParser.h	/^typedef std::function<int(HttpMessage&)> HttpParserCallback;$/;"	t	namespace:tigerso
 HttpProxyConnection	HttpProxy.cpp	/^HttpProxyConnection::HttpProxyConnection(): ID_(HttpProxyConnection::uuid()), $/;"	f	class:tigerso::HttpProxyConnection
 HttpProxyConnection	HttpProxy.h	/^class HttpProxyConnection {$/;"	c	namespace:tigerso
 HttpProxyConnection	HttpProxyConnection.cpp	/^HttpProxyConnection::HttpProxyConnection(std::shared_ptr<Acceptor> connfactptr, const IDType id): Connection(connfactptr, id) {$/;"	f	class:tigerso::HttpProxyConnection
 HttpProxyConnection	HttpProxyConnection.h	/^class HttpProxyConnection: public Connection {$/;"	c	namespace:tigerso
 HttpProxyLoop	HttpProxy.cpp	/^HttpProxyLoop::HttpProxyLoop(const std::string& ipaddr, const std::string& port):$/;"	f	class:tigerso::HttpProxyLoop
 HttpProxyLoop	HttpProxy.h	/^class HttpProxyLoop {   $/;"	c	namespace:tigerso
-HttpProxyState	HttpProxyConnection.h	/^} HttpProxyState;$/;"	t	namespace:tigerso	typeref:enum:tigerso::__anon5
+HttpProxyState	HttpProxyConnection.h	/^} HttpProxyState;$/;"	t	namespace:tigerso	typeref:enum:tigerso::__anon6
 HttpRequest	HttpRequest.cpp	/^HttpRequest::HttpRequest() { role_ = HTTP_ROLE_REQUEST; }$/;"	f	class:tigerso::HttpRequest
 HttpRequest	HttpRequest.h	/^class HttpRequest: public HttpMessage {$/;"	c	namespace:tigerso
 HttpResponse	HttpResponse.cpp	/^HttpResponse::HttpResponse() { role_ = HTTP_ROLE_RESPONSE; }$/;"	f	class:tigerso::HttpResponse
 HttpResponse	HttpResponse.h	/^class HttpResponse: public HttpMessage {$/;"	c	namespace:tigerso
 HttpService	HttpService.h	/^    HttpService(): DaemonBase(HTTP_DAEMON_NAME) {$/;"	f	class:tigerso::HttpService
 HttpService	HttpService.h	/^class HttpService: public DaemonBase {$/;"	c	namespace:tigerso
-HttpState	HttpConnection.h	/^} HttpState;$/;"	t	namespace:tigerso	typeref:enum:tigerso::__anon4
+HttpState	HttpConnection.h	/^} HttpState;$/;"	t	namespace:tigerso	typeref:enum:tigerso::__anon5
 HttpTransaction	HttpProxy.h	/^struct HttpTransaction {$/;"	s	class:tigerso::HttpProxyConnection
 IDTYPE	HttpProxy.h	/^typedef unsigned long IDTYPE;  $/;"	t	namespace:tigerso
 ID_	HttpProxy.h	/^    const IDTYPE  ID_;$/;"	m	class:tigerso::HttpProxyConnection
 IS_ALPHA	lib/http_parser.c	413;"	d	file:
 IS_ALPHANUM	lib/http_parser.c	415;"	d	file:
+IS_CLIENT_SOCKET	HttpProxyConnection.cpp	16;"	d	file:
 IS_HEADER_CHAR	lib/http_parser.c	442;"	d	file:
 IS_HEX	lib/http_parser.c	416;"	d	file:
 IS_HOST_CHAR	lib/http_parser.c	429;"	d	file:
 IS_HOST_CHAR	lib/http_parser.c	434;"	d	file:
-IS_HTTPPARSER_INITED	HttpParser.h	35;"	d
+IS_HTTPPARSER_INITED	HttpParser.h	33;"	d
 IS_MARK	lib/http_parser.c	417;"	d	file:
 IS_NUM	lib/http_parser.c	414;"	d	file:
+IS_SERVER_SOCKET	HttpProxyConnection.cpp	17;"	d	file:
 IS_URL_CHAR	lib/http_parser.c	428;"	d	file:
 IS_URL_CHAR	lib/http_parser.c	432;"	d	file:
 IS_USERINFO_CHAR	lib/http_parser.c	420;"	d	file:
@@ -145,47 +153,61 @@ NOT_FOUND	HttpResponse.cpp	/^const std::string HttpResponse::NOT_FOUND = "HTTP\/
 NOT_FOUND	HttpResponse.h	/^    static const std::string NOT_FOUND;$/;"	m	class:tigerso::HttpResponse
 OK	HttpResponse.cpp	/^const std::string HttpResponse::OK = "HTTP\/1.1 200 OK\\r\\nserver: tigerso\/" + core::VERSION + "\\r\\n\\r\\n";$/;"	m	class:tigerso::HttpResponse	file:
 OK	HttpResponse.h	/^    static const std::string OK;$/;"	m	class:tigerso::HttpResponse
-PARSER_TO_MESSAGE	HttpParser.cpp	9;"	d	file:
-PARSE_BODY_NEED_MORE_DATA	HttpParser.h	/^    PARSE_BODY_NEED_MORE_DATA,$/;"	e	enum:tigerso::__anon3
-PARSE_COMPLETE	HttpParser.h	/^    PARSE_COMPLETE$/;"	e	enum:tigerso::__anon3
-PARSE_ERR	HttpParser.h	/^    PARSE_ERR = 0,$/;"	e	enum:tigerso::__anon3
-PARSE_HEADER_COMPLETE	HttpParser.h	/^    PARSE_HEADER_COMPLETE,$/;"	e	enum:tigerso::__anon3
-PARSE_HEADER_NEED_MORE_DATA	HttpParser.h	/^    PARSE_HEADER_NEED_MORE_DATA,$/;"	e	enum:tigerso::__anon3
-PARSE_INIT	HttpParser.h	/^    PARSE_INIT,$/;"	e	enum:tigerso::__anon3
-PARSE_STATE	HttpParser.h	/^} PARSE_STATE; $/;"	t	namespace:tigerso	typeref:enum:tigerso::__anon3
-PARSE_UNINIT	HttpParser.h	/^    PARSE_UNINIT = -1,$/;"	e	enum:tigerso::__anon3
+PARSER_TO_MESSAGE	HttpParser.cpp	13;"	d	file:
+PARSE_BODY_NEED_MORE_DATA	HttpParser.h	/^    PARSE_BODY_NEED_MORE_DATA,$/;"	e	enum:tigerso::__anon4
+PARSE_COMPLETE	HttpParser.h	/^    PARSE_COMPLETE$/;"	e	enum:tigerso::__anon4
+PARSE_ERR	HttpParser.h	/^    PARSE_ERR = 0,$/;"	e	enum:tigerso::__anon4
+PARSE_HEADER_COMPLETE	HttpParser.h	/^    PARSE_HEADER_COMPLETE,$/;"	e	enum:tigerso::__anon4
+PARSE_HEADER_NEED_MORE_DATA	HttpParser.h	/^    PARSE_HEADER_NEED_MORE_DATA,$/;"	e	enum:tigerso::__anon4
+PARSE_INIT	HttpParser.h	/^    PARSE_INIT,$/;"	e	enum:tigerso::__anon4
+PARSE_STATE	HttpParser.h	/^} PARSE_STATE; $/;"	t	namespace:tigerso	typeref:enum:tigerso::__anon4
+PARSE_UNINIT	HttpParser.h	/^    PARSE_UNINIT = -1,$/;"	e	enum:tigerso::__anon4
 PARSING_HEADER	lib/http_parser.c	360;"	d	file:
+PEER_SOCKETPTR	HttpProxyConnection.cpp	15;"	d	file:
 PROXY_CONNECTION	lib/http_parser.c	164;"	d	file:
-RECV_REQUEST	HttpConnection.h	/^    RECV_REQUEST,$/;"	e	enum:tigerso::__anon4
-RECV_REQUEST_DONE	HttpConnection.h	/^    RECV_REQUEST_DONE,$/;"	e	enum:tigerso::__anon4
+PROXY_INIT	HttpProxyConnection.h	/^    PROXY_INIT,$/;"	e	enum:tigerso::__anon6
+RECV_REQUEST	HttpConnection.h	/^    RECV_REQUEST,$/;"	e	enum:tigerso::__anon5
+RECV_REQUEST_DONE	HttpConnection.h	/^    RECV_REQUEST_DONE,$/;"	e	enum:tigerso::__anon5
 REEXECUTE	lib/http_parser.c	66;"	d	file:
 RESPONSE_STATUS_MAP	HttpMessage.h	/^    static const std::map<int, std::string> RESPONSE_STATUS_MAP;$/;"	m	class:tigerso::HttpHelper
 RETURN	lib/http_parser.c	61;"	d	file:
+RWEventHandle	HttpProxyConnection.cpp	/^int HttpProxyConnection::RWEventHandle(Socket& sock) {$/;"	f	class:tigerso::HttpProxyConnection
 Register	HttpMessage.cpp	/^void HttpInSpection::Register(const std::string& header, httpInspectCallback callback, http_role_t role) { $/;"	f	class:tigerso::HttpInSpection
-SEND_RESPONSE	HttpConnection.h	/^    SEND_RESPONSE,$/;"	e	enum:tigerso::__anon4
-SEND_RESPONSE_DONE	HttpConnection.h	/^    SEND_RESPONSE_DONE,$/;"	e	enum:tigerso::__anon4
-SERVER_CLOSE	HttpProxyConnection.h	/^    SERVER_CLOSE,$/;"	e	enum:tigerso::__anon5
-SERVER_CLOSE_DONE	HttpProxyConnection.h	/^    SERVER_CLOSE_DONE$/;"	e	enum:tigerso::__anon5
-SERVER_HANDSHAKE	HttpProxyConnection.h	/^    SERVER_HANDSHAKE,$/;"	e	enum:tigerso::__anon5
-SERVER_HANDSHAKE_DONE	HttpProxyConnection.h	/^    SERVER_HANDSHAKE_DONE,$/;"	e	enum:tigerso::__anon5
-SERVER_RECV_RESPONSE	HttpProxyConnection.h	/^    SERVER_RECV_RESPONSE,$/;"	e	enum:tigerso::__anon5
-SERVER_RECV_RESPONSE_DONE	HttpProxyConnection.h	/^    SERVER_RECV_RESPONSE_DONE,$/;"	e	enum:tigerso::__anon5
-SERVER_SEND_REQUEST	HttpProxyConnection.h	/^    SERVER_SEND_REQUEST,$/;"	e	enum:tigerso::__anon5
-SERVER_SEND_REQUEST_DONE	HttpProxyConnection.h	/^    SERVER_SEND_REQUEST_DONE,$/;"	e	enum:tigerso::__anon5
+SEND_RESPONSE	HttpConnection.h	/^    SEND_RESPONSE,$/;"	e	enum:tigerso::__anon5
+SEND_RESPONSE_DONE	HttpConnection.h	/^    SEND_RESPONSE_DONE,$/;"	e	enum:tigerso::__anon5
+SERVER_CLOSE	HttpProxyConnection.h	/^    SERVER_CLOSE,$/;"	e	enum:tigerso::__anon6
+SERVER_CLOSE_DONE	HttpProxyConnection.h	/^    SERVER_CLOSE_DONE$/;"	e	enum:tigerso::__anon6
+SERVER_CONNECT_DONE	HttpProxyConnection.cpp	/^    SERVER_CONNECT_DONE$/;"	e	enum:tigerso::__anon3	file:
+SERVER_CONNECT_ERROR	HttpProxyConnection.cpp	/^    SERVER_CONNECT_ERROR,$/;"	e	enum:tigerso::__anon3	file:
+SERVER_CONNECT_ING	HttpProxyConnection.cpp	/^    SERVER_CONNECT_ING,$/;"	e	enum:tigerso::__anon3	file:
+SERVER_CONNECT_UINIT	HttpProxyConnection.cpp	/^    SERVER_CONNECT_UINIT,$/;"	e	enum:tigerso::__anon3	file:
+SERVER_HANDSHAKE	HttpProxyConnection.h	/^    SERVER_HANDSHAKE,$/;"	e	enum:tigerso::__anon6
+SERVER_HANDSHAKE_DONE	HttpProxyConnection.h	/^    SERVER_HANDSHAKE_DONE,$/;"	e	enum:tigerso::__anon6
+SERVER_RECV_RESPONSE	HttpProxyConnection.h	/^    SERVER_RECV_RESPONSE,$/;"	e	enum:tigerso::__anon6
+SERVER_RECV_RESPONSE_DONE	HttpProxyConnection.h	/^    SERVER_RECV_RESPONSE_DONE,$/;"	e	enum:tigerso::__anon6
+SERVER_SEND_REQUEST	HttpProxyConnection.h	/^    SERVER_SEND_REQUEST,$/;"	e	enum:tigerso::__anon6
+SERVER_SEND_REQUEST_DONE	HttpProxyConnection.h	/^    SERVER_SEND_REQUEST_DONE,$/;"	e	enum:tigerso::__anon6
 SET_ERRNO	lib/http_parser.c	54;"	d	file:
+SOCKET_ROLE_STRING	HttpProxyConnection.cpp	19;"	d	file:
 SSLHandShake	HttpConnection.cpp	/^int HttpConnection::SSLHandShake(Socket& sock) {$/;"	f	class:tigerso::HttpConnection
-STATE_RESET	HttpProxyConnection.h	/^    STATE_RESET,$/;"	e	enum:tigerso::__anon5
+SSLTunnelInit	HttpProxyConnection.cpp	/^int HttpProxyConnection::SSLTunnelInit() {$/;"	f	class:tigerso::HttpProxyConnection
+SSLTunnelReadHandle	HttpProxyConnection.cpp	/^int HttpProxyConnection::SSLTunnelReadHandle(Socket& sock) {$/;"	f	class:tigerso::HttpProxyConnection
+SSLTunnelWriteHandle	HttpProxyConnection.cpp	/^int HttpProxyConnection::SSLTunnelWriteHandle(Socket& sock) {$/;"	f	class:tigerso::HttpProxyConnection
+SSLTunnel_	HttpProxyConnection.h	/^    bool SSLTunnel_ = false;$/;"	m	class:tigerso::HttpProxyConnection
 STRICT_CHECK	lib/http_parser.c	449;"	d	file:
 STRICT_CHECK	lib/http_parser.c	458;"	d	file:
 STRICT_TOKEN	lib/http_parser.c	424;"	d	file:
+ServerConnectState	HttpProxyConnection.cpp	/^} ServerConnectState;$/;"	t	namespace:tigerso	typeref:enum:tigerso::__anon3	file:
 T	lib/http_parser.c	237;"	d	file:
 T	lib/http_parser.c	239;"	d	file:
 T	lib/http_parser.c	277;"	d	file:
-TCP_CLOSE	HttpConnection.h	/^    TCP_CLOSE$/;"	e	enum:tigerso::__anon4
-TCP_INIT	HttpConnection.h	/^    TCP_INIT,$/;"	e	enum:tigerso::__anon4
+TCP_CLOSE	HttpConnection.h	/^    TCP_CLOSE$/;"	e	enum:tigerso::__anon5
+TCP_INIT	HttpConnection.h	/^    TCP_INIT,$/;"	e	enum:tigerso::__anon5
+TCP_TUNNEL	HttpProxyConnection.h	/^    TCP_TUNNEL,$/;"	e	enum:tigerso::__anon6
 TOKEN	lib/http_parser.c	427;"	d	file:
 TOKEN	lib/http_parser.c	431;"	d	file:
 TRANSFER_ENCODING	lib/http_parser.c	167;"	d	file:
+TS_HTTP_COOKIE_H_	Cookie.h	2;"	d
 TS_HTTP_HTTPBODYFILE_H_	HttpBodyFile.h	2;"	d
 TS_HTTP_HTTPCONNECTION_H_	HttpConnection.h	2;"	d
 TS_HTTP_HTTPFILTER_H_	HttpFilter.h	2;"	d
@@ -233,21 +255,22 @@ _CHUNK_SEND_STATE	HttpBodyFile.h	/^typedef  enum _CHUNK_SEND_STATE{$/;"	g	class:
 _HTTP_BODY_MODE_	HttpBodyFile.h	/^typedef enum _HTTP_BODY_MODE_ {$/;"	g	namespace:tigerso
 _chunksize	HttpBodyFile.h	/^    int _chunksize = HTTP_FILE_CACHE_SIZE;$/;"	m	class:tigerso::HttpBodyFile
 _chunkstate	HttpBodyFile.h	/^    ChunkState _chunkstate = _CHUNKUINIT;$/;"	m	class:tigerso::HttpBodyFile
-_clientSocket	HttpProxy.h	29;"	d
-_dnsSocket	HttpProxy.h	31;"	d
+_clientSocket	HttpProxy.h	31;"	d
+_dnsSocket	HttpProxy.h	33;"	d
 _file	HttpBodyFile.h	/^    File _file;$/;"	m	class:tigerso::HttpBodyFile
+_proxy_state_strings	HttpProxyConnection.cpp	/^static const char* _proxy_state_strings[] = {$/;"	m	namespace:tigerso	file:
 _readoffset	HttpBodyFile.h	/^    off_t _readoffset = 0;$/;"	m	class:tigerso::HttpBodyFile
 _ringbuf	HttpBodyFile.h	/^    RingBuffer _ringbuf; \/\/ Cache for file IO$/;"	m	class:tigerso::HttpBodyFile
 _sendContentDone	HttpBodyFile.h	/^    bool _sendContentDone = false;$/;"	m	class:tigerso::HttpBodyFile
-_serverSocket	HttpProxy.h	30;"	d
+_serverSocket	HttpProxy.h	32;"	d
 acceptHttpClientConnection	HttpProxy.cpp	/^int HttpProxyLoop::acceptHttpClientConnection(Socket& master) {$/;"	f	class:tigerso::HttpProxyLoop
-acceptorSet_	HttpService.h	/^    std::vector<std::shared_ptr<Acceptor>> acceptorSet_;$/;"	m	class:tigerso::HttpService
+acceptorSet_	HttpService.h	/^    std::set<std::shared_ptr<Acceptor>> acceptorSet_;$/;"	m	class:tigerso::HttpService
 appendBody	HttpMessage.cpp	/^void HttpMessage::appendBody(const char* buf, size_t len) { body_.writeIn(buf, len); }$/;"	f	class:tigerso::HttpMessage
 appendHeader	HttpMessage.cpp	/^void HttpMessage::appendHeader(std::string header, std::string value) {$/;"	f	class:tigerso::HttpMessage
 base_	HttpProxy.cpp	/^IDTYPE HttpProxyConnection::base_ = 0;$/;"	m	class:tigerso::HttpProxyConnection	file:
 base_	HttpProxy.h	/^    static IDTYPE base_;$/;"	m	class:tigerso::HttpProxyConnection
 basis_64	lib/base64.c	/^static const char basis_64[] =$/;"	v	file:
-bigfile_	HttpParser.h	/^    bool bigfile_ = false;$/;"	m	class:tigerso::HttpParser
+bodyCompletedHandle_	HttpParser.h	/^    HttpParserCallback bodyCompletedHandle_ = nullptr;$/;"	m	class:tigerso::HttpParser
 body_	HttpMessage.h	/^    HttpBodyFile body_;$/;"	m	class:tigerso::HttpMessage
 bodyname_	HttpMessage.h	/^    std::string bodyname_;$/;"	m	class:tigerso::HttpMessage
 buffer_	HttpParser.h	/^    const char* buffer_;$/;"	m	class:tigerso::HttpParser
@@ -264,6 +287,7 @@ clientFirstReadHandle	HttpProxy.cpp	/^int HttpProxyConnection::clientFirstReadHa
 clientOnlyWriteHandle	HttpProxy.cpp	/^int HttpProxyConnection::clientOnlyWriteHandle(Socket& client) {$/;"	f	class:tigerso::HttpProxyConnection
 clientRDHUPHandle	HttpProxy.cpp	/^int HttpProxyConnection::clientRDHUPHandle(Socket& client) {$/;"	f	class:tigerso::HttpProxyConnection
 clientReadHandle	HttpProxy.cpp	/^int HttpProxyConnection::clientReadHandle(Socket& client) {$/;"	f	class:tigerso::HttpProxyConnection
+clientSSLHandShake	HttpProxyConnection.cpp	/^int HttpProxyConnection::clientSSLHandShake() {$/;"	f	class:tigerso::HttpProxyConnection
 clientSafeClose	HttpProxy.cpp	/^int HttpProxyConnection::clientSafeClose(Socket& client) {$/;"	f	class:tigerso::HttpProxyConnection
 clientTimeoutHandle	HttpProxy.cpp	/^int HttpProxyConnection::clientTimeoutHandle(Socket& client) {$/;"	f	class:tigerso::HttpProxyConnection
 clientTunnelReadHandle	HttpProxy.cpp	/^int HttpProxyConnection::clientTunnelReadHandle(Socket& client) {$/;"	f	class:tigerso::HttpProxyConnection
@@ -293,7 +317,6 @@ description	lib/http_parser.c	/^  const char *description;$/;"	m	struct:__anon2	
 detectMIMEType	HttpMessage.cpp	/^const char* HttpMessage::detectMIMEType(const std::string& filename) {$/;"	f	class:tigerso::HttpMessage
 discardIDs_	HttpProxy.h	/^    std::set<IDTYPE> discardIDs_;$/;"	m	class:tigerso::HttpProxyLoop
 discardThisHttpProxyConnection	HttpProxy.cpp	/^int HttpProxyLoop::discardThisHttpProxyConnection(HttpProxyConnection& hpl) {$/;"	f	class:tigerso::HttpProxyLoop
-dns_	HttpProxyConnection.h	/^    DNSResolver dns_;$/;"	m	class:tigerso::HttpProxyConnection
 doGet	HttpConnection.cpp	/^void HttpConnection::doGet(HttpRequest& request, HttpResponse& response) {$/;"	f	class:tigerso::HttpConnection
 doPost	HttpConnection.h	/^    virtual void doPost(HttpRequest&, HttpResponse&) {}$/;"	f	class:tigerso::HttpConnection
 dsockptr	HttpProxy.h	/^    const SocketPtr dsockptr;$/;"	m	class:tigerso::HttpProxyConnection
@@ -310,28 +333,34 @@ finalize	HttpProxy.cpp	/^void HttpProxyConnection::finalize() {$/;"	f	class:tige
 flags	lib/http_parser.h	/^  unsigned int flags : 8;        \/* F_* values from 'flags' enum; semi-public *\/$/;"	m	struct:http_parser
 flags	lib/http_parser.h	/^enum flags$/;"	g
 flushFile	HttpBodyFile.cpp	/^void HttpBodyFile::flushFile() {$/;"	f	class:tigerso::HttpBodyFile
+forceCloseClient	HttpProxyConnection.cpp	/^int HttpProxyConnection::forceCloseClient() {$/;"	f	class:tigerso::HttpProxyConnection
+forceCloseProxy	HttpProxyConnection.cpp	/^int HttpProxyConnection::forceCloseProxy() {$/;"	f	class:tigerso::HttpProxyConnection
 forceCloseProxyConnection	HttpProxy.cpp	/^void HttpProxyConnection::forceCloseProxyConnection() {$/;"	f	class:tigerso::HttpProxyConnection
+forceCloseServer	HttpProxyConnection.cpp	/^int HttpProxyConnection::forceCloseServer() {$/;"	f	class:tigerso::HttpProxyConnection
 getBody	HttpMessage.cpp	/^HttpBodyFile* HttpMessage::getBody() { return &body_; }$/;"	f	class:tigerso::HttpMessage
-getBodyFileName	HttpMessage.cpp	/^std::string& HttpMessage::getBodyFileName() { return bodyname_; }$/;"	f	class:tigerso::HttpMessage
-getBodyFileName	HttpRequest.cpp	/^std::string& HttpRequest::getBodyFileName() {$/;"	f	class:tigerso::HttpRequest
+getBodyFileName	HttpMessage.cpp	/^std::string& HttpMessage::getBodyFileName() { return body_.getFileName(); }$/;"	f	class:tigerso::HttpMessage
 getContentLength	HttpMessage.cpp	/^int HttpMessage::getContentLength() {$/;"	f	class:tigerso::HttpMessage
 getDesc	HttpMessage.h	/^    virtual std::string getDesc() { return ""; }$/;"	f	class:tigerso::HttpMessage
 getDesc	HttpResponse.cpp	/^std::string HttpResponse::getDesc() { return desc_; }$/;"	f	class:tigerso::HttpResponse
+getFilename	HttpBodyFile.cpp	/^const char* HttpBodyFile::getFilename() {$/;"	f	class:tigerso::HttpBodyFile
 getHeader	HttpRequest.cpp	/^std::string& HttpRequest::getHeader() {$/;"	f	class:tigerso::HttpRequest
 getHeader	HttpResponse.cpp	/^std::string& HttpResponse::getHeader() { $/;"	f	class:tigerso::HttpResponse
+getHost	HttpMessage.h	/^    virtual std::string getHost() { return std::string(""); }$/;"	f	class:tigerso::HttpMessage
 getHost	HttpRequest.cpp	/^std::string HttpRequest::getHost() {$/;"	f	class:tigerso::HttpRequest
+getHostPort	HttpMessage.h	/^    virtual std::string getHostPort() { return std::string(""); } $/;"	f	class:tigerso::HttpMessage
 getHostPort	HttpRequest.cpp	/^std::string HttpRequest::getHostPort() {$/;"	f	class:tigerso::HttpRequest
 getID	HttpProxy.cpp	/^const IDTYPE& HttpProxyConnection::getID() { return ID_; }$/;"	f	class:tigerso::HttpProxyConnection
 getLastParsedSize	HttpParser.h	/^    size_t getLastParsedSize() { return parsedn_; }$/;"	f	class:tigerso::HttpParser
 getMethod	HttpMessage.h	/^    virtual std::string getMethod() { return ""; }$/;"	f	class:tigerso::HttpMessage
 getMethod	HttpRequest.cpp	/^std::string HttpRequest::getMethod() { return method_; }$/;"	f	class:tigerso::HttpRequest
 getParseState	HttpParser.h	/^    inline PARSE_STATE getParseState() { return state_; }$/;"	f	class:tigerso::HttpParser
+getParserPtr	HttpMessage.cpp	/^HttpParser* HttpMessage::getParserPtr() { return &parser_; }$/;"	f	class:tigerso::HttpMessage
 getResponseStatusDesc	HttpMessage.cpp	/^std::string HttpHelper::getResponseStatusDesc(const int code) {$/;"	f	class:tigerso::HttpHelper
 getRole	HttpMessage.cpp	/^http_role_t HttpMessage::getRole() { return role_; }$/;"	f	class:tigerso::HttpMessage
+getServerConnectState	HttpProxyConnection.cpp	/^int HttpProxyConnection::getServerConnectState() {$/;"	f	class:tigerso::HttpProxyConnection
 getStatuscode	HttpMessage.h	/^    virtual int         getStatuscode() { return -1; }$/;"	f	class:tigerso::HttpMessage
 getStatuscode	HttpResponse.cpp	/^int HttpResponse::getStatuscode() { return statuscode_; }$/;"	f	class:tigerso::HttpResponse
 getStrErr	HttpParser.h	/^    const char* getStrErr() { return http_errno_description(HTTP_PARSER_ERRNO(&parser_)); }$/;"	f	class:tigerso::HttpParser
-getType	HttpProxyConnection.h	/^    ConnectionType getType() { return HTTP_PROXY_CONNECTION; }$/;"	f	class:tigerso::HttpProxyConnection
 getUrl	HttpMessage.h	/^    virtual std::string getUrl() { return ""; }$/;"	f	class:tigerso::HttpMessage
 getUrl	HttpRequest.cpp	/^std::string HttpRequest::getUrl() { return url_; }$/;"	f	class:tigerso::HttpRequest
 getValueByHeader	HttpMessage.cpp	/^std::string HttpMessage::getValueByHeader(const std::string& header) {$/;"	f	class:tigerso::HttpMessage
@@ -360,12 +389,14 @@ h_transfer_encoding	lib/http_parser.c	/^  , h_transfer_encoding$/;"	e	enum:heade
 h_transfer_encoding_chunked	lib/http_parser.c	/^  , h_transfer_encoding_chunked$/;"	e	enum:header_states	file:
 h_upgrade	lib/http_parser.c	/^  , h_upgrade$/;"	e	enum:header_states	file:
 headerCompleted	HttpParser.h	/^    bool headerCompleted() {  return (state_ >= PARSE_HEADER_COMPLETE? true : false); }$/;"	f	class:tigerso::HttpParser
+headerCompletedHandle_	HttpParser.h	/^    HttpParserCallback headerCompletedHandle_ = nullptr;$/;"	m	class:tigerso::HttpParser
 header_field	HttpMessage.h	/^    std::string header_field;$/;"	m	class:tigerso::HttpMessage
 header_state	lib/http_parser.h	/^  unsigned int header_state : 7; \/* enum header_state from http_parser.c *\/$/;"	m	struct:http_parser
 header_states	lib/http_parser.c	/^enum header_states$/;"	g	file:
 headers_	HttpMessage.h	/^    headers_t headers_;$/;"	m	class:tigerso::HttpMessage
 headers_t	HttpMessage.h	/^typedef std::vector<std::pair<std::string,std::string>> headers_t;$/;"	t	namespace:tigerso
 headstr_	HttpMessage.h	/^    std::string headstr_;$/;"	m	class:tigerso::HttpMessage
+host_	HttpProxyConnection.h	/^    std::string host_;$/;"	m	class:tigerso::HttpProxyConnection
 host_	HttpRequest.h	/^    std::string host_;$/;"	m	class:tigerso::HttpRequest
 httpInspectCallback	HttpMessage.h	/^typedef int (*httpInspectCallback)(const std::weak_ptr<HttpMessage>&);$/;"	t	namespace:tigerso
 http_body_is_final	lib/http_parser.c	/^http_body_is_final(const struct http_parser *parser) {$/;"	f
@@ -413,19 +444,26 @@ int64_t	lib/http_parser.h	/^typedef __int64 int64_t;$/;"	t
 int8_t	lib/http_parser.h	/^typedef __int8 int8_t;$/;"	t
 inter2HexString	HttpBodyFile.cpp	/^std::string HttpBodyFile::inter2HexString(int num) {$/;"	f	class:tigerso::HttpBodyFile
 ipaddr_	HttpProxy.h	/^    const std::string ipaddr_;$/;"	m	class:tigerso::HttpProxyLoop
-isBigFile	HttpParser.h	/^    bool isBigFile() { return bigfile_; }$/;"	f	class:tigerso::HttpParser
+isChunked	HttpMessage.cpp	/^bool HttpMessage::isChunked() {$/;"	f	class:tigerso::HttpMessage
 isClientAlive	HttpProxy.h	/^    bool isClientAlive() { return _clientSocket.exist(); }$/;"	f	class:tigerso::HttpProxyConnection
+isHeaderCompleted	HttpMessage.cpp	/^bool HttpMessage::isHeaderCompleted() { return parser_.headerCompleted();  }$/;"	f	class:tigerso::HttpMessage
+isKeepAlive	HttpMessage.cpp	/^bool HttpMessage::isKeepAlive() { $/;"	f	class:tigerso::HttpMessage
+isNeedTunnelMessage	HttpProxyConnection.cpp	/^bool HttpProxyConnection::isNeedTunnelMessage(HttpMessage& message) {$/;"	f	class:tigerso::HttpProxyConnection
+isNeedTunnelSSL	HttpProxyConnection.cpp	/^bool  HttpProxyConnection::isNeedTunnelSSL(const std::string& url) {$/;"	f	class:tigerso::HttpProxyConnection
+isNoBody	HttpParser.h	/^    bool isNoBody() { return nobody_; }$/;"	f	class:tigerso::HttpParser
 isServerAlive	HttpProxy.h	/^    bool isServerAlive() { return _serverSocket.exist(); }$/;"	f	class:tigerso::HttpProxyConnection
+isTunnelBody	HttpMessage.cpp	/^bool HttpMessage::isTunnelBody() { parser_.isTunnelBody(); }$/;"	f	class:tigerso::HttpMessage
+isTunnelBody	HttpParser.h	/^    bool isTunnelBody() { return tunnelbody_; }$/;"	f	class:tigerso::HttpParser
 isVaildResponseStatusCode	HttpMessage.cpp	/^bool HttpHelper::isVaildResponseStatusCode(const int code) {$/;"	f	class:tigerso::HttpHelper
-keepalive	HttpMessage.cpp	/^bool HttpMessage::keepalive() { $/;"	f	class:tigerso::HttpMessage
 keepalive_	HttpProxy.h	/^    bool keepalive_ = true;$/;"	m	class:tigerso::HttpProxyConnection
-labelBigFile	HttpParser.h	/^    bool labelBigFile() { bigfile_ = true; }$/;"	f	class:tigerso::HttpParser
+labelNoBody	HttpParser.h	/^    void labelNoBody() { nobody_ = true; }$/;"	f	class:tigerso::HttpParser
+labelTunnelBody	HttpParser.h	/^    bool labelTunnelBody() { tunnelbody_ = true; }$/;"	f	class:tigerso::HttpParser
 len	lib/http_parser.h	/^    uint16_t len;               \/* Length of run in buffer *\/$/;"	m	struct:http_parser_url::__anon1
 length_	HttpParser.h	/^    size_t length_;$/;"	m	class:tigerso::HttpParser
 lenient_http_headers	lib/http_parser.h	/^  unsigned int lenient_http_headers : 1;$/;"	m	struct:http_parser
 listenHttpClientConnection	HttpProxy.cpp	/^int HttpProxyLoop::listenHttpClientConnection() {$/;"	f	class:tigerso::HttpProxyLoop
-m_client	HttpProxyConnection.cpp	6;"	d	file:
-m_server	HttpProxyConnection.cpp	7;"	d	file:
+m_client	HttpProxyConnection.cpp	13;"	d	file:
+m_server	HttpProxyConnection.cpp	14;"	d	file:
 m_sock	HttpConnection.cpp	8;"	d	file:
 makeHttpProxyConnection	HttpProxy.cpp	/^HTTPPROXYCONNECTIONPTR HttpProxyLoop::makeHttpProxyConnection() {$/;"	f	class:tigerso::HttpProxyLoop
 markTrade	HttpMessage.cpp	/^void HttpMessage::markTrade() {$/;"	f	class:tigerso::HttpMessage
@@ -439,40 +477,46 @@ mime_type	HttpBodyFile.h	/^    char mime_type[1024] = {0};$/;"	m	class:tigerso::
 mode	HttpBodyFile.cpp	/^HttpBodyMode HttpBodyFile::mode() {$/;"	f	class:tigerso::HttpBodyFile
 msockptr_	HttpProxy.h	/^    const SocketPtr msockptr_;$/;"	m	class:tigerso::HttpProxyLoop
 name	lib/http_parser.c	/^  const char *name;$/;"	m	struct:__anon2	file:
+needMoreData	HttpMessage.cpp	/^bool HttpMessage::needMoreData() { return parser_.needMoreData(); }$/;"	f	class:tigerso::HttpMessage
 needMoreData	HttpParser.h	/^    bool needMoreData() { return state_ != PARSE_COMPLETE; }$/;"	f	class:tigerso::HttpParser
+nobody_	HttpParser.h	/^    bool nobody_ = false;$/;"	m	class:tigerso::HttpParser
 normal_url_char	lib/http_parser.c	/^static const uint8_t normal_url_char[32] = {$/;"	v	file:
+notification_	HttpProxyConnection.h	/^    HttpResponse notification_;$/;"	m	class:tigerso::HttpProxyConnection
 nread	lib/http_parser.h	/^  uint32_t nread;          \/* # bytes read in various scenarios *\/$/;"	m	struct:http_parser
 off	lib/http_parser.h	/^    uint16_t off;               \/* Offset into buffer in which field starts *\/$/;"	m	struct:http_parser_url::__anon1
 offset_	HttpBodyFile.h	/^    off_t offset_ = 0;$/;"	m	class:tigerso::HttpBodyFile
-on_body	HttpParser.cpp	/^int HttpParser::on_body(http_parser* parser, const char* at, size_t len) {$/;"	f	class:tigerso::HttpParser
+on_body	HttpParser.cpp	/^int on_body(http_parser* parser, const char* at, size_t len) {$/;"	f	namespace:tigerso
 on_body	lib/http_parser.h	/^  http_data_cb on_body;$/;"	m	struct:http_parser_settings
 on_chunk_complete	lib/http_parser.h	/^  http_cb      on_chunk_complete;$/;"	m	struct:http_parser_settings
 on_chunk_header	lib/http_parser.h	/^  http_cb      on_chunk_header;$/;"	m	struct:http_parser_settings
-on_header_field	HttpParser.cpp	/^int HttpParser::on_header_field(http_parser* parser, const char* at, size_t len) {$/;"	f	class:tigerso::HttpParser
+on_header_field	HttpParser.cpp	/^int on_header_field(http_parser* parser, const char* at, size_t len) {$/;"	f	namespace:tigerso
 on_header_field	lib/http_parser.h	/^  http_data_cb on_header_field;$/;"	m	struct:http_parser_settings
-on_header_value	HttpParser.cpp	/^int HttpParser::on_header_value(http_parser* parser, const char* at, size_t len) {$/;"	f	class:tigerso::HttpParser
+on_header_value	HttpParser.cpp	/^int on_header_value(http_parser* parser, const char* at, size_t len) {$/;"	f	namespace:tigerso
 on_header_value	lib/http_parser.h	/^  http_data_cb on_header_value;$/;"	m	struct:http_parser_settings
-on_headers_complete	HttpParser.cpp	/^int HttpParser::on_headers_complete(http_parser* parser) {$/;"	f	class:tigerso::HttpParser
+on_headers_complete	HttpParser.cpp	/^int on_headers_complete(http_parser* parser) {$/;"	f	namespace:tigerso
 on_headers_complete	lib/http_parser.h	/^  http_cb      on_headers_complete;$/;"	m	struct:http_parser_settings
-on_message_begin	HttpParser.cpp	/^int HttpParser::on_message_begin(http_parser* parser) {$/;"	f	class:tigerso::HttpParser
+on_message_begin	HttpParser.cpp	/^int on_message_begin(http_parser* parser) {$/;"	f	namespace:tigerso
 on_message_begin	lib/http_parser.h	/^  http_cb      on_message_begin;$/;"	m	struct:http_parser_settings
-on_message_complete	HttpParser.cpp	/^int HttpParser::on_message_complete(http_parser* parser) {$/;"	f	class:tigerso::HttpParser
+on_message_complete	HttpParser.cpp	/^int on_message_complete(http_parser* parser) {$/;"	f	namespace:tigerso
 on_message_complete	lib/http_parser.h	/^  http_cb      on_message_complete;$/;"	m	struct:http_parser_settings
-on_status	HttpParser.cpp	/^int HttpParser::on_status(http_parser* parser, const char* at, size_t len) {$/;"	f	class:tigerso::HttpParser
+on_status	HttpParser.cpp	/^int on_status(http_parser* parser, const char* at, size_t len) {$/;"	f	namespace:tigerso
 on_status	lib/http_parser.h	/^  http_data_cb on_status;$/;"	m	struct:http_parser_settings
-on_url	HttpParser.cpp	/^int HttpParser::on_url(http_parser* parser, const char* at, size_t len) {$/;"	f	class:tigerso::HttpParser
+on_url	HttpParser.cpp	/^int on_url(http_parser* parser, const char* at, size_t len) {$/;"	f	namespace:tigerso
 on_url	lib/http_parser.h	/^  http_data_cb on_url;$/;"	m	struct:http_parser_settings
+parse	HttpMessage.cpp	/^int HttpMessage::parse(const char* buffer, const size_t& len, int* parsedn) {$/;"	f	class:tigerso::HttpMessage
 parse	HttpParser.cpp	/^int HttpParser::parse(const char* buf,size_t len, HttpMessage& message) {$/;"	f	class:tigerso::HttpParser
 parse	HttpParser.cpp	/^int HttpParser::parse(const std::string& buffer, HttpMessage& message) {$/;"	f	class:tigerso::HttpParser
 parse_url_char	lib/http_parser.c	/^parse_url_char(enum state s, const char ch)$/;"	f	file:
 parsedn_	HttpParser.h	/^    size_t parsedn_;$/;"	m	class:tigerso::HttpParser
 parser_	HttpConnection.h	/^    HttpParser parser_;$/;"	m	class:tigerso::HttpConnection
+parser_	HttpMessage.h	/^    HttpParser parser_;$/;"	m	class:tigerso::HttpMessage
 parser_	HttpParser.h	/^    http_parser parser_;$/;"	m	class:tigerso::HttpParser
-parser_	HttpProxyConnection.h	/^    HttpParser parser_;$/;"	m	class:tigerso::HttpProxyConnection
 port	lib/http_parser.h	/^  uint16_t port;                \/* Converted UF_PORT string *\/$/;"	m	struct:http_parser_url
 port_	HttpProxy.h	/^    const std::string port_;$/;"	m	class:tigerso::HttpProxyLoop
+port_	HttpProxyConnection.h	/^    std::string port_;$/;"	m	class:tigerso::HttpProxyConnection
 port_	HttpRequest.h	/^    std::string port_;$/;"	m	class:tigerso::HttpRequest
 pr2six	lib/base64.c	/^static const unsigned char pr2six[256] =$/;"	v	file:
+predictNextState	HttpProxyConnection.cpp	/^int HttpProxyConnection::predictNextState() {$/;"	f	class:tigerso::HttpProxyConnection
 prepare200Response	HttpMessage.cpp	/^int HttpHelper::prepare200Response(HttpResponse& response) {$/;"	f	class:tigerso::HttpHelper
 prepare400Response	HttpMessage.cpp	/^int HttpHelper::prepare400Response(HttpResponse& response) {$/;"	f	class:tigerso::HttpHelper
 prepare403Response	HttpMessage.cpp	/^int HttpHelper::prepare403Response(HttpResponse& response) {$/;"	f	class:tigerso::HttpHelper
@@ -487,24 +531,28 @@ rdhupHandle	HttpProxyConnection.cpp	/^int HttpProxyConnection::rdhupHandle(Socke
 readHandle	HttpConnection.cpp	/^int HttpConnection::readHandle(Socket& sock){$/;"	f	class:tigerso::HttpConnection
 readHandle	HttpProxyConnection.cpp	/^int HttpProxyConnection::readHandle(Socket& sock) {$/;"	f	class:tigerso::HttpProxyConnection
 recycle	HttpConnection.cpp	/^void HttpConnection::recycle() {$/;"	f	class:tigerso::HttpConnection
+recycle	HttpProxyConnection.cpp	/^void HttpProxyConnection::recycle() {$/;"	f	class:tigerso::HttpProxyConnection
 registerFunctionsForHttpProxyConnection	HttpProxy.cpp	/^void HttpProxyLoop::registerFunctionsForHttpProxyConnection(HttpProxyConnection& hpc) {$/;"	f	class:tigerso::HttpProxyLoop
 registerSocket	HttpProxy.cpp	/^int HttpProxyLoop::registerSocket(Socket& sock) {$/;"	f	class:tigerso::HttpProxyLoop
 register_func_	HttpProxy.h	/^    EventFunc register_func_ = nullptr;$/;"	m	class:tigerso::HttpProxyConnection
 removeHeader	HttpMessage.cpp	/^void HttpMessage::removeHeader(const std::string& header) {$/;"	f	class:tigerso::HttpMessage
 request	HttpProxy.h	/^    HttpRequest request;$/;"	m	struct:tigerso::HttpProxyConnection::HttpTransaction
 requestCallbacks_	HttpMessage.h	/^    std::map<std::string, httpInspectCallback> requestCallbacks_;$/;"	m	class:tigerso::HttpInSpection
+requestHeaderCompleteHandle	HttpProxyConnection.cpp	/^int HttpProxyConnection::requestHeaderCompleteHandle(HttpMessage& request) {$/;"	f	class:tigerso::HttpProxyConnection
+requestTunnel_	HttpProxyConnection.h	/^    bool requestTunnel_ = false;$/;"	m	class:tigerso::HttpProxyConnection
 request_	HttpConnection.h	/^    HttpRequest request_;$/;"	m	class:tigerso::HttpConnection
 request_	HttpProxyConnection.h	/^    HttpRequest request_;$/;"	m	class:tigerso::HttpProxyConnection
 reset	HttpBodyFile.cpp	/^void HttpBodyFile::reset() {$/;"	f	class:tigerso::HttpBodyFile
 reset	HttpParser.cpp	/^void HttpParser::reset() {$/;"	f	class:tigerso::HttpParser
-reset	HttpProxyConnection.cpp	/^void HttpProxyConnection::reset() {$/;"	f	class:tigerso::HttpProxyConnection
 resetResources	HttpConnection.cpp	/^void HttpConnection::resetResources() {$/;"	f	class:tigerso::HttpConnection
-resetState	HttpProxyConnection.cpp	/^void HttpProxyConnection::resetState() {$/;"	f	class:tigerso::HttpProxyConnection
+resignCertificate	HttpProxyConnection.cpp	/^int HttpProxyConnection::resignCertificate() {$/;"	f	class:tigerso::HttpProxyConnection
 resolver_	HttpProxy.h	/^    DNSResolver resolver_;$/;"	m	class:tigerso::HttpProxyConnection
+resolver_	HttpProxyConnection.h	/^    DNSResolver resolver_;$/;"	m	class:tigerso::HttpProxyConnection
 response	HttpProxy.h	/^    HttpResponse response;$/;"	m	struct:tigerso::HttpProxyConnection::HttpTransaction
 response403html	HttpMessage.h	/^    static std::string response403html;$/;"	m	class:tigerso::HttpHelper
 response503html	HttpMessage.h	/^    static std::string response503html;$/;"	m	class:tigerso::HttpHelper
 responseCallbacks_	HttpMessage.h	/^    std::map<std::string, httpInspectCallback> responseCallbacks_;$/;"	m	class:tigerso::HttpInSpection
+responseTunnel_	HttpProxyConnection.h	/^    bool responseTunnel_ = false;$/;"	m	class:tigerso::HttpProxyConnection
 response_	HttpConnection.h	/^    HttpResponse response_;$/;"	m	class:tigerso::HttpConnection
 response_	HttpProxyConnection.h	/^    HttpResponse response_;$/;"	m	class:tigerso::HttpProxyConnection
 response_status_array	HttpMessage.cpp	/^static const status_pair_t response_status_array [] = {$/;"	m	namespace:tigerso	file:
@@ -594,6 +642,7 @@ sendfile	HttpBodyFile.cpp	/^bool HttpBodyFile::sendfile = true;$/;"	m	class:tige
 sendfile	HttpBodyFile.h	/^    static bool sendfile;$/;"	m	class:tigerso::HttpBodyFile
 server2close_	HttpProxy.h	/^    bool server2close_ = false;$/;"	m	class:tigerso::HttpProxyConnection
 serverCloseHandle	HttpProxy.cpp	/^int HttpProxyConnection::serverCloseHandle(Socket& server) {$/;"	f	class:tigerso::HttpProxyConnection
+serverConnectHandle	HttpProxyConnection.cpp	/^int HttpProxyConnection::serverConnectHandle(const char* ipaddr, time_t ttl) {$/;"	f	class:tigerso::HttpProxyConnection
 serverConnectTo	HttpProxy.cpp	/^int HttpProxyConnection::serverConnectTo(const char* ip, time_t ttl) {$/;"	f	class:tigerso::HttpProxyConnection
 serverDecideSkipBody	HttpProxy.cpp	/^void HttpProxyConnection::serverDecideSkipBody() {$/;"	f	class:tigerso::HttpProxyConnection
 serverErrorHandle	HttpProxy.cpp	/^int HttpProxyConnection::serverErrorHandle(Socket& server) {  return serverRDHUPHandle(server); }$/;"	f	class:tigerso::HttpProxyConnection
@@ -601,6 +650,7 @@ serverFirstWriteHandle	HttpProxy.cpp	/^int HttpProxyConnection::serverFirstWrite
 serverOnlyWriteHandle	HttpProxy.cpp	/^int HttpProxyConnection::serverOnlyWriteHandle(Socket& server) {$/;"	f	class:tigerso::HttpProxyConnection
 serverRDHUPHandle	HttpProxy.cpp	/^int HttpProxyConnection::serverRDHUPHandle(Socket& server) {$/;"	f	class:tigerso::HttpProxyConnection
 serverReadHandle	HttpProxy.cpp	/^int HttpProxyConnection::serverReadHandle(Socket& server) {$/;"	f	class:tigerso::HttpProxyConnection
+serverSSLHandShake	HttpProxyConnection.cpp	/^int HttpProxyConnection::serverSSLHandShake() {$/;"	f	class:tigerso::HttpProxyConnection
 serverSafeClose	HttpProxy.cpp	/^int HttpProxyConnection::serverSafeClose(Socket& server) {$/;"	f	class:tigerso::HttpProxyConnection
 serverTimeoutHandle	HttpProxy.cpp	/^int HttpProxyConnection::serverTimeoutHandle(Socket& server) {$/;"	f	class:tigerso::HttpProxyConnection
 serverTunnelReadHandle	HttpProxy.cpp	/^int HttpProxyConnection::serverTunnelReadHandle(Socket& server) {$/;"	f	class:tigerso::HttpProxyConnection
@@ -608,6 +658,8 @@ serverTunnelWriteHandle	HttpProxy.cpp	/^int HttpProxyConnection::serverTunnelWri
 serverWriteHandle	HttpProxy.cpp	/^int HttpProxyConnection::serverWriteHandle(Socket& server) {$/;"	f	class:tigerso::HttpProxyConnection
 serverptr_	HttpProxyConnection.h	/^    std::shared_ptr<Socket> serverptr_;$/;"	m	class:tigerso::HttpProxyConnection
 setBody	HttpMessage.cpp	/^void HttpMessage::setBody(const std::string& body) { body_.writeIn(body.c_str(), body.size()); }$/;"	f	class:tigerso::HttpMessage
+setBodyCompletedHandle	HttpMessage.cpp	/^void HttpMessage::setBodyCompletedHandle(HttpParserCallback callback) { parser_.setBodyCompletedHandle(callback); }$/;"	f	class:tigerso::HttpMessage
+setBodyCompletedHandle	HttpParser.h	/^    void setBodyCompletedHandle(HttpParserCallback callback) { bodyCompletedHandle_ = callback; }$/;"	f	class:tigerso::HttpParser
 setBodyFileName	HttpMessage.cpp	/^int HttpMessage::setBodyFileName(const std::string& fn) {$/;"	f	class:tigerso::HttpMessage
 setChunkedTransfer	HttpMessage.cpp	/^void HttpMessage::setChunkedTransfer(bool bin) {$/;"	f	class:tigerso::HttpMessage
 setContentLength	HttpMessage.cpp	/^void HttpMessage::setContentLength(const unsigned int length) {$/;"	f	class:tigerso::HttpMessage
@@ -618,11 +670,12 @@ setDesc	HttpResponse.cpp	/^void HttpResponse::setDesc(const std::string& desc) {
 setEraseFunc	HttpProxy.cpp	/^void HttpProxyConnection::setEraseFunc(LOOP_CALLBACK cb) { erase_func_ = cb; }$/;"	f	class:tigerso::HttpProxyConnection
 setEventsLoopPtr	HttpProxy.cpp	/^void HttpProxyConnection::setEventsLoopPtr(EventsLoop* loop) { elooptr_ = loop; }$/;"	f	class:tigerso::HttpProxyConnection
 setFile	HttpBodyFile.cpp	/^void HttpBodyFile::setFile(const char* filename) {$/;"	f	class:tigerso::HttpBodyFile
+setHeaderCompletedHandle	HttpMessage.cpp	/^void HttpMessage::setHeaderCompletedHandle(HttpParserCallback callback) { parser_.setHeaderCompletedHandle(callback); }$/;"	f	class:tigerso::HttpMessage
+setHeaderCompletedHandle	HttpParser.h	/^    void setHeaderCompletedHandle(HttpParserCallback callback) { headerCompletedHandle_ = callback; }$/;"	f	class:tigerso::HttpParser
 setKeepAlive	HttpMessage.cpp	/^void HttpMessage::setKeepAlive(bool bin) {$/;"	f	class:tigerso::HttpMessage
 setMethod	HttpMessage.h	/^    virtual void setMethod(const std::string& method) {}$/;"	f	class:tigerso::HttpMessage
 setMethod	HttpRequest.cpp	/^void HttpRequest::setMethod(const std::string& method) { method_ = method; }$/;"	f	class:tigerso::HttpRequest
 setParseState	HttpParser.h	/^    void setParseState(PARSE_STATE state) { state_ = state; }$/;"	f	class:tigerso::HttpParser
-setSkipBody	HttpParser.h	/^    void setSkipBody(bool skip) { skipbody_ = skip; }$/;"	f	class:tigerso::HttpParser
 setSocketRegisterFunc	HttpProxy.cpp	/^void HttpProxyConnection::setSocketRegisterFunc(EventFunc f) {register_func_ = f;}$/;"	f	class:tigerso::HttpProxyConnection
 setStatuscode	HttpMessage.h	/^    virtual void setStatuscode(int) {}$/;"	f	class:tigerso::HttpMessage
 setStatuscode	HttpResponse.cpp	/^void HttpResponse::setStatuscode(int code) { $/;"	f	class:tigerso::HttpResponse
@@ -631,9 +684,8 @@ setUrl	HttpRequest.cpp	/^void HttpRequest::setUrl(const std::string& url) { url_
 setValueByHeader	HttpMessage.cpp	/^void HttpMessage::setValueByHeader(const std::string& header, const std::string& value) {$/;"	f	class:tigerso::HttpMessage
 setVersion	HttpMessage.cpp	/^void HttpMessage::setVersion(const std::string& verison) { version_ = verison; }$/;"	f	class:tigerso::HttpMessage
 settings_	HttpParser.h	/^    http_parser_settings settings_;$/;"	m	class:tigerso::HttpParser
-size	HttpBodyFile.cpp	/^size_t HttpBodyFile::size() { return _file.getFileSize() + _ringbuf.size(); }$/;"	f	class:tigerso::HttpBodyFile
-skipBody	HttpParser.h	/^    bool skipBody() { return skipbody_; }$/;"	f	class:tigerso::HttpParser
-skipbody_	HttpParser.h	/^    bool skipbody_ = false;$/;"	m	class:tigerso::HttpParser
+shouldNoBody	HttpResponse.cpp	/^void HttpResponse::shouldNoBody() { parser_.labelNoBody(); }$/;"	f	class:tigerso::HttpResponse
+size	HttpBodyFile.cpp	/^size_t HttpBodyFile::size() { return _ringbuf.size() + (_file.testExist()? _file.getFileSize() : 0); }$/;"	f	class:tigerso::HttpBodyFile
 socketDisableReadEvent	HttpProxy.cpp	/^bool HttpProxyConnection::socketDisableReadEvent(Socket& sock) {$/;"	f	class:tigerso::HttpProxyConnection
 socketDisableWriteEvent	HttpProxy.cpp	/^bool HttpProxyConnection::socketDisableWriteEvent(Socket& sock) {$/;"	f	class:tigerso::HttpProxyConnection
 socketEnableReadEvent	HttpProxy.cpp	/^bool HttpProxyConnection::socketEnableReadEvent(Socket& sock) {$/;"	f	class:tigerso::HttpProxyConnection
@@ -648,7 +700,7 @@ state	lib/http_parser.c	/^enum state$/;"	g	file:
 state	lib/http_parser.h	/^  unsigned int state : 7;        \/* enum state from http_parser.c *\/$/;"	m	struct:http_parser
 state_	HttpConnection.h	/^    HttpState state_ = TCP_INIT;$/;"	m	class:tigerso::HttpConnection
 state_	HttpParser.h	/^    PARSE_STATE state_;$/;"	m	class:tigerso::HttpParser
-state_	HttpProxyConnection.h	/^    HttpProxyState state_ = STATE_RESET;$/;"	m	class:tigerso::HttpProxyConnection
+state_	HttpProxyConnection.h	/^    HttpProxyState state_ = PROXY_INIT;$/;"	m	class:tigerso::HttpProxyConnection
 status_code	lib/http_parser.h	/^  unsigned int status_code : 16; \/* responses only *\/$/;"	m	struct:http_parser
 status_pair_t	HttpMessage.cpp	/^typedef std::map<int, std::string>::value_type  status_pair_t;$/;"	t	namespace:tigerso	file:
 statuscode_	HttpResponse.h	/^    int         statuscode_;$/;"	m	class:tigerso::HttpResponse
@@ -656,6 +708,7 @@ stopLoop	HttpProxy.h	/^    int stopLoop() { eloop_.stop(); }$/;"	f	class:tigerso
 stransaction_	HttpProxy.h	/^    HttpTransaction stransaction_;$/;"	m	class:tigerso::HttpProxyConnection
 switchBuffers	HttpProxyConnection.cpp	/^int HttpProxyConnection::switchBuffers() {$/;"	f	class:tigerso::HttpProxyConnection
 switchRequest	HttpConnection.cpp	/^void HttpConnection::switchRequest() {$/;"	f	class:tigerso::HttpConnection
+tigerso	Cookie.h	/^namespace tigerso {$/;"	n
 tigerso	HttpBodyFile.cpp	/^namespace tigerso {$/;"	n	file:
 tigerso	HttpBodyFile.h	/^namespace tigerso {$/;"	n
 tigerso	HttpConnection.cpp	/^namespace tigerso {$/;"	n	file:
@@ -680,13 +733,18 @@ toString	HttpRequest.cpp	/^std::string HttpRequest::toString() {$/;"	f	class:tig
 toString	HttpResponse.cpp	/^std::string HttpResponse::toString() {$/;"	f	class:tigerso::HttpResponse
 tokens	lib/http_parser.c	/^static const char tokens[256] = {$/;"	v	file:
 transferProxyBuffer	HttpProxy.cpp	/^void HttpProxyConnection::transferProxyBuffer() {$/;"	f	class:tigerso::HttpProxyConnection
+tunnelBody	HttpMessage.cpp	/^void HttpMessage::tunnelBody() { parser_.labelTunnelBody(); }$/;"	f	class:tigerso::HttpMessage
+tunnelbody_	HttpParser.h	/^    bool tunnelbody_ = false;$/;"	m	class:tigerso::HttpParser
 type	lib/http_parser.h	/^  unsigned int type : 2;         \/* enum http_parser_type *\/$/;"	m	struct:http_parser
-udpptr_	HttpProxyConnection.h	/^    std::shared_ptr<Socket> udpptr_;$/;"	m	class:tigerso::HttpProxyConnection
 uint16_t	lib/http_parser.h	/^typedef unsigned __int16 uint16_t;$/;"	t
 uint32_t	lib/http_parser.h	/^typedef unsigned __int32 uint32_t;$/;"	t
 uint64_t	lib/http_parser.h	/^typedef unsigned __int64 uint64_t;$/;"	t
 uint8_t	lib/http_parser.h	/^typedef unsigned __int8 uint8_t;$/;"	t
 unhex	lib/http_parser.c	/^static const int8_t unhex[256] =$/;"	v	file:
+unlinkAfterSend	HttpBodyFile.cpp	/^bool HttpBodyFile::unlinkAfterSend(bool unlink) { unlink_ = unlink; return unlink_; }$/;"	f	class:tigerso::HttpBodyFile
+unlinkAfterWrite	HttpResponse.cpp	/^bool HttpResponse::unlinkAfterWrite(bool unlink) { return body_.unlinkAfterSend(unlink); }$/;"	f	class:tigerso::HttpResponse
+unlink_	HttpBodyFile.h	/^    bool unlink_ = false;$/;"	m	class:tigerso::HttpBodyFile
+unlink_	HttpResponse.h	/^    bool unlink_ = false;$/;"	m	class:tigerso::HttpResponse
 upgrade	lib/http_parser.h	/^  unsigned int upgrade : 1;$/;"	m	struct:http_parser
 url_	HttpRequest.h	/^    std::string url_;$/;"	m	class:tigerso::HttpRequest
 uuid	HttpProxy.cpp	/^IDTYPE HttpProxyConnection::uuid() {$/;"	f	class:tigerso::HttpProxyConnection

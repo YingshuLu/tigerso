@@ -3,9 +3,10 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include <core/ConfigParser.h>
-#include <net/Socket.h>
 #include <string>
+//#include <core/ConfigParser.h>
+//#include <net/Socket.h>
+#include "ssl/SSLContext.h"
 
 namespace tigerso {
 
@@ -49,12 +50,13 @@ protected:
     bool isProcessNeedStop();
     bool isProcessNeedReload();
     int socketMaxNum_ = 1024;
-    ConfigParser* configPtr_ = nullptr;
+    class ConfigParser* configPtr_ = nullptr;
 
 private:
     pid_t parentPid_;
     int childMaxNum_ = 1;
     std::string pidFilename_ = "daemon-base";
+    OpensslInitializer opensslInit_;
 };
 
 } //namespace tigerso

@@ -1,0 +1,110 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Condition	Condition.h	/^    Condition(ThreadMutex& mutex)$/;"	f	class:tigerso::Condition
+Condition	Condition.h	/^class Condition: public nocopyable {$/;"	c	namespace:tigerso
+CurrentThread	CurrentThread.h	/^namespace CurrentThread {$/;"	n	namespace:tigerso
+CurrentThread	Thread.cpp	/^namespace CurrentThread {$/;"	n	namespace:tigerso	file:
+TS_CORE_CONDITION_H_	Condition.h	2;"	d
+TS_CORE_CURRENTTHREAD_H_	CurrentThread.h	2;"	d
+TS_CORE_PTHREAD_H_	Thread.h	2;"	d
+TS_CORE_THREADMUTEX_H_	ThreadMutex.h	2;"	d
+TS_CORE_THREADPOOL_H_	ThreadPool.h	2;"	d
+Task	ThreadPool.h	/^    typedef Thread::ThreadFunc Task;$/;"	t	class:tigerso::ThreadPool
+Thread	Thread.cpp	/^Thread::Thread(const ThreadFunc& func, const std::string& name)$/;"	f	class:tigerso::Thread
+Thread	Thread.h	/^class Thread: public nocopyable {$/;"	c	namespace:tigerso
+ThreadData	Thread.cpp	/^    ThreadData(const ThreadFunc& func,$/;"	f	class:tigerso::ThreadData
+ThreadData	Thread.cpp	/^class ThreadData {$/;"	c	namespace:tigerso	file:
+ThreadFunc	Thread.cpp	/^    typedef Thread::ThreadFunc ThreadFunc;$/;"	t	class:tigerso::ThreadData	file:
+ThreadFunc	Thread.h	/^    typedef std::function<void()>  ThreadFunc;$/;"	t	class:tigerso::Thread
+ThreadInit	Thread.cpp	/^    ThreadInit() {$/;"	f	class:tigerso::initmain__::ThreadInit
+ThreadInit	Thread.cpp	/^class ThreadInit {$/;"	c	namespace:tigerso::initmain__	file:
+ThreadMutex	ThreadMutex.h	/^    ThreadMutex()$/;"	f	class:tigerso::ThreadMutex
+ThreadMutex	ThreadMutex.h	/^class ThreadMutex: public Lock {$/;"	c	namespace:tigerso
+ThreadPool	ThreadPool.h	/^    explicit ThreadPool(const std::string& name = "ThreadPool")$/;"	f	class:tigerso::ThreadPool
+ThreadPool	ThreadPool.h	/^class ThreadPool: public nocopyable {$/;"	c	namespace:tigerso
+ThreadPtr	ThreadPool.h	/^    typedef std::shared_ptr<Thread> ThreadPtr;$/;"	t	class:tigerso::ThreadPool
+UnassignGuard	ThreadMutex.h	/^        UnassignGuard(ThreadMutex& mutex)$/;"	f	class:tigerso::ThreadMutex::UnassignGuard
+UnassignGuard	ThreadMutex.h	/^    class UnassignGuard {$/;"	c	class:tigerso::ThreadMutex
+aa	test_thread.cpp	/^int aa = 0;$/;"	v
+afterFork	Thread.cpp	/^void afterFork() {$/;"	f	namespace:tigerso::initmain__
+assignHolder	ThreadMutex.h	/^    void assignHolder() {$/;"	f	class:tigerso::ThreadMutex
+cacheTid_	Thread.cpp	/^   __thread int cacheTid_ = 0;$/;"	m	namespace:tigerso::CurrentThread	file:
+cond_	Condition.h	/^    pthread_cond_t cond_;$/;"	m	class:tigerso::Condition
+destroy	ThreadMutex.h	/^    int destroy() {$/;"	f	class:tigerso::ThreadMutex
+func_	Thread.cpp	/^    ThreadFunc func_;$/;"	m	class:tigerso::ThreadData	file:
+func_	Thread.h	/^    ThreadFunc func_;$/;"	m	class:tigerso::Thread
+getThreadMutex	ThreadMutex.h	/^    pthread_mutex_t* getThreadMutex() {$/;"	f	class:tigerso::ThreadMutex
+holder_	ThreadMutex.h	/^    pid_t holder_ = 0;$/;"	m	class:tigerso::ThreadMutex
+init	Thread.cpp	/^ThreadInit init;$/;"	m	namespace:tigerso::initmain__	file:
+init	ThreadMutex.h	/^    int init() {$/;"	f	class:tigerso::ThreadMutex
+initmain__	Thread.cpp	/^namespace initmain__ {$/;"	n	namespace:tigerso	file:
+isFull	ThreadPool.h	/^    bool isFull() const {$/;"	f	class:tigerso::ThreadPool
+isLockedByCurrentThread	ThreadMutex.h	/^    bool isLockedByCurrentThread() const {$/;"	f	class:tigerso::ThreadMutex
+isMainThread	CurrentThread.h	/^   inline bool isMainThread() { return CurrentThread::tid() == getpid(); }$/;"	f	namespace:tigerso::CurrentThread
+join	Thread.cpp	/^int Thread::join() {$/;"	f	class:tigerso::Thread
+joined_	Thread.h	/^    bool joined_ = false;$/;"	m	class:tigerso::Thread
+lock	ThreadMutex.h	/^    int lock() {$/;"	f	class:tigerso::ThreadMutex
+main	test_thread.cpp	/^int main() {$/;"	f
+mutex_	Condition.h	/^    ThreadMutex& mutex_;$/;"	m	class:tigerso::Condition
+mutex_	ThreadMutex.h	/^    pthread_mutex_t  mutex_;$/;"	m	class:tigerso::ThreadMutex
+mutex_	ThreadPool.h	/^    mutable ThreadMutex mutex_;$/;"	m	class:tigerso::ThreadPool
+name	CurrentThread.h	/^   inline const char* name() { return threadName_; }$/;"	f	namespace:tigerso::CurrentThread
+name	Thread.h	/^    const std::string& name() { return name_; }$/;"	f	class:tigerso::Thread
+name_	Thread.cpp	/^    std::string name_;$/;"	m	class:tigerso::ThreadData	file:
+name_	Thread.h	/^    std::string name_="";$/;"	m	class:tigerso::Thread
+name_	ThreadPool.h	/^    std::string name_;$/;"	m	class:tigerso::ThreadPool
+notEmpty	ThreadPool.h	/^    bool notEmpty = false;$/;"	m	class:tigerso::ThreadPool
+notEmpty_	ThreadPool.h	/^    Condition notEmpty_;$/;"	m	class:tigerso::ThreadPool
+notFull	ThreadPool.h	/^    bool notFull = true;$/;"	m	class:tigerso::ThreadPool
+notFull_	ThreadPool.h	/^    Condition notFull_;$/;"	m	class:tigerso::ThreadPool
+notify	Condition.h	/^    void notify() {$/;"	f	class:tigerso::Condition
+notifyAll	Condition.h	/^    void notifyAll() {$/;"	f	class:tigerso::Condition
+numCreated	Thread.h	/^    static int numCreated() { return numCreated_.load(); }$/;"	f	class:tigerso::Thread
+numCreated_	Thread.h	/^    static std::atomic<int> numCreated_;$/;"	m	class:tigerso::Thread
+owner_	ThreadMutex.h	/^        ThreadMutex& owner_;$/;"	m	class:tigerso::ThreadMutex::UnassignGuard
+run	ThreadPool.h	/^    void run(const Task task) {$/;"	f	class:tigerso::ThreadPool
+runInThread	Thread.cpp	/^    void runInThread() {$/;"	f	class:tigerso::ThreadData
+runInThread	ThreadPool.h	/^    void runInThread() {$/;"	f	class:tigerso::ThreadPool
+running_	ThreadPool.h	/^    std::atomic<bool> running_;$/;"	m	class:tigerso::ThreadPool
+setDefaultName	Thread.cpp	/^void Thread::setDefaultName() {$/;"	f	class:tigerso::Thread
+start	Thread.cpp	/^void Thread::start() {$/;"	f	class:tigerso::Thread
+start	ThreadPool.h	/^    void start(const int threadNum) {$/;"	f	class:tigerso::ThreadPool
+startThread	Thread.cpp	/^void* startThread(void* obj) {$/;"	f	namespace:tigerso
+start_	Thread.h	/^    bool start_ = false;$/;"	m	class:tigerso::Thread
+started	Thread.h	/^    bool started() const { return start_; }$/;"	f	class:tigerso::Thread
+stop	ThreadPool.h	/^    void stop() {$/;"	f	class:tigerso::ThreadPool
+take	ThreadPool.h	/^    Task take() {$/;"	f	class:tigerso::ThreadPool
+tasks_	ThreadPool.h	/^    std::deque<Task> tasks_;$/;"	m	class:tigerso::ThreadPool
+test	test_thread.cpp	/^void test() {$/;"	f
+threadId_	Thread.h	/^    pthread_t threadId_ = 0;$/;"	m	class:tigerso::Thread
+threadName_	Thread.cpp	/^   __thread const char* threadName_ = "unknow thread";$/;"	m	namespace:tigerso::CurrentThread	file:
+threadNum_	ThreadPool.h	/^    int threadNum_;$/;"	m	class:tigerso::ThreadPool
+threads_	ThreadPool.h	/^    std::vector<ThreadPtr> threads_;$/;"	m	class:tigerso::ThreadPool
+tid	Thread.cpp	/^   pid_t tid() {$/;"	f	namespace:tigerso::CurrentThread
+tid	Thread.h	/^    pid_t tid() const { return *tid_; }$/;"	f	class:tigerso::Thread
+tid	ThreadMutex.h	/^    pid_t tid() {$/;"	f	class:tigerso::ThreadMutex
+tidStrLength	Thread.cpp	/^   __thread size_t tidStrLength = 0;$/;"	m	namespace:tigerso::CurrentThread	file:
+tidString	CurrentThread.h	/^   inline const char* tidString() { return tidString_; }$/;"	f	namespace:tigerso::CurrentThread
+tidString_	Thread.cpp	/^   __thread char tidString_[32] = {0};$/;"	m	namespace:tigerso::CurrentThread	file:
+tid_	Thread.h	/^    std::shared_ptr<pid_t> tid_;$/;"	m	class:tigerso::Thread
+tigerso	Condition.h	/^namespace tigerso{$/;"	n
+tigerso	CurrentThread.h	/^namespace tigerso {$/;"	n
+tigerso	Thread.cpp	/^namespace tigerso {$/;"	n	file:
+tigerso	Thread.h	/^namespace tigerso {$/;"	n
+tigerso	ThreadMutex.h	/^namespace tigerso {$/;"	n
+tigerso	ThreadPool.h	/^namespace tigerso {$/;"	n
+try_lock	ThreadMutex.h	/^    int try_lock() {$/;"	f	class:tigerso::ThreadMutex
+unassignHolder	ThreadMutex.h	/^    void unassignHolder() {$/;"	f	class:tigerso::ThreadMutex
+unlock	ThreadMutex.h	/^    int unlock() {$/;"	f	class:tigerso::ThreadMutex
+wait	Condition.h	/^    void wait() {$/;"	f	class:tigerso::Condition
+waitForSeconds	Condition.h	/^    bool waitForSeconds(double seconds) {$/;"	f	class:tigerso::Condition
+wkTid_	Thread.cpp	/^    std::weak_ptr<pid_t> wkTid_;$/;"	m	class:tigerso::ThreadData	file:
+~Condition	Condition.h	/^    ~Condition() {$/;"	f	class:tigerso::Condition
+~Thread	Thread.cpp	/^Thread::~Thread() {$/;"	f	class:tigerso::Thread
+~ThreadMutex	ThreadMutex.h	/^    ~ThreadMutex() {$/;"	f	class:tigerso::ThreadMutex
+~ThreadPool	ThreadPool.h	/^    ~ThreadPool() {$/;"	f	class:tigerso::ThreadPool
+~UnassignGuard	ThreadMutex.h	/^        ~UnassignGuard() {$/;"	f	class:tigerso::ThreadMutex::UnassignGuard

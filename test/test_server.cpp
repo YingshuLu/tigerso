@@ -3,6 +3,7 @@
 #include "net/ConnectionFactory.h"
 #include "core/ConfigParser.h"
 #include "core/Logging.h"
+#include "ssl/SSLContext.h"
 
 using namespace tigerso;
 
@@ -30,6 +31,8 @@ int main() {
    
     g_logging->setLogPath(logpath);
     g_logging->setLevel(loglevel);
+
+    OpensslInitializer sslIniter;
 
     std::shared_ptr<Acceptor> acptptr = std::shared_ptr<Acceptor>(new Acceptor("127.0.0.1", 443, HTTP_CONNECTION));
     std::shared_ptr<Acceptor> acptptr1 = std::shared_ptr<Acceptor>(new Acceptor("127.0.0.1", 80, HTTP_CONNECTION));

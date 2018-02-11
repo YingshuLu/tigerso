@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <openssl/ssl.h>
 #include <openssl/err.h>
 #include <string>
@@ -8,6 +9,7 @@
 #include "core/tigerso.h"
 #include "ssl/SSLHelper.h"
 #include "ssl/SSLContext.h"
+#include "ssl/CertCache.h"
 
 namespace tigerso {
 
@@ -20,153 +22,200 @@ static bool OPENSSL_INITIZED = false;
 static SSL_CTX* g_client_ssl_ctx = NULL;
 static SSL_CTX* g_server_ssl_ctx = NULL;
 static ServerCertVerifyCallback g_server_cert_verify_cb = NULL;
-ConfigParser* g_config = ConfigParser::getInstance(); 
+static X509* g_ca_cert = NULL;
+static EVP_PKEY* g_ca_pkey = NULL;
+static ConfigParser* g_config = ConfigParser::getInstance(); 
 
-    void _initOpenssl() {
-        if(!OPENSSL_INITIZED) {
-            ::SSL_load_error_strings();
-            ::OpenSSL_add_ssl_algorithms();
-            OPENSSL_INITIZED = true;
-        }
-        return;
+int _setCAEntity() {
+
+    std::string value = g_config->getValueByKey("proxy", "SSLMITM");
+    /*
+    if(strcasecmp(value.c_str(), "enable") != 0) {
+        INFO_LOG("https decryption is disabled, skip");
+        return SCTX_ERROR_OK;
+    }
+    */
+    
+    g_ca_cert = NULL;
+    g_ca_pkey = NULL;
+    value = g_config->getValueByKey("proxy", "cacert");
+    if(!value.empty()) {
+        g_ca_cert = loadX509FromFile(value.c_str());
     }
 
-    void _uinitClientContext() {
-        if(g_client_ssl_ctx) { SSL_CTX_free(g_client_ssl_ctx); }
-        return;
+    value = g_config->getValueByKey("proxy", "capkey");
+    if(!value.empty()) {
+        //g_ca_pkey = PEM_read_PrivateKey(fopen(value.c_str(), "r"), NULL, NULL, NULL);
+        g_ca_pkey = loadPrivateKeyFromFile(value.c_str(), NULL);
     }
 
-    void _uinitServerContext() {
-        if(g_server_ssl_ctx) { SSL_CTX_free(g_server_ssl_ctx); }
-        return;
-    }  
+    if(!g_ca_cert) {
+        INFO_LOG("failed to load CA certificate");
+        return SCTX_ERROR_ERR;
+    }
 
-    void _destoryOpenssl() {
+    if(!g_ca_pkey) {
+        INFO_LOG("failed to load CA private key");
+        return SCTX_ERROR_ERR;
+    }
+
+    INFO_LOG("load CA entity suceess");
+    return SCTX_ERROR_OK;
+}
+
+void _initOpenssl() {
+    if(!OPENSSL_INITIZED) {
+        ::SSL_load_error_strings();
+        ::ERR_load_crypto_strings();
+        ::OpenSSL_add_ssl_algorithms();
+        _setCAEntity();
+        OPENSSL_INITIZED = true;
+    }
+    return;
+}
+
+void _uinitClientContext() {
+    if(g_client_ssl_ctx) { SSL_CTX_free(g_client_ssl_ctx); g_client_ssl_ctx = NULL; }
+    return;
+}
+
+void _uinitServerContext() {
+    if(g_server_ssl_ctx) { SSL_CTX_free(g_server_ssl_ctx); g_server_ssl_ctx = NULL; }
+    return;
+}  
+
+void _unsetCAEntity() {
+    if(g_ca_cert) { X509_free(g_ca_cert); g_ca_cert = NULL; }
+    if(g_ca_pkey) { EVP_PKEY_free(g_ca_pkey); g_ca_pkey = NULL; }
+}
+
+void _destoryOpenssl() {
+    _uinitClientContext();
+    _uinitServerContext();
+    _unsetCAEntity();
+    EVP_cleanup();
+    OPENSSL_INITIZED = false;
+    return;
+}
+
+/* 0: error, 1: pass verification*/
+int _clientVerifyServerCertCallback(int ok, X509_STORE_CTX* xstore) {
+    return 1;
+}
+
+int _initClientContext(const char* trustCAPath, const char* crlPath) {
+    _initOpenssl();
+    g_client_ssl_ctx = ::SSL_CTX_new(SSLv23_client_method());
+
+    if(!g_client_ssl_ctx) {
+        DBG_LOG("SSL CTX New error: %s\n", SSLStrerror());
         _uinitClientContext();
-        _uinitServerContext();
-        EVP_cleanup();
-        OPENSSL_INITIZED = false;
-        return;
+        return SCTX_ERROR_ERR;
     }
 
-    /* 0: error, 1: pass verification*/
-    int _clientVerifyServerCertCallback(int ok, X509_STORE_CTX* xstore) {
-        return 1;
-    }
+    /*Client SSL CTX configure*/
+    {
+        //Set Cipher, all cipher suits by default
+        ::SSL_CTX_set_cipher_list(g_client_ssl_ctx, "ALL");
 
-    int _initClientContext(const char* trustCAPath, const char* crlPath) {
-        _initOpenssl();
-        g_client_ssl_ctx = ::SSL_CTX_new(SSLv23_client_method());
+        //Set non-blocking mode for SSL_write
+        ::SSL_CTX_set_mode(g_client_ssl_ctx, SSL_MODE_ENABLE_PARTIAL_WRITE| SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
 
-        if(!g_client_ssl_ctx) {
-            DBG_LOG("SSL CTX New error: %s\n", SSLStrerror());
+        //Set server cert verify callback
+        ::SSL_CTX_set_verify(g_client_ssl_ctx, SSL_VERIFY_PEER, _clientVerifyServerCertCallback);
+        ::SSL_CTX_set_verify_depth(g_client_ssl_ctx, SCTX_CERT_VERIFY_MAX_DEPTH + 1);
+
+        //Not support for SSL seesion recover
+        ::SSL_CTX_set_session_cache_mode(g_client_ssl_ctx, SSL_SESS_CACHE_OFF);
+
+        if(::SSL_CTX_load_verify_locations(g_client_ssl_ctx, NULL, trustCAPath) != 1) {
+            DBG_LOG("Error! failed to load trust CA Path: %s, reason: %s\n", trustCAPath, SSLStrerror());
             _uinitClientContext();
             return SCTX_ERROR_ERR;
         }
 
-        /*Client SSL CTX configure*/
-        {
-            //Set Cipher, all cipher suits by default
-            ::SSL_CTX_set_cipher_list(g_client_ssl_ctx, "ALL");
+        X509_STORE* store = SSL_CTX_get_cert_store(g_client_ssl_ctx);
+        X509_LOOKUP* lookup;
+        if (!(lookup = X509_STORE_add_lookup(store, X509_LOOKUP_hash_dir()))) { DBG_LOG("Error creating X509_LOOKUP object, reason: %s\n", SSLStrerror()); return SCTX_ERROR_ERR; }
 
-            //Set non-blocking mode for SSL_write
-            ::SSL_CTX_set_mode(g_client_ssl_ctx, SSL_MODE_ENABLE_PARTIAL_WRITE| SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
-
-            //Set server cert verify callback
-            ::SSL_CTX_set_verify(g_client_ssl_ctx, SSL_VERIFY_PEER, g_server_cert_verify_cb);
-            ::SSL_CTX_set_verify_depth(g_client_ssl_ctx, SCTX_CERT_VERIFY_MAX_DEPTH + 1);
-
-            //Not support for SSL seesion recover
-            ::SSL_CTX_set_session_cache_mode(g_client_ssl_ctx, SSL_SESS_CACHE_OFF);
-
-            if(::SSL_CTX_load_verify_locations(g_client_ssl_ctx, NULL, trustCAPath) != 0) {
-                DBG_LOG("Error! failed to load trust CA Path: %s, reason: %s\n", trustCAPath, SSLStrerror());
-                _uinitClientContext();
-                return SCTX_ERROR_ERR;
-            }
-
-            X509_STORE* store = SSL_CTX_get_cert_store(g_client_ssl_ctx);
-            X509_LOOKUP* lookup;
-            if (!(lookup = X509_STORE_add_lookup(store, X509_LOOKUP_hash_dir()))) { DBG_LOG("Error creating X509_LOOKUP object, reason: %s\n", SSLStrerror()); return SCTX_ERROR_ERR; }
-
-            if (X509_LOOKUP_add_dir(lookup, crlPath, X509_FILETYPE_DEFAULT) != 1)  { DBG_LOG("Error reading the CRL dir, reason: %s\n", SSLStrerror()); return SCTX_ERROR_ERR; }
-            X509_STORE_set_flags(store, X509_V_FLAG_CRL_CHECK | X509_V_FLAG_CRL_CHECK_ALL);
-        }
-        return SCTX_ERROR_OK;
+        if (X509_LOOKUP_add_dir(lookup, crlPath, X509_FILETYPE_DEFAULT) != 1)  { DBG_LOG("Error reading the CRL dir, reason: %s\n", SSLStrerror()); return SCTX_ERROR_ERR; }
+        X509_STORE_set_flags(store, X509_V_FLAG_CRL_CHECK | X509_V_FLAG_CRL_CHECK_ALL);
     }
+    return SCTX_ERROR_OK;
+}
 
-    int _initServerContext(const char* servercert, const char* privatekey) {
-        _initOpenssl();
-        g_server_ssl_ctx = ::SSL_CTX_new(SSLv23_server_method());
+int _initServerContext(const char* servercert, const char* privatekey) {
+    _initOpenssl();
+    g_server_ssl_ctx = ::SSL_CTX_new(SSLv23_server_method());
 
-        if(!g_server_ssl_ctx) {
-            DBG_LOG("SSL CTX New error: %s\n", SSLStrerror());
-            _uinitServerContext();
+    if(!g_server_ssl_ctx) {
+        DBG_LOG("SSL CTX New error: %s\n", SSLStrerror());
+        _uinitServerContext();
+        return SCTX_ERROR_ERR;
+    }
+    /*Server SSL CTX cinfigure, we will set Cert and privateKey on SSL handle*/
+    {
+        //Set Cipher, all cipher suits by default
+        ::SSL_CTX_set_cipher_list(g_server_ssl_ctx, "ALL");
+
+        //Set non-blocking mode for SSL_write
+        ::SSL_CTX_set_mode(g_server_ssl_ctx, SSL_MODE_ENABLE_PARTIAL_WRITE| SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
+
+        //Not support for SSL seesion recover
+        ::SSL_CTX_set_session_cache_mode(g_client_ssl_ctx, SSL_SESS_CACHE_OFF);
+
+        SSL_CTX_set_ecdh_auto(g_server_ssl_ctx, 1);
+
+        /* Set the key and cert */
+        if (SSL_CTX_use_certificate_file(g_server_ssl_ctx, servercert, SSL_FILETYPE_PEM) <= 0) {
+            DBG_LOG("server SSL context failed to certificate, reason: %s\n", SSLStrerror());
             return SCTX_ERROR_ERR;
         }
-        /*Server SSL CTX cinfigure, we will set Cert and privateKey on SSL handle*/
-        {
-            //Set Cipher, all cipher suits by default
-            ::SSL_CTX_set_cipher_list(g_server_ssl_ctx, "ALL");
 
-            //Set non-blocking mode for SSL_write
-            ::SSL_CTX_set_mode(g_server_ssl_ctx, SSL_MODE_ENABLE_PARTIAL_WRITE| SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
-
-            //Not support for SSL seesion recover
-            ::SSL_CTX_set_session_cache_mode(g_client_ssl_ctx, SSL_SESS_CACHE_OFF);
-
-            SSL_CTX_set_ecdh_auto(g_server_ssl_ctx, 1);
-
-            /* Set the key and cert */
-            if (SSL_CTX_use_certificate_file(g_server_ssl_ctx, servercert, SSL_FILETYPE_PEM) <= 0) {
-                DBG_LOG("server SSL context failed to certificate, reason: %s\n", SSLStrerror());
-                return SCTX_ERROR_ERR;
-            }
-
-            if (SSL_CTX_use_PrivateKey_file(g_server_ssl_ctx, privatekey, SSL_FILETYPE_PEM) <= 0 ) {
-                DBG_LOG("server SSL context failed to private key, reason: %s\n", SSLStrerror());
-                return SCTX_ERROR_ERR;
-            }
+        if (SSL_CTX_use_PrivateKey_file(g_server_ssl_ctx, privatekey, SSL_FILETYPE_PEM) <= 0 ) {
+            DBG_LOG("server SSL context failed to private key, reason: %s\n", SSLStrerror());
+            return SCTX_ERROR_ERR;
         }
-
-       return SCTX_ERROR_OK;
     }
 
-   SSL_CTX* getClientSSLCTX() {
-        if(!g_client_ssl_ctx) {
-            std::string capath = g_config->getValueByKey("proxy", "truststore");
-            std::string crlpath = g_config->getValueByKey("proxy", "crlpath");
-            if(!capath.size() || !crlpath.size()) {
-                INFO_LOG("Failed to get CA or CRL store");
-                return NULL;
-            }
-            _initClientContext(capath.c_str(), crlpath.c_str());
+   return SCTX_ERROR_OK;
+}
+
+SSL_CTX* getClientSSLCTX() {
+    if(!g_client_ssl_ctx) {
+        std::string capath = g_config->getValueByKey("proxy", "truststore");
+        std::string crlpath = g_config->getValueByKey("proxy", "crlpath");
+        if(!capath.size() || !crlpath.size()) {
+            INFO_LOG("Failed to get CA or CRL store");
+            return NULL;
         }
-        return g_client_ssl_ctx;
+        _initClientContext(capath.c_str(), crlpath.c_str());
     }
+    return g_client_ssl_ctx;
+}
 
-    SSL_CTX* getServerSSLCTX() {
-        if(!g_server_ssl_ctx) {
-            std::string certfile = g_config->getValueByKey("http", "cert");
-            std::string keyfile = g_config->getValueByKey("http", "pkey");
-            if(!certfile.size() || !keyfile.size()) {
-                INFO_LOG("Failed to get cert or key file");
-                return NULL;
-            }
-            _initServerContext(certfile.c_str(), keyfile.c_str());
+SSL_CTX* getServerSSLCTX() {
+    if(!g_server_ssl_ctx) {
+        std::string certfile = g_config->getValueByKey("http", "cert");
+        std::string keyfile = g_config->getValueByKey("http", "pkey");
+        if(!certfile.size() || !keyfile.size()) {
+            INFO_LOG("Failed to get cert or key file");
+            return NULL;
         }
-        return g_server_ssl_ctx;
+        _initServerContext(certfile.c_str(), keyfile.c_str());
     }
+    return g_server_ssl_ctx;
+}
 
-    void init() {
-        _initOpenssl();
-        return;
-    }
+void init() {
+    _initOpenssl();
+    return;
+}
 
-    void destory() {
-        _destoryOpenssl();
-        return;
-    }
+void destory() {
+    _destoryOpenssl();
+    return;
+}
 
 }//namespace _OPENSSL_
 
@@ -219,12 +268,12 @@ int SSLContext::recv(void* buf, size_t len, size_t* readn) {
     }
     else {
         if(SSL_ERROR_WANT_READ == serrno || SSL_ERROR_WANT_WRITE == serrno) {
-            INFO_LOG("SSL need more IO process");
+            INFO_LOG("[RECV] SSL need %s more", (serrno == SSL_ERROR_WANT_READ? "READ": "WRITE"));
             return SCTX_IO_RECALL;
         }
     }
     destory();
-    INFO_LOG("SSL recv failed: %s", SSLStrerror());
+    INFO_LOG("SSL recv failed: %d, %s", serrno, SSLStrerror());
     return SCTX_IO_ERROR;
 }
 
@@ -250,12 +299,12 @@ int SSLContext::send(const void* buf, size_t len, size_t* written) {
     else {
         if(SSL_ERROR_WANT_READ == serrno || SSL_ERROR_WANT_WRITE == serrno) {
             *written = 0;
-            INFO_LOG("SSL need more IO process");
+            INFO_LOG("[SEND] SSL need %s more", (serrno == SSL_ERROR_WANT_READ? "read": "write"));
             return SCTX_IO_RECALL;
         }
     }
     destory();
-    INFO_LOG("SSL send failed: %d, :%s", errno, strerror(errno));
+    INFO_LOG("SSL send failed: %d, %s", serrno, SSLStrerror());
     return SCTX_IO_ERROR;
 }
 
@@ -264,16 +313,16 @@ int SSLContext::accept() {
     serrno = ::SSL_get_error(_ssl, ret);
     if(ret != 1) {
         if(0 == ret) {
-            INFO_LOG("SSL accept client failed: %s", SSLStrerror());
+            INFO_LOG("SSL accept client failed: %d, %s", serrno, SSLStrerror());
             destory();
             return SCTX_IO_ERROR;
         }
         else {
             if(SSL_ERROR_WANT_WRITE == serrno || SSL_ERROR_WANT_READ == serrno) {
-                INFO_LOG("SSL need more IO process");
+                INFO_LOG("[ACCEPT] SSL need %s more", (serrno == SSL_ERROR_WANT_READ? "read": "write"));
                 return SCTX_IO_RECALL;
             }
-            INFO_LOG("SSL accept client failed: %s", SSLStrerror());
+            INFO_LOG("SSL accept client failed: %d, %s", serrno, SSLStrerror());
             destory();
             return SCTX_IO_ERROR;
         }
@@ -286,16 +335,16 @@ int SSLContext::connect() {
    serrno = ::SSL_get_error(_ssl, ret);
    if(ret != 1) {
         if(0 == ret) {
-            INFO_LOG("SSL connect failed: %s", SSLStrerror());
+            INFO_LOG("SSL connect failed: %d, %s", serrno, SSLStrerror());
             destory();
             return SCTX_IO_ERROR;
         }
         else {
             if(SSL_ERROR_WANT_WRITE == serrno || SSL_ERROR_WANT_READ == serrno) {
-                INFO_LOG("SSL need more IO process");
+                INFO_LOG("[CONNECT] SSL need %s more", (serrno == SSL_ERROR_WANT_READ? "read": "write"));
                 return SCTX_IO_RECALL;
             }
-            INFO_LOG("SSL connect failed: %s", SSLStrerror());
+            INFO_LOG("SSL connect failed: %d, %s", serrno, SSLStrerror());
             destory();
             return SCTX_IO_ERROR;
         }
@@ -303,12 +352,21 @@ int SSLContext::connect() {
     return SCTX_IO_OK;
 }
 
+int SSLContext::resetupCertKey() {
+    if(_ownCert && _ownPkey) {
+        return setupCertKey(_ownCert, _ownPkey);
+    }
+
+    INFO_LOG("own cert or pkey is NULL");
+    return SCTX_ERROR_ERR;
+}
+
 int SSLContext::setupCertKey(X509* cert, EVP_PKEY* pkey) {
     int ret = 0;
     ret = ::SSL_use_certificate(_ssl, cert);
     serrno = ::SSL_get_error(_ssl, ret);
     if(1 != ret) {
-        INFO_LOG("setup certificate failed: %s", SSLStrerror());
+        INFO_LOG("setup certificate failed: %d, %s", serrno, SSLStrerror());
         destory();
         return SCTX_ERROR_ERR;
     }
@@ -316,12 +374,55 @@ int SSLContext::setupCertKey(X509* cert, EVP_PKEY* pkey) {
     ret = ::SSL_use_PrivateKey(_ssl, pkey);
     serrno = ::SSL_get_error(_ssl, ret);
     if(1 != ret) {
-        INFO_LOG("setup private key failed: %s", SSLStrerror());
+        INFO_LOG("setup private key failed: %d, %s", serrno, SSLStrerror());
         destory();
         return SCTX_ERROR_ERR;
     }
 
     return SCTX_ERROR_OK;
+}
+
+int SSLContext::getCAEntity(X509** cacert, EVP_PKEY** capkey) {
+    *cacert = NULL;
+    *capkey = NULL;
+
+    if(!_OPENSSL_::g_ca_cert || !_OPENSSL_::g_ca_pkey) {
+        _OPENSSL_::_setCAEntity();
+    }
+
+    if(_OPENSSL_::g_ca_cert) { *cacert = _OPENSSL_::g_ca_cert; }
+    if(_OPENSSL_::g_ca_pkey) { *capkey = _OPENSSL_::g_ca_pkey; }
+
+    if(!*cacert || !*capkey) {
+        INFO_LOG("failed to get CA entity");
+        return SCTX_ERROR_ERR;
+    }
+
+    return SCTX_ERROR_OK;
+}
+
+void SSLContext::reset() {
+    if(_ssl) {
+        SSL_free(_ssl);
+        _ssl = nullptr;
+    }
+    
+    if(_peerCert) {
+        X509_free(_peerCert);
+        _peerCert = nullptr;
+    }
+    
+    if(_ownCert) {
+        X509_free(_ownCert);
+        _ownCert = nullptr;
+    }
+
+    if(_ownPkey) {
+        EVP_PKEY_free(_ownPkey);
+        _ownPkey = nullptr;
+    }
+
+    serrno = SSL_ERROR_NONE;
 }
 
 int SSLContext::close() {
@@ -336,8 +437,7 @@ int SSLContext::close() {
             return SCTX_IO_ERROR;
         }
     }
-    SSL_free(_ssl);
-    _ssl = nullptr;
+    reset();
     return SCTX_IO_OK;
 }
 
@@ -346,8 +446,7 @@ void SSLContext::destory() {
         int ret = SSL_shutdown(_ssl);
         serrno = ::SSL_get_error(_ssl, ret);
     }
-     SSL_free(_ssl);
-    _ssl = nullptr;
+    reset();
 }
 
 SSLContext::~SSLContext() {
@@ -356,6 +455,15 @@ SSLContext::~SSLContext() {
 
 bool SSLContext::active() {
     return SSLHelper::validSSL(_ssl);
+}
+
+OpensslInitializer::OpensslInitializer() {
+    _OPENSSL_::init();
+    CertCache::getInstance();
+}
+
+OpensslInitializer::~OpensslInitializer() {
+    _OPENSSL_::destory();
 }
 
 }//namespace tigerso

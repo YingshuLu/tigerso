@@ -1,5 +1,6 @@
 #include "dns/DNSResolver.h"
 #include "core/Logging.h"
+#include "net/SocketUtil.h"
 /*
 #include <ares.h>
 #include <arpa/nameser.h>
@@ -9,11 +10,72 @@ namespace tigerso {
 
 using namespace std;
 
+std::function<int(Socket&)> DNSResolver::register_callback_ = nullptr;
+
+void DNSResolver::setEventRegisterCallback(EVENT_REGISTER_CALLBACK callback) {
+    register_callback_ = callback;
+}
+
 DNSResolver::DNSResolver() {
     g_DNSCachePtr = DNSCache::getInstance();
 }
 
 DNSResolver::~DNSResolver() {
+}
+
+int DNSResolver::callHandle() {
+    if(callback_){
+        int ret = callback_(answer_name_.c_str(), answer_ttl_);
+        if(ret != 0) {
+           resolveState_ = DNS_ERR;
+        }
+        else {
+           resolveState_ = DNS_UINIT;
+        }
+    }
+    else { resolveState_ = DNS_ERR; }
+
+    return resolveState_;
+}
+
+int DNSResolver::getResolveState() {
+    return resolveState_;
+}
+
+int DNSResolver::resolve(const std::string& host) {
+    std::string ipaddr;
+    answer_name_.clear();
+    resolveState_ = DNS_UINIT;
+
+    //host is ip address
+    if(SocketUtil::ValidateAddr(host)) {
+        answer_name_ = host;
+        return callHandle();
+    }
+                
+    if(queryDNSCache(host, ipaddr) == DNS_OK) { 
+        return callHandle();
+    }
+
+    if(asyncQueryInit(host, sock_) != DNS_OK) { 
+        resolveState_ = DNS_ERR;
+        return DNS_ERR; 
+    }
+
+    if(register_callback_ != nullptr) {
+        if(register_callback_(sock_) != 0) {
+            resolveState_ = DNS_ERR;
+            return DNS_ERR;
+        }
+    }
+
+    if(asyncQueryStart(sock_) != DNS_OK) {
+        resolveState_ = DNS_ERR;    
+        return DNS_ERR;
+    }
+
+    resolveState_ = DNS_ON_PROCESS;
+    return DNS_ON_PROCESS;
 }
 
 int DNSResolver::queryDNSCache(const std::string& host, std::string& ipaddr) {
@@ -23,7 +85,7 @@ int DNSResolver::queryDNSCache(const std::string& host, std::string& ipaddr) {
         answer_name_ = ip;
         return DNS_OK;
     }
-    DNS_ERR;
+    return DNS_ERR;
 }
 
 int DNSResolver::asyncQueryInit(const std::string& host, Socket& udpsock){
@@ -46,7 +108,7 @@ int DNSResolver::asyncQueryInit(const std::string& host, Socket& udpsock){
     //std::cout << "packed query len: " << len << std::endl;
     auto obufptr = udpsock.getOutBufferPtr();
     obufptr->addData((char*)query_buf_, len);    
-    return 0;
+    return DNS_OK;
 }
 
 int DNSResolver::asyncQueryStart(EventsLoop& loop, Socket& udpsock) {
@@ -118,7 +180,8 @@ int DNSResolver::recvAnswer(Socket& udpsock) {
 
     udpsock.close();
     if(callback_ != nullptr) {
-        callback_(answer_name_.c_str(), answer_ttl_);
+        //callback_(answer_name_.c_str(), answer_ttl_);
+        callHandle();
     }
     return EVENT_CALLBACK_BREAK;
 }
@@ -126,7 +189,8 @@ int DNSResolver::recvAnswer(Socket& udpsock) {
 int DNSResolver::errorHandle(Socket& udpsock) {
     if(callback_ != nullptr) {
 //        callback_(answer_name_.c_str(), answer_ttl_);
-        callback_(nullptr, answer_ttl_);
+        answer_name_.clear();
+        callHandle();
     }
     udpsock.close();
     return EVENT_CALLBACK_BREAK;

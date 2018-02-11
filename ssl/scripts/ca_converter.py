@@ -49,8 +49,8 @@ def parseNSSFile(explicitTrustOnly = True, trustServerAuth = True,
 	license = None
 	date = None
 
-	#content = fetchUrl('http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1')
-	content = fetchUrl('http://mxr.mozilla.org/mozilla-central/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1')
+	content = fetchUrl('http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1')
+	#content = fetchUrl('http://mxr.mozilla.org/mozilla-central/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1')
 	if (content == None):
 		return None
 

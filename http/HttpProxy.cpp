@@ -344,7 +344,7 @@ int HttpProxyConnection::serverReadHandle(Socket& server) {
 
     if(sparser_.headerCompleted()) {
         //Handle big file, tunnel it
-        if(sparser_.isBigFile()) {
+        if(sparser_.isTunnelBody()) {
             socketSetEventHandle(_clientSocket, BIND_EVENTHANDLE(HttpProxyConnection::clientOnlyWriteHandle), SOCKET_EVENT_WRITE);
             socketEnableWriteEvent(_clientSocket);
         }
@@ -568,7 +568,7 @@ void HttpProxyConnection::transferProxyBuffer() {
 
 void HttpProxyConnection::serverDecideSkipBody() {
     if(strcasecmp(ctransaction_.request.getMethod().c_str(), "head") == 0) {
-        sparser_.setSkipBody(true);
+        sparser_.labelNoBody();
     }
     return;
 }

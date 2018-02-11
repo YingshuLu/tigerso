@@ -35,6 +35,7 @@ X509* loadX509FromFile(const char* filename);
 int storeX509ToPEMStr(X509* cert, char* buf, int len);
 EVP_PKEY* loadPrivateKeyFromFile(const char* keyfile, const char* passwd);
 
+class SSLContext;
 class SSLHelper {
 
 public:
@@ -55,7 +56,7 @@ public:
 static bool signCert(X509* ca_cert, EVP_PKEY* ca_pkey, int key_length, X509* org_cert, X509** cert, EVP_PKEY** pkey);
 static  bool validSSL(SSL* ssl);
 static int MD5(const char* input, char* output, int len);
-
+static int resignContextCert(SSLContext& client, SSLContext& server);
 };
 
 }

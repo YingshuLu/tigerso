@@ -49,7 +49,7 @@ protected:
     void linkToAcceptor(std::shared_ptr<Acceptor>);
 
 protected:
-    std::shared_ptr<Socket> sockptr__ = nullptr;
+    std::shared_ptr<Socket> sockptr_ = nullptr;
     std::shared_ptr<Acceptor> acptptr_ = nullptr;
 
 private:

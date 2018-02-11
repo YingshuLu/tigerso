@@ -148,7 +148,7 @@ int SocketUtil::Connect(Socket& mcsock, const std::string& s_addr, const std::st
             return 1;
         }
         DBG_LOG("connect error, errno: %d, reason: %s", errno, strerror(errno));
-        ::close(sockfd);
+        mcsock.close();
         return -1;
     }
 

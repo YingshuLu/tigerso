@@ -263,6 +263,7 @@ size_t Buffer::removeData(std::string& data, const size_t len) {
 
 size_t Buffer::clear() {
     readIdx_ = writeIdx_ = prefix_;
+    msgptr_ = nullptr;
     return bufsize_;
 }
 

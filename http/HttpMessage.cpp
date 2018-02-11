@@ -1,5 +1,8 @@
 #include "http/HttpMessage.h"
+#include "http/HttpRequest.h"
 #include "http/HttpResponse.h"
+#include "http/HttpParser.h"
+
 
 namespace tigerso {
 
@@ -264,13 +267,23 @@ void HttpMessage::appendHeader(std::string header, std::string value) {
     return;
 }
 
-bool HttpMessage::keepalive() { 
+bool HttpMessage::isKeepAlive() { 
     std::string value = getValueByHeader("connection");
     if(value.empty()) { 
-        if(strcasecmp(version_.c_str(), "HTTP/1.1") == 0) {return true; }
+        if(strcasecmp(version_.c_str(), "HTTP/1.1") == 0) { return true; }
         return false;
     }
     if(strcasecmp(value.c_str(),"keep-alive") == 0) { return true; }
+    return false;
+}
+
+bool HttpMessage::isChunked() {
+    std::string value = getValueByHeader("transfer-encoding");
+    if(!value.empty()) {
+        if(strcasecmp(value.c_str(), "chunked") == 0) {
+            return true;
+        }
+    }
     return false;
 }
 
@@ -281,20 +294,82 @@ void HttpMessage::clear() {
     headstr_.clear();
     body_.reset();
     bodyname_.clear();
+    parser_.reset();
 }
     
-std::string& HttpMessage::getBodyFileName() { return bodyname_; }
+std::string HttpMessage::getBodyFileName() { return body_.getFilename(); }
 int HttpMessage::setBodyFileName(const std::string& fn) {
     if(fn.empty()) { return -1; }
     body_.setFile(fn.c_str());
     bodyname_ = fn;
-    setContentLength(File(fn).getFileSize());
-    const char* mimetype = detectMIMEType(fn);
-    if(mimetype) { setContentType(mimetype); }
+
+    if(File::exist(fn)) {
+        setContentLength(File(fn).getFileSize());
+        const char* mimetype = detectMIMEType(fn);
+        if(mimetype) { setContentType(mimetype); }
+    }
     return 0;
 }
 
 HttpMessage::~HttpMessage() {}
+
+
+/*return:
+ 0: parser completed
+-1: Error
+ 1: Need more data to parse
+ 2: Pipeline Requests
+
+ parsedn: parsed n bytes
+*/
+int HttpMessage::parse(const char* buffer, const size_t& len, int* parsedn) {
+    if(!buffer) { 
+        INFO_LOG("[Http Parser] error: buffer is NULL");
+        return HP_PARSE_ERROR;
+    }
+
+    if(len <= 0) {
+        INFO_LOG("[Http Parser] warnning: buffer length: %ld", len);
+        if(0 == len) { return HP_PARSE_NEED_MOREDATA; }
+        return HP_PARSE_ERROR;
+    }
+
+    int ret = parser_.parse(buffer, len, *this);
+    if(ret > 0 && parsedn != NULL) { *parsedn = ret; }
+    if(ret != len) {
+        //Pipeline requests
+        if(!parser_.needMoreData() && getRole() == HTTP_ROLE_REQUEST) {
+            INFO_LOG("[Http Parser] pipe line requests");
+            return HP_PARSE_PIPELINE;
+        }
+        else {
+            INFO_LOG("[Http Parser] failed to parese the buffer: %s", parser_.getStrErr());
+            return HP_PARSE_ERROR;
+        }
+    }
+
+    if(parser_.needMoreData()) { 
+        DBG_LOG("[Http Parser] need more data");
+        return HP_PARSE_NEED_MOREDATA;
+    }
+    
+    DBG_LOG("[Http Parser] parse completed");
+    return HP_PARSE_COMPLETE;
+}
+
+HttpParser* HttpMessage::getParserPtr() { return &parser_; }
+
+void HttpMessage::setHeaderCompletedHandle(HttpParserCallback callback) { parser_.setHeaderCompletedHandle(callback); }
+
+void HttpMessage::setBodyCompletedHandle(HttpParserCallback callback) { parser_.setBodyCompletedHandle(callback); }
+
+void HttpMessage::tunnelBody() { parser_.labelTunnelBody(); }
+
+bool HttpMessage::isTunnelBody() { parser_.isTunnelBody(); }
+
+bool HttpMessage::needMoreData() { return parser_.needMoreData(); }
+
+bool HttpMessage::isHeaderCompleted() { return parser_.headerCompleted();  }
 
 const char* HttpMessage::detectMIMEType(const std::string& filename) {
     if(!File(filename).testExist()) {

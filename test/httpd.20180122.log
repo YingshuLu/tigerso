@@ -102,3 +102,2236 @@
 [DBG]>16:25:14<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
 [DBG]>16:25:15<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
 [DBG]>16:25:16<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:17<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:18<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:19<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:20<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:21<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:22<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:23<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:24<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:25<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:26<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:27<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:28<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:29<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:30<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:31<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:32<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:33<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:34<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:35<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:36<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:37<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:38<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:39<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:40<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:41<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:42<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:43<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:44<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:45<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:46<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:47<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:48<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:49<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:50<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:51<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:52<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:53<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:54<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:55<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:56<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:57<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:58<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:25:59<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:00<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:01<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:02<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:03<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:04<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:05<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:06<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:07<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:08<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:09<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:10<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:11<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:12<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:13<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:14<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:15<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:16<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:17<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:18<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:19<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:20<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:21<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:22<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:23<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:24<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:25<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:26<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:27<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:28<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:29<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:30<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:31<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:32<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:33<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:34<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:35<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:36<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:37<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:38<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:39<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:40<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:41<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:42<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:43<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:44<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:45<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:46<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:47<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:48<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:49<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:50<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:51<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:52<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:53<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:54<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:55<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:56<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:57<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:58<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:26:59<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:00<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:01<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:02<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:03<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:04<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:05<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:06<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:07<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:08<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:09<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:10<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:11<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:12<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:13<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:14<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:15<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:16<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:17<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:18<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:19<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:20<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:21<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:22<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:23<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:24<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:25<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:26<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:27<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:28<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:29<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:30<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:31<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:32<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:33<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:34<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:35<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:36<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:37<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:38<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:39<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:40<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:41<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:42<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:43<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:44<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:45<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:46<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:47<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:48<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:49<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:50<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:51<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:52<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:53<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:54<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:55<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:56<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:57<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:58<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:27:59<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:00<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:01<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:02<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:03<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:04<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:05<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:06<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:07<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:08<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:09<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:10<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:11<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:12<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:13<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:14<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:15<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:16<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:17<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:18<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:19<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:20<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:21<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:22<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:23<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:24<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:25<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:26<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:27<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:28<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:29<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:30<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:31<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:32<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:33<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:34<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:35<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:36<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:37<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:38<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:39<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:40<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:41<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:42<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:43<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:44<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:45<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:46<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:47<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:48<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:49<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:50<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:51<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:52<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:53<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:54<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:55<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:56<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:57<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:58<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:28:59<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:00<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:01<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:02<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:03<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:04<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:05<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:06<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:07<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:08<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:09<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:10<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:11<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:12<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:13<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:14<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:15<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:16<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:17<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:18<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:19<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:20<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:21<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:22<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:23<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:24<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:25<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:26<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:27<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:28<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:29<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:30<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:31<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:32<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:33<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:34<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:35<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:36<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:37<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:38<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:39<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:40<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:41<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:42<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:43<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:44<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:45<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:46<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:47<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:48<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:49<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:50<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:51<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:52<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:53<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:54<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:55<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:56<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:57<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:58<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:29:59<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:00<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:01<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:02<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:03<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:04<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:05<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:06<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:07<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:08<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:09<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:10<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:11<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:12<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:13<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:14<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:15<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:16<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:17<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:18<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:19<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:20<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:21<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:22<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:23<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:24<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:25<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:26<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:27<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:28<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:29<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:30<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:31<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:32<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:33<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:34<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:35<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:36<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:37<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:38<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:39<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:40<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:41<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:42<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:43<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:44<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:45<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:46<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:47<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:48<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:49<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:50<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:51<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:52<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:53<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:54<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:55<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:56<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:57<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:58<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:30:59<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:00<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:01<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:02<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:03<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:04<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:05<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:06<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:07<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:08<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:09<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:10<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:11<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:12<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:13<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:14<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:15<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:16<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:17<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:18<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:19<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:20<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:21<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:22<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:23<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:24<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:25<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:26<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:27<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:28<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:29<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:30<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:31<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:32<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:33<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:34<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:35<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:36<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:37<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:38<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:39<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:40<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:41<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:42<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:43<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:44<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:45<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:46<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:47<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:48<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:49<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:50<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:51<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:52<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:53<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:54<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:55<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:56<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:57<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:58<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:31:59<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:00<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:01<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:02<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:03<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:04<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:05<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:06<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:07<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:08<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:09<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:10<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:11<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:12<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:13<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:14<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:15<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:16<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:17<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:18<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:19<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:20<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:21<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:22<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:23<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:24<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:25<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:26<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:27<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:28<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:29<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:30<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:31<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:32<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:33<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:34<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:35<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:36<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:37<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:38<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:39<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:40<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:41<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:42<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:43<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:44<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:45<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:46<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:47<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:48<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:49<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:50<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:51<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:52<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:53<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:54<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:55<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:56<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:57<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:58<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:32:59<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:00<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:01<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:02<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:03<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:04<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:05<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:06<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:07<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:08<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:09<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:10<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:11<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:12<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:13<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:14<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:15<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:16<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:17<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:18<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:19<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:20<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:21<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:22<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:23<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:24<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:25<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:26<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:27<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:28<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:29<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] ----- Connection socket fd [747], Accepted from client 10.64.55.114:7270 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:30<[24179] ----- Current connection number: 14092 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:30<[24179] Add socket [747] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [747] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] ----- Connection socket fd [802], Accepted from client 10.64.55.114:7271 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:30<[24179] ----- Current connection number: 14093 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:30<[24179] Add socket [802] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [802] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:30<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] ----- Connection socket fd [803], Accepted from client 10.64.55.114:7272 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:30<[24179] ----- Current connection number: 14095 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:30<[24179] Add socket [803] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [803] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:30<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] ----- Connection socket fd [838], Accepted from client 10.64.55.114:7273 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:30<[24179] ----- Current connection number: 14097 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:30<[24179] Add socket [838] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [838] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:30<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] Client read 230 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:30<[24179] Http Parser get complete header:
+CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:30<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:30<[24179] disable [747] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:30<[24179] filename :www.google.com.hk:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:30<[24179] temp file name: www.google.com.hk:443ToTigerso-163330 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:30<[24179] temp file: ../test/tmp_dir/www.google.com.hk:443ToTigerso-163330 <setFilename>@<File.cpp:253>
+[DBG]>16:33:30<[24179] query host: www.google.com.hk, hash key: 64373 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:30<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:30<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:30<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:30<[24179] UDP socket [929],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:30<[24179] Add socket [929] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [929] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:30<[24179] socket [802]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] Client read 226 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:30<[24179] Http Parser get complete header:
+CONNECT apis.google.com:443 HTTP/1.1
+Host: apis.google.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:30<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:30<[24179] disable [802] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:30<[24179] filename :apis.google.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:30<[24179] temp file name: apis.google.com:443ToTigerso-163330 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:30<[24179] temp file: ../test/tmp_dir/apis.google.com:443ToTigerso-163330 <setFilename>@<File.cpp:253>
+[DBG]>16:33:30<[24179] query host: apis.google.com, hash key: 20639 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:30<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:30<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:30<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:30<[24179] UDP socket [931],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:30<[24179] Add socket [931] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [931] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:30<[24179] socket [803]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] Client read 224 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:30<[24179] Http Parser get complete header:
+CONNECT ogs.google.com:443 HTTP/1.1
+Host: ogs.google.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:30<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:30<[24179] disable [803] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:30<[24179] filename :ogs.google.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:30<[24179] temp file name: ogs.google.com:443ToTigerso-163330 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:30<[24179] temp file: ../test/tmp_dir/ogs.google.com:443ToTigerso-163330 <setFilename>@<File.cpp:253>
+[DBG]>16:33:30<[24179] query host: ogs.google.com, hash key: 7494 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:30<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:30<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:30<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:30<[24179] UDP socket [934],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:30<[24179] Add socket [934] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [934] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:30<[24179] socket [838]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] Client read 226 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:30<[24179] Http Parser get complete header:
+CONNECT ssl.gstatic.com:443 HTTP/1.1
+Host: ssl.gstatic.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:30<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:30<[24179] disable [838] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:30<[24179] filename :ssl.gstatic.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:30<[24179] temp file name: ssl.gstatic.com:443ToTigerso-163330 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:30<[24179] temp file: ../test/tmp_dir/ssl.gstatic.com:443ToTigerso-163330 <setFilename>@<File.cpp:253>
+[DBG]>16:33:30<[24179] query host: ssl.gstatic.com, hash key: 13251 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:30<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:30<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:30<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:30<[24179] UDP socket [975],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:30<[24179] Add socket [975] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [975] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:30<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] ----- Connection socket fd [976], Accepted from client 10.64.55.114:7274 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:30<[24179] ----- Current connection number: 14099 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:30<[24179] Add socket [976] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [976] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:30<[24179] socket [929]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:33:30<[24179] enable [929] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] disable [929] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:33:30<[24179] socket [931]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:33:30<[24179] enable [931] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] disable [931] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:33:30<[24179] socket [934]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:33:30<[24179] enable [934] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] disable [934] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:33:30<[24179] socket [975]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:33:30<[24179] enable [975] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] disable [975] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:33:30<[24179] socket [976]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] Client read 226 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:30<[24179] Http Parser get complete header:
+CONNECT www.gstatic.com:443 HTTP/1.1
+Host: www.gstatic.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:30<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:30<[24179] disable [976] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:30<[24179] filename :www.gstatic.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:30<[24179] temp file name: www.gstatic.com:443ToTigerso-163330 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:30<[24179] temp file: ../test/tmp_dir/www.gstatic.com:443ToTigerso-163330 <setFilename>@<File.cpp:253>
+[DBG]>16:33:30<[24179] query host: www.gstatic.com, hash key: 51514 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:30<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:30<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:30<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:30<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:30<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:30<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] ----- Connection socket fd [5], Accepted from client 10.64.55.114:7275 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:30<[24179] ----- Current connection number: 14101 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:30<[24179] Add socket [5] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [5] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:30<[24179] This Socket has been destoryed, now skip its events <waitChannel>@<EventsLoop.cpp:85>
+[DBG]>16:33:30<[24179] socket [5]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] Client read 224 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:30<[24179] Http Parser get complete header:
+CONNECT www.google.com:443 HTTP/1.1
+Host: www.google.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:30<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:30<[24179] disable [5] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:30<[24179] filename :www.google.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:30<[24179] temp file name: www.google.com:443ToTigerso-163330 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:30<[24179] temp file: ../test/tmp_dir/www.google.com:443ToTigerso-163330 <setFilename>@<File.cpp:253>
+[DBG]>16:33:30<[24179] query host: www.google.com, hash key: 4874 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:30<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:30<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:30<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:30<[24179] UDP socket [10],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:30<[24179] Add socket [10] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [10] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:30<[24179] socket [10]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:33:30<[24179] enable [10] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] disable [10] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:33:30<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] ----- Connection socket fd [16], Accepted from client 10.64.55.114:7276 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:30<[24179] ----- Current connection number: 14103 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:30<[24179] Add socket [16] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [16] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:30<[24179] socket [16]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] Client read 230 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:30<[24179] Http Parser get complete header:
+CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:30<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:30<[24179] disable [16] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:30<[24179] filename :www.google.com.hk:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:30<[24179] temp file name: www.google.com.hk:443ToTigerso-163330 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:30<[24179] temp file: ../test/tmp_dir/www.google.com.hk:443ToTigerso-163330 <setFilename>@<File.cpp:253>
+[DBG]>16:33:30<[24179] query host: www.google.com.hk, hash key: 64373 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:30<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:30<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:30<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:30<[24179] UDP socket [21],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:30<[24179] Add socket [21] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [21] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:30<[24179] socket [21]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:33:30<[24179] enable [21] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] disable [21] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:33:30<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] ----- Connection socket fd [23], Accepted from client 10.64.55.114:7277 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:30<[24179] ----- Current connection number: 14105 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:30<[24179] Add socket [23] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [23] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:30<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] ----- Connection socket fd [32], Accepted from client 10.64.55.114:7278 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:30<[24179] ----- Current connection number: 14107 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:30<[24179] Add socket [32] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [32] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:30<[24179] socket [23]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] Client read 224 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:30<[24179] Http Parser get complete header:
+CONNECT www.google.com:443 HTTP/1.1
+Host: www.google.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:30<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:30<[24179] disable [23] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:30<[24179] filename :www.google.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:30<[24179] temp file name: www.google.com:443ToTigerso-163330 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:30<[24179] temp file: ../test/tmp_dir/www.google.com:443ToTigerso-163330 <setFilename>@<File.cpp:253>
+[DBG]>16:33:30<[24179] query host: www.google.com, hash key: 4874 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:30<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:30<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:30<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:30<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:30<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:30<[24179] socket [32]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] Client read 224 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:30<[24179] Http Parser get complete header:
+CONNECT www.google.com:443 HTTP/1.1
+Host: www.google.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:30<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:30<[24179] disable [32] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:30<[24179] filename :www.google.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:30<[24179] temp file name: www.google.com:443ToTigerso-163330 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:30<[24179] temp file: ../test/tmp_dir/www.google.com:443ToTigerso-163330 <setFilename>@<File.cpp:253>
+[DBG]>16:33:30<[24179] query host: www.google.com, hash key: 4874 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:30<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:30<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:30<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:30<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:30<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:30<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] ----- Connection socket fd [33], Accepted from client 10.64.55.114:7279 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:30<[24179] ----- Current connection number: 14109 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:30<[24179] Add socket [33] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [33] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:30<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:30<[24179] This Socket has been destoryed, now skip its events <waitChannel>@<EventsLoop.cpp:85>
+[DBG]>16:33:30<[24179] This Socket has been destoryed, now skip its events <waitChannel>@<EventsLoop.cpp:85>
+[DBG]>16:33:30<[24179] socket [33]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:30<[24179] Client read 224 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:30<[24179] Http Parser get complete header:
+CONNECT www.google.com:443 HTTP/1.1
+Host: www.google.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:30<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:30<[24179] disable [33] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:30<[24179] filename :www.google.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:30<[24179] temp file name: www.google.com:443ToTigerso-163330 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:30<[24179] temp file: ../test/tmp_dir/www.google.com:443ToTigerso-163330 <setFilename>@<File.cpp:253>
+[DBG]>16:33:30<[24179] query host: www.google.com, hash key: 4874 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:30<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:30<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:30<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:30<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:30<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:30<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:30<[24179] This Socket has been destoryed, now skip its events <waitChannel>@<EventsLoop.cpp:85>
+[DBG]>16:33:31<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:31<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:31<[24179] ----- Connection socket fd [34], Accepted from client 10.64.55.114:7280 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:31<[24179] ----- Current connection number: 14111 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:31<[24179] Add socket [34] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:31<[24179] enable [34] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:31<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:31<[24179] socket [34]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:31<[24179] Client read 230 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:31<[24179] Http Parser get complete header:
+CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:31<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:31<[24179] disable [34] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:31<[24179] filename :www.google.com.hk:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:31<[24179] temp file name: www.google.com.hk:443ToTigerso-163331 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:31<[24179] temp file: ../test/tmp_dir/www.google.com.hk:443ToTigerso-163331 <setFilename>@<File.cpp:253>
+[DBG]>16:33:31<[24179] query host: www.google.com.hk, hash key: 64373 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:31<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:31<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:31<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:31<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:31<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:31<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:31<[24179] This Socket has been destoryed, now skip its events <waitChannel>@<EventsLoop.cpp:85>
+[DBG]>16:33:32<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:32<[24179] ----- Connection socket fd [35], Accepted from client 10.64.55.114:7281 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:32<[24179] ----- Current connection number: 14113 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:32<[24179] Add socket [35] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:32<[24179] enable [35] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:32<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:32<[24179] socket [35]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:32<[24179] Client read 230 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:32<[24179] Http Parser get complete header:
+CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:32<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:32<[24179] disable [35] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:32<[24179] filename :www.google.com.hk:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:32<[24179] temp file name: www.google.com.hk:443ToTigerso-163332 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:32<[24179] temp file: ../test/tmp_dir/www.google.com.hk:443ToTigerso-163332 <setFilename>@<File.cpp:253>
+[DBG]>16:33:32<[24179] query host: www.google.com.hk, hash key: 64373 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:32<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:32<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:32<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:32<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:32<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:32<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:32<[24179] This Socket has been destoryed, now skip its events <waitChannel>@<EventsLoop.cpp:85>
+[DBG]>16:33:32<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:32<[24179] ----- Connection socket fd [36], Accepted from client 10.64.55.114:7282 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:32<[24179] ----- Current connection number: 14115 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:32<[24179] Add socket [36] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:32<[24179] enable [36] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:32<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:32<[24179] socket [36]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:32<[24179] Client read 230 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:32<[24179] Http Parser get complete header:
+CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:32<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:32<[24179] disable [36] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:32<[24179] filename :www.google.com.hk:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:32<[24179] temp file name: www.google.com.hk:443ToTigerso-163332 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:32<[24179] temp file: ../test/tmp_dir/www.google.com.hk:443ToTigerso-163332 <setFilename>@<File.cpp:253>
+[DBG]>16:33:32<[24179] query host: www.google.com.hk, hash key: 64373 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:32<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:32<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:32<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:32<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:32<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:32<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:32<[24179] This Socket has been destoryed, now skip its events <waitChannel>@<EventsLoop.cpp:85>
+[DBG]>16:33:32<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:32<[24179] ----- Connection socket fd [37], Accepted from client 10.64.55.114:7283 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:32<[24179] ----- Current connection number: 14117 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:32<[24179] Add socket [37] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:32<[24179] enable [37] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:32<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:32<[24179] socket [37]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:32<[24179] Client read 230 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:32<[24179] Http Parser get complete header:
+CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:32<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:32<[24179] disable [37] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:32<[24179] filename :www.google.com.hk:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:32<[24179] temp file name: www.google.com.hk:443ToTigerso-163332 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:32<[24179] temp file: ../test/tmp_dir/www.google.com.hk:443ToTigerso-163332 <setFilename>@<File.cpp:253>
+[DBG]>16:33:32<[24179] query host: www.google.com.hk, hash key: 64373 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:32<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:32<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:32<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:32<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:32<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:32<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:32<[24179] This Socket has been destoryed, now skip its events <waitChannel>@<EventsLoop.cpp:85>
+[DBG]>16:33:32<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:33<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] ----- Connection socket fd [38], Accepted from client 10.64.55.114:7284 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:34<[24179] ----- Current connection number: 14119 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:34<[24179] Add socket [38] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [38] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:34<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:34<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] ----- Connection socket fd [39], Accepted from client 10.64.55.114:7285 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:34<[24179] ----- Current connection number: 14121 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:34<[24179] Add socket [39] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [39] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:34<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:34<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] ----- Connection socket fd [40], Accepted from client 10.64.55.114:7286 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:34<[24179] ----- Current connection number: 14123 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:34<[24179] Add socket [40] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [40] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:34<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:34<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] ----- Connection socket fd [41], Accepted from client 10.64.55.114:7287 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:34<[24179] ----- Current connection number: 14125 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:34<[24179] Add socket [41] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [41] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:34<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:34<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] ----- Connection socket fd [42], Accepted from client 10.64.55.114:7288 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:34<[24179] ----- Current connection number: 14127 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:34<[24179] Add socket [42] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [42] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:34<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:34<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] ----- Connection socket fd [43], Accepted from client 10.64.55.114:7289 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:34<[24179] ----- Current connection number: 14129 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:34<[24179] Add socket [43] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [43] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:34<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:34<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] ----- Connection socket fd [44], Accepted from client 10.64.55.114:7290 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:34<[24179] ----- Current connection number: 14131 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:34<[24179] Add socket [44] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [44] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:34<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:34<[24179] socket [38]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] Client read 226 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:34<[24179] Http Parser get complete header:
+CONNECT www.youtube.com:443 HTTP/1.1
+Host: www.youtube.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:34<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:34<[24179] disable [38] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:34<[24179] filename :www.youtube.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:34<[24179] temp file name: www.youtube.com:443ToTigerso-163334 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:34<[24179] temp file: ../test/tmp_dir/www.youtube.com:443ToTigerso-163334 <setFilename>@<File.cpp:253>
+[DBG]>16:33:34<[24179] query host: www.youtube.com, hash key: 12971 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:34<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:34<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:34<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:34<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:34<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:34<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] ----- Connection socket fd [45], Accepted from client 10.64.55.114:7291 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:34<[24179] ----- Current connection number: 14133 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:34<[24179] Add socket [45] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [45] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:34<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:34<[24179] socket [39]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] Client read 234 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:34<[24179] Http Parser get complete header:
+CONNECT clients1.google.com:443 HTTP/1.1
+Host: clients1.google.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:34<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:34<[24179] disable [39] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:34<[24179] filename :clients1.google.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:34<[24179] temp file name: clients1.google.com:443ToTigerso-163334 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:34<[24179] temp file: ../test/tmp_dir/clients1.google.com:443ToTigerso-163334 <setFilename>@<File.cpp:253>
+[DBG]>16:33:34<[24179] query host: clients1.google.com, hash key: 57774 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:34<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:34<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:34<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:34<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:34<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:34<[24179] socket [40]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] Client read 218 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:34<[24179] Http Parser get complete header:
+CONNECT i.ytimg.com:443 HTTP/1.1
+Host: i.ytimg.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:34<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:34<[24179] disable [40] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:34<[24179] filename :i.ytimg.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:34<[24179] temp file name: i.ytimg.com:443ToTigerso-163334 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:34<[24179] temp file: ../test/tmp_dir/i.ytimg.com:443ToTigerso-163334 <setFilename>@<File.cpp:253>
+[DBG]>16:33:34<[24179] query host: i.ytimg.com, hash key: 47944 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:34<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:34<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:34<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:34<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:34<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:34<[24179] socket [41]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] Client read 260 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:34<[24179] Http Parser get complete header:
+CONNECT r4---sn-n4v7sn7s.googlevideo.com:443 HTTP/1.1
+Host: r4---sn-n4v7sn7s.googlevideo.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:34<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:34<[24179] disable [41] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:34<[24179] filename :r4---sn-n4v7sn7s.googlevideo.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:34<[24179] temp file name: r4---sn-n4v7sn7s.googlevideo.com:443ToTigerso-163334 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:34<[24179] temp file: ../test/tmp_dir/r4---sn-n4v7sn7s.googlevideo.com:443ToTigerso-163334 <setFilename>@<File.cpp:253>
+[DBG]>16:33:34<[24179] query host: r4---sn-n4v7sn7s.googlevideo.com, hash key: 44352 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:34<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:34<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:34<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:34<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:34<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:34<[24179] socket [42]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] Client read 260 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:34<[24179] Http Parser get complete header:
+CONNECT r4---sn-n4v7sn7s.googlevideo.com:443 HTTP/1.1
+Host: r4---sn-n4v7sn7s.googlevideo.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:34<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:34<[24179] disable [42] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:34<[24179] filename :r4---sn-n4v7sn7s.googlevideo.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:34<[24179] temp file name: r4---sn-n4v7sn7s.googlevideo.com:443ToTigerso-163334 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:34<[24179] temp file: ../test/tmp_dir/r4---sn-n4v7sn7s.googlevideo.com:443ToTigerso-163334 <setFilename>@<File.cpp:253>
+[DBG]>16:33:34<[24179] query host: r4---sn-n4v7sn7s.googlevideo.com, hash key: 44352 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:34<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:34<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:34<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:34<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:34<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:34<[24179] socket [43]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] Client read 248 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:34<[24179] Http Parser get complete header:
+CONNECT redirector.googlevideo.com:443 HTTP/1.1
+Host: redirector.googlevideo.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:34<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:34<[24179] disable [43] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:34<[24179] filename :redirector.googlevideo.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:34<[24179] temp file name: redirector.googlevideo.com:443ToTigerso-163334 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:34<[24179] temp file: ../test/tmp_dir/redirector.googlevideo.com:443ToTigerso-163334 <setFilename>@<File.cpp:253>
+[DBG]>16:33:34<[24179] query host: redirector.googlevideo.com, hash key: 45248 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:34<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:34<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:34<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:34<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:34<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:34<[24179] socket [44]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] Client read 224 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:34<[24179] Http Parser get complete header:
+CONNECT www.google.com:443 HTTP/1.1
+Host: www.google.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:34<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:34<[24179] disable [44] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:34<[24179] filename :www.google.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:34<[24179] temp file name: www.google.com:443ToTigerso-163334 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:34<[24179] temp file: ../test/tmp_dir/www.google.com:443ToTigerso-163334 <setFilename>@<File.cpp:253>
+[DBG]>16:33:34<[24179] query host: www.google.com, hash key: 4874 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:34<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:34<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:34<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:34<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:34<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:34<[24179] This Socket has been destoryed, now skip its events <waitChannel>@<EventsLoop.cpp:85>
+[DBG]>16:33:34<[24179] socket [45]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:34<[24179] Client read 222 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:34<[24179] Http Parser get complete header:
+CONNECT yt3.ggpht.com:443 HTTP/1.1
+Host: yt3.ggpht.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:34<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:34<[24179] disable [45] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:34<[24179] filename :yt3.ggpht.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:34<[24179] temp file name: yt3.ggpht.com:443ToTigerso-163334 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:34<[24179] temp file: ../test/tmp_dir/yt3.ggpht.com:443ToTigerso-163334 <setFilename>@<File.cpp:253>
+[DBG]>16:33:34<[24179] query host: yt3.ggpht.com, hash key: 57609 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:34<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:34<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:34<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:34<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:34<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:34<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:34<[24179] This Socket has been destoryed, now skip its events <waitChannel>@<EventsLoop.cpp:85>
+[DBG]>16:33:35<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:36<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:37<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:38<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:38<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:38<[24179] ----- Connection socket fd [46], Accepted from client 10.64.55.114:7293 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:38<[24179] ----- Current connection number: 14135 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:38<[24179] Add socket [46] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:38<[24179] enable [46] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:38<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:38<[24179] socket [46]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:38<[24179] Client read 226 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:38<[24179] Http Parser get complete header:
+CONNECT www.youtube.com:443 HTTP/1.1
+Host: www.youtube.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:38<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:38<[24179] disable [46] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:38<[24179] filename :www.youtube.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:38<[24179] temp file name: www.youtube.com:443ToTigerso-163338 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:38<[24179] temp file: ../test/tmp_dir/www.youtube.com:443ToTigerso-163338 <setFilename>@<File.cpp:253>
+[DBG]>16:33:38<[24179] query host: www.youtube.com, hash key: 12971 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:38<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:38<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:38<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:38<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:38<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:38<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:38<[24179] This Socket has been destoryed, now skip its events <waitChannel>@<EventsLoop.cpp:85>
+[DBG]>16:33:39<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:40<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:41<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:42<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:43<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:44<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:45<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:46<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:47<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:48<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:48<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:48<[24179] ----- Connection socket fd [47], Accepted from client 10.64.55.114:7294 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:33:48<[24179] ----- Current connection number: 14137 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:33:48<[24179] Add socket [47] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:48<[24179] enable [47] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:33:48<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:33:48<[24179] socket [47]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:48<[24179] Client read 1166 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:33:48<[24179] Http Parser get complete header:
+POST http://wetest.qq.com/message/new-msg/ HTTP/1.1
+Host: wetest.qq.com
+Proxy-Connection: keep-alive
+Content-Length: 0
+Accept: application/json, text/javascript, */*; q=0.01
+Origin: http://wetest.qq.com
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+Referer: http://wetest.qq.com/gaps/
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: pac_uid=1_275934675; RK=XI9mjxnSRy; tvfe_boss_uuid=fd48407947c197a8; h_uid=H06960905266; pgv_pvi=5353489408; ptcz=34ca68d5f50fbe6e9d96ff9b62c4c0ac3b82902022e1f88d8e2c7a667cefd02e; pt2gguin=o0275934675; gaduid=59914070e459e; eas_sid=y1a5A1w0Y515m156x1n4v3C5t7; pgv_pvid=9227971687; o_cookie=275934675; pgv_si=s7529650176; pgv_info=ssid=s7714586288; wetest_tag=EtWcECZTEYawUHLc; wetest_indentify=DM9doyyzmkq36XPD; wetest_sessionid=an4le64b9d525r6h1fs0eogbm0; wetest_language=Cn; Hm_lvt_4fbe458a710114c234b2f89cc4d891f6=1516451026; Hm_lpvt_4fbe458a710114c234b2f89cc4d891f6=1516451026; ts_uid=6676785176; _qddaz=QD.d8pj5c.p959gd.jcnbsdyp; _qddab=3-d3l9ic.jcnbsdyr
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:33:48<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:33:48<[24179] disable [47] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:33:48<[24179] filename :wetest.qq.com <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:33:48<[24179] temp file name: wetest.qq.comToTigerso-163348 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:33:48<[24179] temp file: ../test/tmp_dir/wetest.qq.comToTigerso-163348 <setFilename>@<File.cpp:253>
+[DBG]>16:33:48<[24179] query host: wetest.qq.com, hash key: 9665 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:33:48<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:33:48<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:33:48<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:33:48<[24179] UDP socket [0],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:33:48<[24179] Add socket [0] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:33:48<[24179] enable [0] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:33:48<[24179] This Socket has been destoryed, now skip its events <waitChannel>@<EventsLoop.cpp:85>
+[DBG]>16:33:49<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:50<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:51<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:52<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:53<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:54<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:55<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:56<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:57<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:58<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:33:59<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:00<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [33] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:00<[24179] unregister Socket [33] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [33] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] discard HttpProxyConnection: 14109 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:00<[24179] discard set size: 1 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:00<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:00<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:00<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:00<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:00<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:00<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:00<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:00<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:00<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:00<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:00<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:00<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[DBG]>16:34:00<[24179] enable [32] write event <enableWriteEvent>@<Channel.cpp:30>
+[INF]>16:34:00<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:00<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:00<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [23] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:00<[24179] unregister Socket [23] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [23] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] discard HttpProxyConnection: 14105 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:00<[24179] discard set size: 2 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:00<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:00<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:00<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:00<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:00<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:00<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:00<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:00<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [21] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:00<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:00<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:00<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:00<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[DBG]>16:34:00<[24179] enable [16] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:00<[24179] disable [21] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:00<[24179] unregister Socket [21] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [21] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [16] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:00<[24179] disable [16] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] unregister Socket [16] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [16] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] discard HttpProxyConnection: 14101 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:00<[24179] discard set size: 3 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [10] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:00<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:00<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:00<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:00<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[DBG]>16:34:00<[24179] enable [5] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:00<[24179] disable [10] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:00<[24179] unregister Socket [10] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [10] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [5] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:00<[24179] disable [5] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] unregister Socket [5] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [5] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] discard HttpProxyConnection: 14099 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:00<[24179] discard set size: 4 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [32] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:00<[24179] disable [32] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] unregister Socket [32] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [32] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] discard HttpProxyConnection: 14107 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:00<[24179] discard set size: 5 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [976] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:00<[24179] unregister Socket [976] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [976] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] discard HttpProxyConnection: 14095 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:00<[24179] discard set size: 6 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:00<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:00<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:00<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:00<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:00<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:00<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:00<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:00<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [975] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:00<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:00<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:00<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:00<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[DBG]>16:34:00<[24179] enable [838] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:00<[24179] disable [975] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:00<[24179] unregister Socket [975] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [975] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [934] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:00<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:00<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:00<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:00<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[DBG]>16:34:00<[24179] enable [803] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:00<[24179] disable [934] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:00<[24179] unregister Socket [934] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [934] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [931] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:00<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:00<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:00<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:00<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[DBG]>16:34:00<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:00<[24179] disable [931] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:00<[24179] unregister Socket [931] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [931] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [838] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:00<[24179] disable [838] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] unregister Socket [838] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [838] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] discard HttpProxyConnection: 14091 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:00<[24179] discard set size: 7 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [802] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:00<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] unregister Socket [802] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [802] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] discard HttpProxyConnection: 14084 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:00<[24179] discard set size: 8 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [747] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:00<[24179] unregister Socket [747] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [747] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] discard HttpProxyConnection: 1 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:00<[24179] discard set size: 9 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [929] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:00<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:00<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:00<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:00<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:00<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[DBG]>16:34:00<[24179] disable [929] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:00<[24179] unregister Socket [929] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [929] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] Time Wheel close timeout socket [803] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:00<[24179] disable [803] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] unregister Socket [803] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [803] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] discard HttpProxyConnection: 14087 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:00<[24179] discard set size: 10 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:00<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:00<[24179] ----- Connection socket fd [747], Accepted from client 10.64.55.114:7295 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:34:00<[24179] ----- Current connection number: 14129 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:34:00<[24179] Add socket [747] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:00<[24179] enable [747] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:00<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:34:00<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:00<[24179] Client read 216 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:34:00<[24179] Http Parser get complete header:
+CONNECT google.com:443 HTTP/1.1
+Host: google.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:34:00<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:34:00<[24179] disable [747] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:00<[24179] filename :google.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:34:00<[24179] temp file name: google.com:443ToTigerso-163400 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:34:00<[24179] temp file: ../test/tmp_dir/google.com:443ToTigerso-163400 <setFilename>@<File.cpp:253>
+[DBG]>16:34:00<[24179] query host: google.com, hash key: 22813 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:34:00<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:34:00<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:34:00<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:34:00<[24179] UDP socket [802],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:34:00<[24179] Add socket [802] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:00<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:00<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:34:00<[24179] enable [802] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:00<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:00<[24179] ----- Connection socket fd [803], Accepted from client 10.64.55.114:7296 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:34:00<[24179] ----- Current connection number: 14131 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:34:00<[24179] Add socket [803] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:00<[24179] enable [803] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:00<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:34:00<[24179] socket [803]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:00<[24179] Client read 230 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:34:00<[24179] Http Parser get complete header:
+CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:34:00<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:34:00<[24179] disable [803] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:00<[24179] filename :www.google.com.hk:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:34:00<[24179] temp file name: www.google.com.hk:443ToTigerso-163400 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:34:00<[24179] temp file: ../test/tmp_dir/www.google.com.hk:443ToTigerso-163400 <setFilename>@<File.cpp:253>
+[DBG]>16:34:00<[24179] query host: www.google.com.hk, hash key: 64373 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:34:00<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:34:00<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:34:00<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:34:00<[24179] UDP socket [838],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:34:00<[24179] Add socket [838] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:00<[24179] enable [838] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:00<[24179] socket [838]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:34:00<[24179] enable [838] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:00<[24179] disable [838] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] socket [838]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:00<[24179] DNS Resolver get record. [Host: www.google.com.hk, IP: 172.217.31.227, ttl: 299] <resvDNSAnswer>@<DNSResolver.cpp:295>
+[DBG]>16:34:00<[24179] update DNS cache <DNS2Shared>@<DNSCache.cpp:186>
+[DBG]>16:34:00<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:34:00<[24179] updateDNS return : 0 <resvDNSAnswer>@<DNSResolver.cpp:297>
+[DBG]>16:34:00<[24179] disable [838] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:00<[24179] unregister Socket [838] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:00<[24179] socket [838] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:00<[24179] Connect to server: 172.217.31.227:443 <serverConnectTo>@<HttpProxy.cpp:222>
+[DBG]>16:34:00<[24179] connect need recall: 115, reason: Operation now in progress <Connect>@<SocketUtil.cpp:145>
+[DBG]>16:34:00<[24179] Add socket [838] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:00<[24179] Http method: CONNECT, tunnel the traffic now <serverConnectTo>@<HttpProxy.cpp:247>
+[DBG]>16:34:00<[24179] Prepare 200 response:
+HTTP/1.1 200 OK
+Connection: keep-alive
+Via: tigerso/1.0.0
+ <serverConnectTo>@<HttpProxy.cpp:253>
+[DBG]>16:34:00<[24179] enable [803] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:00<[24179] socket [803]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:34:00<[24179] client Tunnel write: 63 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:34:00<[24179] disable [803] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:00<[24179] enable [803] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:00<[24179] socket [803]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:00<[24179] Client Tunnel read: 517 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:34:00<[24179] enable [838] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:01<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:01<[24179] Time Wheel close timeout socket [37] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:01<[24179] unregister Socket [37] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:01<[24179] socket [37] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:01<[24179] discard HttpProxyConnection: 14117 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:01<[24179] discard set size: 7 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:01<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:01<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:01<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:01<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:01<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:01<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:01<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:01<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:01<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:01<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:01<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:01<[24179] Time Wheel close timeout socket [36] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:01<[24179] unregister Socket [36] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:01<[24179] socket [36] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:01<[24179] discard HttpProxyConnection: 14115 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:01<[24179] discard set size: 8 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:01<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:01<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:01<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:01<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:01<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:01<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:01<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:01<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:01<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:01<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:01<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:01<[24179] Time Wheel close timeout socket [35] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:01<[24179] unregister Socket [35] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:01<[24179] socket [35] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:01<[24179] discard HttpProxyConnection: 14113 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:01<[24179] discard set size: 9 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:01<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:01<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:01<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:01<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:01<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:01<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:01<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:01<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:01<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:01<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:01<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:01<[24179] Time Wheel close timeout socket [34] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:01<[24179] unregister Socket [34] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:01<[24179] socket [34] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:01<[24179] discard HttpProxyConnection: 14111 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:01<[24179] discard set size: 10 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:01<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:01<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:01<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:01<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:01<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:01<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:01<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:01<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:01<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:01<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:01<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:01<[24179] socket [838]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:34:01<[24179] server Tunnel write: 517 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:34:01<[24179] disable [838] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:01<[24179] enable [838] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:01<[24179] socket [838]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:01<[24179] server Tunnel read: 160 bytes <serverTunnelReadHandle>@<HttpProxy.cpp:555>
+[DBG]>16:34:01<[24179] enable [803] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:01<[24179] socket [803]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:34:01<[24179] client Tunnel write: 160 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:34:01<[24179] disable [803] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:01<[24179] socket [803]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:01<[24179] Client Tunnel read: 216 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:34:01<[24179] enable [838] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:01<[24179] socket [838]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:34:01<[24179] server Tunnel write: 216 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:34:01<[24179] disable [838] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:02<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:03<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:04<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [45] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:04<[24179] unregister Socket [45] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [45] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] discard HttpProxyConnection: 14133 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:04<[24179] discard set size: 11 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:04<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:04<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:04<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:04<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:04<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:04<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:04<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:04<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:04<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [44] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:04<[24179] unregister Socket [44] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [44] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] discard HttpProxyConnection: 14131 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:04<[24179] discard set size: 12 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:04<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:04<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:04<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:04<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:04<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:04<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:04<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:04<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:04<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [43] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:04<[24179] unregister Socket [43] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [43] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] discard HttpProxyConnection: 14129 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:04<[24179] discard set size: 13 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:04<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:04<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:04<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:04<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:04<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:04<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:04<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:04<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:04<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [42] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:04<[24179] unregister Socket [42] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [42] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] discard HttpProxyConnection: 14127 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:04<[24179] discard set size: 14 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:04<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:04<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:04<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:04<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:04<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:04<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:04<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:04<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:04<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [41] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:04<[24179] unregister Socket [41] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [41] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] discard HttpProxyConnection: 14125 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:04<[24179] discard set size: 15 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:04<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:04<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:04<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:04<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:04<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:04<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:04<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:04<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:04<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [40] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:04<[24179] unregister Socket [40] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [40] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] discard HttpProxyConnection: 14123 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:04<[24179] discard set size: 16 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:04<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:04<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:04<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:04<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:04<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:04<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:04<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:04<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:04<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [39] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:04<[24179] unregister Socket [39] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [39] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] discard HttpProxyConnection: 14121 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:04<[24179] discard set size: 17 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:04<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:04<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:04<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:04<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:04<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:04<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:04<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:04<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:04<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [38] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:04<[24179] unregister Socket [38] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [38] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] discard HttpProxyConnection: 14119 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:04<[24179] discard set size: 18 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:04<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:04<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:04<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:04<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:04<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:04<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:04<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:04<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:04<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:04<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:04<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:04<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:04<[24179] ----- Connection socket fd [929], Accepted from client 10.64.55.114:7298 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:34:04<[24179] ----- Current connection number: 14121 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:34:04<[24179] Add socket [929] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:04<[24179] enable [929] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:04<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:34:04<[24179] socket [929]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:04<[24179] Client read 226 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:34:04<[24179] Http Parser get complete header:
+CONNECT www.youtube.com:443 HTTP/1.1
+Host: www.youtube.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:34:04<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:34:04<[24179] disable [929] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:04<[24179] filename :www.youtube.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:34:04<[24179] temp file name: www.youtube.com:443ToTigerso-163404 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:34:04<[24179] temp file: ../test/tmp_dir/www.youtube.com:443ToTigerso-163404 <setFilename>@<File.cpp:253>
+[DBG]>16:34:04<[24179] query host: www.youtube.com, hash key: 12971 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:34:04<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:34:04<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:34:04<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:34:04<[24179] UDP socket [931],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:34:04<[24179] Add socket [931] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:04<[24179] enable [931] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:04<[24179] socket [931]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:34:04<[24179] enable [931] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:04<[24179] disable [931] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:05<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:06<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:07<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:08<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:08<[24179] Time Wheel close timeout socket [46] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:08<[24179] unregister Socket [46] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:08<[24179] socket [46] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:08<[24179] discard HttpProxyConnection: 14135 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:08<[24179] discard set size: 17 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:08<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:08<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:08<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:08<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:08<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:08<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:08<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:08<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:08<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:08<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:08<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:09<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:10<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:11<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:11<[24179] socket [838]: RDHUP event <waitChannel>@<EventsLoop.cpp:109>
+[DBG]>16:34:11<[24179] disable [838] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:11<[24179] unregister Socket [838] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:11<[24179] socket [838] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:11<[24179] enable [803] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:11<[24179] socket [803]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:34:11<[24179] client write 0 bytes <clientOnlyWriteHandle>@<HttpProxy.cpp:375>
+[DBG]>16:34:11<[24179] disable [803] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:12<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:13<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:13<[24179] socket [803]: RDHUP event <waitChannel>@<EventsLoop.cpp:109>
+[DBG]>16:34:13<[24179] disable [803] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:13<[24179] unregister Socket [803] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:13<[24179] socket [803] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:13<[24179] discard HttpProxyConnection: 14087 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:13<[24179] discard set size: 18 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:13<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:13<[24179] ----- Connection socket fd [803], Accepted from client 10.64.55.114:7299 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:34:13<[24179] ----- Current connection number: 14121 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:34:13<[24179] Add socket [803] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:13<[24179] enable [803] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:13<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:34:13<[24179] socket [803]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:13<[24179] Client read 226 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:34:13<[24179] Http Parser get complete header:
+CONNECT www.youtube.com:443 HTTP/1.1
+Host: www.youtube.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:34:13<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:34:13<[24179] disable [803] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:13<[24179] filename :www.youtube.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:34:13<[24179] temp file name: www.youtube.com:443ToTigerso-163413 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:34:13<[24179] temp file: ../test/tmp_dir/www.youtube.com:443ToTigerso-163413 <setFilename>@<File.cpp:253>
+[DBG]>16:34:13<[24179] query host: www.youtube.com, hash key: 12971 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:34:13<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:34:13<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:34:13<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:34:13<[24179] UDP socket [838],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:34:13<[24179] Add socket [838] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:13<[24179] enable [838] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:13<[24179] socket [838]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:34:13<[24179] enable [838] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:13<[24179] disable [838] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:14<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:15<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:16<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:17<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:18<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:18<[24179] Time Wheel close timeout socket [47] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:18<[24179] unregister Socket [47] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:18<[24179] socket [47] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:18<[24179] discard HttpProxyConnection: 14137 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:18<[24179] discard set size: 17 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:18<[24179] Time Wheel close timeout socket [0] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:18<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:18<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:18<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:18<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[INF]>16:34:18<[24179] channel is null <socketSetEventHandle>@<HttpProxy.cpp:620>
+[INF]>16:34:18<[24179] Mod channel event errno: 9, Bad file descriptor <updateChannel>@<EventsLoop.cpp:179>
+[DBG]>16:34:18<[24179] disable [0] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:18<[24179] epfd[256] / fd [0]: internal fatal error:Bad file descriptor <removeChannel>@<EventsLoop.cpp:223>
+[DBG]>16:34:18<[24179] unregister Socket [0] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:18<[24179] socket [0] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:19<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:20<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:21<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:22<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:23<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:24<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:25<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:26<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:27<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:28<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:29<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:30<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:30<[24179] Time Wheel close timeout socket [802] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:30<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:30<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:30<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:30<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[DBG]>16:34:30<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:30<[24179] disable [802] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:30<[24179] unregister Socket [802] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:30<[24179] socket [802] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:30<[24179] Time Wheel close timeout socket [747] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:30<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:30<[24179] unregister Socket [747] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:30<[24179] socket [747] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:30<[24179] discard HttpProxyConnection: 1 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:30<[24179] discard set size: 18 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:31<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:32<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:33<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:34<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:34<[24179] Time Wheel close timeout socket [931] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:34<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:34<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:34<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:34<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[DBG]>16:34:34<[24179] enable [929] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:34<[24179] disable [931] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:34<[24179] unregister Socket [931] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:34<[24179] socket [931] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:34<[24179] Time Wheel close timeout socket [929] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:34<[24179] disable [929] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:34<[24179] unregister Socket [929] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:34<[24179] socket [929] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:34<[24179] discard HttpProxyConnection: 14095 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:34<[24179] discard set size: 19 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:34<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:34<[24179] ----- Connection socket fd [747], Accepted from client 10.64.55.114:7303 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:34:34<[24179] ----- Current connection number: 14120 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:34:34<[24179] Add socket [747] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:34<[24179] enable [747] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:34<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:34:34<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:34<[24179] Client read 230 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:34:34<[24179] Http Parser get complete header:
+CONNECT www.google.com.hk:443 HTTP/1.1
+Host: www.google.com.hk:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:34:34<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:34:34<[24179] disable [747] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:34<[24179] filename :www.google.com.hk:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:34:34<[24179] temp file name: www.google.com.hk:443ToTigerso-163434 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:34:34<[24179] temp file: ../test/tmp_dir/www.google.com.hk:443ToTigerso-163434 <setFilename>@<File.cpp:253>
+[DBG]>16:34:34<[24179] query host: www.google.com.hk, hash key: 64373 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:34:34<[24179] Hit DNS Cache, [Host: www.google.com.hk, IP: 172.217.31.227, ttl: 265] <queryIP>@<DNSCache.cpp:75>
+[DBG]>16:34:34<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:34:34<[24179] Connect to server: 172.217.31.227:443 <serverConnectTo>@<HttpProxy.cpp:222>
+[DBG]>16:34:34<[24179] connect need recall: 115, reason: Operation now in progress <Connect>@<SocketUtil.cpp:145>
+[DBG]>16:34:34<[24179] Add socket [802] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:34<[24179] Http method: CONNECT, tunnel the traffic now <serverConnectTo>@<HttpProxy.cpp:247>
+[DBG]>16:34:34<[24179] Prepare 200 response:
+HTTP/1.1 200 OK
+Connection: keep-alive
+Via: tigerso/1.0.0
+ <serverConnectTo>@<HttpProxy.cpp:253>
+[DBG]>16:34:34<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:34<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:34<[24179] ----- Connection socket fd [929], Accepted from client 10.64.55.114:7304 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:34:34<[24179] ----- Current connection number: 14122 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:34:34<[24179] Add socket [929] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:34<[24179] enable [929] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:34<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:34:34<[24179] socket [747]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:34:34<[24179] client Tunnel write: 63 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:34:34<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:34<[24179] enable [747] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:34<[24179] socket [929]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:34<[24179] Client read 236 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:34:34<[24179] Http Parser get complete header:
+CONNECT beacons.gcp.gvt2.com:443 HTTP/1.1
+Host: beacons.gcp.gvt2.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:34:34<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:34:34<[24179] disable [929] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:34<[24179] filename :beacons.gcp.gvt2.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:34:34<[24179] temp file name: beacons.gcp.gvt2.com:443ToTigerso-163434 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:34:34<[24179] temp file: ../test/tmp_dir/beacons.gcp.gvt2.com:443ToTigerso-163434 <setFilename>@<File.cpp:253>
+[DBG]>16:34:34<[24179] query host: beacons.gcp.gvt2.com, hash key: 3045 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:34:34<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:34:34<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:34:34<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:34:34<[24179] UDP socket [931],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:34:34<[24179] Add socket [931] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:34:34<[24179] enable [931] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:34<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:34<[24179] Client Tunnel read: 201 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:34:34<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:34<[24179] socket [931]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:34:34<[24179] enable [931] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:34:34<[24179] disable [931] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:35<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:36<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:37<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:38<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:39<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:40<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:41<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:42<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:43<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:43<[24179] Time Wheel close timeout socket [838] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:34:43<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:34:43<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:34:43<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:34:43<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[DBG]>16:34:43<[24179] enable [803] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:34:43<[24179] disable [838] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:34:43<[24179] unregister Socket [838] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:43<[24179] socket [838] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:43<[24179] Time Wheel close timeout socket [803] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:34:43<[24179] disable [803] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:34:43<[24179] unregister Socket [803] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:34:43<[24179] socket [803] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:34:43<[24179] discard HttpProxyConnection: 14087 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:34:43<[24179] discard set size: 16 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:34:44<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:45<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:46<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:47<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:48<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:49<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:50<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:51<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:52<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:53<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:54<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:55<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:56<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:57<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:58<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:34:59<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:00<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:01<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:02<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:03<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Time Wheel close timeout socket [931] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[INF]>16:35:04<[24179] Failed to query DNS record <serverConnectTo>@<HttpProxy.cpp:212>
+[DBG]>16:35:04<[24179] before write in: readptr: 0, writeptr: 0 <writeIn>@<RingBuffer.cpp:29>
+[DBG]>16:35:04<[24179] after write in: readptr: 0, writeptr: 126 <writeIn>@<RingBuffer.cpp:47>
+[DBG]>16:35:04<[24179] RingBuffer write in 126 bytes
+ <writeIn>@<RingBuffer.cpp:48>
+[DBG]>16:35:04<[24179] enable [929] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] disable [931] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:35:04<[24179] unregister Socket [931] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:35:04<[24179] socket [931] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:35:04<[24179] Time Wheel close timeout socket [747] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:35:04<[24179] disable [747] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:35:04<[24179] unregister Socket [747] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:35:04<[24179] socket [747] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:35:04<[24179] Time Wheel close timeout socket [929] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:35:04<[24179] disable [929] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] unregister Socket [929] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:35:04<[24179] socket [929] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:35:04<[24179] discard HttpProxyConnection: 14105 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:35:04<[24179] discard set size: 17 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:35:04<[24179] Time Wheel close timeout socket [802] <clearCurrentTimeNode>@<TimeWheelEvent.cpp:102>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] unregister Socket [802] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:35:04<[24179] socket [802] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:35:04<[24179] discard HttpProxyConnection: 1 <discardThisHttpProxyConnection>@<HttpProxy.cpp:725>
+[DBG]>16:35:04<[24179] discard set size: 18 <discardThisHttpProxyConnection>@<HttpProxy.cpp:727>
+[DBG]>16:35:04<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] ----- Connection socket fd [747], Accepted from client 10.64.55.114:7306 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:35:04<[24179] ----- Current connection number: 14121 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:35:04<[24179] Add socket [747] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:35:04<[24179] enable [747] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:35:04<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client read 236 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:35:04<[24179] Http Parser get complete header:
+CONNECT beacons.gcp.gvt2.com:443 HTTP/1.1
+Host: beacons.gcp.gvt2.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:35:04<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:35:04<[24179] disable [747] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:35:04<[24179] filename :beacons.gcp.gvt2.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:35:04<[24179] temp file name: beacons.gcp.gvt2.com:443ToTigerso-163504 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:35:04<[24179] temp file: ../test/tmp_dir/beacons.gcp.gvt2.com:443ToTigerso-163504 <setFilename>@<File.cpp:253>
+[DBG]>16:35:04<[24179] query host: beacons.gcp.gvt2.com, hash key: 3045 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:35:04<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:35:04<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:35:04<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:35:04<[24179] UDP socket [802],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:35:04<[24179] Add socket [802] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] enable [802] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] ----- Connection socket fd [803], Accepted from client 10.64.55.114:7307 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:35:04<[24179] ----- Current connection number: 14123 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:35:04<[24179] Add socket [803] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:35:04<[24179] enable [803] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:35:04<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:35:04<[24179] socket [803]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client read 226 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:35:04<[24179] Http Parser get complete header:
+CONNECT www.youtube.com:443 HTTP/1.1
+Host: www.youtube.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:35:04<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:35:04<[24179] disable [803] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:35:04<[24179] filename :www.youtube.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:35:04<[24179] temp file name: www.youtube.com:443ToTigerso-163504 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:35:04<[24179] temp file: ../test/tmp_dir/www.youtube.com:443ToTigerso-163504 <setFilename>@<File.cpp:253>
+[DBG]>16:35:04<[24179] query host: www.youtube.com, hash key: 12971 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:35:04<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:35:04<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:35:04<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:35:04<[24179] UDP socket [838],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:35:04<[24179] Add socket [838] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:35:04<[24179] enable [838] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [838]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] enable [838] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:35:04<[24179] disable [838] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [802]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] DNS Resolver get record. [Host: beacons.gcp.gvt2.com, IP: 172.217.25.3, ttl: 299] <resvDNSAnswer>@<DNSResolver.cpp:295>
+[DBG]>16:35:04<[24179] update DNS cache <DNS2Shared>@<DNSCache.cpp:186>
+[DBG]>16:35:04<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:35:04<[24179] updateDNS return : 0 <resvDNSAnswer>@<DNSResolver.cpp:297>
+[DBG]>16:35:04<[24179] disable [802] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:35:04<[24179] unregister Socket [802] <unregisterChannel>@<EventsLoop.cpp:46>
+[INF]>16:35:04<[24179] socket [802] close now <Close>@<SocketUtil.cpp:164>
+[DBG]>16:35:04<[24179] Connect to server: 172.217.25.3:443 <serverConnectTo>@<HttpProxy.cpp:222>
+[DBG]>16:35:04<[24179] connect need recall: 115, reason: Operation now in progress <Connect>@<SocketUtil.cpp:145>
+[DBG]>16:35:04<[24179] Add socket [802] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:35:04<[24179] Http method: CONNECT, tunnel the traffic now <serverConnectTo>@<HttpProxy.cpp:247>
+[DBG]>16:35:04<[24179] Prepare 200 response:
+HTTP/1.1 200 OK
+Connection: keep-alive
+Via: tigerso/1.0.0
+ <serverConnectTo>@<HttpProxy.cpp:253>
+[DBG]>16:35:04<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [747]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] client Tunnel write: 63 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:35:04<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] enable [747] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client Tunnel read: 236 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] server Tunnel write: 236 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] enable [802] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:35:04<[24179] socket [802]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] server Tunnel read: 1368 bytes <serverTunnelReadHandle>@<HttpProxy.cpp:555>
+[DBG]>16:35:04<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [747]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] client Tunnel write: 1368 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:35:04<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [802]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] server Tunnel read: 1368 bytes <serverTunnelReadHandle>@<HttpProxy.cpp:555>
+[DBG]>16:35:04<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [747]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] client Tunnel write: 1368 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:35:04<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [802]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] server Tunnel read: 1630 bytes <serverTunnelReadHandle>@<HttpProxy.cpp:555>
+[DBG]>16:35:04<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [747]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] client Tunnel write: 1630 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:35:04<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client Tunnel read: 93 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] server Tunnel write: 93 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [802]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] server Tunnel read: 284 bytes <serverTunnelReadHandle>@<HttpProxy.cpp:555>
+[DBG]>16:35:04<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [747]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] client Tunnel write: 284 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:35:04<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [802]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] server Tunnel read: 69 bytes <serverTunnelReadHandle>@<HttpProxy.cpp:555>
+[DBG]>16:35:04<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [747]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] client Tunnel write: 69 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:35:04<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client Tunnel read: 93 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] server Tunnel write: 93 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client Tunnel read: 38 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] server Tunnel write: 38 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client Tunnel read: 251 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] server Tunnel write: 251 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client Tunnel read: 1110 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] server Tunnel write: 1110 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [802]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] server Tunnel read: 38 bytes <serverTunnelReadHandle>@<HttpProxy.cpp:555>
+[DBG]>16:35:04<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [747]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] client Tunnel write: 38 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:35:04<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [802]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] server Tunnel read: 285 bytes <serverTunnelReadHandle>@<HttpProxy.cpp:555>
+[DBG]>16:35:04<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [747]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] client Tunnel write: 285 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:35:04<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [802]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] server Tunnel read: 38 bytes <serverTunnelReadHandle>@<HttpProxy.cpp:555>
+[DBG]>16:35:04<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [747]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] client Tunnel write: 38 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:35:04<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [802]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] server Tunnel read: 46 bytes <serverTunnelReadHandle>@<HttpProxy.cpp:555>
+[DBG]>16:35:04<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [747]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] client Tunnel write: 46 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:35:04<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client Tunnel read: 46 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] server Tunnel write: 46 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client Tunnel read: 80 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] server Tunnel write: 80 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [512]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] ----- Connection socket fd [929], Accepted from client 10.64.55.114:7308 <acceptHttpClientConnection>@<HttpProxy.cpp:706>
+[DBG]>16:35:04<[24179] ----- Current connection number: 14125 <acceptHttpClientConnection>@<HttpProxy.cpp:707>
+[DBG]>16:35:04<[24179] Add socket [929] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:35:04<[24179] enable [929] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:35:04<[24179] accept error: 11, reason: Resource temporarily unavailable <Accept>@<SocketUtil.cpp:92>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client Tunnel read: 1460 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] server Tunnel write: 1460 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client Tunnel read: 1430 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] server Tunnel write: 1430 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [929]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client read 228 bytes <clientFirstReadHandle>@<HttpProxy.cpp:137>
+[DBG]>16:35:04<[24179] Http Parser get complete header:
+CONNECT beacons.gvt2.com:443 HTTP/1.1
+Host: beacons.gvt2.com:443
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+ <on_headers_complete>@<HttpParser.cpp:121>
+[DBG]>16:35:04<[24179] Client first request parsed completely <clientFirstReadHandle>@<HttpProxy.cpp:166>
+[DBG]>16:35:04<[24179] disable [929] read event <disableReadEvent>@<Channel.cpp:22>
+[DBG]>16:35:04<[24179] filename :beacons.gvt2.com:443 <getBodyFileName>@<HttpRequest.cpp:125>
+[DBG]>16:35:04<[24179] temp file name: beacons.gvt2.com:443ToTigerso-163504 <clientFirstReadHandle>@<HttpProxy.cpp:179>
+[DBG]>16:35:04<[24179] temp file: ../test/tmp_dir/beacons.gvt2.com:443ToTigerso-163504 <setFilename>@<File.cpp:253>
+[DBG]>16:35:04<[24179] query host: beacons.gvt2.com, hash key: 18948 <queryIP>@<DNSCache.cpp:60>
+[DBG]>16:35:04<[24179] shm mutex unlock success <unlock>@<SysUtil.cpp:339>
+[DBG]>16:35:04<[24179] Start async DNS query ... <clientFirstReadHandle>@<HttpProxy.cpp:202>
+[DBG]>16:35:04<[24179] connection establised immediately <Connect>@<SocketUtil.cpp:154>
+[DBG]>16:35:04<[24179] UDP socket [931],  connect to remote server: 8.8.8.8:53 <CreateUDPConnect>@<SocketUtil.cpp:439>
+[DBG]>16:35:04<[24179] Add socket [931] event <addChannel>@<EventsLoop.cpp:201>
+[DBG]>16:35:04<[24179] enable [931] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client Tunnel read: 1384 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [931]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] enable [931] read event <enableReadEvent>@<Channel.cpp:14>
+[DBG]>16:35:04<[24179] disable [931] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] server Tunnel write: 1384 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [802]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] server Tunnel read: 90 bytes <serverTunnelReadHandle>@<HttpProxy.cpp:555>
+[DBG]>16:35:04<[24179] enable [747] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [747]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] client Tunnel write: 90 bytes <clientTunnelWriteHandle>@<HttpProxy.cpp:508>
+[DBG]>16:35:04<[24179] disable [747] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:04<[24179] socket [747]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:04<[24179] Client Tunnel read: 46 bytes <clientTunnelReadHandle>@<HttpProxy.cpp:524>
+[DBG]>16:35:04<[24179] enable [802] write event <enableWriteEvent>@<Channel.cpp:30>
+[DBG]>16:35:04<[24179] socket [802]: WRITE event <waitChannel>@<EventsLoop.cpp:141>
+[DBG]>16:35:04<[24179] server Tunnel write: 46 bytes <serverTunnelWriteHandle>@<HttpProxy.cpp:539>
+[DBG]>16:35:04<[24179] disable [802] write event <disableWriteEvent>@<Channel.cpp:38>
+[DBG]>16:35:05<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:06<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:07<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:08<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:09<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:10<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:11<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:12<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:13<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:14<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:15<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:16<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:17<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:18<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:19<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:20<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:21<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:22<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:23<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:24<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:25<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:26<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:27<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:28<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:29<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:30<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:31<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>
+[DBG]>16:35:32<[24179] socket [123]: READ event <waitChannel>@<EventsLoop.cpp:133>

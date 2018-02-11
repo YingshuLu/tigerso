@@ -10,8 +10,6 @@
 #include <memory>
 #include "core/BaseClass.h"
 #include "core/tigerso.h"
-#include "http/HttpRequest.h"
-#include "http/HttpResponse.h"
 
 namespace tigerso {
 /*Http parser
@@ -38,36 +36,43 @@ typedef enum{
 #define HP_PARSE_BAD_RESPONSE -3
 #define HP_PARSE_COMPLETE 0
 #define HP_PARSE_NEED_MOREDATA 1
+#define HP_PARSE_PIPELINE  2
 
+class HttpMessage;
+
+typedef std::function<int(HttpMessage&)> HttpParserCallback;
 class HttpParser: public nocopyable {
+
+friend int on_message_begin(http_parser*);
+friend int on_message_complete(http_parser*);
+friend int on_headers_complete(http_parser*);
+friend int on_url(http_parser*, const char*, size_t);
+friend int on_status(http_parser*, const char*, size_t);
+friend int on_header_field(http_parser*, const char*, size_t);
+friend int on_header_value(http_parser*, const char*, size_t);
+friend int on_body(http_parser*, const char*, size_t);
+
 public:
     HttpParser(): buffer_(nullptr), length_(0), parsedn_(0), state_(PARSE_UNINIT), message_(nullptr) {}
     int parse(const char*, size_t, HttpMessage&);
     int parse(const std::string&, HttpMessage&);
     inline PARSE_STATE getParseState() { return state_; }
-    bool skipBody() { return skipbody_; }
+    bool isNoBody() { return nobody_; }
     bool headerCompleted() {  return (state_ >= PARSE_HEADER_COMPLETE? true : false); }
     bool needMoreData() { return state_ != PARSE_COMPLETE; }
     const char* getStrErr() { return http_errno_description(HTTP_PARSER_ERRNO(&parser_)); }
     size_t getLastParsedSize() { return parsedn_; }
-    bool isBigFile() { return bigfile_; }
+    bool isTunnelBody() { return tunnelbody_; }
     void reset();
 
-    //only for http parser callback
 public:
-    bool labelBigFile() { bigfile_ = true; }
-    void setParseState(PARSE_STATE state) { state_ = state; }
-    void setSkipBody(bool skip) { skipbody_ = skip; }
+    void setHeaderCompletedHandle(HttpParserCallback callback) { headerCompletedHandle_ = callback; }
+    void setBodyCompletedHandle(HttpParserCallback callback) { bodyCompletedHandle_ = callback; }
+    void labelNoBody() { nobody_ = true; }
+    bool labelTunnelBody() { tunnelbody_ = true; }
+
 private:
-    // Callbacks for http data parser 
-    static int on_message_begin(http_parser*);
-    static int on_message_complete(http_parser*);
-    static int on_headers_complete(http_parser*);
-    static int on_url(http_parser*, const char*, size_t);
-    static int on_status(http_parser*, const char*, size_t);
-    static int on_header_field(http_parser*, const char*, size_t);
-    static int on_header_value(http_parser*, const char*, size_t);
-    static int on_body(http_parser*, const char*, size_t);
+    void setParseState(PARSE_STATE state) { state_ = state; }
     int initParser(HttpMessage&);
 
 private:
@@ -77,11 +82,14 @@ private:
     http_parser_settings settings_;
     size_t parsedn_;
     PARSE_STATE state_;
-    bool skipbody_ = false;
     HttpMessage* message_;
+    bool nobody_ = false;
+    bool tunnelbody_ = false;
 
 private:
-    bool bigfile_ = false;
+    HttpParserCallback headerCompletedHandle_ = nullptr;
+    HttpParserCallback bodyCompletedHandle_ = nullptr;
+
 };
 
 } //namespace tigerso::http
